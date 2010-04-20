@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="org.cnl.digemin.bean.BeanAuditoria" table="CON_AUDITORIA_AUD">
+   
+       <id name="codigo" type="long" column="AUD_nCODIGO" >
+       		<generator class="sequence">
+				<param name="sequence">auditoria_secuencia</param>
+			</generator>
+        </id>
+        
+        <property name="usuarioRegistro"><column name="AUD_nUSUARIOREGISTRO"/></property>
+        <property name="fechaRegistro"><column name="AUD_dFECHAREGISTRO"/></property>
+        <property name="metodo"><column name="AUD_sMETODO"/></property>
+        <property name="sistema"><column name="AUD_sSISTEMASONSULTA"/></property>
+        <property name="consulta"><column name="AUD_sCONSULTA"/></property>
+        <property name="campos"><column name="AUD_sCAMPOSCONSULTA"/></property>
+           
+</class>
+</hibernate-mapping>

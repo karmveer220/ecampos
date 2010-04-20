@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="org.cnl.digemin.bean.BeanPersona" table="CON_PERSONA_PER">
+   
+        <id name="ncodigo" type="long" column="PER_nCODIGO" >
+            <generator class="sequence">
+				<param name="sequence">persona_secuencia</param>
+			</generator>
+        </id>
+        <many-to-one name="nperfil" class="org.cnl.digemin.bean.BeanPerfil" 
+                    fetch="join"  column="PEF_nCODIGO" update="false" insert="false"
+                    not-null="true" lazy="false"/>
+        <many-to-one name="nnotaria" class="org.cnl.digemin.bean.BeanNotaria" 
+                    fetch="join" column="NOT_nCODIGO" update="false" insert="false"
+                    not-null="true" lazy="false"/>
+        <many-to-one name="ncolegio" class="org.cnl.digemin.bean.BeanColegio" 
+            fetch="join" column="COL_nCODIGO" update="false" insert="false"
+            not-null="true" lazy="false"/>
+        <property name="notaria"><column name="NOT_nCODIGO"/></property>
+        <property name="perfil"><column name="PEF_nCODIGO"/></property>
+        <property name="colegio"><column name="COL_nCODIGO"/></property>
+        <property name="snombre"><column name="PER_sNOMBRE"/></property>
+        <property name="spaterno"><column name="PER_sPATERNO"/></property>
+        <property name="smaterno"><column name="PER_sMATERNO"/></property>
+        <property name="dnacimiento"><column name="PER_dNACIMIENTO"/></property>
+        <property name="snum_doc"><column name="PER_sNUM_DOC"/></property>
+        <property name="susuario"><column name="PER_sUSUARIO"/></property>
+        <property name="sclave"><column name="PER_sCLAVE"/></property>
+        <property name="semail"><column name="PER_sEMAIL"/></property>
+        <property name="fclave"><column name="PER_fCLAVE"/></property>
+</class>
+</hibernate-mapping>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+
+	<persistence-unit name="EJBDigemin" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<jta-data-source>java:/digeminMysql</jta-data-source>
+		<!-- 
+			<jta-data-source>java:/MSSQLDS</jta-data-source>
+		--> 
+
+
+		 <class>gob.min.digemin.ejb.bean.Simcalidadmigratoria</class>
+         <class>gob.min.digemin.ejb.bean.Simcarnetextranjeria</class>  
+         <class>gob.min.digemin.ejb.bean.Simdocumento</class>
+         <class>gob.min.digemin.ejb.bean.Simmovmigra</class>
+         <class>gob.min.digemin.ejb.bean.Simpasaporte</class>
+         <class>gob.min.digemin.ejb.bean.Simextranjero</class>
+         <class>gob.min.digemin.ejb.bean.Simperuano</class>
+         <class>gob.min.digemin.ejb.bean.Simpersona</class>
+         <class>gob.min.digemin.ejb.bean.Simpais</class>
+         <class>gob.min.digemin.ejb.bean.Simimagen</class>
+         <class>gob.min.digemin.ejb.bean.Simimagenextranjero</class>
+         <class>gob.min.digemin.ejb.bean.Simpasperu</class>         
+         <class>gob.min.digemin.ejb.bean.Simsesion</class>
+         <class>gob.min.digemin.ejb.bean.Simusuarioexterno</class>
+         
+		<properties>
+			<property name="hibernate.archive.autodetection" value="class, hbm" />
+			<property name="hibernate.show_sql" value="true" />
+			
+			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup" />
+			<property name="hibernate.connection.release_mode" value="after_statement" />
+			<property name="hibernate.transaction.flush_before_completion" value="false" />
+			<property name="hibernate.transaction.auto_close_session" value="false" />
+			<property name="hibernate.query.factory_class" value="org.hibernate.hql.ast.ASTQueryTranslatorFactory" />
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+
+			<property name="hibernate.jndi.java.naming.factory.initial" value="org.jnp.interfaces.NamingContextFactory" />
+			<property name="hibernate.jndi.java.naming.factory.url.pkgs" value="org.jboss.naming:org.jnp.interfaces" />
+			<!-- 
+				<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
+				<property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+				<property name="hibernate.connection.password" value="DESARROLLO2006" />
+				<property name="hibernate.connection.url" value="jdbc:sqlserver://1.1.1.13:1433;DatabaseName=SIM" />
+				<property name="hibernate.connection.username" value="UDESA" />
+			 -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="mysql" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/sim" />		
+		 
+			<property name="hibernate.c3p0.min_size" value="5" />
+			<property name="hibernate.c3p0.max_size" value="20" />
+			<property name="hibernate.c3p0.timeout" value="300" />
+			<property name="hibernate.c3p0.max_statements" value="50" />
+			<property name="hibernate.c3p0.idle_test_period" value="3000" />
+		</properties>
+</persistence-unit>
+
+
+
+  <!-- <?xml version="1.0" encoding="windows-1252" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+ 
+ <persistence-unit name="EJBDigemin"  transaction-type="RESOURCE_LOCAL">
+<persistence-unit name="EJBDigemin"  transaction-type="JTA"> 
+  
+   <provider>org.hibernate.ejb.HibernatePersistence</provider>
+   
+       
+          <jta-data-source>java:/MSSQLDS</jta-data-source>
+       <non-jta-data-source>java:/MSSQLDS</non-jta-data-source> 
+      
+         <class>gob.min.digemin.ejb.bean.Simcalidadmigratoria</class>
+         <class>gob.min.digemin.ejb.bean.Simcarnetextranjeria</class>  
+         <class>gob.min.digemin.ejb.bean.Simdocumento</class>
+         <class>gob.min.digemin.ejb.bean.Simmovmigra</class>
+         <class>gob.min.digemin.ejb.bean.Simpasaporte</class>
+         <class>gob.min.digemin.ejb.bean.Simextranjero</class>
+         <class>gob.min.digemin.ejb.bean.Simperuano</class>
+         <class>gob.min.digemin.ejb.bean.Simpersona</class>
+         <class>gob.min.digemin.ejb.bean.Simpais</class>
+         <class>gob.min.digemin.ejb.bean.Simimagen</class>
+         <class>gob.min.digemin.ejb.bean.Simimagenextranjero</class>
+         <class>gob.min.digemin.ejb.bean.Simpasperu</class>
+         
+         <class>gob.min.digemin.ejb.bean.Simsesion</class>
+         <class>gob.min.digemin.ejb.bean.Simusuarioexterno</class>
+        
+    <properties>
+         <property name="jboss.entity.manager.jndi.name" value="java:/EJBDigemin"/>
+         <property name="jboss.entity.manager.factory.jndi.name" value="java:/EJBDigeminFactory"/>
+         <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+    </properties>
+      
+</persistence-unit>
+
+</persistence>
+
+--> 
+
+</persistence>

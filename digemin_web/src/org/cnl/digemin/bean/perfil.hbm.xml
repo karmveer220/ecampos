@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="org.cnl.digemin.bean.BeanPerfil" table="CON_PERFIL_PEF">
+
+    <id name="ncodigo" type="long" column="PEF_nCODIGO" ></id>
+    <property name="sdescripcion"><column name="PEF_sDESCRIPCION" /></property> 
+    
+    <set name="personas" lazy="false" inverse="false">
+        <key column="PEF_nCODIGO"/>
+        <one-to-many class="org.cnl.digemin.bean.BeanPersona"/>
+    </set>
+   
+</class>
+</hibernate-mapping>

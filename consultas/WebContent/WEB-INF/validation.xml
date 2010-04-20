@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+     "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+
+<!--
+     This is a minimal Validator form file with a couple of examples.
+-->
+
+    <global>
+
+    <constant>
+      <constant-name>phone</constant-name>
+      <constant-value>^\(?(\d{3})\)?[-| ]?(\d{3})[-| ]?(\d{4})$</constant-value>
+    </constant>
+
+    </global>
+
+    <formset>
+
+<!-- ============================================================= 
+               DATOS DE USUARIO
+ ==============================================================-->
+        <form name="usuarioForm">
+        	<field property="notaria" depends="required,intRange">
+		        <arg key="Notaria" resource="false" />
+		        <msg name="intRange" key="Debe seleccionar una Notaria." resource="false" />
+		        <var>
+		          <var-name>min</var-name>
+		          <var-value>0</var-value>
+		        </var>
+		        <var>
+		          <var-name>max</var-name>
+		          <var-value>100</var-value>
+		        </var>
+	      	</field>
+	      	
+	        <field property="snombre" depends="required,maxlength">
+		        <arg key="text.person.name" />
+		        <arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+		        <var>
+		          <var-name>maxlength</var-name>
+		          <var-value>25</var-value>
+		        </var>
+	      	</field>
+	      	<field property="spaterno" depends="required,maxlength">
+		       <arg key="text.person.father" />
+		       <arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+		        <var>
+		          <var-name>maxlength</var-name>
+		          <var-value>25</var-value>
+		        </var>
+	      	</field>
+	      	<field property="smaterno" depends="required,maxlength">
+		        <arg key="text.person.mother" />
+		        <arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+		        <var>
+		          <var-name>maxlength</var-name>
+		          <var-value>25</var-value>
+		        </var>
+	      	</field>
+            <field property="susuario" depends="required,maxlength">
+            	<arg key="text.person.username" />
+            	<arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+		        <var>
+		          <var-name>maxlength</var-name>
+		          <var-value>50</var-value>
+		        </var>
+            </field>
+            <field property="sclave" depends="mask,maxlength">
+                   <arg key="text.person.password" />
+                    <arg key="logonForm.password"/>
+                    <var>
+                        <var-name>mask</var-name>
+                        <var-value>^[0-9a-zA-Z]*$</var-value>
+                    </var>
+                    <arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+			        <var>
+			          <var-name>maxlength</var-name>
+			          <var-value>50</var-value>
+			        </var>
+            </field>
+			<field property="snum_doc" depends="required,integer,maxlength,minlength">
+				<arg key="text.person.dni" />
+				<arg name="maxlength" key="${var:maxlength}" resource="false" position="1" />
+				<arg name="minlength" key="${var:minlength}" resource="false" position="1" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>8</var-value>
+				</var>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>8</var-value>
+				</var>
+			</field>
+			<field property="dnacimiento" depends="required,date">
+				<arg key="text.person.born" />
+				<arg key="typeForm.date.displayname" />
+				<var>
+					<var-name>datePatternStrict</var-name>
+					<var-value>yyyy-MM-dd</var-value>
+				</var>
+			</field>
+			<field property="semail" depends="required,email">
+				<arg key="text.person.mail" />
+			</field>
+        </form>
+
+
+<!-- ============================================================= 
+               DATOS DE NOTARIA
+ ==============================================================-->
+        <form name="notariasForm">
+        	<field property="ncolegio" depends="required,intRange">
+		        <arg key="Notaria" resource="false" />
+		        <msg name="intRange" key="Debe seleccionar un colegio" resource="false" />
+		        <var>
+		          <var-name>min</var-name>
+		          <var-value>0</var-value>
+		        </var>
+		        <var>
+		          <var-name>max</var-name>
+		          <var-value>100</var-value>
+		        </var>
+	      	</field>
+	      	
+	        <field property="snombre" depends="required,maxlength">
+		        <arg key="Nombre de Notaria" resource="false" />
+		        <arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+		        <var>
+		          <var-name>maxlength</var-name>
+		          <var-value>250</var-value>
+		        </var>
+	      	</field>
+	      	<field property="nnotario" depends="required,maxlength">
+		       <arg key="Nombre del Notario" resource="false" />
+		       <arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+		        <var>
+		          <var-name>maxlength</var-name>
+		          <var-value>100</var-value>
+		        </var>
+	      	</field>
+	      	<field property="sdireccion" depends="required,maxlength">
+		        <arg key="Direccion" resource="false" />
+		        <arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+		        <var>
+		          <var-name>maxlength</var-name>
+		          <var-value>500</var-value>
+		        </var>
+	      	</field>
+            <field property="stelefono" depends="required,maxlength">
+            	<arg key="N. Telefono" resource="false"/>
+            	<arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+		        <var>
+		          <var-name>maxlength</var-name>
+		          <var-value>20</var-value>
+		        </var>
+            </field>
+            <field property="sfax" depends="required,maxlength">
+            	<arg key="N. Fax" resource="false"/>
+            	<arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+		        <var>
+		          <var-name>maxlength</var-name>
+		          <var-value>20</var-value>
+		        </var>
+            </field>
+			<field property="semail" depends="required,email">
+				<arg key="text.person.mail" />
+			</field>
+        </form>
+        
+    </formset>
+
+   
+</form-validation>

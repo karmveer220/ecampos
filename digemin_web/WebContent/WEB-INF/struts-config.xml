@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC 
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+
+	<!-- ================================================ Form Bean Definitions -->
+
+	<form-beans>
+		<form-bean name="ceForm" type="org.cnl.digemin.form.BuscarPersonasForm"/>
+		<form-bean name="buscarpersonasForm" type="org.cnl.digemin.form.BuscarPersonasForm"/>
+        <form-bean name="loginForm" type="org.cnl.digemin.form.LoginForm"/>
+        <form-bean name="usuarioForm" type="org.apache.struts.action.DynaActionForm">
+                <form-property name="ncodigo" type="java.lang.String" />
+                <form-property name="snombre" type="java.lang.String" />
+                <form-property name="spaterno" type="java.lang.String" />
+                <form-property name="smaterno" type="java.lang.String" />
+                <form-property name="susuario" type="java.lang.String" />
+                <form-property name="semail" type="java.lang.String" />
+                <form-property name="sclave" type="java.lang.String" />
+                <form-property name="dnacimiento" type="java.lang.String" />
+                <form-property name="perfil" type="java.lang.String" />
+                <form-property name="snum_doc" type="java.lang.String" />
+                <form-property name="notaria" type="java.lang.String" />
+        </form-bean>
+		
+        <form-bean name="notariasForm" type="org.apache.struts.action.DynaActionForm">
+                <form-property name="ncodigo" type="java.lang.String" />
+                <form-property name="snombre" type="java.lang.String" />
+                <form-property name="nnotario" type="java.lang.String" />
+                <form-property name="sdireccion" type="java.lang.String" />
+                <form-property name="semail" type="java.lang.String" />
+                <form-property name="stelefono" type="java.lang.String" />
+                <form-property name="sfax" type="java.lang.String" />
+        </form-bean>
+		
+	</form-beans>
+
+
+	<!-- ========================================= Global Exception Definitions -->
+
+	<global-exceptions>
+
+	</global-exceptions>
+
+
+	<!-- =========================================== Global Forward Definitions -->
+
+	<global-forwards>
+			<forward name="login" path="/login.jsp" />
+            <forward name="welcome" path="/Welcome.do" />
+            <forward name="clave" path="/adm_clave.jsp"/>
+            <forward name="home" path="/Welcome.jsp"/>
+	</global-forwards>
+
+
+	<!-- =========================================== Action Mapping Definitions -->
+
+	<action-mappings>
+		<!-- Default "Welcome" action -->
+		<!-- Forwards to Welcome.jsp -->
+	<action path="/Welcome" forward="/login.jsp" />
+        <action path="/home" forward="/Welcome.jsp" />
+		   
+	<action path="/clave" type="org.springframework.web.struts.DelegatingActionProxy"
+            name="loginForm" scope="request" parameter="method"
+            validate="false" input="/adm_clave.jsp">
+            <forward name="clave" path="/adm_clave.jsp"/>
+            <forward name="restablecer" path="/adm_restclave.jsp"/>
+	</action>
+		
+        <action path="/login" type="org.springframework.web.struts.DelegatingActionProxy"
+                name="loginForm" scope="request" parameter="method"
+                validate="true" input="/login.jsp">
+            <forward name="inicio" path="/Welcome.jsp"/>
+            <forward name="exit" path="/login.jsp"/>
+		</action>
+
+        <action path="/ce" type="org.springframework.web.struts.DelegatingActionProxy"
+                name="buscarpersonasForm" scope="request" 
+                parameter="method" validate="false" input="/ce_buscar.jsp">
+             <forward name="inicio" path="/ce_buscar.jsp"/>
+             <forward name="exito" path="/ce_buscar.jsp"/>
+             <forward name="error" path="/ce_buscar.jsp"/>
+             <forward name="ceDetalle" path="/ceDetalle.jsp"/>
+        </action>
+
+        <action path="/admin" type="org.springframework.web.struts.DelegatingActionProxy"
+				name="usuarioForm" scope="request" parameter="method"
+				validate="false" input="/adm_usrbuscar.jsp">
+			<forward name="nuevo" path="/adm_usrnuevo.jsp"/>
+			<forward name="modificar" path="/adm_usredit.jsp"/>
+            <forward name="lista" path="/adm_usrbuscar.jsp"/>
+		</action>
+                
+         <action path="/pasaporte" type="org.springframework.web.struts.DelegatingActionProxy"
+				name="buscarpersonasForm" scope="request" parameter="method"
+				validate="false" input="/pasaporte_buscar.jsp">
+            <forward name="inicio" path="/pasaporte_buscar.jsp"/>
+            <forward name="pasaporte" path="/pasaporte_buscar.jsp"/>
+            <forward name="error" path="/pasaporte_buscar.jsp"/>
+			<forward name="detalle" path="/pasaporteDetalle.jsp"/>
+		</action>
+                
+        <action path="/movimientos"  type="org.springframework.web.struts.DelegatingActionProxy"
+				name="buscarpersonasForm"  scope="request"  parameter="method"
+				validate="false" input="/movimientos_buscar.jsp">
+            <forward name="m_inicio" path="/movimientos_buscar.jsp"/>
+			<forward name="m_detalle" path="/movimientosDetalle.jsp"/>
+		</action>
+        
+		<action path="/notarias" type="org.springframework.web.struts.DelegatingActionProxy"
+				name="notariasForm" scope="request" parameter="method"
+				validate="false" input="/notarias_buscar.jsp">
+            <forward name="not_inicio" path="/notarias_buscar.jsp"/>
+			<forward name="not_detalle" path="/notarias_detalle.jsp"/>
+			<forward name="not_nuevo" path="/notarias_nuevo.jsp"/>
+			<forward name="not_edit" path="/notarias_edit.jsp"/>
+		</action>
+		
+	</action-mappings>
+
+
+	<!-- ======================================== Message Resources Definitions -->
+
+	<message-resources parameter="MessageResources" />
+
+
+	<!-- =============================================== Plug Ins Configuration -->
+
+	<!-- ======================================================= Tiles plugin -->
+
+
+
+	<!-- =================================================== Validator plugin -->
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/org/apache/struts/validator/validator-rules.xml,
+               /WEB-INF/validation.xml" />
+	</plug-in>
+
+ 	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">  
+    	<set-property property="contextConfigLocation" value="/WEB-INF/applicationContext.xml"/>  
+	</plug-in> 
+	
+</struts-config>
+
