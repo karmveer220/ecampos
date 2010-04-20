@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC 
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+
+	<!-- ================================================ Form Bean Definitions -->
+
+	<form-beans>
+		<form-bean name="ceForm" type="org.cnl.digemin.form.BuscarPersonasForm"/>
+		<form-bean name="buscarpersonasForm" type="org.cnl.digemin.form.BuscarPersonasForm"/>
+        <form-bean name="loginForm" type="org.cnl.digemin.form.LoginForm"/>
+        
+        <form-bean name="usuarioForm" type="org.apache.struts.action.DynaActionForm">
+                <form-property name="ncodigo" type="java.lang.String" />
+                <form-property name="snombre" type="java.lang.String" />
+                <form-property name="spaterno" type="java.lang.String" />
+                <form-property name="smaterno" type="java.lang.String" />
+                <form-property name="semail" type="java.lang.String" />
+                <form-property name="susuario" type="java.lang.String" />
+                <form-property name="sclave" type="java.lang.String" />
+                <form-property name="dnacimiento" type="java.lang.String" />
+                <form-property name="perfil" type="java.lang.String" />
+                <form-property name="snum_doc" type="java.lang.String" />
+                <form-property name="notaria" type="java.lang.String" />
+                <form-property name="colegio" type="java.lang.String" />
+        </form-bean>
+		
+        <form-bean name="notariasForm" type="org.apache.struts.action.DynaActionForm">
+        		<form-property name="ncolegio" type="java.lang.String" />
+                <form-property name="ncodigo" type="java.lang.String" />
+                <form-property name="snombre" type="java.lang.String" />
+                <form-property name="nnotario" type="java.lang.String" />
+                <form-property name="sdireccion" type="java.lang.String" />
+                <form-property name="semail" type="java.lang.String" />
+                <form-property name="stelefono" type="java.lang.String" />
+                <form-property name="sfax" type="java.lang.String" />
+        </form-bean>
+		
+	</form-beans>
+
+
+	<!-- ========================================= Global Exception Definitions -->
+
+	<global-exceptions>
+
+	</global-exceptions>
+
+
+	<!-- =========================================== Global Forward Definitions -->
+
+	<global-forwards>
+            <forward name="welcome" path="/Welcome.do" />
+            <forward name="clave" path="/adm_clave.jsp"/>
+            <forward name="home" path="/Welcome.jsp"/>
+	</global-forwards>
+
+
+	<!-- =========================================== Action Mapping Definitions -->
+
+	<action-mappings>
+		<!-- Default "Welcome" action -->
+		<!-- Forwards to Welcome.jsp -->
+	<action path="/Welcome" forward="/login.jsp" />
+        <action path="/home" forward="/Welcome.jsp" />
+		   
+	<action path="/clave" 
+            type="org.cnl.digemin.action.LoginAction"
+            name="loginForm" 
+            scope="request" 
+            parameter="method"
+            validate="false"
+            input="/admin/adm_clave.jsp">
+            <forward name="clave" path="admin.clave"/>
+            <forward name="restablecer" path="admin.restablecer"/>
+	</action>
+		
+        <action path="/login" 
+                type="org.cnl.digemin.action.LoginAction"
+                name="loginForm" 
+                scope="request" 
+                parameter="method"
+                validate="false"
+                input="/login.jsp">
+            <forward name="inicio" path="/Welcome.jsp"></forward>
+            <forward name="exit" path="/login.jsp"></forward>
+		</action>
+        
+ 		<action path="/lusuarios" forward="admin.usrbuscar"/>
+ 
+        <action path="/admin" 
+			type="org.cnl.digemin.action.UsuarioAction"
+			name="usuarioForm" 
+			scope="request" 
+            parameter="method"
+			validate="true"
+			input="/admin/adm_usrbuscar.jsp">
+			<forward name="nuevo" path="admin.usrnew"></forward>
+			<forward name="modificar" path="admin.usredit"></forward>
+            <forward name="lista" path="admin.usrbuscar"></forward>
+		</action>
+         
+         <action path="/listaPas" forward="consulta.pasaporte.lista"/>
+        
+         <action path="/pasaporte" 
+			type="org.cnl.digemin.action.PasaporteAction"
+			name="buscarpersonasForm" 
+			scope="request" 
+            parameter="method"
+			validate="false"
+			input="/consultas/pasaporte_buscar.jsp">
+            <forward name="lista" path="consulta.pasaporte.lista"></forward>
+			<forward name="detalle" path="consulta.pasaporte.detalle"></forward>
+		</action>
+		
+		<action path="/listaCe"  forward="consulta.carnet.lista"/>
+		
+		<action path="/ce" 
+                type="org.cnl.digemin.action.CeAction"
+                name="buscarpersonasForm" 
+                scope="request" 
+                parameter="method"
+                validate="false"
+                input="/consultas/ce_buscar.jsp">
+                <forward name="buscar" path="consulta.carnet.lista"></forward>
+                <forward name="ceDetalle" path="consulta.carnet.detalle"></forward>
+        </action>
+		       
+		<action path="/listaMov" forward="consulta.movimiento.lista"/>
+        <action path="/movimientos" 
+			type="org.cnl.digemin.action.MovimientosAction"
+			name="buscarpersonasForm" 
+			scope="request" 
+            parameter="method"
+			validate="false"
+			input="/consultas/movimientos_buscar.jsp">
+            <forward name="m_inicio" path="consulta.movimiento.lista"></forward>
+			<forward name="m_detalle" path="consulta.movimiento.detalle"></forward>
+		</action>
+        
+        <action path="/lnotarias" forward="notaria.lista"/>
+		<action path="/notarias" 
+			type="org.cnl.digemin.action.NotariasAction"
+			name="notariasForm" 
+			scope="request" 
+            parameter="method"
+			validate="true"
+			input="/admin/notarias_buscar.jsp">
+            <forward name="not_inicio" path="notaria.lista"></forward>
+			<forward name="not_detalle" path="/admin/notarias_detalle.jsp"></forward>
+			<forward name="not_nuevo" path="notaria.nuevo"></forward>
+			<forward name="not_edit" path="notaria.edit"></forward>
+			<forward name="combo" path="/admin/comboNotaria.jsp"></forward>
+		</action>
+		
+	</action-mappings>
+
+
+	<!-- ======================================== Message Resources Definitions -->
+
+	<message-resources parameter="MessageResources" />
+
+
+	<!-- =============================================== Plug Ins Configuration -->
+
+	<!-- ======================================================= Tiles plugin -->
+
+ <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+      <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+      <set-property property="moduleAware" value="true" />
+    </plug-in>
+
+	<!-- =================================================== Validator plugin -->
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/org/apache/struts/validator/validator-rules.xml,
+               /WEB-INF/validation.xml" />
+	</plug-in>
+
+	
+  
+</struts-config>
+

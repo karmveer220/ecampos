@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <display-name>SERVICIOS DIGEMIN</display-name>
+
+
+  <module>
+    <ejb>digemin_ejb.jar</ejb>
+  </module>
+  
+  <library-directory>lib</library-directory>
+
+</application>

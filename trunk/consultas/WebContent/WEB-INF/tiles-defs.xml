@@ -1,0 +1,194 @@
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+"http://struts.apache.org/dtds/tiles-config_1_3.dtd"> 
+
+<tiles-definitions>
+
+    <!-- Tile Base -->
+    <definition name="tiles.base" path="/base.jsp">
+    	<put name="banner" value="/banner.jsp" />
+	  	<put name="menu" value="/menu.jsp" />
+	  	<put name="cabeza" value="/cabecera.jsp" />
+	  	<put name="titulo" value="${titulo}" />
+	  	<put name="descripcion" value="${descripcion}" />
+	  	<put name="cuerpo" value="${cuerpo}" />
+	  	<put name="pie" value="/pie.jsp" />
+    </definition>
+
+	<definition name="notaria.lista" extends="tiles.base">
+        <put name="titulo" value="Listado de Notarias" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[Lista de las notarias del Colegio de Notarios de Lima. 
+	  	 	Usted puede aplicar filtros para<br/>visualizar las notarias deseadas, 
+	  	 	asi como tambi&eacute;n modificar o agregar nuevas notarias.
+	  	 ]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/notarias_buscar.jsp" />
+    </definition>
+    
+   <definition name="notaria.nuevo" extends="tiles.base">
+        <put name="titulo" value="Nueva Notaria" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[Registrar una nueva Notaría.]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/notarias_nuevo.jsp" />
+    </definition>
+    
+    <definition name="notaria.edit" extends="tiles.base">
+        <put name="titulo" value="Modificar Notaria" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[Modificar la información de una Notaría.]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/notarias_edit.jsp" />
+    </definition>
+   
+    <definition name="admin.inicio" extends="tiles.base">
+        <put name="titulo" value="Opciones de Administrador" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			El Administrador del sistema puede crear nuevos usuario, modificar la 
+			informacion de los mismos, bloquear su acceso y,<br /> 
+			opcionalmente, eliminarlos del sistema.
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/notarias_edit.jsp" />
+    </definition>
+    
+   <definition name="admin.clave" extends="tiles.base">
+        <put name="titulo" value="Cambiar Clave" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			Cambiar su clave periodicamente incrementa el nivel de seguridad de su cuenta.</br>
+			Para mayor seguridad uso como minimo 6 caracteres, 
+			incluyendo n&uacute;meros y caracteres especiales.
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/adm_clave.jsp" />
+    </definition>
+    
+    <definition name="admin.restablecer" extends="tiles.base">
+        <put name="titulo" value="Restablecer Clave" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			Permite al administrador restablecer una clave predeterminada para un usuario.
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/adm_restclave.jsp" />
+    </definition>
+        
+    <definition name="admin.usrbuscar" extends="tiles.base">
+        <put name="titulo" value="Administracion de Usuarios" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p>Permite crear nuevos usuarios, modificar informaci&oacute;n de
+			cada usuario, as&iacute; como <br />
+			realizar b&uacute;squedas de usuarios en el sistema, mostrando solo los
+			que corresponden a su notar&iacute;a</p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/adm_usrbuscar.jsp" />
+    </definition>
+    <!-- admin.usrview no implementado  -->
+    <definition name="admin.usrview" extends="tiles.base">
+        <put name="titulo" value="Ver datos de usuario" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p>Muestra los datos de un usuario</p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/adm_usrbuscar.jsp" />
+    </definition>
+    
+     <definition name="admin.usrnew" extends="tiles.base">
+        <put name="titulo" value="Nuevo usuario" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p>Registra a un nuevo usuario en el el sistema y le otorga los 
+			permisos necesarios <br/>
+			para poder realizar su trabajo</p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/adm_usrnuevo.jsp" />
+    </definition>
+    
+    <definition name="admin.usredit" extends="tiles.base">
+        <put name="titulo" value="Modifcar datos de usuario" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p></p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/admin/adm_usredit.jsp" />
+    </definition>
+    
+    <!-- =================================================================== -->
+    <!-- ======================   CONSULTAS  =============================== -->
+    <!-- =================================================================== -->
+     <definition name="consulta.carnet.lista" extends="tiles.base">
+        <put name="titulo" value="Buscar Carnet de Extranjeria" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p>Para obtener la informaci&oacute;n de un Carnet de Extranjeria debe ingresar:<br/>
+			 Nombre de la persona, apellido paterno, apellido materno &oacute; <br/>
+			  Numero de Carnet de Extranjeria</p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/consultas/ce_buscar.jsp" />
+    </definition>
+    
+    <definition name="consulta.carnet.detalle" extends="tiles.base">
+        <put name="titulo" value="Datos de la persona" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p></p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/consultas/ceDetalle.jsp" />
+    </definition>
+    
+    <definition name="consulta.movimiento.detalle" extends="tiles.base">
+        <put name="titulo" value="Buscar Movimiento Migratorio" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p>Para obtener la informaci&oacute;n de los movimientos migratorios debe ingresar:<br/>
+			 Nombre de la persona, apellido paterno, apellido materno &oacute; <br/> 
+			 Numero de Pasaporte</p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/consultas/movimientosDetalle.jsp" />
+    </definition>
+    
+     <definition name="consulta.movimiento.lista" extends="tiles.base">
+        <put name="titulo" value="Datos de la Persona" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p> </p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/consultas/movimientos_buscar.jsp" />
+    </definition>
+    
+    
+    <definition name="consulta.pasaporte.detalle" extends="tiles.base">
+        <put name="titulo" value="Datos de la Persona" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p> </p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/consultas/pasaporteDetalle.jsp" />
+    </definition>
+    
+    <definition name="consulta.pasaporte.lista" extends="tiles.base">
+        <put name="titulo" value="Buscar Pasaporte de Peruanos" />
+	  	<put name="descripcion" type="string">
+	  	 <![CDATA[
+			<p>Para obtener la informaci&oacute;n de un Pasaporte debe ingresar:<br/>
+			Nombre de la persona, apellido paterno, apellido materno &oacute; <br/>
+			 Numero de Pasaporte</p>
+		]]>
+	  	</put>
+        <put name="cuerpo" value="/consultas/pasaporte_buscar.jsp" />
+    </definition>
+</tiles-definitions>
+

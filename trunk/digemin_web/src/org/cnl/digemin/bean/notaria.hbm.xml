@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="org.cnl.digemin.bean.BeanNotaria" table="CON_NOTARIA_NOT">
+   
+        <id name="ncodigo" type="long" column="NOT_nCODIGO" >
+            <generator class="native"></generator>
+        </id>
+        <property name="snombre"><column name="NOT_sNOMBRE"/></property>
+        <property name="sdireccion"><column name="NOT_sDIRECCION"/></property>
+        <property name="nnotario"><column name="NOT_nNOTARIO"/></property>
+        <property name="stelefono"><column name="NOT_sTELEFONO"/></property>
+        <property name="sfax"><column name="NOT_sFAX"/></property>
+        <property name="semail"><column name="NOT_sEMAIL"/></property>
+        <property name="nusuarios"><column name="NOT_nUSUARIOS"/></property>
+        
+        <set name="personas" lazy="false" inverse="false">
+            <key column="NOT_nCODIGO"/>
+            <one-to-many class="org.cnl.digemin.bean.BeanPersona"/>
+        </set>
+</class>
+</hibernate-mapping>

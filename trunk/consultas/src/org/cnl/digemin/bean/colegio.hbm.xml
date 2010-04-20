@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="org.cnl.digemin.bean.BeanColegio" table="CON_COLEGIOS_COL">
+   
+        <id name="ncodigo" type="long" column="COL_nCODIGO" >
+            <generator class="sequence">
+				<param name="sequence">colegio_secuencia</param>
+			</generator>
+        </id>
+        <property name="snombre"><column name="COL_sNOMBRE"/></property>
+        <property name="sdireccion"><column name="COL_sDIRECCION"/></property>
+        
+</class>
+</hibernate-mapping>

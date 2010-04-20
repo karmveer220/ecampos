@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="digemin_ear">
+        <wb-resource deploy-path="/" source-path="/EarContent"/>
+        <dependent-module deploy-path="/" handle="module:/resource/digemin_ejb/digemin_ejb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="digemin_core.jar" deploy-path="/lib" handle="module:/resource/digemin_core/digemin_core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+<dependent-module deploy-path="/lib" handle="module:/classpath/lib/G:/Elvis/23 nov 2009/commons-lang.jar">
+<dependency-type>uses</dependency-type>
+</dependent-module>
+    </wb-module>
+</project-modules>

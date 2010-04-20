@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>DEMO WEBAPP</title>
+
+	<script src="js/prototype.js" type="text/javascript"></script>
+	<script src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
+	<script src="js/lightbox.js" type="text/javascript"></script>
+	
+	<script language="javascript" type="text/javascript">
+		function limpiar(){
+			
+		}
+	
+		 function imprimir(){ 
+                  var features = "Width=700,Height=500,status=yes,toolbar=no,top=10,left=150,menubar=no,location=no,scrollbars=yes";
+                  window.open("print_pas.jsp","carga",features);
+                  }
+	
+        var GB_ROOT_DIR = "./greybox/";
+		
+    </script>
+
+	
+	 <script type="text/javascript" src="greybox/AJS.js"></script>
+	<script type="text/javascript" src="greybox/AJS_fx.js"></script>
+	<script type="text/javascript" src="greybox/gb_scripts.js"></script>
+    <link href="WEB-INF/lib/displaytag.css" rel="stylesheet" type="text/css" />
+ 
+    <link href="css/ahorro.css" rel="stylesheet" type="text/css" />
+    <link href="css/estilos.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="contenedor">
+
+	<div id="banner">
+		<table width="800" border="0" cellspacing="0" cellpadding="0" style="top:0px;">
+		  <tr>
+			<td align="center"><img src="images/banner.png" alt="banner" width="800" height="100"></td>
+		  </tr>
+		</table>
+	</div>
+
+<div id="menu">
+		
+<ul id="navi">
+        <li><a href="Welcome.jsp">Inicio</a></li>
+        <li><a href="ce_buscar.jsp">item 2</a></li>
+        <li><a href="pasaporte_buscar.jsp">Item 3</a></li>
+       <li><a href="pasaporte_buscar.jsp">Item 3</a></li>
+       <li><a href="pasaporte_buscar.jsp">Item 3</a></li>
+        <li><a href="pasaporte_buscar.jsp">Item 3</a></li>
+</ul>
+</div>
+	
+	
+<div id="cuerpo">
+<div id="cabecera">&nbsp;Administrador  &nbsp;Colegio de Notarios de Lima  &nbsp;Elvis Campos  - <a href="http://www.digemin.org.pe">DIGEMIN</a></div>
+<div id="titulo">Datos de la Persona</div>
+
+	<div id="message_warnig">wwwwwwwwdg g dgf dfg dfg fdsssssssss</div>
+                <div id="mensaje">aaaaaaaa dfg df df f aaaaaaaa</div>
+        
+	<BR />
+	<div style="float:right"><a href="javascript:imprimir();">Pop Up<img src="images/tb_print.gif" alt="imprimir" width="22" height="30" longdesc="imprimir detalle" border="0" /></a></div>
+		<div style="float:right"><a href="detalle.html" rel="gb_page_center[700, 500]"> GB <img src="images/tb_print.gif" alt="imprimir" width="22" height="30" longdesc="imprimir detalle" border="0" /></a></div>
+	<BR />
+
+<a href="http://www.cnn.com" title="Google" rel="gb_page_center[500, 500]">detalle Pass Action</a> <br />
+<a href="http://www.cnn.com" title="Google" rel="gb_page_fs[]">detalel Pass fullscreen window</a> <br />
+
+		  <a href="http://www.cnn.com" title="Google" rel="gb_pageset[search_sites]">detalle Pass 1</a>  <br />
+		  <a href="http://www.terra.com" title="Google" rel="gb_pageset[search_sites]">detalle Pass 2</a>   <br />
+<table width="600px" border="1" cellpadding="3" cellspacing="0" class="tFormulario">
+  <tr>
+    <th width="36%">Nombres</th>
+    <td width="64%">Elvis Campos Mori asdf sfsfsdfsdf sd fsdf sdf sd f fsfs fsdfsd fsdf sdf dsf sdfsd </td>
+  </tr>
+  <tr>
+    <th>Fecha de Nacimiento</th>
+    <td>30/03/2008</td>
+  </tr>
+</table>
+<br/>
+	<div id="moreDocs"><a href="#">Mostrar los <bean:write name="otrosDocs"/> documentos de la persona</a></div><br />
+<table width="500px" border="0" cellpadding="0" cellspacing="0" class="tLista">
+  <tr>
+    <th>Nro. Pasaporte</th>
+    <th>Fecha Emisi&oacute;n</th>
+    <th>Fecha de Expiraci&oacute;n</th>
+  </tr> 
+  <tr>
+      <td>rrrrrrr</td>
+      <td>ttttttttt</td>
+      <td>trrrrrrrrrrrr</td>
+  </tr> 
+  <tr>
+      <td>rrrrrrr</td>
+      <td>ttttttttt</td>
+      <td><input name="btnBuscar" type="button" class="botonAz" value="Buscar" /></td>
+  </tr> 
+  <tr>
+      <td>rrrrrrr</td>
+      <td>ttttttttt</td>
+      <td>trrrrrrrrrrrr</td>
+  </tr> 
+  <tr>
+      <td colspan="3" align="right">
+	  <a href="images/logonotario.jpg" rel="lightbox[roadtrip]" title="Mi link uno"><img src="images/logonotario.jpg" alt="img" width="53" height="56" border="0" longdesc="imagencita de demo" /></a>
+	  <a href="images/colegio_notarios.jpg" rel="lightbox[roadtrip]" title="Mi link dos"><img src="images/colegio_notarios.jpg" alt="img" width="53" height="56" border="0" longdesc="imagencita de demo" /></a>
+	  <a href="images/prevlabel.gif" rel="lightbox[roadtrip]"><img src="images/prevlabel.gif" alt="img" width="53" height="56" border="0" longdesc="imagencita de demo" /></a>	  </td>
+    </tr> 
+</table>
+<br/>
+<table width="600px" cellpadding="3" cellspacing="0" class="tFormulario">
+  <tr>
+    <th width="36%">Nombres</th>
+    <td width="64%">Elvis Campos Mori</td>
+  </tr>
+  <tr>
+    <th>Fecha de Nacimiento</th>
+    <td>30/03/2008</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">&nbsp;</td>
+  </tr>
+</table>
+<table width="500px" cellpadding="0" cellspacing="0" class="displaytag">
+  <caption>
+    Mi display tabla
+  </caption>
+  <tr>
+    <th class="sorted">Nro. Pasaporte</th>
+    <th>Fecha Emisi&oacute;n</th>
+    <th>Fecha de Expiraci&oacute;n</th>
+  </tr>
+  <tr class="even">
+    <td>Hola Elvis </td>
+    <td>Hola Elvis </td>
+    <td><a href="#">trrrrrrrrrrrr</a></td>
+  </tr>
+  <tr class="odd">
+    <td>Hola Elvis </td>
+    <td>Hola Elvis </td>
+    <td>Hola Elvis </td>
+  </tr>
+  <tr class="even">
+    <td>Hola Elvis </td>
+    <td>Hola Elvis </td>
+    <td><a href="#">tHola Elvis </a></td>
+  </tr>
+  <tr class="odd">
+    <td>Hola Elvis </td>
+    <td>ttttttttt</td>
+    <td>trrrrrrrrrrrr</td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>
+
+
+
+
+
+
+
+
+<span class="pagebanner">No items encontrado.<br/><font style="color:#FF0000; text-align:center;font-size:12px;"> No encontrado</font></span><span class="pagelinks"></span>
+<table id="row" class="displaytag">
+<thead>
+<tr>
+<th class="sortable sorted order1">
+<a href="/webapp/pasaporte_buscar.jsp?uid=&amp;smaterno=&amp;d-16544-s=0&amp;d-16544-o=1&amp;d-16544-p=1&amp;spaterno=Alarcon&amp;coincidir=0&amp;btnBuscar=Buscar&amp;method=buscarPasaporte&amp;snombre=Colegio+de+Notarios+de+Lima&amp;snroce=">Nombre</a></th>
+<th class="sortable">
+<a href="/webapp/pasaporte_buscar.jsp?uid=&amp;smaterno=&amp;d-16544-s=1&amp;d-16544-o=2&amp;d-16544-p=1&amp;spaterno=Alarcon&amp;coincidir=0&amp;btnBuscar=Buscar&amp;method=buscarPasaporte&amp;snombre=Colegio+de+Notarios+de+Lima&amp;snroce=">A. Paterno</a></th>
+
+<th class="sortable">
+<a href="/webapp/pasaporte_buscar.jsp?uid=&amp;smaterno=&amp;d-16544-s=2&amp;d-16544-o=2&amp;d-16544-p=1&amp;spaterno=Alarcon&amp;coincidir=0&amp;btnBuscar=Buscar&amp;method=buscarPasaporte&amp;snombre=Colegio+de+Notarios+de+Lima&amp;snroce=">A. Materno</a></th>
+<th class="definition">F. Nacimiento</th>
+<th class="definition">Detalle</th></tr></thead>
+<tbody><tr class="empty"><td colspan="5">Nada encontrado para mostrar.</td></tr></tbody></table>
+
+
+<table width="600px" cellpadding="4" cellspacing="0" class="tFormulario">
+ <tr align="center">
+    <td width="491">
+      <table width="100%" cellspacing="0" cellpadding="4" border="0">
+        <tr>
+          <th>Nombre</th>
+          <td><input name="snombre" type="text" class="input" /></td>
+        </tr>
+        <tr>
+          <th>APe. PAterno </th>
+          <td><input name="spaterno" type="text" class="input" /></td>
+        </tr>
+        <tr>
+          <th>PAe. Materno </th>
+          <td><input name="smaterno" type="text" class="input" /></td>
+        </tr>
+        <tr>
+          <th>Numero</th>
+          <td><input name="snroce" type="text" class="input" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center"><label>
+            <input name="rbtcoincidir" type="radio" value="1" checked="checked" />
+Coincidir en cualquier lugar</label>
+            <label>
+            <input name="rbtcoincidir" type="radio" value="0" checked="checked" />
+Coincidir al final</label></td>
+          </tr>
+      </table></td>
+	<td width="82"><p>
+	  <input name="btnBuscar2" type="submit" class="botonAz" value="Buscar" />
+	</p>
+	  <p>
+	    <input name="btnLimpiar" type="reset" class="botonAz" value="Limpar" />
+	  </p></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><logic:present name="listaPersonas">
+      <table width="95%" cellpadding="0" cellspacing="0" class="tLista">
+        <tr align="center" valign="middle">
+          <th>Nombre</th>
+          <th>A. Paterno</th>
+          <th>A. Materno</th>
+          <th>F. Nacimiento</th>
+          <th>Seleccionar</th>
+        </tr>
+        <logic:iterate id="persona" name="listaPersonas">
+          <tr valign="middle">
+            <td><bean:write name="persona" property="SNombre"/>
+              &nbsp;</td>
+            <td><bean:write name="persona" property="SPaterno"/>
+              &nbsp;</td>
+            <td><bean:write name="persona" property="SMaterno"/>
+              &nbsp;</td>
+            <td><%=Utiles.CalendarToString(((Simpersona)persona).getDFechaNacimiento(),"dd/MM/yyyy")%>&nbsp;</td>
+            <td><a href="javascript:detalle('456324')>Detalle</a></td>
+          </tr>
+        </logic:iterate>
+      </table>
+    </logic:present>    </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</div>
+<br />&nbsp;<br />
+<div id="pie">Colegio de Notarios de Lima - DIGEMIN</div>
+</div>
+</body>
+</html>

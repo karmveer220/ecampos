@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
+  <handler-chain>
+    <handler>
+      <handler-name>gob.min.digemin.ejb.handler.HelloLogicalHandler</handler-name>
+      <handler-class>gob.min.digemin.ejb.handler.HelloLogicalHandler</handler-class>
+    </handler>
+    <handler>
+      <handler-name>gob.min.digemin.ejb.handler.HelloMessageHandler</handler-name>
+      <handler-class>gob.min.digemin.ejb.handler.HelloMessageHandler</handler-class>
+    </handler>
+  </handler-chain>
+</handler-chains>

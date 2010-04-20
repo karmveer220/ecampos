@@ -1,0 +1,47 @@
+BODY{   
+    FONT-SIZE: 8pt;    
+    FONT-FAMILY: Verdana, 'Microsoft Sans Serif', Tahoma, Arial;
+}
+TABLE.tFormulario{   
+    FONT-FAMILY: Tahoma, 'Microsoft Sans Serif', Arial;
+    BORDER-BOTTOM: #000000 3px solid;
+    BORDER-RIGHT: #000000 3px solid;
+    BORDER-LEFT: #000000 1px solid;
+    BORDER-TOP: #FFFFFF;
+}
+TABLE.tFormulario TH{
+    color:#333333; 
+    font-weight:bold;
+    text-align:right;
+}
+TABLE.tFormulario td{
+    BORDER-BOTTOM:  #000000;
+}
+TABLE.tFormulario TD,TABLE.tFormulario TH{
+    BORDER-TOP: #000000 1px solid;
+    FONT-SIZE: 11px;
+    BORDER-LEFT: #000000;
+    BORDER-RIGHT: #000000;
+}
+#contenedor{
+    width: 600px;	
+    margin:auto;	
+}
+#message_warnig{
+   	color:#FF0000;
+	font-weight:bold;
+	font-size:14px;
+	text-align:center;
+	padding: 2px 4px 2px 4px;
+}
+#titulo
+{	
+    FONT-WEIGHT: bolder;
+    FONT-SIZE: 16px;
+    COLOR: #333333;
+    FONT-FAMILY: Verdana;
+	font-stretch:semi-expanded;
+	font-size-adjust:inherit;
+    TEXT-ALIGN: center;
+    padding-bottom:25px;
+}

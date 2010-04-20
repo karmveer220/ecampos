@@ -1,0 +1,174 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+    <title>Consultas DIGEMIN - Detalle De Pasaportes</title>
+
+       
+        <link href="css/estilos.css" rel="stylesheet" type="text/css">
+        <link href="css/lightbox.css" rel="stylesheet" type="text/css" media="screen" />
+            <script src="js/prototype.js" type="text/javascript"></script>
+            <script src="js/scriptaculous.js?load=effects" type="text/javascript"></script>
+            <script src="js/lightbox.js" type="text/javascript"></script>
+		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" media="all" />	
+			<script src="greybox/AJS.js" type="text/javascript"></script>
+
+            <script src="greybox/AJS_fx.js" type="text/javascript"></script>
+            <script src="greybox/gb_scripts.js" type="text/javascript"></script>
+		
+            <SCRIPT language="JavaScript" type="text/javascript">
+                function imprimir(){ 
+                    var features = "Width=700,Height=500,status=yes,toolbar=no,top=10,left=150,menubar=no,location=no,scrollbars=yes";
+                    window.open("print_pas.jsp","carga",features);
+                }
+                function detalle(){
+                    document.forms[0].submit();
+                }  
+			  
+            </SCRIPT>
+				
+             
+
+  </head>
+  
+<body>
+
+<div id="contenedor">
+<div id="banner">
+		<table width="800" border="0" cellspacing="0" cellpadding="0" style="top:0px;">
+
+  <tr>
+    <td align="center"><img src="images/banner.png" alt="banner" width="800" height="100"></td>
+  </tr>
+</table>
+
+	</div>
+	<div id="menu">
+		
+
+
+<ul id="navi">
+        <li><a href="home.do">Inicio</a></li>
+
+	
+			 <!-- Menu del Administrador de las Notarias-->
+            <li><a href="admin.do?method=lista">Administracion de usuarios</a></li>
+        
+        
+		 	<!-- Menu del Super Administrador-->
+			<li><a href="notarias.do?method=lista">Administracion de Notarias</a></li>
+        
+       	<li><a href="ce.do?method=inicio">Buscar Carnet de Extranjer&iacute;a</a></li>
+        <li><a href="pasaporte.do?method=inicio">Buscar Pasaporte</a></li>
+
+        <li><a href="movimientos.do?method=inicio">Movimientos Migratorios</a></li>
+		<li><hr/></li>
+		<li><a href="clave.do?method=preCambioClave">Cambiar Clave</a></li>
+		<li><a href="login.do?method=logout">Cerrar Sessi&oacute;n</a></li>
+     
+</ul>
+	</div>
+        
+
+<div  id="cuerpo">
+	
+	<div id="cabecera">
+		
+
+&nbsp;Administrador
+&nbsp;Colegio de Notarios de Lima
+&nbsp;Elvis Campos
+	</div>
+	
+	 <form name="buscarpersonasForm" method="post" action="/cedetec/pasaporte.do">
+           <input type="hidden" name="method" value="pasaporteDetalle2"/>
+            
+   
+	<div id="titulo">Datos de la Persona</div>
+        
+        
+                <div id="error">La persona no tiene imagenes registradas.</div><br />
+
+        
+		
+		
+		<div style="float:right">
+			<a href="javascript:imprimir();">
+				<img src="images/tb_print.gif" alt="imprimir" width="22" height="30" longdesc="imprimir detalle" border="0">
+			</a>
+		</div>
+	
+    
+	 <input type="hidden" name="uid" value="F12E44E3-7277-4B2C-8C0C-E82254F2D05E"/> 
+        <table width="600px" cellpadding="4" cellspacing="0" class="tFormulario">
+            <tr>
+                <th width="36%">Nombres</th>
+
+                <td width="64%">JORGE ABEL&nbsp;
+                                MEDINA&nbsp;
+                                BRAIZAT</td>
+            </tr>
+            <tr>
+                <th>Fecha de Nacimiento</th>
+                <td>26/08/1928&nbsp;</td>
+
+            </tr>
+            <tr>
+            <th>Sexo</th>
+            <td>Masculino&nbsp;</td>
+          </tr>
+          <tr>
+            <th>Documento de Identidad</th>
+
+            <td>NNN:&nbsp;</td>
+          </tr>
+            <tr>
+            <td colspan="2" align="center">
+			
+				
+					
+                
+                  <table width="95%" cellpadding="0" cellspacing="0" class="tLista">
+                        <tr>
+                          <th>Nro. Pasaporte</th>
+                          <th>Estado</th>
+
+                          <th>Fecha Emisi&oacute;n</th>
+                          <th>Fecha de Expiraci&oacute;n</th>
+                          <th>Otro Documento</th>
+                        </tr>
+                        
+                          <tr valign="middle" >
+                                <td>1179869&nbsp;</td>
+
+                                <td>Expedido&nbsp;</td>
+                                <td>25/04/1996&nbsp;</td>
+                                <td>25/04/2001&nbsp;</td>
+                                <td>DNI:&nbsp;10791324&nbsp;</td>
+                          </tr>
+                        
+                  </table>
+
+                
+            </td>
+           </tr>
+            
+        </table> 
+        
+        <div  id="message_warnig">Esta informaci&oacute;n ha sido extraida de la base de datos de DIGEMIN<br/> y podr&iacute;a no estar actualizada.</div>
+        
+    
+	
+    </form>
+	  
+  	<div id="pie">
+Av. Gregorio Escobedo 343 - Jes&uacute;s Mar&iacute;a | Tel&eacute;fono: 461 - 0016<br>
+
+Horario de atenci&oacute;n : Lunes a Viernes de 9am a 7pm / S&aacute;bados de 9 am a 1 pm
+</div>
+ 
+</div>
+
+</div>
+
+</body>
+</html>
