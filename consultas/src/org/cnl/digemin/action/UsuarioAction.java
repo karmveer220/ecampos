@@ -12,10 +12,12 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
 import org.apache.struts.actions.DispatchAction;
 import org.cnl.digemin.bean.BeanAuditoria;
+import org.cnl.digemin.bean.BeanColegio;
 import org.cnl.digemin.bean.BeanNotaria;
 import org.cnl.digemin.bean.BeanPerfil;
 import org.cnl.digemin.bean.BeanPersona;
 import org.cnl.digemin.service.AdminService;
+import org.cnl.digemin.service.impl.AdminServiceImpl;
 import org.cnl.digemin.utiles.Encriptador;
 import org.cnl.digemin.utiles.Utiles;
 /**
@@ -30,16 +32,22 @@ public class UsuarioAction extends DispatchAction {
 	private static final Logger logger = Logger.getLogger(UsuarioAction.class);
     private BeanPersona usrLogin;
     
-    public ActionForward lista(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
+    private AdminService adminService;    
+    public void setAdminService(AdminService adminService) {
+		this.adminService = adminService;
+	}
+
+	public ActionForward lista(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
         try{   
             usrLogin = (BeanPersona)request.getSession().getAttribute("usrLogin");
-            System.out.println("Lista de usuarios");
+            logger.debug("Lista de usuarios");
             if(request.getSession().getAttribute("listaUsuariosuu")==null){
-                AdminService a = new AdminService();
-                List<BeanPersona> lista = a.listarUsuarios(usrLogin.getNnotaria().getNcodigo());
+                List<BeanPersona> lista = adminService.listarUsuarios(new Long(usrLogin.getNnotaria().getNcodigo()) );
                 request.getSession().setAttribute("listaUsuariosuu",lista);
             }
-            System.out.println("fin del metodo");
+            DynaActionForm mfo = (DynaActionForm)form;
+            mfo.reset(mapping, request);
+            logger.debug("fin del metodo");
         }catch(Exception e){
             e.printStackTrace();
             request.setAttribute("msgError",e.getMessage());
@@ -50,16 +58,15 @@ public class UsuarioAction extends DispatchAction {
     public ActionForward buscar(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
         try{
             usrLogin = (BeanPersona)request.getSession().getAttribute("usrLogin");
-            System.out.println("busqueda de usuarios");
+            logger.debug("busqueda de usuarios");
             DynaActionForm myform = (DynaActionForm)form;
-                AdminService a = new AdminService();
                 BeanPersona b = new BeanPersona();
                 b.setSnombre(Utiles.nullToBlank(myform.get("snombre")));
                 b.setSpaterno(Utiles.nullToBlank(myform.get("spaterno")));
                 b.setSusuario(Utiles.nullToBlank(myform.get("susuario")));
-                b.setNotaria(new Long((String)myform.get("notaria")));
-                b.setColegio(new Long((String)myform.get("colegio")));
-                List<BeanPersona> lista = a.buscarUsuarios(b);
+                b.setNotaria(Integer.parseInt((String)myform.get("notaria")));
+                b.setColegio(Integer.parseInt((String)myform.get("colegio")));
+                List<BeanPersona> lista = adminService.buscarUsuarios(b);
                 request.getSession().setAttribute("listaUsuariosuu",lista);
            
             logger.debug("fin del metodo");
@@ -74,7 +81,10 @@ public class UsuarioAction extends DispatchAction {
         try{
             BeanPersona bp = new BeanPersona();
             bp.setSnombre("");
-            bp.setSclave("123456");
+            bp.setSclave("1");
+            bp.setColegio(0);
+            bp.setNotaria(0);
+            bp.setPerfil(0);
             request.getSession().setAttribute("nuser",bp);
         }catch(Exception e){
             e.printStackTrace();
@@ -85,23 +95,25 @@ public class UsuarioAction extends DispatchAction {
     }
     
     public ActionForward nuevo(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
-        try{
+        String clave="";
+        BeanPersona p =null;
+    	try{
             usrLogin = (BeanPersona)request.getSession().getAttribute("usrLogin");
             DynaActionForm myform = (DynaActionForm)form;
-            BeanPersona p = (BeanPersona)request.getSession().getAttribute("nuser");
+            p = (BeanPersona)request.getSession().getAttribute("nuser");
             llenaUsuario(p, myform, request);
             p.setFclave(0);
             Encriptador en = Encriptador.getInstance();
+            clave=myform.getString("sclave");
             p.setSclave( en.hashData( Utiles.nullToBlank(myform.get("sclave")).getBytes() ));
-            System.out.println("antes del insert es : "+p.toString());
-            AdminService a = new AdminService();
-            a.nuevaPersona(p,new BeanAuditoria(usrLogin.getNcodigo()));
+            adminService.nuevaPersona(p,new BeanAuditoria(usrLogin.getNcodigo().intValue()));
             request.setAttribute("mensaje","Usuario registrado exitosamente");
             request.removeAttribute("nuser");
             request.getSession().removeAttribute("listaUsuariosuu");
            return lista(mapping,form,request,response);
             
         }catch(Exception e){
+        	p.setSclave(clave);
             e.printStackTrace();
             request.setAttribute("msgError",e.getMessage());
             return mapping.findForward("nuevo");
@@ -110,10 +122,8 @@ public class UsuarioAction extends DispatchAction {
     
     public ActionForward preModificar(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
         try{
-            
-            AdminService a = new AdminService();
             Long cod  = new Long(request.getParameter("usr"));
-            request.getSession().setAttribute("muser",a.obtenerUsuarioById(cod));
+            request.getSession().setAttribute("muser",adminService.obtenerUsuarioById(cod));
         }catch(Exception e){
             e.printStackTrace();
             request.setAttribute("msgError",e.getMessage());
@@ -129,9 +139,8 @@ public class UsuarioAction extends DispatchAction {
             BeanPersona p = (BeanPersona)request.getSession().getAttribute("muser");
             usrLogin = (BeanPersona)request.getSession().getAttribute("usrLogin");
             llenaUsuario(p, myform, request);            
-            System.out.println("antes del modificar ");
-            AdminService a = new AdminService();
-            a.modificarPersona(p,new BeanAuditoria(usrLogin.getNcodigo()));
+            logger.debug("antes del modificar ");            
+            adminService.modificarPersona(p,new BeanAuditoria(usrLogin.getNcodigo().intValue()));
             request.setAttribute("mensaje","Usuario modificado exitosamente");
             request.getSession().removeAttribute("listaUsuariosuu");
             request.getSession().removeAttribute("muser");
@@ -146,15 +155,15 @@ public class UsuarioAction extends DispatchAction {
     
     public void llenaUsuario(BeanPersona p,DynaActionForm myform,HttpServletRequest request) throws Exception{
     	
-    	 if(usrLogin.getNperfil().getNcodigo() == AdminService.PERFIL_ADMIN){
-             p.setNperfil(new BeanPerfil(new Long(Utiles.nullToBlank(myform.get("perfil"))),""));
-             p.setPerfil(new Long(Utiles.nullToBlank(myform.get("perfil"))));    
-             p.setNotaria(new Long(Utiles.nullToBlank(myform.get("notaria"))));
+    	 if(usrLogin.getNperfil().getNcodigo() == AdminServiceImpl.PERFIL_ADMIN){
+             p.setNperfil(new BeanPerfil(Integer.parseInt(Utiles.nullToBlank(myform.get("perfil"))),""));
+             p.setPerfil(Integer.parseInt(Utiles.nullToBlank(myform.get("perfil"))));    
+             p.setNotaria(Integer.parseInt(Utiles.nullToBlank(myform.get("notaria"))));
              p.setNnotaria(new BeanNotaria(p.getNotaria(),""));
          }else{
         	 //Consulta por defecto y la misma notaria del administrador local
-             p.setNperfil(new BeanPerfil(new Long(2),""));
-             p.setPerfil(new Long(2));
+             p.setNperfil(new BeanPerfil(2,""));
+             p.setPerfil(2);
              p.setNotaria(usrLogin.getNotaria());
              p.setNnotaria(new BeanNotaria(usrLogin.getNnotaria().getNcodigo(),usrLogin.getNnotaria().getSnombre()));
          }
@@ -166,7 +175,7 @@ public class UsuarioAction extends DispatchAction {
          p.setSusuario(Utiles.nullToBlank(myform.get("susuario")));
          p.setSnum_doc(Utiles.nullToBlank(myform.get("snum_doc")));
          p.setSemail(Utiles.nullToBlank(myform.get("semail")));
-         p.setColegio(new Long(Utiles.nullToBlank(request.getParameter("colegio"))));         
+         p.setColegio(Integer.parseInt(Utiles.nullToBlank(request.getParameter("colegio"))));         
     }
     
     public ActionForward cancelaModificar(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {

@@ -35,8 +35,21 @@ public class PasaporteAction extends DispatchAction{
 
 	private static final Logger logger = Logger.getLogger(PasaporteAction.class);
     private BeanPersona usrLogin;
-    
-    public ActionForward inicio(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
+        
+    private PasaporteService pasaporteService;    
+    private ImagenService imagenService;     
+    private PersonaService personaService;    
+    public void setPasaporteService(PasaporteService pasaporteService) {
+		this.pasaporteService = pasaporteService;
+	}
+	public void setImagenService(ImagenService imagenService) {
+		this.imagenService = imagenService;
+	}
+	public void setPersonaService(PersonaService personaService) {
+		this.personaService = personaService;
+	}
+
+	public ActionForward inicio(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
             HttpSession session = request.getSession();
             removerSession(session,"listaPersonas","listaPasaportePersona","listaImagenesPasaporte");
             return mapping.findForward("lista");
@@ -48,8 +61,7 @@ public class PasaporteAction extends DispatchAction{
         usrLogin = (BeanPersona)session.getAttribute("usrLogin");
         BuscarPersonasForm miform=(BuscarPersonasForm)form; 
         String nro =  miform.getSnroce();
-        PasaporteService servicio = new PasaporteService();
-        ImagenService imgService = null;
+        
         boolean coincidirAlInicio = false;
         try{
         
@@ -59,7 +71,7 @@ public class PasaporteAction extends DispatchAction{
             
             if(!Utiles.nullToBlank(nro).equals("")){
                 List<Simpasaporte1> lista = new ArrayList<Simpasaporte1>();
-                Simpasaporte1 pasaporte = servicio.PasaporteLeerNro(nro,new BeanAuditoria(usrLogin.getNcodigo()),usrLogin.getIdSession());
+                Simpasaporte1 pasaporte = pasaporteService.PasaporteLeerNro(nro,new BeanAuditoria(usrLogin.getNcodigo().intValue()),usrLogin.getIdSession());
                 if(pasaporte == null){
                     removerSession(session,"listaPasaportePersona","listaImagenesPasaporte");
                     request.setAttribute("msgError", "El número ingresado no coincide con ninguún Pasaporte.");
@@ -73,8 +85,8 @@ public class PasaporteAction extends DispatchAction{
                 if(pasaporte.getCantidad() > 1){
                     request.setAttribute("otrosDocs",pasaporte.getCantidad());
                 }
-                PersonaService pservicio =new PersonaService();
-                Simpersona1 persona = pservicio.obtenerDatosPersonaPorPasaporte(nro,new BeanAuditoria(usrLogin.getNcodigo()),usrLogin.getIdSession());
+                
+                Simpersona1 persona = personaService.obtenerDatosPersonaPorPasaporte(nro,new BeanAuditoria(usrLogin.getNcodigo().intValue()),usrLogin.getIdSession());
                 if( persona==null ){
                     //session.removeAttribute("extranjero");
                     removerSession(session,"extranjero","listaPasaportePersona","listaImagenesPasaporte");
@@ -82,9 +94,9 @@ public class PasaporteAction extends DispatchAction{
                     return mapping.findForward("lista");
                 }
                 session.setAttribute("extranjero", persona );
-                imgService = new ImagenService();
+                
                 String t_img[] = {};
-                List<String> limagenes = imgService.MCMImagenBuscarUltimasPorIdPersona(persona.getUIdPersona(),persona.getPaisNacimiento().getSIdPais(),"",t_img,path,new BeanAuditoria(usrLogin.getNcodigo()),usrLogin.getIdSession());
+                List<String> limagenes = imagenService.MCMImagenBuscarUltimasPorIdPersona(persona.getUIdPersona(),persona.getPaisNacimiento().getSIdPais(),"",t_img,path,new BeanAuditoria(usrLogin.getNcodigo().intValue()),usrLogin.getIdSession());
                 if( limagenes==null || limagenes.size()==0){
                     session.removeAttribute("listaImagenesPasaporte");
                     request.setAttribute("msgError", "La persona no tiene imagenes registradas.");
@@ -109,8 +121,8 @@ public class PasaporteAction extends DispatchAction{
                 }
             }
             
-            PersonaService pservicio = new PersonaService();
-            List<Simpersona1> listaPersonas = pservicio.listaPersonas(Utiles.nullToBlank(miform.getSnombre()), Utiles.nullToBlank(miform.getSpaterno()), Utiles.nullToBlank(miform.getSmaterno()),true,coincidirAlInicio,new BeanAuditoria(usrLogin.getNcodigo()),usrLogin.getIdSession());
+            
+            List<Simpersona1> listaPersonas = personaService.listaPersonas(Utiles.nullToBlank(miform.getSnombre()), Utiles.nullToBlank(miform.getSpaterno()), Utiles.nullToBlank(miform.getSmaterno()),true,coincidirAlInicio,new BeanAuditoria(usrLogin.getNcodigo().intValue()),usrLogin.getIdSession());
             session.setAttribute("listaPersonas", listaPersonas);
             return mapping.findForward("lista");
             
@@ -127,13 +139,11 @@ public class PasaporteAction extends DispatchAction{
         HttpSession session = request.getSession();
         usrLogin = (BeanPersona)session.getAttribute("usrLogin");
         String path = ""+this.servlet.getServletContext().getRealPath("/");
-        PersonaService pservicio = null;
-        ImagenService imgService = null;
         try{
             logger.debug("pasaporte detalle dentro del try");
-            pservicio =new PersonaService();
+            
             String id = request.getParameter("uid");
-            Simpersona1 persona = pservicio.obtenerDatosPersona(id,new BeanAuditoria(usrLogin.getNcodigo()),usrLogin.getIdSession());
+            Simpersona1 persona = personaService.obtenerDatosPersona(id,new BeanAuditoria(usrLogin.getNcodigo().intValue()),usrLogin.getIdSession());
             if(persona==null){
                 removerSession(session,"extranjero","listaPasaportePersona","listaImagenesPasaporte");
                 request.setAttribute("msgError", "No se pudo obtener información de la persona.");
@@ -141,8 +151,8 @@ public class PasaporteAction extends DispatchAction{
             }
             logger.debug("persona en request");
             session.setAttribute("extranjero", persona );
-            PasaporteService servicio = new PasaporteService();
-            List<Simpasaporte1> lis_pass =  servicio.obtenerListaPasaportePorUidPersona(id,new BeanAuditoria(usrLogin.getNcodigo()),usrLogin.getIdSession());
+            
+            List<Simpasaporte1> lis_pass =  pasaporteService.obtenerListaPasaportePorUidPersona(id,new BeanAuditoria(usrLogin.getNcodigo().intValue()),usrLogin.getIdSession());
             if(lis_pass.size()==0){
                 removerSession(session,"listaPasaportePersona","listaImagenesPasaporte");
                 request.setAttribute("msgError", "La persona no cuenta con ningún Pasaporte registrado.");
@@ -150,9 +160,9 @@ public class PasaporteAction extends DispatchAction{
             }
             logger.debug("pasaporte en request");
             session.setAttribute("listaPasaportePersona",lis_pass);
-            imgService = new ImagenService();
+            
             String t_img[] = {};
-            List<String> lis_imagenes = imgService.MCMImagenBuscarUltimasPorIdPersona(persona.getUIdPersona(),persona.getPaisNacimiento().getSIdPais(),"",t_img,path,new BeanAuditoria(usrLogin.getNcodigo()),usrLogin.getIdSession());
+            List<String> lis_imagenes = imagenService.MCMImagenBuscarUltimasPorIdPersona(persona.getUIdPersona(),persona.getPaisNacimiento().getSIdPais(),"",t_img,path,new BeanAuditoria(usrLogin.getNcodigo().intValue()),usrLogin.getIdSession());
             if( lis_imagenes==null || lis_imagenes.size()==0){
                 session.removeAttribute("listaImagenesPasaporte");
                 request.setAttribute("msgError", "La persona no tiene imagenes registradas.");
@@ -175,17 +185,13 @@ public class PasaporteAction extends DispatchAction{
         usrLogin = (BeanPersona)session.getAttribute("usrLogin");
         try{           
             String id = request.getParameter("uid");
-          
-            PasaporteService servicio = new PasaporteService();
-            List<Simpasaporte1> lis_pass =  servicio.obtenerListaPasaportePorUidPersona(id,new BeanAuditoria(usrLogin.getNcodigo()),usrLogin.getIdSession());
+            List<Simpasaporte1> lis_pass =  pasaporteService.obtenerListaPasaportePorUidPersona(id,new BeanAuditoria(usrLogin.getNcodigo().intValue()),usrLogin.getIdSession());
             if(lis_pass.size()==0){
                 removerSession(session,"listaPasaportePersona","listaImagenesPasaporte");
-                //session.removeAttribute("listaPasaportePersona");
                 request.setAttribute("msgError", "La persona no cuenta con ningún Pasaporte registrado.");
                 return mapping.findForward("detalle");
             }
             session.setAttribute("listaPasaportePersona",lis_pass);
-          
             return mapping.findForward("detalle");
             
         }catch(Exception e){

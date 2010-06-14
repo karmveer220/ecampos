@@ -33,23 +33,34 @@ public class LoginAction extends DispatchAction {
     
     private static final Logger logger = Logger.getLogger(LoginAction.class);
     private BeanPersona usrLogin;
-  
+    private AdminService adminService;
+    private NotariaService notariaService;
+    private ColegioService colegioService;
+    private PerfilService perfilService;
     
-    public ActionForward login(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
+    public void setAdminService(AdminService adminService) {
+		this.adminService = adminService;
+	}
+	public void setNotariaService(NotariaService notariaService) {
+		this.notariaService = notariaService;
+	}
+	public void setColegioService(ColegioService colegioService) {
+		this.colegioService = colegioService;
+	}
+	public void setPerfilService(PerfilService perfilService) {
+		this.perfilService = perfilService;
+	}
+
+	public ActionForward login(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
         try{
             LoginForm miform=(LoginForm)form;       
-            AdminService service = new AdminService();
+            
             logger.debug(" llamando al service login");
             Encriptador en = Encriptador.getInstance();
-            BeanPersona usuario = service.validarPersona(miform.getUsuario(), en.hashData(miform.getClave().getBytes()),new BeanAuditoria());
+            BeanPersona usuario = adminService.validarPersona(miform.getUsuario(), en.hashData(miform.getClave().getBytes()),new BeanAuditoria());
             request.getSession().setAttribute("usrLogin",usuario);
-
-            NotariaService nservice = new NotariaService();
-            request.getSession().setAttribute("lstNotarias",nservice.listaComboNotarias(usuario.getNcolegio().getNcodigo()));
-            ColegioService col = new ColegioService();
-            request.getSession().setAttribute("comboColegios",col.listaDeColegios());
-            
-            PerfilService perfilService = new PerfilService();
+            request.getSession().setAttribute("lstNotarias",notariaService.listaComboNotarias( new Long(usuario.getNcolegio().getNcodigo()) ));
+            request.getSession().setAttribute("comboColegios",colegioService.listaDeColegios());
             List<BeanPerfil> lperfiles=perfilService.listaPErfiles();
             request.getSession().setAttribute("comboPerfiles",lperfiles);
             
@@ -101,8 +112,8 @@ public class LoginAction extends DispatchAction {
             }
             usr.setSclave(en.hashData( Utiles.nullToBlank(miform.getNuevaClave()).getBytes() ));
             usr.setFclave(1);
-            AdminService as = new  AdminService();
-            as.modificarPersona(usr,new BeanAuditoria(usrLogin.getNcodigo()));
+           
+            adminService.modificarPersona(usr,new BeanAuditoria(usrLogin.getNcodigo().intValue()));
             request.setAttribute("mensaje","Su clave ha sido modificada");
         }catch(Exception e){
             request.setAttribute("msgError",e.getMessage());
@@ -114,7 +125,7 @@ public class LoginAction extends DispatchAction {
     public ActionForward preRestClave(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
         logger.debug("solo es encesario ir al jsp");
         String usuario = request.getParameter("usr");
-        AdminService adminService = new AdminService();
+        
         BeanPersona usr = adminService.obtenerUsuarioById(new Long(usuario));
         request.getSession().setAttribute("urclave", usr);
         return mapping.findForward("restablecer");
@@ -134,8 +145,8 @@ public class LoginAction extends DispatchAction {
         	 Encriptador en = Encriptador.getInstance();
         	usuario.setSclave(en.hashData(nueva.getBytes()));
         	usuario.setFclave(0);
-        	AdminService adminService = new AdminService();
-        	adminService.modificarPersona(usuario, new BeanAuditoria(usrLogin.getNcodigo()));
+        	
+        	adminService.modificarPersona(usuario, new BeanAuditoria(usrLogin.getNcodigo().intValue()));
         	request.setAttribute("mensaje", "Clave reestablecida.");
         	request.removeAttribute("urclave");
         	return mapping.findForward("home");

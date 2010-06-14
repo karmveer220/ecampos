@@ -3,6 +3,19 @@
 
   <display-name>Servicios en Linea - CNL SEGURO</display-name>
   
+   <context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.properties</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext*.xml</param-value>
+	</context-param>
+	<context-param>
+	    <param-name>webAppRootKey</param-name>
+	    <param-value>consultasCNL</param-value>
+	</context-param>
+	
   	<filter>
             <filter-name>AutenticaFilter</filter-name>
             <filter-class>org.cnl.digemin.utiles.Autentica</filter-class>
@@ -29,6 +42,21 @@
     	<url-pattern>*.jsp</url-pattern>
     </filter-mapping>
 
+
+  
+	<listener>
+		<listener-class>
+			org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	
+	
+	
   <!-- Standard Action Servlet Configuration -->
   <servlet>
     <servlet-name>action</servlet-name>

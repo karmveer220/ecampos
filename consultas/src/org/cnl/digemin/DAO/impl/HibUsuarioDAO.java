@@ -5,15 +5,13 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.cnl.digemin.DAO.UsuarioDAO;
 import org.cnl.digemin.bean.BeanPersona;
-import org.cnl.digemin.service.NotariaService;
+import org.cnl.digemin.service.impl.NotariaServiceImpl;
 import org.cnl.digemin.utiles.Utiles;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * COLEGIO DE NOTARIOS DE LIMA - CEDETEC
@@ -22,84 +20,47 @@ import org.hibernate.criterion.Restrictions;
  * @since Octubre 2008
  * @version 1.0
  */
-public class HibUsuarioDAO implements UsuarioDAO{
+
+public class HibUsuarioDAO extends HibernateDaoSupport implements UsuarioDAO{
     
 	private static final Logger logger = Logger.getLogger(HibUsuarioDAO.class); 
-    static SessionFactory sessionFactory = null;
-    Session session = null;
-    Transaction tx = null;
     
-    static{
-        sessionFactory = new Configuration().configure().buildSessionFactory();
-    }
-    
-    public HibUsuarioDAO(){
-        session = sessionFactory.getCurrentSession();
-    }   
+	public HibUsuarioDAO(){}
+	
     
     public BeanPersona validarPersona(String usuario, String clave) throws Exception{
         BeanPersona usrLogin = new BeanPersona();
-        try{
-        	tx = session.beginTransaction();
+       
         	logger.debug(" select user: "+usuario + "; password:"+clave);
         	System.out.println(" select user: "+usuario + "; password:"+clave);
-            usrLogin = (BeanPersona)session.createQuery(" from BeanPersona as p where p.susuario = :usuario and p.sclave = :clave")
+            usrLogin = (BeanPersona)getSession().createQuery(" from BeanPersona as p where p.susuario = :usuario and p.sclave = :clave")
                           .setParameter("usuario",usuario)
                           .setParameter("clave",clave)
                           .uniqueResult();
             logger.debug(usrLogin);
             System.out.println(usrLogin);
-            tx.commit();
+            
             if(usrLogin == null) {
                 throw new Exception("Usuario o clave incorrectos.");
             }
-        }catch(Exception e){
-            e.printStackTrace();
-            tx.rollback();
-            throw e;
-        }
+      
         return usrLogin;
     }
-
+    @Transactional(propagation=Propagation.REQUIRES_NEW)
     public Integer nuevaPersona(BeanPersona persona) throws Exception{        
-       
-        try{
-           tx = session.beginTransaction();
-            session.save(persona);
-            tx.commit();
-       }catch (HibernateException e) { 
-           e.printStackTrace();
-           tx.rollback();
-           throw e;
-        }catch(Exception e){
-            e.printStackTrace();
-            tx.rollback();
-            throw e;
-        }
-        return 1;
+    	getSession().persist(persona);
+    	return 1;
     }
 
     @SuppressWarnings("unchecked")
 	public List<BeanPersona> listarUsuarios(Long codigo)throws Exception {
-        List<BeanPersona> lsi = null;
-        try{
-        	 tx = session.beginTransaction();
-                if( codigo==null || codigo != NotariaService.CODIGO_COLEGIO){
-                   lsi = session.createQuery("from BeanPersona as p where p.notaria = :codigo")
-                          .setLong("codigo",codigo)
-                          .list();
-                }else{
-                    lsi = session.createQuery("from BeanPersona as p").list();
-                }
-               tx.commit();
-        }catch (HibernateException e) { 
-            e.printStackTrace();
-            tx.rollback();
-            throw e;
-        }catch(Exception e){
-            e.printStackTrace();
-            tx.rollback();
-            throw e;
+        List<BeanPersona> lsi = null;        
+        if( codigo==null || codigo != NotariaServiceImpl.CODIGO_COLEGIO){
+           lsi = getSession().createQuery("from BeanPersona as p where p.nnotaria.ncodigo = :codigo")
+                  .setLong("codigo",codigo)
+                  .list();
+        }else{
+            lsi = getSession().createQuery("from BeanPersona as p").list();
         }
         return lsi;
     }
@@ -107,78 +68,50 @@ public class HibUsuarioDAO implements UsuarioDAO{
     @SuppressWarnings("unchecked")
 	public List<BeanPersona> buscarUsuarios(BeanPersona b) throws Exception{
        List<BeanPersona> lista ;       
-       try{  
-    	   tx = session.beginTransaction();
-            Criteria crit = session.createCriteria(BeanPersona.class);
-    		crit.add(Restrictions.eq("estado","1"));
+       //try{  
+    	   //tx = session.beginTransaction();
+            Criteria crit = getSession().createCriteria(BeanPersona.class);
+    		//crit.add(Restrictions.eq("estado","1"));
     		if(!Utiles.nullToBlank(b.getSusuario()).equals("")){
     			crit.add(Restrictions.like("susuario",b.getSusuario()));
     		}
     		if(!Utiles.nullToBlank(b.getSnombre()).equals("")){
-    			crit.add(Restrictions.like("snombre",b.getSnombre()));
+    			crit.add(Restrictions.ilike("snombre",b.getSnombre()));
     		}
             if(!Utiles.nullToBlank(b.getSpaterno()).equals("")){
-            	crit.add(Restrictions.like("spaterno",b.getSpaterno()));
+            	crit.add(Restrictions.ilike("spaterno",b.getSpaterno()));
             }
             if(!Utiles.nullToBlank(b.getSmaterno()).equals("")){
-            	crit.add(Restrictions.like("smaterno",b.getSmaterno()));
+            	crit.add(Restrictions.ilike("smaterno",b.getSmaterno()));
             }
             if(!Utiles.nullToBlank(b.getSnum_doc()).equals("")){
-            	crit.add(Restrictions.like("snum_doc",b.getSnum_doc()));
+            	crit.add(Restrictions.ilike("snum_doc",b.getSnum_doc()));
             }
-            if(b.getNotaria()!=null ){
-            	crit.add(Restrictions.like("notaria",b.getNotaria()));
+            if(b.getNotaria()!=0 ){
+            	crit.add(Restrictions.eq("nnotaria.ncodigo",b.getNotaria()));
             }
-            if(b.getColegio()!=null ){
-            	crit.add(Restrictions.like("colegio",b.getColegio()));
+            if(b.getColegio()!=0 ){
+            	crit.add(Restrictions.eq("ncolegio.ncodigo",b.getColegio()));
             }
     		lista = crit.list();
-    		tx.commit();
-        }catch(Exception e){
-            e.printStackTrace();
-            tx.rollback();
-            throw e;
-        }
+    		
         return lista;
     }
     
     public BeanPersona obtenerUsuarioById(Long codigo)throws Exception{
-       BeanPersona usrLogin = new BeanPersona();
-       Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            usrLogin = (BeanPersona)session.createQuery("select p from BeanPersona as p where p.ncodigo = :codigo ")
-                                    .setParameter("codigo",codigo)
-                                    .uniqueResult();
-            if(usrLogin == null) {
-                throw new Exception("Usuario no encontrado.");
-            }
-            tx.commit();
-        }catch(Exception e){
-            e.printStackTrace();
-            tx.rollback();
-            throw e;
+       BeanPersona usrLogin = new BeanPersona();      
+        usrLogin = (BeanPersona)getSession().createQuery("select p from BeanPersona as p where p.ncodigo = :codigo ")
+                                .setParameter("codigo",codigo)
+                                .uniqueResult();
+        if(usrLogin == null) {
+            throw new Exception("Usuario no encontrado.");
         }
         return usrLogin;
     }
-
-    public Integer modificarPersona(BeanPersona p) throws Exception{
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            session.update(p);
-            tx.commit();
-        }catch (HibernateException e) { 
-            e.printStackTrace();
-            tx.rollback();
-            throw e;
-        }catch(Exception e){
-            e.printStackTrace();
-            tx.rollback();
-            throw e;
-        }
-        return 1;
-    }
     
-   
+    @Transactional(propagation=Propagation.REQUIRES_NEW)
+    public Integer modificarPersona(BeanPersona p) throws Exception{
+    	getSession().update(p); 
+        return 1;
+    }   
 }

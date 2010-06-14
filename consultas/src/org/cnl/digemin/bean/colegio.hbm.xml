@@ -5,7 +5,7 @@
 <hibernate-mapping>
 <class name="org.cnl.digemin.bean.BeanColegio" table="CON_COLEGIOS_COL">
    
-        <id name="ncodigo" type="long" column="COL_nCODIGO" >
+        <id name="ncodigo" type="java.lang.Integer" column="COL_nCODIGO" >
             <generator class="sequence">
 				<param name="sequence">colegio_secuencia</param>
 			</generator>

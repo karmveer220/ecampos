@@ -12,6 +12,6 @@ import org.cnl.digemin.bean.BeanPerfil;
  */
 public interface PerfilDAO {
 
-	public List<BeanPerfil> listaPErfiles()throws Exception;
+	public List<BeanPerfil> listaPerfiles()throws Exception;
 	
 }

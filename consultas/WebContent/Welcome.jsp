@@ -44,8 +44,8 @@
     
     Opciones:
       <ul>
-            <li><a href="ce_buscar.jsp">Buscar Carnet de Extranjer&iacute;a</a></li>
-            <li><a href="pasaporte_buscar.jsp">Buscar Pasaporte</a></li>
+            <li><a href="ce.do?method=inicio">Buscar Carnet de Extranjer&iacute;a</a></li>
+            <li><a href="pasaporte.do?method=inicio">Buscar Pasaporte</a></li>
             <li><a href="movimientos.do?method=inicio">Movimientos Migratorios</a></li>
     </ul>
 	
