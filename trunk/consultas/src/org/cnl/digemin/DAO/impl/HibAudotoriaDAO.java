@@ -4,40 +4,29 @@ import java.util.Date;
 
 import org.cnl.digemin.DAO.AuditoriaDAO;
 import org.cnl.digemin.bean.BeanAuditoria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * COLEGIO DE NOTARIOS DE LIMA - CEDETEC
- * Convenio DIGEMIN - CNL
+ * COLEGIO DE NOTARIOS DE LIMA - CEDETEC Convenio DIGEMIN - CNL
+ * 
  * @author Elvis Ruben Campos Mori
  * @since MAYO 2009
  * @version 1.0
  */
-public class HibAudotoriaDAO implements AuditoriaDAO{
-   
-    public HibAudotoriaDAO(){
-      
-    }
-    
-    public void grabaAuditoria(BeanAuditoria auditoria) throws Exception{
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            ///auditoria.setFechaRegistro(Utiles.CalendarToString(new GregorianCalendar(), Utiles.FORMATO_FECHA_CORTA_MYSQL));
-            auditoria.setFechaRegistro(new Date());
-            session.save(auditoria);
-            tx.commit();
-        }catch(Exception e){
-            e.printStackTrace();
-            tx.rollback();
-        }finally{
-            session.close();
-        }        
-    }
+
+public class HibAudotoriaDAO extends HibernateDaoSupport implements AuditoriaDAO {
+
+	public HibAudotoriaDAO() {
+		
+	}
+	
+
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public void grabaAuditoria(BeanAuditoria auditoria) throws Exception {
+		auditoria.setFechaRegistro(new Date());
+		getSession().save(auditoria);
+	}
 
 }

@@ -37,7 +37,20 @@ public class MovimientosAction extends DispatchAction{
 	private static final Logger logger = Logger.getLogger(MovimientosAction.class);
     private BeanPersona usrLogin;
     
-    public ActionForward inicio(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
+    private CeService ceService;    
+    private PersonaService personaService;    
+    private MovimientoService movimientoService;    
+    public void setCeService(CeService ceService) {
+		this.ceService = ceService;
+	}
+	public void setPersonaService(PersonaService personaService) {
+		this.personaService = personaService;
+	}
+	public void setMovimientoService(MovimientoService movimientoService) {
+		this.movimientoService = movimientoService;
+	}
+
+	public ActionForward inicio(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
            HttpSession session = request.getSession();
            removerSession(session,"listaPersonas","listaCEPersona","listaImagenesCE");
            return mapping.findForward("m_inicio");       
@@ -82,37 +95,34 @@ public class MovimientosAction extends DispatchAction{
     public ActionForward buscarPersonas(ActionMapping mapping,ActionForm form,HttpServletRequest request, HttpServletResponse response)throws Exception {
         System.out.println("---EN EL buscar personas del movimiento migraotorio---");
         BuscarPersonasForm miform=(BuscarPersonasForm)form; 
-        CeService ceServicio = null;
-        PersonaService pservicio = null;
-        MovimientoService movService = null;
+       
         List<Simmovmigra1> listaMov = null;
         usrLogin = (BeanPersona)request.getSession().getAttribute("usrLogin");
          try{
-             pservicio =new PersonaService();
+             
              Simpersona1 persona=null;
              //Obtener movimientos migratorios a partir de un numero de carnet de extranjeria
               if(!Utiles.nullToBlank(miform.getSnroce()).equals("")){
               System.out.println("-------BUSQUEDA con numero de CARNET EXTRANJERIA-------");
-                  ceServicio = new CeService();
-                  Simcarnetextranjeria1 ce = ceServicio.CarnetExtranjeriaLeerNro(miform.getSnroce(),new BeanAuditoria(usrLogin.getNcodigo(),usrLogin.getSusuario()),usrLogin.getIdSession());
+                  
+                  Simcarnetextranjeria1 ce = ceService.CarnetExtranjeriaLeerNro(miform.getSnroce(),new BeanAuditoria(usrLogin.getNcodigo().intValue(),usrLogin.getSusuario()),usrLogin.getIdSession());
                   if(ce == null){
                       removerSession(request.getSession(),"m_listaMovimientos","m_listaPersonas");
                       request.setAttribute("msgError", "El número ingresado no coincide con ninguún Carnet de Extranjería.");
                       return mapping.findForward("m_inicio");
                   }
-                  movService = new MovimientoService();
-                  listaMov = movService.listaDeMovimientosNumeroDocumento(miform.getSnroce(),new BeanAuditoria(usrLogin.getNcodigo(),usrLogin.getSusuario()),usrLogin.getIdSession());
+                  
+                  listaMov = movimientoService.listaDeMovimientosNumeroDocumento(miform.getSnroce(),new BeanAuditoria(usrLogin.getNcodigo().intValue(),usrLogin.getSusuario()),usrLogin.getIdSession());
                   request.getSession().setAttribute("m_listaMovimientos", listaMov);
-                  persona = pservicio.obtenerDatosPersona(ce.getUIdPersona(),new BeanAuditoria(usrLogin.getNcodigo(),usrLogin.getSusuario()),usrLogin.getIdSession());  
+                  persona = personaService.obtenerDatosPersona(ce.getUIdPersona(),new BeanAuditoria(usrLogin.getNcodigo().intValue(),usrLogin.getSusuario()),usrLogin.getIdSession());  
                   request.getSession().setAttribute("m_persona", persona );
                }
              
              if(!Utiles.nullToBlank(miform.getSnropas()).equals("")){
                  System.out.println("----OBTENER la lista de movimeintos migratorios a partir de un numero de PASAPORTE entregado-----");
-                 movService = new MovimientoService();
-                 listaMov = movService.listaDeMovimientosNumeroDocumento(Utiles.nullToBlank(miform.getSnropas()),new BeanAuditoria(usrLogin.getNcodigo(),usrLogin.getSusuario()),usrLogin.getIdSession());                 
+                 listaMov = movimientoService.listaDeMovimientosNumeroDocumento(Utiles.nullToBlank(miform.getSnropas()),new BeanAuditoria(usrLogin.getNcodigo().intValue(),usrLogin.getSusuario()),usrLogin.getIdSession());                 
                  request.getSession().setAttribute("m_listaMovimientos", listaMov);
-                 persona = pservicio.obtenerDatosPersonaPorPasaporte(miform.getSnropas(),new BeanAuditoria(usrLogin.getNcodigo(),usrLogin.getSusuario()),usrLogin.getIdSession());
+                 persona = personaService.obtenerDatosPersonaPorPasaporte(miform.getSnropas(),new BeanAuditoria(usrLogin.getNcodigo().intValue(),usrLogin.getSusuario()),usrLogin.getIdSession());
                  request.getSession().setAttribute("m_persona", persona );
               }
              

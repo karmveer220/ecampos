@@ -6,7 +6,7 @@
 <hibernate-mapping>
 <class name="org.cnl.digemin.bean.BeanPerfil" table="CON_PERFIL_PEF">
 
-    <id name="ncodigo" type="long" column="PEF_nCODIGO" ></id>
+    <id name="ncodigo" type="java.lang.Integer" column="PEF_nCODIGO" ></id>
     <property name="sdescripcion"><column name="PEF_sDESCRIPCION" /></property> 
        
 </class>
