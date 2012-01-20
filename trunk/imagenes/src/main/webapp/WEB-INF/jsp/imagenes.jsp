@@ -7,6 +7,8 @@
  <html>
 <body>
    
+   <a href="inicio2.htm">jQuery File Upload Demo</a>
+   
 	<form action="carga.htm" method="post"  enctype="multipart/form-data"> 
 	
 	<table cellpadding="0" width="100%">

@@ -1,5 +1,7 @@
 package pe.org.notarios.web.model;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +20,8 @@ public class Imagenes {
     private byte[] imagen;
     private String nombre;
     private String observaciones;
-
+    private BigInteger size;;
+    
    public Imagenes() {
    }
 
@@ -26,11 +29,12 @@ public class Imagenes {
    public Imagenes(int idImagen) {
        this.idImagen = idImagen;
    }
-   public Imagenes(int idImagen, byte[] imagen, String nombre, String observaciones) {
+   public Imagenes(int idImagen, byte[] imagen, String nombre, String observaciones,BigInteger size) {
       this.idImagen = idImagen;
       this.imagen = imagen;
       this.nombre = nombre;
       this.observaciones = observaciones;
+      this.size=size;
    }
   
     @Id 
@@ -71,6 +75,16 @@ public class Imagenes {
    public void setObservaciones(String observaciones) {
        this.observaciones = observaciones;
    }
+
+   @Column(name="size")
+	public BigInteger getSize() {
+		return size;
+	}
+	
+	
+	public void setSize(BigInteger size) {
+		this.size = size;
+	}
 
     
 }
