@@ -7,16 +7,13 @@ package pe.gob.pcm.constitucion.web.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,61 +26,115 @@ import javax.persistence.TemporalType;
 @Table(name = "t032mandatario")
 public class T032mandatario implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected T032mandatarioPK t032mandatarioPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_MANDATARIO")
+    private Integer idMandatario;
+    @Basic(optional = false)
+    @Column(name = "NUM_TRAMITE")
+    private int numTramite;
+    @Basic(optional = false)
+    @Column(name = "COD_TDOCMAN")
+    private String codTdocman;
+    @Basic(optional = false)
+    @Column(name = "NUM_DOCMAN")
+    private String numDocman;
+    @Basic(optional = false)
     @Column(name = "IND_ACCSOC")
-    private Character indAccsoc;
+    private char indAccsoc;
+    @Basic(optional = false)
     @Column(name = "NOM_MANDAT")
     private String nomMandat;
+    @Basic(optional = false)
     @Column(name = "APE_PATERNO")
     private String apePaterno;
+    @Basic(optional = false)
     @Column(name = "APE_MATERNO")
     private String apeMaterno;
+    @Basic(optional = false)
     @Column(name = "FEC_NACIM")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecNacim;
+    @Basic(optional = false)
     @Column(name = "COD_ESTCIVIL")
     private String codEstcivil;
+    @Basic(optional = false)
     @Column(name = "COD_PAIS")
     private String codPais;
+    @Basic(optional = false)
     @Column(name = "DIR_MANDAT")
     private String dirMandat;
+    @Basic(optional = false)
     @Column(name = "DES_PROFESION")
     private String desProfesion;
+    @Basic(optional = false)
     @Column(name = "CLV_INSREG")
     private String clvInsreg;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "t032mandatario")
-    private List<T024cargo> t024cargoList;
-    @JoinColumns({
-        @JoinColumn(name = "ANN_TRAMITE", referencedColumnName = "ANN_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE", insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
-    private T020tramite t020tramite;
+    @Column(name = "COD_CARGO")
+    private String codCargo;
 
     public T032mandatario() {
     }
 
-    public T032mandatario(T032mandatarioPK t032mandatarioPK) {
-        this.t032mandatarioPK = t032mandatarioPK;
+    public T032mandatario(Integer idMandatario) {
+        this.idMandatario = idMandatario;
     }
 
-    public T032mandatario(short annTramite, int numTramite, String codTdocman, String numDocman) {
-        this.t032mandatarioPK = new T032mandatarioPK(annTramite, numTramite, codTdocman, numDocman);
+    public T032mandatario(Integer idMandatario, int numTramite, String codTdocman, String numDocman, char indAccsoc, String nomMandat, String apePaterno, String apeMaterno, Date fecNacim, String codEstcivil, String codPais, String dirMandat, String desProfesion, String clvInsreg) {
+        this.idMandatario = idMandatario;
+        this.numTramite = numTramite;
+        this.codTdocman = codTdocman;
+        this.numDocman = numDocman;
+        this.indAccsoc = indAccsoc;
+        this.nomMandat = nomMandat;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.fecNacim = fecNacim;
+        this.codEstcivil = codEstcivil;
+        this.codPais = codPais;
+        this.dirMandat = dirMandat;
+        this.desProfesion = desProfesion;
+        this.clvInsreg = clvInsreg;
     }
 
-    public T032mandatarioPK getT032mandatarioPK() {
-        return t032mandatarioPK;
+    public Integer getIdMandatario() {
+        return idMandatario;
     }
 
-    public void setT032mandatarioPK(T032mandatarioPK t032mandatarioPK) {
-        this.t032mandatarioPK = t032mandatarioPK;
+    public void setIdMandatario(Integer idMandatario) {
+        this.idMandatario = idMandatario;
     }
 
-    public Character getIndAccsoc() {
+    public int getNumTramite() {
+        return numTramite;
+    }
+
+    public void setNumTramite(int numTramite) {
+        this.numTramite = numTramite;
+    }
+
+    public String getCodTdocman() {
+        return codTdocman;
+    }
+
+    public void setCodTdocman(String codTdocman) {
+        this.codTdocman = codTdocman;
+    }
+
+    public String getNumDocman() {
+        return numDocman;
+    }
+
+    public void setNumDocman(String numDocman) {
+        this.numDocman = numDocman;
+    }
+
+    public char getIndAccsoc() {
         return indAccsoc;
     }
 
-    public void setIndAccsoc(Character indAccsoc) {
+    public void setIndAccsoc(char indAccsoc) {
         this.indAccsoc = indAccsoc;
     }
 
@@ -159,26 +210,18 @@ public class T032mandatario implements Serializable {
         this.clvInsreg = clvInsreg;
     }
 
-    public List<T024cargo> getT024cargoList() {
-        return t024cargoList;
+    public String getCodCargo() {
+        return codCargo;
     }
 
-    public void setT024cargoList(List<T024cargo> t024cargoList) {
-        this.t024cargoList = t024cargoList;
-    }
-
-    public T020tramite getT020tramite() {
-        return t020tramite;
-    }
-
-    public void setT020tramite(T020tramite t020tramite) {
-        this.t020tramite = t020tramite;
+    public void setCodCargo(String codCargo) {
+        this.codCargo = codCargo;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (t032mandatarioPK != null ? t032mandatarioPK.hashCode() : 0);
+        hash += (idMandatario != null ? idMandatario.hashCode() : 0);
         return hash;
     }
 
@@ -189,7 +232,7 @@ public class T032mandatario implements Serializable {
             return false;
         }
         T032mandatario other = (T032mandatario) object;
-        if ((this.t032mandatarioPK == null && other.t032mandatarioPK != null) || (this.t032mandatarioPK != null && !this.t032mandatarioPK.equals(other.t032mandatarioPK))) {
+        if ((this.idMandatario == null && other.idMandatario != null) || (this.idMandatario != null && !this.idMandatario.equals(other.idMandatario))) {
             return false;
         }
         return true;
@@ -197,7 +240,7 @@ public class T032mandatario implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T032mandatario[t032mandatarioPK=" + t032mandatarioPK + "]";
+        return "pe.gob.pcm.constitucion.model.T032mandatario[idMandatario=" + idMandatario + "]";
     }
 
 }

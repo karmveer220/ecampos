@@ -6,16 +6,13 @@
 package pe.gob.pcm.constitucion.web.model;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -26,47 +23,89 @@ import javax.persistence.Table;
 @Table(name = "t026perjur")
 public class T026perjur implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected T026perjurPK t026perjurPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_PERJUR")
+    private Integer idPerjur;
+    @Basic(optional = false)
+    @Column(name = "NUM_TRAMITE")
+    private int numTramite;
+    @Basic(optional = false)
+    @Column(name = "COD_TIPDOC")
+    private String codTipdoc;
+    @Basic(optional = false)
+    @Column(name = "NUM_DOCUM")
+    private String numDocum;
+    @Basic(optional = false)
     @Column(name = "NOM_RAZSOC")
     private String nomRazsoc;
+    @Basic(optional = false)
     @Column(name = "DIR_PERJUR")
     private String dirPerjur;
+    @Basic(optional = false)
     @Column(name = "DES_SIGLAS")
     private String desSiglas;
+    @Basic(optional = false)
     @Column(name = "CLV_INSREG")
     private String clvInsreg;
+    @Basic(optional = false)
     @Column(name = "COD_ZONREG")
     private String codZonreg;
+    @Basic(optional = false)
     @Column(name = "COD_OFICREG")
     private String codOficreg;
-    @JoinColumns({
-        @JoinColumn(name = "ANN_TRAMITE", referencedColumnName = "ANN_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "COD_TIPDOC", referencedColumnName = "COD_TIPDOC", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_DOCUM", referencedColumnName = "NUM_DOCUM", insertable = false, updatable = false)})
-    @OneToOne(optional = false)
-    private T022accionista t022accionista;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "t026perjur")
-    private List<T027perjurrep> t027perjurrepList;
 
     public T026perjur() {
     }
 
-    public T026perjur(T026perjurPK t026perjurPK) {
-        this.t026perjurPK = t026perjurPK;
+    public T026perjur(Integer idPerjur) {
+        this.idPerjur = idPerjur;
     }
 
-    public T026perjur(short annTramite, int numTramite, String codTipdoc, String numDocum) {
-        this.t026perjurPK = new T026perjurPK(annTramite, numTramite, codTipdoc, numDocum);
+    public T026perjur(Integer idPerjur, int numTramite, String codTipdoc, String numDocum, String nomRazsoc, String dirPerjur, String desSiglas, String clvInsreg, String codZonreg, String codOficreg) {
+        this.idPerjur = idPerjur;
+        this.numTramite = numTramite;
+        this.codTipdoc = codTipdoc;
+        this.numDocum = numDocum;
+        this.nomRazsoc = nomRazsoc;
+        this.dirPerjur = dirPerjur;
+        this.desSiglas = desSiglas;
+        this.clvInsreg = clvInsreg;
+        this.codZonreg = codZonreg;
+        this.codOficreg = codOficreg;
     }
 
-    public T026perjurPK getT026perjurPK() {
-        return t026perjurPK;
+    public Integer getIdPerjur() {
+        return idPerjur;
     }
 
-    public void setT026perjurPK(T026perjurPK t026perjurPK) {
-        this.t026perjurPK = t026perjurPK;
+    public void setIdPerjur(Integer idPerjur) {
+        this.idPerjur = idPerjur;
+    }
+
+    public int getNumTramite() {
+        return numTramite;
+    }
+
+    public void setNumTramite(int numTramite) {
+        this.numTramite = numTramite;
+    }
+
+    public String getCodTipdoc() {
+        return codTipdoc;
+    }
+
+    public void setCodTipdoc(String codTipdoc) {
+        this.codTipdoc = codTipdoc;
+    }
+
+    public String getNumDocum() {
+        return numDocum;
+    }
+
+    public void setNumDocum(String numDocum) {
+        this.numDocum = numDocum;
     }
 
     public String getNomRazsoc() {
@@ -117,26 +156,10 @@ public class T026perjur implements Serializable {
         this.codOficreg = codOficreg;
     }
 
-    public T022accionista getT022accionista() {
-        return t022accionista;
-    }
-
-    public void setT022accionista(T022accionista t022accionista) {
-        this.t022accionista = t022accionista;
-    }
-
-    public List<T027perjurrep> getT027perjurrepList() {
-        return t027perjurrepList;
-    }
-
-    public void setT027perjurrepList(List<T027perjurrep> t027perjurrepList) {
-        this.t027perjurrepList = t027perjurrepList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (t026perjurPK != null ? t026perjurPK.hashCode() : 0);
+        hash += (idPerjur != null ? idPerjur.hashCode() : 0);
         return hash;
     }
 
@@ -147,7 +170,7 @@ public class T026perjur implements Serializable {
             return false;
         }
         T026perjur other = (T026perjur) object;
-        if ((this.t026perjurPK == null && other.t026perjurPK != null) || (this.t026perjurPK != null && !this.t026perjurPK.equals(other.t026perjurPK))) {
+        if ((this.idPerjur == null && other.idPerjur != null) || (this.idPerjur != null && !this.idPerjur.equals(other.idPerjur))) {
             return false;
         }
         return true;
@@ -155,7 +178,7 @@ public class T026perjur implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T026perjur[t026perjurPK=" + t026perjurPK + "]";
+        return "pe.gob.pcm.constitucion.model.T026perjur[idPerjur=" + idPerjur + "]";
     }
 
 }

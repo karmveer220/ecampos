@@ -1,15 +1,12 @@
 /* ---------------------------------------------------------------------------------
-
    Austwide Solar - Master Stylesheet
    Author: Pixel House
    Website: www.pixel-house.com.au
-
 --------------------------------------------------------------------------------- */
-
 body { 
 	margin: 0; padding: 0; font-family: arial, helvetica, sans-serif;
 	background-color:#34497E;
-	background-image:url("../images/fondo.JPG") ;
+	background-image:url("../img/fondo.JPG") ;
 	background-repeat:repeat-x;
 	background-position:top;
 	color: #FFFFFF;
@@ -21,18 +18,15 @@ body {
 #banners .intro { font-size: 1.1em; line-height: 1.2em; margin: 0 0 15px 0; }
 #cuerpo{
 	padding: 15px 15px 15px 15px;
-	background-image:url("../images/cuerpoMeca.png") ;
+	background-image:url("../img/cuerpoMeca.png") ;
 	background-repeat:repeat-y;
 	background-position:top;
 	color: #FFFFFF;
 }
-
-
 h1,h2,h3 {
 	color: #654;
 	padding-top: 6px;
 }
-
 h1 { font-size: 27px; text-transform: uppercase; color: #287da6; margin: 0; line-height: 1.0em; }
 h2 {  font-size: 1.0em; margin: 0 0 3px 0; }
 h3 { font-size: 0.75em; margin: 0 0 2px 0; }
@@ -59,7 +53,6 @@ table { border-collapse: collapse; }
 table td { vertical-align: top; padding: 10px 20px 0 0; font-size: 1.0em; color: #333;}
 .bold { font-weight: bold; }
 .hide { display: none; }
-
 .lista table td,th{font-size:10px; text-align:center; vertical-align:middle;}
 .lista table th{
 	background-color:#036;
@@ -67,7 +60,6 @@ table td { vertical-align: top; padding: 10px 20px 0 0; font-size: 1.0em; color:
 .lista table td{
 	background-color:#FFF;
 }
-
 fieldset{
 	border-color: #FFFFFF;
 	background-color: #FFF;
@@ -81,60 +73,46 @@ fieldset{
 	border:0px;	
 	height:22px;
 }
-#wrapper-wrap { float: left; width: 100%; background: url(../images/bg.jpg) no-repeat center 0 #01a8cb; min-width: 990px; }
+#wrapper-wrap { float: left; width: 100%; background: url(../img/bg.jpg) no-repeat center 0 #01a8cb; min-width: 990px; }
 #wrapper { width: 990px; margin: 0 auto; }
-
-#header { width: 940px; height: 140px; margin: 0 25px; display: inline; float: left; background: url(../images/slogan.gif) no-repeat right 43px; }
+#header { width: 940px; height: 140px; margin: 0 25px; display: inline; float: left; background: url(../img/slogan.gif) no-repeat right 43px; }
 #header #logo { float: left; margin: 44px 0 0 0; }
-
-#main { float: left; width: 940px; margin: 0 25px; display: inline; background: url(../images/main-bg.gif) repeat-y 0 0 #fff; min-height: 500px; }
-#footer-wrap { float: left; width: 100%; background: url(../images/footer-bg.gif) repeat-x 0 0; }
+#main { float: left; width: 940px; margin: 0 25px; display: inline; background: url(../img/main-bg.gif) repeat-y 0 0 #fff; min-height: 500px; }
+#footer-wrap { float: left; width: 100%; background: url(../img/footer-bg.gif) repeat-x 0 0; }
 #footer { margin: 0 auto; width: 940px; }
-#orange-bar { float: left; margin: 0 25px; width: 940px; display: inline; height: 6px; overflow-y: hidden; background: url(../images/bg.jpg) no-repeat center -187px #f0922b; }
-
-#right { float: right; width: 590px; padding: 28px 35px 35px 35px; background: url(../images/right-bg.jpg) no-repeat right 0; }
-#left { float: left; width: 280px; padding: 0 0 35px 0; background: url(../images/main-bg.gif) repeat-y 0 0 #008dab; min-height: 440px; }
-
+#orange-bar { float: left; margin: 0 25px; width: 940px; display: inline; height: 6px; overflow-y: hidden; background: url(../img/bg.jpg) no-repeat center -187px #f0922b; }
+#right { float: right; width: 590px; padding: 28px 35px 35px 35px; background: url(../img/right-bg.jpg) no-repeat right 0; }
+#left { float: left; width: 280px; padding: 0 0 35px 0; background: url(../img/main-bg.gif) repeat-y 0 0 #008dab; min-height: 440px; }
 /* ---------------------------------------------------------------------------------
    NAVIGATION
 --------------------------------------------------------------------------------- */
-
 #nav { margin: 0; padding: 0; float: center; width: 800px; display: inline;  }
 #nav ul { margin: 0; padding: 0; float: center; }
-#nav ul li { float: left; padding: 0; font-weight: bold; position: relative; z-index: 999; background: url(../images/boton.PNG) ;width: 157px;} 
+#nav ul li { float: left; padding: 0; font-weight: bold; position: relative; z-index: 999; background: url(../img/boton.PNG) ;width: 157px;} 
 #nav ul li a { float: left; padding: 16px 16px 0 16px; height: 30px; color: #fff; text-decoration: none; }
 #nav ul li:hover a, #nav ul li a:hover { color: #ffc208; }
-
 #navigation li:hover ul, li.over ul { display: block; }
-
 #navigation li ul { margin: 0 0 0 0; padding: 4px 0; width: 157px; z-index: 999; }
-#navigation li ul li { padding: 0 3px; width: 157px; font-size: 1.0em; background: url(../images/subul-shadow.png) repeat-y 0 0; }
+#navigation li ul li { padding: 0 3px; width: 157px; font-size: 1.0em; background: url(../img/subul-shadow.png) repeat-y 0 0; }
 #navigation li ul li a { background: #f1932b; text-decoration: none; padding: 10px 20px; height: auto; width: 157px; text-align: center; border-top: solid 1px #fdbf09; color: #fff!important; text-transform: none; }
 #navigation li ul li:hover a { color: #fff; }
 #navigation li ul li.govn a { background: #df841d; }
-#navigation li ul li a:hover { background: url(../images/subul-a-hover.gif) repeat-y 0 0 #f39b25; color: #fff; }
-
+#navigation li ul li a:hover { background: url(../img/subul-a-hover.gif) repeat-y 0 0 #f39b25; color: #fff; }
 .subuls { display: none; position: absolute; top: 40px; left: -9px; z-index: 999; }
-
-#n02 ul { background: url(../images/subul-arrow.gif) no-repeat center 0; left: -15px; }
-#n03 ul { background: url(../images/subul-arrow.gif) no-repeat center 0; left: -15px; }
-#n04 ul { background: url(../images/subul-arrow-04.gif) no-repeat center 0; left: -23px; }
-#n05 ul { background: url(../images/subul-arrow-05.gif) no-repeat center 0; left: -53px; }
-#n06 ul { background: url(../images/subul-arrow-06.gif) no-repeat center 0; left: -25px; }
-#n07 ul { background: url(../images/subul-arrow-06.gif) no-repeat center 0; left: -25px; }
-
+#n02 ul { background: url(../img/subul-arrow.gif) no-repeat center 0; left: -15px; }
+#n03 ul { background: url(../img/subul-arrow.gif) no-repeat center 0; left: -15px; }
+#n04 ul { background: url(../img/subul-arrow-04.gif) no-repeat center 0; left: -23px; }
+#n05 ul { background: url(../img/subul-arrow-05.gif) no-repeat center 0; left: -53px; }
+#n06 ul { background: url(../img/subul-arrow-06.gif) no-repeat center 0; left: -25px; }
+#n07 ul { background: url(../img/subul-arrow-06.gif) no-repeat center 0; left: -25px; }
 #nav #n01 a { padding-left: 0px; }
-
-
 /* ---------------------------------------------------------------------------------
    RIGHT
 --------------------------------------------------------------------------------- */
-
 #breadcrumbs { margin: 0 0 25px 0; font-size: 0.7em; color: #d77f37; }
 #breadcrumbs a { text-decoration: none; }
 #breadcrumbs a:hover { text-decoration: underline; }
-
-#right ul li { background: url(../images/icon-arrow.gif) no-repeat 0 4px; padding-left: 15px; }
+#right ul li { background: url(../img/icon-arrow.gif) no-repeat 0 4px; padding-left: 15px; }
 #right .dividers { border-top: solid 1px #d9d3c5; border-bottom: solid 1px #d9d3c5; padding: 25px 0 10px 0; margin: 10px 0 30px 0; float: left; width: 100%; }
 #right .topdivider { border-top: solid 1px #d9d3c5; padding-top: 25px; margin-top: 25px; width: 100%; clear: both; }
 #right .btmdivider { border-bottom: solid 1px #d9d3c5; padding-bottom: 25px; width: 100%; clear: both; }
@@ -143,7 +121,7 @@ fieldset{
 #right h3.btm-margin { margin: 0 0 1.0em 0; }
 #right .top-margin, #right .topMargin2 { padding-top: 10px; }
 #right .orange { color: #d98234; font-weight: bold; }
-#right .ticks li { background: url(../images/icon-tick.gif) no-repeat 0 1px; padding-left: 25px; }
+#right .ticks li { background: url(../img/icon-tick.gif) no-repeat 0 1px; padding-left: 25px; }
 #right .center { text-align: center; }
 #right .graphic-right { float: right; width: 300px; margin: -30px 0 0 0; }
 #right .infographic { border: solid 1px #f29926; margin: 0; }
@@ -154,7 +132,6 @@ fieldset{
 #right .alignleft { text-align: left; }
 #right .circle-nums td { padding: 0 20px 10px 0; }
 #right .circle-connector { background: url(../infographics/circle-connector.gif) repeat-y 26px 0; }
-
 #right fieldset { background: #fff6dd; float: left; padding: 34px 24px 20px 24px; width: 540px; border: solid 1px #cbc3af; margin: 15px 0; }
 #right fieldset h4 { float: left; width: 100%; color: #287da6; text-transform: uppercase; margin-bottom: -19px; }
 #right fieldset p { float: left; width: 100%; margin: 0 0 10px 0; position: relative; }
@@ -193,12 +170,12 @@ fieldset{
 #right #joinnow .submit { float: right; width: 85px; margin-top: -32px; }
 #right #joinnow .terms { border-top: solid 1px #cbc3af; padding-top: 25px; margin-top: 25px; }
 
-#right .pdf { background: url(../images/icon-pdf.gif) no-repeat 0 0; padding: 3px 0 3px 28px; }
+#right .pdf { background: url(../img/icon-pdf.gif) no-repeat 0 0; padding: 3px 0 3px 28px; }
 #right .callout { text-align: center; border: solid 1px #d3bda1; background: #f2ddc3; padding: 10px 0; }
 
 /* #right #consultation { float: left; width: 100%; border: solid 1px #cebc9a; background: #f2e0bd; padding: 25px; width: 538px; }
 */
-#right #consultation fieldset { padding-top: 70px; padding-bottom: 5px; background: url(../images/statements/how-much-could-you-be-saving.gif) repeat-x center 0 #fff6dd; }
+#right #consultation fieldset { padding-top: 70px; padding-bottom: 5px; background: url(../img/statements/how-much-could-you-be-saving.gif) repeat-x center 0 #fff6dd; }
 #right #consultation h3 { font-size: 1.0em; text-transform: uppercase; text-align: center; margin: 0 0 20px 0; }
 #right #consultation p .fieldBox { width: 195px;  }
 #right #consultation .left { float: left; width: 444px; }
@@ -207,11 +184,11 @@ fieldset{
 #right #consultation .submit input { margin: -3px 0 0 0;  }
 #right #consultation #successful { text-align: center; }
 
-#solarparty #right { width: 490px; padding: 28px 135px 135px 35px; background: url(../images/bg-solarparty.jpg) no-repeat right 0; }
+#solarparty #right { width: 490px; padding: 28px 135px 135px 35px; background: url(../img/bg-solarparty.jpg) no-repeat right 0; }
 
 #faq #right h3 { border-top: solid 1px #d9d3c5; padding-top: 15px; }
 #faq #right h2 { margin: 0 0 10px 0; }
-#faq .linkbox { background: url(../images/faq-bg.jpg) no-repeat right 0 #fff6dd; border: solid 1px #cbc3af; padding: 24px 24px 5px 24px; margin: 0 0 30px 0; }
+#faq .linkbox { background: url(../img/faq-bg.jpg) no-repeat right 0 #fff6dd; border: solid 1px #cbc3af; padding: 24px 24px 5px 24px; margin: 0 0 30px 0; }
 #faq .linkbox p { border-top: solid 1px #cbc3af; padding-top: 15px; }
 #faq .linkbox ol { margin-left: 25px; }
 #faq .linkbox li { color: #d77f37; }
@@ -266,7 +243,7 @@ fieldset{
 #left p { color: #fff; }
 #left h4 { color: #fff; margin: 0 0 15px 0; text-transform: uppercase; font-size: 1.1em; }
 
-#left .callout { background: url(../images/left-shade.jpg) no-repeat 0 0; padding: 35px 25px; width: 230px; float: left; }
+#left .callout { background: url(../img/left-shade.jpg) no-repeat 0 0; padding: 35px 25px; width: 230px; float: left; }
 #left .btn { margin-left: -3px; }
 #left .imgreplace { width: 100%; }
 #left .imgreplace span { display: none; }
@@ -286,7 +263,7 @@ fieldset{
 #subnav .internal a { padding: 1px 25px 1px 25px; width: 230px; border: none; }
 #subnav .shift { text-indent: 8px; }
 #subnav li h3 { color: #fff; font-weight: bold; font-size: 1.0em; padding: 10px 25px 1px 25px; width: 230px; float: left; }
-#subnav h3.arrow { background: url(../images/icon-downarrow.gif) no-repeat 25px 15px;  }
+#subnav h3.arrow { background: url(../img/icon-downarrow.gif) no-repeat 25px 15px;  }
 
 #subnav ul .active a, #subnav ul .active a:hover,
 .sub01 #subnav ul #sub01 a,
@@ -297,23 +274,23 @@ fieldset{
 .sub06 #subnav ul #sub06 a,
 .sub07 #subnav ul #sub07 a,
 .sub08 #subnav ul #sub08 a
-{ background: url(../images/subnav-active.gif) repeat-y 0 center #176792; color: #fff; }
+{ background: url(../img/subnav-active.gif) repeat-y 0 center #176792; color: #fff; }
 
 
-#h4-aboutus { background: url(../images/h4-aboutus.gif) no-repeat 0 0; }
-#h4-residential { background: url(../images/h4-residential.gif) no-repeat 0 0; }
-#h4-commercial { background: url(../images/h4-commercial.gif) no-repeat 0 0; }
-#h4-freeconsultation { background: url(../images/h4-freeconsultation.gif) no-repeat 0 0; }
-#h4-customercentre { background: url(../images/h4-customercentre.gif) no-repeat 0 0; }
-#h4-contact { background: url(../images/h4-contact.gif) no-repeat 0 0; }
-#h4-government { background: url(../images/h4-government.gif) no-repeat 0 0; height: 54px!important; }
+#h4-aboutus { background: url(../img/h4-aboutus.gif) no-repeat 0 0; }
+#h4-residential { background: url(../img/h4-residential.gif) no-repeat 0 0; }
+#h4-commercial { background: url(../img/h4-commercial.gif) no-repeat 0 0; }
+#h4-freeconsultation { background: url(../img/h4-freeconsultation.gif) no-repeat 0 0; }
+#h4-customercentre { background: url(../img/h4-customercentre.gif) no-repeat 0 0; }
+#h4-contact { background: url(../img/h4-contact.gif) no-repeat 0 0; }
+#h4-government { background: url(../img/h4-government.gif) no-repeat 0 0; height: 54px!important; }
 
-#co-displayhome { background: url(../images/callouts/displayhome.gif) no-repeat 0 0; height: 54px; }
-#co-member { background: url(../images/callouts/member.gif) no-repeat 0 0; height: 35px; }
-#co-gogreen { background: url(../images/callouts/gogreen.gif) no-repeat 0 0; height: 35px; }
-#co-freequote { background: url(../images/callouts/free-consult-2.gif) no-repeat 0 0; height: 54px; }
+#co-displayhome { background: url(../img/callouts/displayhome.gif) no-repeat 0 0; height: 54px; }
+#co-member { background: url(../img/callouts/member.gif) no-repeat 0 0; height: 35px; }
+#co-gogreen { background: url(../img/callouts/gogreen.gif) no-repeat 0 0; height: 35px; }
+#co-freequote { background: url(../img/callouts/free-consult-2.gif) no-repeat 0 0; height: 54px; }
 
-#left #green { background: url(../images/callouts/leaf.jpg) no-repeat 0 0; }
+#left #green { background: url(../img/callouts/leaf.jpg) no-repeat 0 0; }
 #left #green p { width: 170px; }
 
 #left fieldset { border: none; padding: 0; margin: 0; width: 100%; }
@@ -327,18 +304,18 @@ fieldset{
    HOMEPAGE
 --------------------------------------------------------------------------------- */
 
-#homepage #main { min-height: 100px; position: relative; z-index: 100; padding: 0 25px 35px 25px; margin: 0; background: url(../images/home/banner-shadow.gif) no-repeat 0 307px; }
+#homepage #main { min-height: 100px; position: relative; z-index: 100; padding: 0 25px 35px 25px; margin: 0; background: url(../img/home/banner-shadow.gif) no-repeat 0 307px; }
 #homepage #footer-divider { display: none; }
 
 
 
 .panel { float: left; width: 940px; height: 325px; }
-#b01 { background: url(../images/banners/banner-01.jpg) no-repeat 0 0 #fff; width: 400px; padding: 135px 505px 0 35px; height: 190px; }
+#b01 { background: url(../img/banners/banner-01.jpg) no-repeat 0 0 #fff; width: 400px; padding: 135px 505px 0 35px; height: 190px; }
 #b01 p { margin: 0 0 23px; }
 #b01 .btn { margin-left: -2px; }
-#b02 { background: url(../images/banners/banner-02.jpg) no-repeat 0 0 #fff; width: 420px; padding: 135px 35px 0 485px; height: 190px; text-align: right; }
+#b02 { background: url(../img/banners/banner-02.jpg) no-repeat 0 0 #fff; width: 420px; padding: 135px 35px 0 485px; height: 190px; text-align: right; }
 #b02 p { margin: 0 0 15px 0; }
-#b03 { background: url(../images/banners/banner-03.jpg) no-repeat 0 0 #fff; width: 400px; padding: 135px 505px 0 35px; height: 190px; }
+#b03 { background: url(../img/banners/banner-03.jpg) no-repeat 0 0 #fff; width: 400px; padding: 135px 505px 0 35px; height: 190px; }
 #b03 p { margin: 0 0 23px; }
 #b03 #btn { margin-left: -2px; }
 #b03 #btn2 { margin-left: 10px; }
@@ -366,8 +343,8 @@ fieldset{
 .stripNav { display: none; }
 
 .stripNavL a, .stripNavR a { width: 50px; height: 50px; text-indent: -5000px; display: block; position: absolute; top: 135px; z-index: 600; outline: none; }
-.stripNavL a { background: url(../images/home/arrow-left.png) no-repeat 0 0; float: left; left: 0px; }
-.stripNavR a { background: url(../images/home/arrow-right.png) no-repeat 0 0; float: right; left: 940px; }
+.stripNavL a { background: url(../img/home/arrow-left.png) no-repeat 0 0; float: left; left: 0px; }
+.stripNavR a { background: url(../img/home/arrow-right.png) no-repeat 0 0; float: right; left: 940px; }
 .stripNavL a:hover, .stripNavR a:hover { background-position: 0 -50px; cursor: hand; cursor: pointer; outline: none; }
 
 #callouts { float: left; width: 100%; padding: 35px 0 0 0; }
@@ -377,15 +354,15 @@ fieldset{
 #callouts .callout { width: 240px; height: 221px; float: left; background-color: #008ba9; padding: 0 15px 0 25px; }
 #callouts .yellow { color: #ffc208; font-weight: bold; }
 
-#callout1 { background: url(../images/home/callout-01.gif) no-repeat 0 0; }
+#callout1 { background: url(../img/home/callout-01.gif) no-repeat 0 0; }
 #callout1 p { padding-top: 92px; }
-#callout2 { background: url(../images/home/callout-02.gif) no-repeat 0 0; }
+#callout2 { background: url(../img/home/callout-02.gif) no-repeat 0 0; }
 #callout2 p { padding-top: 76px; width: 200px; }
-#callout3 { background: url(../images/home/callout-03.gif) no-repeat 0 0; }
+#callout3 { background: url(../img/home/callout-03.gif) no-repeat 0 0; }
 #callout3 p { padding-top: 76px; }
 
-.callout-divider { background: url(../images/home/callout-divider.gif) no-repeat 24px 0; float: left; width: 50px; height: 221px; }
-.callout-divider2 { background: url(../images/home/callout-divider-02.gif) no-repeat 0 0; float: left; width: 50px; height: 221px; }
+.callout-divider { background: url(../img/home/callout-divider.gif) no-repeat 24px 0; float: left; width: 50px; height: 221px; }
+.callout-divider2 { background: url(../img/home/callout-divider-02.gif) no-repeat 0 0; float: left; width: 50px; height: 221px; }
 
 
 /* ---------------------------------------------------------------------------------
@@ -393,7 +370,7 @@ fieldset{
 --------------------------------------------------------------------------------- */
 /* footer */
 .footer {
-	background: #958463 url(../images/bgfooter.gif) repeat-x;
+	background: #958463 url(../img/bgfooter.gif) repeat-x;
 	color: #FED;
 	font-size: 1.1em;
 	line-height: 40px;

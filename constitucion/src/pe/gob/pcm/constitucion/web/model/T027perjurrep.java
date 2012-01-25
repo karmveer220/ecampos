@@ -7,12 +7,12 @@ package pe.gob.pcm.constitucion.web.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -23,45 +23,113 @@ import javax.persistence.Table;
 @Table(name = "t027perjurrep")
 public class T027perjurrep implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected T027perjurrepPK t027perjurrepPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_PERJURREP")
+    private Integer idPerjurrep;
+    @Basic(optional = false)
+    @Column(name = "NUM_TRAMITE")
+    private int numTramite;
+    @Basic(optional = false)
+    @Column(name = "COD_TIPDOC")
+    private String codTipdoc;
+    @Basic(optional = false)
+    @Column(name = "NUM_DOCUM")
+    private String numDocum;
+    @Basic(optional = false)
+    @Column(name = "COD_TDOCREP")
+    private String codTdocrep;
+    @Basic(optional = false)
+    @Column(name = "NUM_DOCREP")
+    private String numDocrep;
+    @Basic(optional = false)
     @Column(name = "NOM_REPRE")
     private String nomRepre;
+    @Basic(optional = false)
     @Column(name = "APE_PATERNO")
     private String apePaterno;
+    @Basic(optional = false)
     @Column(name = "APE_MATERNO")
     private String apeMaterno;
+    @Basic(optional = false)
     @Column(name = "DIR_PERJUR")
     private String dirPerjur;
+    @Basic(optional = false)
     @Column(name = "DES_PROFESION")
     private String desProfesion;
+    @Basic(optional = false)
     @Column(name = "CLV_INSREG")
     private String clvInsreg;
-    @JoinColumns({
-        @JoinColumn(name = "ANN_TRAMITE", referencedColumnName = "ANN_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "COD_TIPDOC", referencedColumnName = "COD_TIPDOC", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_DOCUM", referencedColumnName = "NUM_DOCUM", insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
-    private T026perjur t026perjur;
 
     public T027perjurrep() {
     }
 
-    public T027perjurrep(T027perjurrepPK t027perjurrepPK) {
-        this.t027perjurrepPK = t027perjurrepPK;
+    public T027perjurrep(Integer idPerjurrep) {
+        this.idPerjurrep = idPerjurrep;
     }
 
-    public T027perjurrep(short annTramite, int numTramite, String codTipdoc, String numDocum, String codTdocrep, String numDocrep) {
-        this.t027perjurrepPK = new T027perjurrepPK(annTramite, numTramite, codTipdoc, numDocum, codTdocrep, numDocrep);
+    public T027perjurrep(Integer idPerjurrep, int numTramite, String codTipdoc, String numDocum, String codTdocrep, String numDocrep, String nomRepre, String apePaterno, String apeMaterno, String dirPerjur, String desProfesion, String clvInsreg) {
+        this.idPerjurrep = idPerjurrep;
+        this.numTramite = numTramite;
+        this.codTipdoc = codTipdoc;
+        this.numDocum = numDocum;
+        this.codTdocrep = codTdocrep;
+        this.numDocrep = numDocrep;
+        this.nomRepre = nomRepre;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.dirPerjur = dirPerjur;
+        this.desProfesion = desProfesion;
+        this.clvInsreg = clvInsreg;
     }
 
-    public T027perjurrepPK getT027perjurrepPK() {
-        return t027perjurrepPK;
+    public Integer getIdPerjurrep() {
+        return idPerjurrep;
     }
 
-    public void setT027perjurrepPK(T027perjurrepPK t027perjurrepPK) {
-        this.t027perjurrepPK = t027perjurrepPK;
+    public void setIdPerjurrep(Integer idPerjurrep) {
+        this.idPerjurrep = idPerjurrep;
+    }
+
+    public int getNumTramite() {
+        return numTramite;
+    }
+
+    public void setNumTramite(int numTramite) {
+        this.numTramite = numTramite;
+    }
+
+    public String getCodTipdoc() {
+        return codTipdoc;
+    }
+
+    public void setCodTipdoc(String codTipdoc) {
+        this.codTipdoc = codTipdoc;
+    }
+
+    public String getNumDocum() {
+        return numDocum;
+    }
+
+    public void setNumDocum(String numDocum) {
+        this.numDocum = numDocum;
+    }
+
+    public String getCodTdocrep() {
+        return codTdocrep;
+    }
+
+    public void setCodTdocrep(String codTdocrep) {
+        this.codTdocrep = codTdocrep;
+    }
+
+    public String getNumDocrep() {
+        return numDocrep;
+    }
+
+    public void setNumDocrep(String numDocrep) {
+        this.numDocrep = numDocrep;
     }
 
     public String getNomRepre() {
@@ -112,18 +180,10 @@ public class T027perjurrep implements Serializable {
         this.clvInsreg = clvInsreg;
     }
 
-    public T026perjur getT026perjur() {
-        return t026perjur;
-    }
-
-    public void setT026perjur(T026perjur t026perjur) {
-        this.t026perjur = t026perjur;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (t027perjurrepPK != null ? t027perjurrepPK.hashCode() : 0);
+        hash += (idPerjurrep != null ? idPerjurrep.hashCode() : 0);
         return hash;
     }
 
@@ -134,7 +194,7 @@ public class T027perjurrep implements Serializable {
             return false;
         }
         T027perjurrep other = (T027perjurrep) object;
-        if ((this.t027perjurrepPK == null && other.t027perjurrepPK != null) || (this.t027perjurrepPK != null && !this.t027perjurrepPK.equals(other.t027perjurrepPK))) {
+        if ((this.idPerjurrep == null && other.idPerjurrep != null) || (this.idPerjurrep != null && !this.idPerjurrep.equals(other.idPerjurrep))) {
             return false;
         }
         return true;
@@ -142,7 +202,7 @@ public class T027perjurrep implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T027perjurrep[t027perjurrepPK=" + t027perjurrepPK + "]";
+        return "pe.gob.pcm.constitucion.model.T027perjurrep[idPerjurrep=" + idPerjurrep + "]";
     }
 
 }

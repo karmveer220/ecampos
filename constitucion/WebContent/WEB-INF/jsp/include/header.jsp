@@ -9,7 +9,9 @@
     	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<meta http-equiv="Cache-Control" content="no-cache">
 		<meta http-equiv="Pragma" content="nocache">
+		
         <title>Constituci&oacute;n</title>
+        
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/master.css" type="text/css" media="screen" />
     	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menu_style.css" type="text/css" />    	
     	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar-system.css" type="text/css" media="all" title="system" />

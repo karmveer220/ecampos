@@ -8,12 +8,12 @@ package pe.gob.pcm.constitucion.web.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.OneToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,64 +26,126 @@ import javax.persistence.TemporalType;
 @Table(name = "t025pernat")
 public class T025pernat implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected T025pernatPK t025pernatPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_PERNAT")
+    private Integer idPernat;
+    @Basic(optional = false)
+    @Column(name = "NUM_TRAMITE")
+    private int numTramite;
+    @Basic(optional = false)
+    @Column(name = "COD_TIPDOC")
+    private String codTipdoc;
+    @Basic(optional = false)
+    @Column(name = "NUM_DOCUM")
+    private String numDocum;
+    @Basic(optional = false)
     @Column(name = "APE_PATERNO")
     private String apePaterno;
+    @Basic(optional = false)
     @Column(name = "APE_MATERNO")
     private String apeMaterno;
+    @Basic(optional = false)
     @Column(name = "NOM_PERNAT")
     private String nomPernat;
+    @Basic(optional = false)
     @Column(name = "FEC_NACIM")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecNacim;
+    @Basic(optional = false)
     @Column(name = "DES_PROFESION")
     private String desProfesion;
+    @Basic(optional = false)
     @Column(name = "COD_PAIS")
     private String codPais;
+    @Basic(optional = false)
     @Column(name = "DIR_PERNAT")
     private String dirPernat;
+    @Basic(optional = false)
     @Column(name = "COD_UBIGEO")
     private String codUbigeo;
+    @Basic(optional = false)
     @Column(name = "COD_ESTCIVIL")
     private String codEstcivil;
+    @Basic(optional = false)
     @Column(name = "COD_TDCON")
     private String codTdcon;
+    @Basic(optional = false)
     @Column(name = "NUM_DOCCON")
     private String numDoccon;
+    @Basic(optional = false)
     @Column(name = "APE_PATCON")
     private String apePatcon;
+    @Basic(optional = false)
     @Column(name = "APE_MATCON")
     private String apeMatcon;
+    @Basic(optional = false)
     @Column(name = "NOM_CONYUGE")
     private String nomConyuge;
+    @Basic(optional = false)
     @Column(name = "DES_PROFCON")
     private String desProfcon;
-    @JoinColumns({
-        @JoinColumn(name = "ANN_TRAMITE", referencedColumnName = "ANN_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "COD_TIPDOC", referencedColumnName = "COD_TIPDOC", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_DOCUM", referencedColumnName = "NUM_DOCUM", insertable = false, updatable = false)})
-    @OneToOne(optional = false)
-    private T022accionista t022accionista;
 
     public T025pernat() {
     }
 
-    public T025pernat(T025pernatPK t025pernatPK) {
-        this.t025pernatPK = t025pernatPK;
+    public T025pernat(Integer idPernat) {
+        this.idPernat = idPernat;
     }
 
-    public T025pernat(short annTramite, int numTramite, String codTipdoc, String numDocum) {
-        this.t025pernatPK = new T025pernatPK(annTramite, numTramite, codTipdoc, numDocum);
+    public T025pernat(Integer idPernat, int numTramite, String codTipdoc, String numDocum, String apePaterno, String apeMaterno, String nomPernat, Date fecNacim, String desProfesion, String codPais, String dirPernat, String codUbigeo, String codEstcivil, String codTdcon, String numDoccon, String apePatcon, String apeMatcon, String nomConyuge, String desProfcon) {
+        this.idPernat = idPernat;
+        this.numTramite = numTramite;
+        this.codTipdoc = codTipdoc;
+        this.numDocum = numDocum;
+        this.apePaterno = apePaterno;
+        this.apeMaterno = apeMaterno;
+        this.nomPernat = nomPernat;
+        this.fecNacim = fecNacim;
+        this.desProfesion = desProfesion;
+        this.codPais = codPais;
+        this.dirPernat = dirPernat;
+        this.codUbigeo = codUbigeo;
+        this.codEstcivil = codEstcivil;
+        this.codTdcon = codTdcon;
+        this.numDoccon = numDoccon;
+        this.apePatcon = apePatcon;
+        this.apeMatcon = apeMatcon;
+        this.nomConyuge = nomConyuge;
+        this.desProfcon = desProfcon;
     }
 
-    public T025pernatPK getT025pernatPK() {
-        return t025pernatPK;
+    public Integer getIdPernat() {
+        return idPernat;
     }
 
-    public void setT025pernatPK(T025pernatPK t025pernatPK) {
-        this.t025pernatPK = t025pernatPK;
+    public void setIdPernat(Integer idPernat) {
+        this.idPernat = idPernat;
+    }
+
+    public int getNumTramite() {
+        return numTramite;
+    }
+
+    public void setNumTramite(int numTramite) {
+        this.numTramite = numTramite;
+    }
+
+    public String getCodTipdoc() {
+        return codTipdoc;
+    }
+
+    public void setCodTipdoc(String codTipdoc) {
+        this.codTipdoc = codTipdoc;
+    }
+
+    public String getNumDocum() {
+        return numDocum;
+    }
+
+    public void setNumDocum(String numDocum) {
+        this.numDocum = numDocum;
     }
 
     public String getApePaterno() {
@@ -206,18 +268,10 @@ public class T025pernat implements Serializable {
         this.desProfcon = desProfcon;
     }
 
-    public T022accionista getT022accionista() {
-        return t022accionista;
-    }
-
-    public void setT022accionista(T022accionista t022accionista) {
-        this.t022accionista = t022accionista;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (t025pernatPK != null ? t025pernatPK.hashCode() : 0);
+        hash += (idPernat != null ? idPernat.hashCode() : 0);
         return hash;
     }
 
@@ -228,7 +282,7 @@ public class T025pernat implements Serializable {
             return false;
         }
         T025pernat other = (T025pernat) object;
-        if ((this.t025pernatPK == null && other.t025pernatPK != null) || (this.t025pernatPK != null && !this.t025pernatPK.equals(other.t025pernatPK))) {
+        if ((this.idPernat == null && other.idPernat != null) || (this.idPernat != null && !this.idPernat.equals(other.idPernat))) {
             return false;
         }
         return true;
@@ -236,7 +290,7 @@ public class T025pernat implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T025pernat[t025pernatPK=" + t025pernatPK + "]";
+        return "pe.gob.pcm.constitucion.model.T025pernat[idPernat=" + idPernat + "]";
     }
 
 }

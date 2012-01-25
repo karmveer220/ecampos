@@ -7,13 +7,13 @@ package pe.gob.pcm.constitucion.web.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,45 +24,73 @@ import javax.persistence.Table;
 @Table(name = "t029archivo")
 public class T029archivo implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected T029archivoPK t029archivoPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_ARCHIVO")
+    private Integer idArchivo;
+    @Basic(optional = false)
+    @Column(name = "NUM_TRAMITE")
+    private int numTramite;
+    @Basic(optional = false)
+    @Column(name = "NUM_ARCHIVO")
+    private int numArchivo;
+    @Basic(optional = false)
     @Column(name = "IND_TIPARCH")
-    private Character indTiparch;
+    private char indTiparch;
+    @Basic(optional = false)
     @Column(name = "NOM_ARCHIVO")
     private String nomArchivo;
+    @Basic(optional = false)
     @Lob
     @Column(name = "ARC_CONTENIDO")
     private byte[] arcContenido;
-    @JoinColumns({
-        @JoinColumn(name = "ANN_TRAMITE", referencedColumnName = "ANN_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE", insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
-    private T020tramite t020tramite;
 
     public T029archivo() {
     }
 
-    public T029archivo(T029archivoPK t029archivoPK) {
-        this.t029archivoPK = t029archivoPK;
+    public T029archivo(Integer idArchivo) {
+        this.idArchivo = idArchivo;
     }
 
-    public T029archivo(short annTramite, int numTramite, short numArchivo) {
-        this.t029archivoPK = new T029archivoPK(annTramite, numTramite, numArchivo);
+    public T029archivo(Integer idArchivo, int numTramite, int numArchivo, char indTiparch, String nomArchivo, byte[] arcContenido) {
+        this.idArchivo = idArchivo;
+        this.numTramite = numTramite;
+        this.numArchivo = numArchivo;
+        this.indTiparch = indTiparch;
+        this.nomArchivo = nomArchivo;
+        this.arcContenido = arcContenido;
     }
 
-    public T029archivoPK getT029archivoPK() {
-        return t029archivoPK;
+    public Integer getIdArchivo() {
+        return idArchivo;
     }
 
-    public void setT029archivoPK(T029archivoPK t029archivoPK) {
-        this.t029archivoPK = t029archivoPK;
+    public void setIdArchivo(Integer idArchivo) {
+        this.idArchivo = idArchivo;
     }
 
-    public Character getIndTiparch() {
+    public int getNumTramite() {
+        return numTramite;
+    }
+
+    public void setNumTramite(int numTramite) {
+        this.numTramite = numTramite;
+    }
+
+    public int getNumArchivo() {
+        return numArchivo;
+    }
+
+    public void setNumArchivo(int numArchivo) {
+        this.numArchivo = numArchivo;
+    }
+
+    public char getIndTiparch() {
         return indTiparch;
     }
 
-    public void setIndTiparch(Character indTiparch) {
+    public void setIndTiparch(char indTiparch) {
         this.indTiparch = indTiparch;
     }
 
@@ -82,18 +110,10 @@ public class T029archivo implements Serializable {
         this.arcContenido = arcContenido;
     }
 
-    public T020tramite getT020tramite() {
-        return t020tramite;
-    }
-
-    public void setT020tramite(T020tramite t020tramite) {
-        this.t020tramite = t020tramite;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (t029archivoPK != null ? t029archivoPK.hashCode() : 0);
+        hash += (idArchivo != null ? idArchivo.hashCode() : 0);
         return hash;
     }
 
@@ -104,7 +124,7 @@ public class T029archivo implements Serializable {
             return false;
         }
         T029archivo other = (T029archivo) object;
-        if ((this.t029archivoPK == null && other.t029archivoPK != null) || (this.t029archivoPK != null && !this.t029archivoPK.equals(other.t029archivoPK))) {
+        if ((this.idArchivo == null && other.idArchivo != null) || (this.idArchivo != null && !this.idArchivo.equals(other.idArchivo))) {
             return false;
         }
         return true;
@@ -112,7 +132,7 @@ public class T029archivo implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T029archivo[t029archivoPK=" + t029archivoPK + "]";
+        return "pe.gob.pcm.constitucion.model.T029archivo[idArchivo=" + idArchivo + "]";
     }
 
 }

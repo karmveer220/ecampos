@@ -1,3 +1,6 @@
+<jsp:include page="include/header.jsp" flush="true"/>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <form id="jrepForm" name="aporteForm" dojoType="dijit.form.Form">
 	<input type="hidden" name="action" value="grabarJuridicaRep"/>
 	<input id="jrepModo" type="hidden" name="modo" value="NEW"/>
@@ -103,3 +106,5 @@
 		</tr>
 	</table>
 </form>
+
+<jsp:include page="include/footer.jsp" flush="true"/>
