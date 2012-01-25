@@ -8,9 +8,12 @@ package pe.gob.pcm.constitucion.web.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,15 +26,27 @@ import javax.persistence.TemporalType;
 @Table(name = "t001parametro")
 public class T001parametro implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected T001parametroPK t001parametroPK;
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_PARAMETRO")
+    private Integer idParametro;
+    @Basic(optional = false)
+    @Column(name = "COD_GRUPO")
+    private String codGrupo;
+    @Basic(optional = false)
+    @Column(name = "COD_PARAM")
+    private String codParam;
+    @Basic(optional = false)
     @Column(name = "DES_PARAM")
     private String desParam;
+    @Basic(optional = false)
     @Column(name = "DES_CORTA")
     private String desCorta;
+    @Basic(optional = false)
     @Column(name = "COD_USUMODIF")
     private String codUsumodif;
+    @Basic(optional = false)
     @Column(name = "FEC_MODIF")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecModif;
@@ -39,20 +54,42 @@ public class T001parametro implements Serializable {
     public T001parametro() {
     }
 
-    public T001parametro(T001parametroPK t001parametroPK) {
-        this.t001parametroPK = t001parametroPK;
+    public T001parametro(Integer idParametro) {
+        this.idParametro = idParametro;
     }
 
-    public T001parametro(String codGrupo, String codParam) {
-        this.t001parametroPK = new T001parametroPK(codGrupo, codParam);
+    public T001parametro(Integer idParametro, String codGrupo, String codParam, String desParam, String desCorta, String codUsumodif, Date fecModif) {
+        this.idParametro = idParametro;
+        this.codGrupo = codGrupo;
+        this.codParam = codParam;
+        this.desParam = desParam;
+        this.desCorta = desCorta;
+        this.codUsumodif = codUsumodif;
+        this.fecModif = fecModif;
     }
 
-    public T001parametroPK getT001parametroPK() {
-        return t001parametroPK;
+    public Integer getIdParametro() {
+        return idParametro;
     }
 
-    public void setT001parametroPK(T001parametroPK t001parametroPK) {
-        this.t001parametroPK = t001parametroPK;
+    public void setIdParametro(Integer idParametro) {
+        this.idParametro = idParametro;
+    }
+
+    public String getCodGrupo() {
+        return codGrupo;
+    }
+
+    public void setCodGrupo(String codGrupo) {
+        this.codGrupo = codGrupo;
+    }
+
+    public String getCodParam() {
+        return codParam;
+    }
+
+    public void setCodParam(String codParam) {
+        this.codParam = codParam;
     }
 
     public String getDesParam() {
@@ -90,7 +127,7 @@ public class T001parametro implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (t001parametroPK != null ? t001parametroPK.hashCode() : 0);
+        hash += (idParametro != null ? idParametro.hashCode() : 0);
         return hash;
     }
 
@@ -101,7 +138,7 @@ public class T001parametro implements Serializable {
             return false;
         }
         T001parametro other = (T001parametro) object;
-        if ((this.t001parametroPK == null && other.t001parametroPK != null) || (this.t001parametroPK != null && !this.t001parametroPK.equals(other.t001parametroPK))) {
+        if ((this.idParametro == null && other.idParametro != null) || (this.idParametro != null && !this.idParametro.equals(other.idParametro))) {
             return false;
         }
         return true;
@@ -109,7 +146,7 @@ public class T001parametro implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T001parametro[t001parametroPK=" + t001parametroPK + "]";
+        return "pe.gob.pcm.constitucion.model.T001parametro[idParametro=" + idParametro + "]";
     }
 
 }

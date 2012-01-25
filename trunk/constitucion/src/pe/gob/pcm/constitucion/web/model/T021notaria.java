@@ -8,14 +8,11 @@ package pe.gob.pcm.constitucion.web.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,58 +29,98 @@ public class T021notaria implements Serializable {
     @Basic(optional = false)
     @Column(name = "COD_NOTARIA")
     private String codNotaria;
+    @Basic(optional = false)
     @Column(name = "NUM_RUCNOT")
     private String numRucnot;
+    @Basic(optional = false)
     @Column(name = "NOM_RAZSOC")
     private String nomRazsoc;
+    @Basic(optional = false)
     @Column(name = "DIR_NOTARIA")
     private String dirNotaria;
+    @Basic(optional = false)
     @Column(name = "DES_CORREO")
     private String desCorreo;
+    @Basic(optional = false)
     @Column(name = "DES_WEB")
     private String desWeb;
+    @Basic(optional = false)
     @Column(name = "NUM_TELEF1")
     private String numTelef1;
+    @Basic(optional = false)
     @Column(name = "NUM_TELEF2")
     private String numTelef2;
+    @Basic(optional = false)
     @Column(name = "COD_SUNARP")
     private String codSunarp;
+    @Basic(optional = false)
     @Column(name = "COD_COLEGIO")
     private String codColegio;
+    @Basic(optional = false)
     @Column(name = "COD_UBIGEO")
     private String codUbigeo;
+    @Basic(optional = false)
     @Column(name = "NUM_LATITUD")
     private BigDecimal numLatitud;
+    @Basic(optional = false)
     @Column(name = "NUM_LONGITUD")
     private BigDecimal numLongitud;
+    @Basic(optional = false)
     @Column(name = "OBS_NOTARIA")
     private String obsNotaria;
+    @Basic(optional = false)
     @Column(name = "NUM_DNIPRESEN")
     private String numDnipresen;
+    @Basic(optional = false)
     @Column(name = "APE_PATPRESEN")
     private String apePatpresen;
+    @Basic(optional = false)
     @Column(name = "APE_MATPRESEN")
     private String apeMatpresen;
+    @Basic(optional = false)
     @Column(name = "NOM_PRESEN")
     private String nomPresen;
+    @Basic(optional = false)
     @Column(name = "FEC_REGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecRegistro;
+    @Basic(optional = false)
     @Column(name = "IND_ELIMINADO")
-    private Character indEliminado;
+    private char indEliminado;
+    @Basic(optional = false)
     @Column(name = "FEC_ELIMINADO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecEliminado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "t021notaria")
-    private List<T031plantilla> t031plantillaList;
-    @OneToMany(mappedBy = "t021notaria")
-    private List<T020tramite> t020tramiteList;
 
     public T021notaria() {
     }
 
     public T021notaria(String codNotaria) {
         this.codNotaria = codNotaria;
+    }
+
+    public T021notaria(String codNotaria, String numRucnot, String nomRazsoc, String dirNotaria, String desCorreo, String desWeb, String numTelef1, String numTelef2, String codSunarp, String codColegio, String codUbigeo, BigDecimal numLatitud, BigDecimal numLongitud, String obsNotaria, String numDnipresen, String apePatpresen, String apeMatpresen, String nomPresen, Date fecRegistro, char indEliminado, Date fecEliminado) {
+        this.codNotaria = codNotaria;
+        this.numRucnot = numRucnot;
+        this.nomRazsoc = nomRazsoc;
+        this.dirNotaria = dirNotaria;
+        this.desCorreo = desCorreo;
+        this.desWeb = desWeb;
+        this.numTelef1 = numTelef1;
+        this.numTelef2 = numTelef2;
+        this.codSunarp = codSunarp;
+        this.codColegio = codColegio;
+        this.codUbigeo = codUbigeo;
+        this.numLatitud = numLatitud;
+        this.numLongitud = numLongitud;
+        this.obsNotaria = obsNotaria;
+        this.numDnipresen = numDnipresen;
+        this.apePatpresen = apePatpresen;
+        this.apeMatpresen = apeMatpresen;
+        this.nomPresen = nomPresen;
+        this.fecRegistro = fecRegistro;
+        this.indEliminado = indEliminado;
+        this.fecEliminado = fecEliminado;
     }
 
     public String getCodNotaria() {
@@ -238,11 +275,11 @@ public class T021notaria implements Serializable {
         this.fecRegistro = fecRegistro;
     }
 
-    public Character getIndEliminado() {
+    public char getIndEliminado() {
         return indEliminado;
     }
 
-    public void setIndEliminado(Character indEliminado) {
+    public void setIndEliminado(char indEliminado) {
         this.indEliminado = indEliminado;
     }
 
@@ -252,22 +289,6 @@ public class T021notaria implements Serializable {
 
     public void setFecEliminado(Date fecEliminado) {
         this.fecEliminado = fecEliminado;
-    }
-
-    public List<T031plantilla> getT031plantillaList() {
-        return t031plantillaList;
-    }
-
-    public void setT031plantillaList(List<T031plantilla> t031plantillaList) {
-        this.t031plantillaList = t031plantillaList;
-    }
-
-    public List<T020tramite> getT020tramiteList() {
-        return t020tramiteList;
-    }
-
-    public void setT020tramiteList(List<T020tramite> t020tramiteList) {
-        this.t020tramiteList = t020tramiteList;
     }
 
     @Override
@@ -292,7 +313,7 @@ public class T021notaria implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T021notaria[codNotaria=" + codNotaria + "]";
+        return "pe.gob.pcm.constitucion.model.T021notaria[codNotaria=" + codNotaria + "]";
     }
 
 }

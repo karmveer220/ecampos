@@ -9,8 +9,10 @@ import java.io.Serializable;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -21,48 +23,93 @@ import javax.persistence.Table;
 @Table(name = "t033solicitante")
 public class T033solicitante implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected T033solicitantePK t033solicitantePK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_SOLICITANTE")
+    private Integer idSolicitante;
+    @Basic(optional = false)
+    @Column(name = "NUM_TRAMITE")
+    private int numTramite;
+    @Basic(optional = false)
+    @Column(name = "COD_TDOCSOL")
+    private String codTdocsol;
+    @Basic(optional = false)
+    @Column(name = "NUM_DOCSOL")
+    private String numDocsol;
     @Basic(optional = false)
     @Column(name = "APE_PATERNO")
     private String apePaterno;
     @Basic(optional = false)
     @Column(name = "APE_MATERNO")
     private String apeMaterno;
+    @Basic(optional = false)
     @Column(name = "NOM_SOLICITANTE")
     private String nomSolicitante;
+    @Basic(optional = false)
     @Column(name = "DES_CORREO")
     private String desCorreo;
+    @Basic(optional = false)
     @Column(name = "NUM_TELEF")
     private String numTelef;
+    @Basic(optional = false)
     @Column(name = "NUM_CELULAR")
     private String numCelular;
+    @Basic(optional = false)
     @Column(name = "DIR_SOLICITANTE")
     private String dirSolicitante;
 
     public T033solicitante() {
     }
 
-    public T033solicitante(T033solicitantePK t033solicitantePK) {
-        this.t033solicitantePK = t033solicitantePK;
+    public T033solicitante(Integer idSolicitante) {
+        this.idSolicitante = idSolicitante;
     }
 
-    public T033solicitante(T033solicitantePK t033solicitantePK, String apePaterno, String apeMaterno) {
-        this.t033solicitantePK = t033solicitantePK;
+    public T033solicitante(Integer idSolicitante, int numTramite, String codTdocsol, String numDocsol, String apePaterno, String apeMaterno, String nomSolicitante, String desCorreo, String numTelef, String numCelular, String dirSolicitante) {
+        this.idSolicitante = idSolicitante;
+        this.numTramite = numTramite;
+        this.codTdocsol = codTdocsol;
+        this.numDocsol = numDocsol;
         this.apePaterno = apePaterno;
         this.apeMaterno = apeMaterno;
+        this.nomSolicitante = nomSolicitante;
+        this.desCorreo = desCorreo;
+        this.numTelef = numTelef;
+        this.numCelular = numCelular;
+        this.dirSolicitante = dirSolicitante;
     }
 
-    public T033solicitante(short annTramite, int numTramite, String codTdocsol, String numDocsol) {
-        this.t033solicitantePK = new T033solicitantePK(annTramite, numTramite, codTdocsol, numDocsol);
+    public Integer getIdSolicitante() {
+        return idSolicitante;
     }
 
-    public T033solicitantePK getT033solicitantePK() {
-        return t033solicitantePK;
+    public void setIdSolicitante(Integer idSolicitante) {
+        this.idSolicitante = idSolicitante;
     }
 
-    public void setT033solicitantePK(T033solicitantePK t033solicitantePK) {
-        this.t033solicitantePK = t033solicitantePK;
+    public int getNumTramite() {
+        return numTramite;
+    }
+
+    public void setNumTramite(int numTramite) {
+        this.numTramite = numTramite;
+    }
+
+    public String getCodTdocsol() {
+        return codTdocsol;
+    }
+
+    public void setCodTdocsol(String codTdocsol) {
+        this.codTdocsol = codTdocsol;
+    }
+
+    public String getNumDocsol() {
+        return numDocsol;
+    }
+
+    public void setNumDocsol(String numDocsol) {
+        this.numDocsol = numDocsol;
     }
 
     public String getApePaterno() {
@@ -124,7 +171,7 @@ public class T033solicitante implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (t033solicitantePK != null ? t033solicitantePK.hashCode() : 0);
+        hash += (idSolicitante != null ? idSolicitante.hashCode() : 0);
         return hash;
     }
 
@@ -135,7 +182,7 @@ public class T033solicitante implements Serializable {
             return false;
         }
         T033solicitante other = (T033solicitante) object;
-        if ((this.t033solicitantePK == null && other.t033solicitantePK != null) || (this.t033solicitantePK != null && !this.t033solicitantePK.equals(other.t033solicitantePK))) {
+        if ((this.idSolicitante == null && other.idSolicitante != null) || (this.idSolicitante != null && !this.idSolicitante.equals(other.idSolicitante))) {
             return false;
         }
         return true;
@@ -143,7 +190,7 @@ public class T033solicitante implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T033solicitante[t033solicitantePK=" + t033solicitantePK + "]";
+        return "pe.gob.pcm.constitucion.model.T033solicitante[idSolicitante=" + idSolicitante + "]";
     }
 
 }

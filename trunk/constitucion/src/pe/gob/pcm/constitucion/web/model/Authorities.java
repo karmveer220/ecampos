@@ -9,8 +9,6 @@ import java.io.Serializable;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,13 +18,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "authorities")
 public class Authorities implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected AuthoritiesPK authoritiesPK;
-    @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Users users;
 
     public Authorities() {
     }
@@ -45,14 +39,6 @@ public class Authorities implements Serializable {
 
     public void setAuthoritiesPK(AuthoritiesPK authoritiesPK) {
         this.authoritiesPK = authoritiesPK;
-    }
-
-    public Users getUsers() {
-        return users;
-    }
-
-    public void setUsers(Users users) {
-        this.users = users;
     }
 
     @Override
@@ -77,7 +63,7 @@ public class Authorities implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.Authorities[authoritiesPK=" + authoritiesPK + "]";
+        return "pe.gob.pcm.constitucion.model.Authorities[authoritiesPK=" + authoritiesPK + "]";
     }
 
 }

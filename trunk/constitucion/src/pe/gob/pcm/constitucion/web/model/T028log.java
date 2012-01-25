@@ -8,12 +8,12 @@ package pe.gob.pcm.constitucion.web.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,38 +26,78 @@ import javax.persistence.TemporalType;
 @Table(name = "t028log")
 public class T028log implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected T028logPK t028logPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "NUM_LOG")
+    private Integer numLog;
+    @Basic(optional = false)
+    @Column(name = "ANN_LOG")
+    private short annLog;
+    @Basic(optional = false)
+    @Column(name = "ANN_TRAMITE")
+    private short annTramite;
+    @Basic(optional = false)
+    @Column(name = "NUM_TRAMITE")
+    private int numTramite;
+    @Basic(optional = false)
     @Column(name = "COD_OPERACION")
     private String codOperacion;
+    @Basic(optional = false)
     @Column(name = "COD_USUMODIF")
     private String codUsumodif;
+    @Basic(optional = false)
     @Column(name = "FEC_MODIF")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecModif;
-    @JoinColumns({
-        @JoinColumn(name = "ANN_TRAMITE", referencedColumnName = "ANN_TRAMITE"),
-        @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE")})
-    @ManyToOne
-    private T020tramite t020tramite;
 
     public T028log() {
     }
 
-    public T028log(T028logPK t028logPK) {
-        this.t028logPK = t028logPK;
+    public T028log(Integer numLog) {
+        this.numLog = numLog;
     }
 
-    public T028log(short annLog, int numLog) {
-        this.t028logPK = new T028logPK(annLog, numLog);
+    public T028log(Integer numLog, short annLog, short annTramite, int numTramite, String codOperacion, String codUsumodif, Date fecModif) {
+        this.numLog = numLog;
+        this.annLog = annLog;
+        this.annTramite = annTramite;
+        this.numTramite = numTramite;
+        this.codOperacion = codOperacion;
+        this.codUsumodif = codUsumodif;
+        this.fecModif = fecModif;
     }
 
-    public T028logPK getT028logPK() {
-        return t028logPK;
+    public Integer getNumLog() {
+        return numLog;
     }
 
-    public void setT028logPK(T028logPK t028logPK) {
-        this.t028logPK = t028logPK;
+    public void setNumLog(Integer numLog) {
+        this.numLog = numLog;
+    }
+
+    public short getAnnLog() {
+        return annLog;
+    }
+
+    public void setAnnLog(short annLog) {
+        this.annLog = annLog;
+    }
+
+    public short getAnnTramite() {
+        return annTramite;
+    }
+
+    public void setAnnTramite(short annTramite) {
+        this.annTramite = annTramite;
+    }
+
+    public int getNumTramite() {
+        return numTramite;
+    }
+
+    public void setNumTramite(int numTramite) {
+        this.numTramite = numTramite;
     }
 
     public String getCodOperacion() {
@@ -84,18 +124,10 @@ public class T028log implements Serializable {
         this.fecModif = fecModif;
     }
 
-    public T020tramite getT020tramite() {
-        return t020tramite;
-    }
-
-    public void setT020tramite(T020tramite t020tramite) {
-        this.t020tramite = t020tramite;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (t028logPK != null ? t028logPK.hashCode() : 0);
+        hash += (numLog != null ? numLog.hashCode() : 0);
         return hash;
     }
 
@@ -106,7 +138,7 @@ public class T028log implements Serializable {
             return false;
         }
         T028log other = (T028log) object;
-        if ((this.t028logPK == null && other.t028logPK != null) || (this.t028logPK != null && !this.t028logPK.equals(other.t028logPK))) {
+        if ((this.numLog == null && other.numLog != null) || (this.numLog != null && !this.numLog.equals(other.numLog))) {
             return false;
         }
         return true;
@@ -114,7 +146,7 @@ public class T028log implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T028log[t028logPK=" + t028logPK + "]";
+        return "pe.gob.pcm.constitucion.model.T028log[numLog=" + numLog + "]";
     }
 
 }

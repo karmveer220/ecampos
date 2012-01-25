@@ -6,6 +6,7 @@
 package pe.gob.pcm.constitucion.web.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -73,7 +74,7 @@ public class AuthoritiesPK implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.AuthoritiesPK[username=" + username + ", authority=" + authority + "]";
+        return "pe.gob.pcm.constitucion.model.AuthoritiesPK[username=" + username + ", authority=" + authority + "]";
     }
 
 }

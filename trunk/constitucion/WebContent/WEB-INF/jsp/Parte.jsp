@@ -1,3 +1,5 @@
+<jsp:include page="include/header.jsp" flush="true"/>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <div dojoType="dijit.layout.BorderContainer" gutters="false" style="overflow:hidden">
 	<div dojoType="dijit.layout.ContentPane" region="top"  class="x-panel-header" style="border-bottom: 0px; padding: 5px 8px">
@@ -113,3 +115,5 @@
 		</tr>
 	</table>
 </div>
+
+<jsp:include page="include/footer.jsp" flush="true"/>

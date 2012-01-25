@@ -60,9 +60,6 @@ public class Users extends User implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecModif;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private List<Authorities> authoritiesList;
-
     
     public Users() {		
 		super("default", "default", true, true, true, true , uno() );		
@@ -147,15 +144,7 @@ public class Users extends User implements Serializable {
         this.fecModif = fecModif;
     }
 
-    public List<Authorities> getAuthoritiesList() {
-        return authoritiesList;
-    }
-
-    public void setAuthoritiesList(List<Authorities> authoritiesList) {
-        this.authoritiesList = authoritiesList;
-    }
-
-    @Override
+     @Override
     public int hashCode() {
         int hash = 0;
         hash += (username != null ? username.hashCode() : 0);

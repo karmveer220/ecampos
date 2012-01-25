@@ -7,14 +7,13 @@ package pe.gob.pcm.constitucion.web.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+
+import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -25,46 +24,72 @@ import javax.persistence.Table;
 @Table(name = "t023aportebien")
 public class T023aportebien implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected T023aportebienPK t023aportebienPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_APORTE")
+    private Integer idAporte;
+    @Basic(optional = false)
+    @Column(name = "ID_ACCIONISTA")
+    private int idAccionista;
+    @Basic(optional = false)
+    @Column(name = "NUM_APORTE")
+    private int numAporte;
+    @Basic(optional = false)
     @Column(name = "CNT_BIEN")
-    private Integer cntBien;
+    private int cntBien;
+    @Basic(optional = false)
     @Column(name = "DES_BIEN")
     private String desBien;
+    @Basic(optional = false)
     @Column(name = "MTO_BIEN")
     private BigDecimal mtoBien;
-    @JoinColumns({
-        @JoinColumn(name = "ANN_TRAMITE", referencedColumnName = "ANN_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE", insertable = false, updatable = false),
-        @JoinColumn(name = "COD_TIPDOC", referencedColumnName = "COD_TIPDOC", insertable = false, updatable = false),
-        @JoinColumn(name = "NUM_DOCUM", referencedColumnName = "NUM_DOCUM", insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
-    private T022accionista t022accionista;
 
     public T023aportebien() {
     }
 
-    public T023aportebien(T023aportebienPK t023aportebienPK) {
-        this.t023aportebienPK = t023aportebienPK;
+    public T023aportebien(Integer idAporte) {
+        this.idAporte = idAporte;
     }
 
-    public T023aportebien(short annTramite, int numTramite, String codTipdoc, String numDocum, int numAporte) {
-        this.t023aportebienPK = new T023aportebienPK(annTramite, numTramite, codTipdoc, numDocum, numAporte);
+    public T023aportebien(Integer idAporte, int idAccionista, int numAporte, int cntBien, String desBien, BigDecimal mtoBien) {
+        this.idAporte = idAporte;
+        this.idAccionista = idAccionista;
+        this.numAporte = numAporte;
+        this.cntBien = cntBien;
+        this.desBien = desBien;
+        this.mtoBien = mtoBien;
     }
 
-    public T023aportebienPK getT023aportebienPK() {
-        return t023aportebienPK;
+    public Integer getIdAporte() {
+        return idAporte;
     }
 
-    public void setT023aportebienPK(T023aportebienPK t023aportebienPK) {
-        this.t023aportebienPK = t023aportebienPK;
+    public void setIdAporte(Integer idAporte) {
+        this.idAporte = idAporte;
     }
 
-    public Integer getCntBien() {
+    public int getIdAccionista() {
+        return idAccionista;
+    }
+
+    public void setIdAccionista(int idAccionista) {
+        this.idAccionista = idAccionista;
+    }
+
+    public int getNumAporte() {
+        return numAporte;
+    }
+
+    public void setNumAporte(int numAporte) {
+        this.numAporte = numAporte;
+    }
+
+    public int getCntBien() {
         return cntBien;
     }
 
-    public void setCntBien(Integer cntBien) {
+    public void setCntBien(int cntBien) {
         this.cntBien = cntBien;
     }
 
@@ -84,18 +109,10 @@ public class T023aportebien implements Serializable {
         this.mtoBien = mtoBien;
     }
 
-    public T022accionista getT022accionista() {
-        return t022accionista;
-    }
-
-    public void setT022accionista(T022accionista t022accionista) {
-        this.t022accionista = t022accionista;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (t023aportebienPK != null ? t023aportebienPK.hashCode() : 0);
+        hash += (idAporte != null ? idAporte.hashCode() : 0);
         return hash;
     }
 
@@ -106,7 +123,7 @@ public class T023aportebien implements Serializable {
             return false;
         }
         T023aportebien other = (T023aportebien) object;
-        if ((this.t023aportebienPK == null && other.t023aportebienPK != null) || (this.t023aportebienPK != null && !this.t023aportebienPK.equals(other.t023aportebienPK))) {
+        if ((this.idAporte == null && other.idAporte != null) || (this.idAporte != null && !this.idAporte.equals(other.idAporte))) {
             return false;
         }
         return true;
@@ -114,7 +131,7 @@ public class T023aportebien implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T023aportebien[t023aportebienPK=" + t023aportebienPK + "]";
+        return "pe.gob.pcm.constitucion.model.T023aportebien[idAporte=" + idAporte + "]";
     }
 
 }

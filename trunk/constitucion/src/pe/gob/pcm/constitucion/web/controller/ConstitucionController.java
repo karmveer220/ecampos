@@ -1,8 +1,5 @@
 package pe.gob.pcm.constitucion.web.controller;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -18,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import pe.gob.pcm.constitucion.web.bean.BeanValida;
 import pe.gob.pcm.constitucion.web.dao.ParametroDAO;
-import pe.gob.pcm.constitucion.web.dao.TramiteDAO;
 import pe.gob.pcm.constitucion.web.model.T020tramite;
-import pe.gob.pcm.constitucion.web.model.T020tramitePK;
 import pe.gob.pcm.constitucion.web.service.TramiteService;
 import pe.gob.pcm.constitucion.web.service.ValidacionService;
 import pe.gob.pcm.constitucion.web.util.ParametrosUtil;
@@ -103,10 +98,6 @@ public class ConstitucionController {
 		logger.debug("grabo el tramite y muetro mensaje de exito, no avanzo a la siguiente pantalla");
 		BeanValida val = validacionService.validaTramiteInicial(tramite);
 		if(val.getResultado() == 0 ){
-			T020tramitePK pk = new T020tramitePK();
-			pk.setAnnTramite(new GregorianCalendar().get(Calendar.YEAR));
-			pk.setNumTramite(1);
-			tramite.setT020tramitePK(pk);
 			tramiteService.registrarTramite(tramite);
 		}else{
 			request.setAttribute("msgError",val.getMensaje());

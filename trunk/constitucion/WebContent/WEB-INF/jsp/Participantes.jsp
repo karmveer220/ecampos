@@ -1,3 +1,6 @@
+<jsp:include page="include/header.jsp" flush="true"/>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <%
 	String error = "";
 	error = request.getAttribute("msgError")!=null ? (String)request.getAttribute("msgError") : "";
