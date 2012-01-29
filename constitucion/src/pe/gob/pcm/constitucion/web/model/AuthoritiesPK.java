@@ -17,7 +17,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class AuthoritiesPK implements Serializable {
-    @Basic(optional = false)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Basic(optional = false)
     @Column(name = "USERNAME")
     private String username;
     @Basic(optional = false)
@@ -74,7 +78,7 @@ public class AuthoritiesPK implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.AuthoritiesPK[username=" + username + ", authority=" + authority + "]";
+        return "pe.gob.pcm.constitucion.web.model.AuthoritiesPK[username=" + username + ", authority=" + authority + "]";
     }
 
 }

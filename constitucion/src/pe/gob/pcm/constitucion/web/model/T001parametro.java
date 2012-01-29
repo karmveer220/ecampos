@@ -26,11 +26,6 @@ import javax.persistence.TemporalType;
 @Table(name = "t001parametro")
 public class T001parametro implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID_PARAMETRO")
-    private Integer idParametro;
     @Basic(optional = false)
     @Column(name = "COD_GRUPO")
     private String codGrupo;
@@ -40,16 +35,18 @@ public class T001parametro implements Serializable {
     @Basic(optional = false)
     @Column(name = "DES_PARAM")
     private String desParam;
-    @Basic(optional = false)
     @Column(name = "DES_CORTA")
     private String desCorta;
-    @Basic(optional = false)
     @Column(name = "COD_USUMODIF")
     private String codUsumodif;
-    @Basic(optional = false)
     @Column(name = "FEC_MODIF")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecModif;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID_PARAMETRO")
+    private Integer idParametro;
 
     public T001parametro() {
     }
@@ -58,22 +55,11 @@ public class T001parametro implements Serializable {
         this.idParametro = idParametro;
     }
 
-    public T001parametro(Integer idParametro, String codGrupo, String codParam, String desParam, String desCorta, String codUsumodif, Date fecModif) {
+    public T001parametro(Integer idParametro, String codGrupo, String codParam, String desParam) {
         this.idParametro = idParametro;
         this.codGrupo = codGrupo;
         this.codParam = codParam;
         this.desParam = desParam;
-        this.desCorta = desCorta;
-        this.codUsumodif = codUsumodif;
-        this.fecModif = fecModif;
-    }
-
-    public Integer getIdParametro() {
-        return idParametro;
-    }
-
-    public void setIdParametro(Integer idParametro) {
-        this.idParametro = idParametro;
     }
 
     public String getCodGrupo() {
@@ -124,6 +110,14 @@ public class T001parametro implements Serializable {
         this.fecModif = fecModif;
     }
 
+    public Integer getIdParametro() {
+        return idParametro;
+    }
+
+    public void setIdParametro(Integer idParametro) {
+        this.idParametro = idParametro;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -146,7 +140,7 @@ public class T001parametro implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T001parametro[idParametro=" + idParametro + "]";
+        return "pe.gob.pcm.constitucion.web.model.T001parametro[idParametro=" + idParametro + "]";
     }
 
 }

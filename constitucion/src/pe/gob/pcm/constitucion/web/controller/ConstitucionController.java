@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pe.gob.pcm.constitucion.web.bean.BeanValida;
 import pe.gob.pcm.constitucion.web.dao.ParametroDAO;
 import pe.gob.pcm.constitucion.web.model.T020tramite;
+import pe.gob.pcm.constitucion.web.model.T021notaria;
+import pe.gob.pcm.constitucion.web.model.Users;
+import pe.gob.pcm.constitucion.web.service.NotariaService;
 import pe.gob.pcm.constitucion.web.service.TramiteService;
 import pe.gob.pcm.constitucion.web.service.ValidacionService;
 import pe.gob.pcm.constitucion.web.util.ParametrosUtil;
@@ -28,13 +31,16 @@ public class ConstitucionController {
 	private static final Logger logger = Logger.getLogger(ConstitucionController.class);
 	
 	@Autowired
-	ParametroDAO parametroDAO;
+	private ParametroDAO parametroDAO;
 
 	@Autowired
-	ValidacionService validacionService;
+	private ValidacionService validacionService;
 
 	@Autowired
-	TramiteService tramiteService;
+	private TramiteService tramiteService;
+	
+	@Autowired
+	private NotariaService notariaService;
 	
 	@RequestMapping(value ="/constitucion/bandeja.htm",method = RequestMethod.GET)
     public String bandeja(ModelMap model,HttpServletRequest request) {
@@ -98,7 +104,9 @@ public class ConstitucionController {
 		logger.debug("grabo el tramite y muetro mensaje de exito, no avanzo a la siguiente pantalla");
 		BeanValida val = validacionService.validaTramiteInicial(tramite);
 		if(val.getResultado() == 0 ){
+			tramite.setT021notaria( notariaService.obtenerNotaria( Users.getUsuarioBean().getCodNotaria() ) );
 			tramiteService.registrarTramite(tramite);
+			request.getSession().setAttribute("tramitesistema", tramite);
 		}else{
 			request.setAttribute("msgError",val.getMensaje());
 		}

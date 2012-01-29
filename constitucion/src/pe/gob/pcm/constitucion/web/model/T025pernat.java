@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,66 +28,53 @@ import javax.persistence.TemporalType;
 @Table(name = "t025pernat")
 public class T025pernat implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID_PERNAT")
     private Integer idPernat;
-    @Basic(optional = false)
-    @Column(name = "NUM_TRAMITE")
-    private int numTramite;
-    @Basic(optional = false)
+    
     @Column(name = "COD_TIPDOC")
     private String codTipdoc;
-    @Basic(optional = false)
+    
     @Column(name = "NUM_DOCUM")
     private String numDocum;
-    @Basic(optional = false)
     @Column(name = "APE_PATERNO")
     private String apePaterno;
-    @Basic(optional = false)
     @Column(name = "APE_MATERNO")
     private String apeMaterno;
-    @Basic(optional = false)
     @Column(name = "NOM_PERNAT")
     private String nomPernat;
-    @Basic(optional = false)
     @Column(name = "FEC_NACIM")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecNacim;
-    @Basic(optional = false)
     @Column(name = "DES_PROFESION")
     private String desProfesion;
-    @Basic(optional = false)
     @Column(name = "COD_PAIS")
     private String codPais;
-    @Basic(optional = false)
     @Column(name = "DIR_PERNAT")
     private String dirPernat;
-    @Basic(optional = false)
     @Column(name = "COD_UBIGEO")
     private String codUbigeo;
-    @Basic(optional = false)
     @Column(name = "COD_ESTCIVIL")
     private String codEstcivil;
-    @Basic(optional = false)
     @Column(name = "COD_TDCON")
     private String codTdcon;
-    @Basic(optional = false)
     @Column(name = "NUM_DOCCON")
     private String numDoccon;
-    @Basic(optional = false)
     @Column(name = "APE_PATCON")
     private String apePatcon;
-    @Basic(optional = false)
     @Column(name = "APE_MATCON")
     private String apeMatcon;
-    @Basic(optional = false)
     @Column(name = "NOM_CONYUGE")
     private String nomConyuge;
-    @Basic(optional = false)
     @Column(name = "DES_PROFCON")
     private String desProfcon;
+    
+    @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE")
+    @ManyToOne(optional = false)
+    private T020tramite t020tramite;
 
     public T025pernat() {
     }
@@ -94,42 +83,12 @@ public class T025pernat implements Serializable {
         this.idPernat = idPernat;
     }
 
-    public T025pernat(Integer idPernat, int numTramite, String codTipdoc, String numDocum, String apePaterno, String apeMaterno, String nomPernat, Date fecNacim, String desProfesion, String codPais, String dirPernat, String codUbigeo, String codEstcivil, String codTdcon, String numDoccon, String apePatcon, String apeMatcon, String nomConyuge, String desProfcon) {
-        this.idPernat = idPernat;
-        this.numTramite = numTramite;
-        this.codTipdoc = codTipdoc;
-        this.numDocum = numDocum;
-        this.apePaterno = apePaterno;
-        this.apeMaterno = apeMaterno;
-        this.nomPernat = nomPernat;
-        this.fecNacim = fecNacim;
-        this.desProfesion = desProfesion;
-        this.codPais = codPais;
-        this.dirPernat = dirPernat;
-        this.codUbigeo = codUbigeo;
-        this.codEstcivil = codEstcivil;
-        this.codTdcon = codTdcon;
-        this.numDoccon = numDoccon;
-        this.apePatcon = apePatcon;
-        this.apeMatcon = apeMatcon;
-        this.nomConyuge = nomConyuge;
-        this.desProfcon = desProfcon;
-    }
-
     public Integer getIdPernat() {
         return idPernat;
     }
 
     public void setIdPernat(Integer idPernat) {
         this.idPernat = idPernat;
-    }
-
-    public int getNumTramite() {
-        return numTramite;
-    }
-
-    public void setNumTramite(int numTramite) {
-        this.numTramite = numTramite;
     }
 
     public String getCodTipdoc() {
@@ -268,6 +227,14 @@ public class T025pernat implements Serializable {
         this.desProfcon = desProfcon;
     }
 
+    public T020tramite getT020tramite() {
+        return t020tramite;
+    }
+
+    public void setT020tramite(T020tramite t020tramite) {
+        this.t020tramite = t020tramite;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -290,7 +257,7 @@ public class T025pernat implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T025pernat[idPernat=" + idPernat + "]";
+        return "pe.gob.pcm.constitucion.web.model.T025pernat[idPernat=" + idPernat + "]";
     }
 
 }

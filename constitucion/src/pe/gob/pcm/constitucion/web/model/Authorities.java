@@ -63,7 +63,7 @@ public class Authorities implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.Authorities[authoritiesPK=" + authoritiesPK + "]";
+        return "pe.gob.pcm.constitucion.web.model.Authorities[authoritiesPK=" + authoritiesPK + "]";
     }
 
 }

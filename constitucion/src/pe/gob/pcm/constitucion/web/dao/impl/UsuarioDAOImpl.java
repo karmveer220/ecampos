@@ -2,6 +2,7 @@ package pe.gob.pcm.constitucion.web.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
@@ -19,28 +20,25 @@ public class UsuarioDAOImpl extends HibernateDaoSupport implements UsuarioDAO {
 		setHibernateTemplate( new HibernateTemplate(sessionFactory));
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Users> listaUsuarios() {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = getSession().createQuery(" from Users u  ");
+        return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Users> listaUsuarios(Users usuario) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = getSession().createQuery(" from Users u  ");
+        return query.list();
 	}
 
 	@Override
 	public Users obtenerUsuarioPorUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Users obtenerUsuario(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = getSession().createQuery(" from Users u where u.username = :id ")
+        .setString("id", username);
+        return (Users) query.uniqueResult();
 	}
 
 	@Override

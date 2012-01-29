@@ -13,7 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,42 +26,33 @@ import javax.persistence.Table;
 @Table(name = "t029archivo")
 public class T029archivo implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID_ARCHIVO")
     private Integer idArchivo;
-    @Basic(optional = false)
-    @Column(name = "NUM_TRAMITE")
-    private int numTramite;
-    @Basic(optional = false)
+    
     @Column(name = "NUM_ARCHIVO")
-    private int numArchivo;
-    @Basic(optional = false)
+    private Integer numArchivo;
     @Column(name = "IND_TIPARCH")
-    private char indTiparch;
-    @Basic(optional = false)
+    private Character indTiparch;
     @Column(name = "NOM_ARCHIVO")
     private String nomArchivo;
-    @Basic(optional = false)
+    
     @Lob
     @Column(name = "ARC_CONTENIDO")
     private byte[] arcContenido;
+    
+    @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE")
+    @ManyToOne
+    private T020tramite t020tramite;
 
     public T029archivo() {
     }
 
     public T029archivo(Integer idArchivo) {
         this.idArchivo = idArchivo;
-    }
-
-    public T029archivo(Integer idArchivo, int numTramite, int numArchivo, char indTiparch, String nomArchivo, byte[] arcContenido) {
-        this.idArchivo = idArchivo;
-        this.numTramite = numTramite;
-        this.numArchivo = numArchivo;
-        this.indTiparch = indTiparch;
-        this.nomArchivo = nomArchivo;
-        this.arcContenido = arcContenido;
     }
 
     public Integer getIdArchivo() {
@@ -70,27 +63,19 @@ public class T029archivo implements Serializable {
         this.idArchivo = idArchivo;
     }
 
-    public int getNumTramite() {
-        return numTramite;
-    }
-
-    public void setNumTramite(int numTramite) {
-        this.numTramite = numTramite;
-    }
-
-    public int getNumArchivo() {
+    public Integer getNumArchivo() {
         return numArchivo;
     }
 
-    public void setNumArchivo(int numArchivo) {
+    public void setNumArchivo(Integer numArchivo) {
         this.numArchivo = numArchivo;
     }
 
-    public char getIndTiparch() {
+    public Character getIndTiparch() {
         return indTiparch;
     }
 
-    public void setIndTiparch(char indTiparch) {
+    public void setIndTiparch(Character indTiparch) {
         this.indTiparch = indTiparch;
     }
 
@@ -108,6 +93,14 @@ public class T029archivo implements Serializable {
 
     public void setArcContenido(byte[] arcContenido) {
         this.arcContenido = arcContenido;
+    }
+
+    public T020tramite getT020tramite() {
+        return t020tramite;
+    }
+
+    public void setT020tramite(T020tramite t020tramite) {
+        this.t020tramite = t020tramite;
     }
 
     @Override
@@ -132,7 +125,7 @@ public class T029archivo implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T029archivo[idArchivo=" + idArchivo + "]";
+        return "pe.gob.pcm.constitucion.web.model.T029archivo[idArchivo=" + idArchivo + "]";
     }
 
 }

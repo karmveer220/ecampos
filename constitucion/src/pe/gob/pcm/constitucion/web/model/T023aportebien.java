@@ -24,24 +24,22 @@ import javax.persistence.Table;
 @Table(name = "t023aportebien")
 public class T023aportebien implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID_APORTE")
     private Integer idAporte;
+    
     @Basic(optional = false)
     @Column(name = "ID_ACCIONISTA")
     private int idAccionista;
-    @Basic(optional = false)
     @Column(name = "NUM_APORTE")
-    private int numAporte;
-    @Basic(optional = false)
+    private Integer numAporte;
     @Column(name = "CNT_BIEN")
-    private int cntBien;
-    @Basic(optional = false)
+    private Integer cntBien;
     @Column(name = "DES_BIEN")
     private String desBien;
-    @Basic(optional = false)
     @Column(name = "MTO_BIEN")
     private BigDecimal mtoBien;
 
@@ -52,13 +50,9 @@ public class T023aportebien implements Serializable {
         this.idAporte = idAporte;
     }
 
-    public T023aportebien(Integer idAporte, int idAccionista, int numAporte, int cntBien, String desBien, BigDecimal mtoBien) {
+    public T023aportebien(Integer idAporte, int idAccionista) {
         this.idAporte = idAporte;
         this.idAccionista = idAccionista;
-        this.numAporte = numAporte;
-        this.cntBien = cntBien;
-        this.desBien = desBien;
-        this.mtoBien = mtoBien;
     }
 
     public Integer getIdAporte() {
@@ -77,19 +71,19 @@ public class T023aportebien implements Serializable {
         this.idAccionista = idAccionista;
     }
 
-    public int getNumAporte() {
+    public Integer getNumAporte() {
         return numAporte;
     }
 
-    public void setNumAporte(int numAporte) {
+    public void setNumAporte(Integer numAporte) {
         this.numAporte = numAporte;
     }
 
-    public int getCntBien() {
+    public Integer getCntBien() {
         return cntBien;
     }
 
-    public void setCntBien(int cntBien) {
+    public void setCntBien(Integer cntBien) {
         this.cntBien = cntBien;
     }
 
@@ -131,7 +125,7 @@ public class T023aportebien implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T023aportebien[idAporte=" + idAporte + "]";
+        return "pe.gob.pcm.constitucion.web.model.T023aportebien[idAporte=" + idAporte + "]";
     }
 
 }

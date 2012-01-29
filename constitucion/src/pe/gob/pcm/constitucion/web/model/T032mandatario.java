@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,53 +28,43 @@ import javax.persistence.TemporalType;
 @Table(name = "t032mandatario")
 public class T032mandatario implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID_MANDATARIO")
     private Integer idMandatario;
-    @Basic(optional = false)
-    @Column(name = "NUM_TRAMITE")
-    private int numTramite;
-    @Basic(optional = false)
+    
     @Column(name = "COD_TDOCMAN")
     private String codTdocman;
-    @Basic(optional = false)
     @Column(name = "NUM_DOCMAN")
     private String numDocman;
-    @Basic(optional = false)
     @Column(name = "IND_ACCSOC")
-    private char indAccsoc;
-    @Basic(optional = false)
+    private Character indAccsoc;
     @Column(name = "NOM_MANDAT")
     private String nomMandat;
-    @Basic(optional = false)
     @Column(name = "APE_PATERNO")
     private String apePaterno;
-    @Basic(optional = false)
     @Column(name = "APE_MATERNO")
     private String apeMaterno;
-    @Basic(optional = false)
     @Column(name = "FEC_NACIM")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecNacim;
-    @Basic(optional = false)
     @Column(name = "COD_ESTCIVIL")
     private String codEstcivil;
-    @Basic(optional = false)
     @Column(name = "COD_PAIS")
     private String codPais;
-    @Basic(optional = false)
     @Column(name = "DIR_MANDAT")
     private String dirMandat;
-    @Basic(optional = false)
     @Column(name = "DES_PROFESION")
     private String desProfesion;
-    @Basic(optional = false)
     @Column(name = "CLV_INSREG")
     private String clvInsreg;
     @Column(name = "COD_CARGO")
     private String codCargo;
+    @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE")
+    @ManyToOne(optional = false)
+    private T020tramite t020tramite;
 
     public T032mandatario() {
     }
@@ -81,37 +73,12 @@ public class T032mandatario implements Serializable {
         this.idMandatario = idMandatario;
     }
 
-    public T032mandatario(Integer idMandatario, int numTramite, String codTdocman, String numDocman, char indAccsoc, String nomMandat, String apePaterno, String apeMaterno, Date fecNacim, String codEstcivil, String codPais, String dirMandat, String desProfesion, String clvInsreg) {
-        this.idMandatario = idMandatario;
-        this.numTramite = numTramite;
-        this.codTdocman = codTdocman;
-        this.numDocman = numDocman;
-        this.indAccsoc = indAccsoc;
-        this.nomMandat = nomMandat;
-        this.apePaterno = apePaterno;
-        this.apeMaterno = apeMaterno;
-        this.fecNacim = fecNacim;
-        this.codEstcivil = codEstcivil;
-        this.codPais = codPais;
-        this.dirMandat = dirMandat;
-        this.desProfesion = desProfesion;
-        this.clvInsreg = clvInsreg;
-    }
-
     public Integer getIdMandatario() {
         return idMandatario;
     }
 
     public void setIdMandatario(Integer idMandatario) {
         this.idMandatario = idMandatario;
-    }
-
-    public int getNumTramite() {
-        return numTramite;
-    }
-
-    public void setNumTramite(int numTramite) {
-        this.numTramite = numTramite;
     }
 
     public String getCodTdocman() {
@@ -130,11 +97,11 @@ public class T032mandatario implements Serializable {
         this.numDocman = numDocman;
     }
 
-    public char getIndAccsoc() {
+    public Character getIndAccsoc() {
         return indAccsoc;
     }
 
-    public void setIndAccsoc(char indAccsoc) {
+    public void setIndAccsoc(Character indAccsoc) {
         this.indAccsoc = indAccsoc;
     }
 
@@ -218,6 +185,14 @@ public class T032mandatario implements Serializable {
         this.codCargo = codCargo;
     }
 
+    public T020tramite getT020tramite() {
+        return t020tramite;
+    }
+
+    public void setT020tramite(T020tramite t020tramite) {
+        this.t020tramite = t020tramite;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -240,7 +215,7 @@ public class T032mandatario implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T032mandatario[idMandatario=" + idMandatario + "]";
+        return "pe.gob.pcm.constitucion.web.model.T032mandatario[idMandatario=" + idMandatario + "]";
     }
 
 }

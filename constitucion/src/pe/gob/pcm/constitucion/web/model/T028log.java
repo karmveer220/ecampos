@@ -31,22 +31,16 @@ public class T028log implements Serializable {
     @Basic(optional = false)
     @Column(name = "NUM_LOG")
     private Integer numLog;
-    @Basic(optional = false)
     @Column(name = "ANN_LOG")
-    private short annLog;
-    @Basic(optional = false)
+    private Short annLog;
     @Column(name = "ANN_TRAMITE")
-    private short annTramite;
-    @Basic(optional = false)
+    private Short annTramite;
     @Column(name = "NUM_TRAMITE")
-    private int numTramite;
-    @Basic(optional = false)
+    private Integer numTramite;
     @Column(name = "COD_OPERACION")
     private String codOperacion;
-    @Basic(optional = false)
     @Column(name = "COD_USUMODIF")
     private String codUsumodif;
-    @Basic(optional = false)
     @Column(name = "FEC_MODIF")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecModif;
@@ -58,16 +52,6 @@ public class T028log implements Serializable {
         this.numLog = numLog;
     }
 
-    public T028log(Integer numLog, short annLog, short annTramite, int numTramite, String codOperacion, String codUsumodif, Date fecModif) {
-        this.numLog = numLog;
-        this.annLog = annLog;
-        this.annTramite = annTramite;
-        this.numTramite = numTramite;
-        this.codOperacion = codOperacion;
-        this.codUsumodif = codUsumodif;
-        this.fecModif = fecModif;
-    }
-
     public Integer getNumLog() {
         return numLog;
     }
@@ -76,27 +60,27 @@ public class T028log implements Serializable {
         this.numLog = numLog;
     }
 
-    public short getAnnLog() {
+    public Short getAnnLog() {
         return annLog;
     }
 
-    public void setAnnLog(short annLog) {
+    public void setAnnLog(Short annLog) {
         this.annLog = annLog;
     }
 
-    public short getAnnTramite() {
+    public Short getAnnTramite() {
         return annTramite;
     }
 
-    public void setAnnTramite(short annTramite) {
+    public void setAnnTramite(Short annTramite) {
         this.annTramite = annTramite;
     }
 
-    public int getNumTramite() {
+    public Integer getNumTramite() {
         return numTramite;
     }
 
-    public void setNumTramite(int numTramite) {
+    public void setNumTramite(Integer numTramite) {
         this.numTramite = numTramite;
     }
 
@@ -146,7 +130,7 @@ public class T028log implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T028log[numLog=" + numLog + "]";
+        return "pe.gob.pcm.constitucion.web.model.T028log[numLog=" + numLog + "]";
     }
 
 }

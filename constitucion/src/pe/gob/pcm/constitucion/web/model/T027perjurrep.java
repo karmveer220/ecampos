@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,39 +30,29 @@ public class T027perjurrep implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_PERJURREP")
     private Integer idPerjurrep;
-    @Basic(optional = false)
-    @Column(name = "NUM_TRAMITE")
-    private int numTramite;
-    @Basic(optional = false)
     @Column(name = "COD_TIPDOC")
     private String codTipdoc;
-    @Basic(optional = false)
     @Column(name = "NUM_DOCUM")
     private String numDocum;
-    @Basic(optional = false)
     @Column(name = "COD_TDOCREP")
     private String codTdocrep;
-    @Basic(optional = false)
     @Column(name = "NUM_DOCREP")
     private String numDocrep;
-    @Basic(optional = false)
     @Column(name = "NOM_REPRE")
     private String nomRepre;
-    @Basic(optional = false)
     @Column(name = "APE_PATERNO")
     private String apePaterno;
-    @Basic(optional = false)
     @Column(name = "APE_MATERNO")
     private String apeMaterno;
-    @Basic(optional = false)
     @Column(name = "DIR_PERJUR")
     private String dirPerjur;
-    @Basic(optional = false)
     @Column(name = "DES_PROFESION")
     private String desProfesion;
-    @Basic(optional = false)
     @Column(name = "CLV_INSREG")
     private String clvInsreg;
+    @JoinColumn(name = "ID_PERJUR", referencedColumnName = "ID_PERJUR")
+    @ManyToOne(optional = false)
+    private T026perjur t026perjur;
 
     public T027perjurrep() {
     }
@@ -69,35 +61,12 @@ public class T027perjurrep implements Serializable {
         this.idPerjurrep = idPerjurrep;
     }
 
-    public T027perjurrep(Integer idPerjurrep, int numTramite, String codTipdoc, String numDocum, String codTdocrep, String numDocrep, String nomRepre, String apePaterno, String apeMaterno, String dirPerjur, String desProfesion, String clvInsreg) {
-        this.idPerjurrep = idPerjurrep;
-        this.numTramite = numTramite;
-        this.codTipdoc = codTipdoc;
-        this.numDocum = numDocum;
-        this.codTdocrep = codTdocrep;
-        this.numDocrep = numDocrep;
-        this.nomRepre = nomRepre;
-        this.apePaterno = apePaterno;
-        this.apeMaterno = apeMaterno;
-        this.dirPerjur = dirPerjur;
-        this.desProfesion = desProfesion;
-        this.clvInsreg = clvInsreg;
-    }
-
     public Integer getIdPerjurrep() {
         return idPerjurrep;
     }
 
     public void setIdPerjurrep(Integer idPerjurrep) {
         this.idPerjurrep = idPerjurrep;
-    }
-
-    public int getNumTramite() {
-        return numTramite;
-    }
-
-    public void setNumTramite(int numTramite) {
-        this.numTramite = numTramite;
     }
 
     public String getCodTipdoc() {
@@ -180,6 +149,14 @@ public class T027perjurrep implements Serializable {
         this.clvInsreg = clvInsreg;
     }
 
+    public T026perjur getT026perjur() {
+        return t026perjur;
+    }
+
+    public void setT026perjur(T026perjur t026perjur) {
+        this.t026perjur = t026perjur;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -202,7 +179,7 @@ public class T027perjurrep implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T027perjurrep[idPerjurrep=" + idPerjurrep + "]";
+        return "pe.gob.pcm.constitucion.web.model.T027perjurrep[idPerjurrep=" + idPerjurrep + "]";
     }
 
 }

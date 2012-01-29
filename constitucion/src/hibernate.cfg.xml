@@ -18,7 +18,7 @@
     <mapping class="pe.gob.pcm.constitucion.web.model.T027perjurrep"/>
     <mapping class="pe.gob.pcm.constitucion.web.model.T028log"/>
     <mapping class="pe.gob.pcm.constitucion.web.model.T029archivo"/>
-    
+    <mapping class="pe.gob.pcm.constitucion.web.model.T030inserto"/>
     
     <mapping class="pe.gob.pcm.constitucion.web.model.T032mandatario"/>
     <mapping class="pe.gob.pcm.constitucion.web.model.T033solicitante"/>
