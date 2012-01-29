@@ -10,7 +10,9 @@
 	}
 </script>
 
-<form id="personaForm" name="personaForm" action="registrapn.htm" method="post">
+<form:form name="personaForm" action="registrapn.htm" method="post" modelAttribute="persona">
+
+	<form:hidden path="idPernat"/>
 	<input id="personaTipo" type="hidden" name="tipo" value="NATURAL"/>
 	<input type="hidden" name="action" value="grabaAccionista"/>
 	<table width="90%">
@@ -23,13 +25,12 @@
 					<tr>
 						<td align="left" width="160px" style="padding-left:10px">(<b>+</b>) <b>Tipo documento</b>:</td>
 						<td colspan="2" width="440px" align="left">
-							<select id="personaTipoDocumento" name="tipoDocumento"
-									style="width:200px"
-									onChange="notarios.cmbperTipoDocu()">
-								<option value="01" selected="selected">D.N.I.</option>
-								<option value="02">CARNET EXTRANJERIA</option>
-								<option value="03">PASAPORTE</option>
-							</select>
+							<form:select path="codTipdoc" id="personaTipoDocumento" cssStyle="width:200px" onchange="notarios.cmbperTipoDocu()">
+								<form:option value="01">DNI</form:option>
+								<form:option value="02">CARNET EXTRANJERIA</form:option>
+								<form:option value="03">PASAPORTE</form:option>							
+							</form:select>
+
 						</td>
 					</tr>
 					<tr>
@@ -245,6 +246,6 @@
 			</td>
 		</tr>
 	</table>
-</form>
+</form:form>
 
 <jsp:include page="include/footer.jsp" flush="true"/>

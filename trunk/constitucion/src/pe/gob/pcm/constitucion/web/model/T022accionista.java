@@ -15,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,9 +34,6 @@ public class T022accionista implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_ACCIONISTA")
     private Integer idAccionista;
-    @Basic(optional = false)
-    @Column(name = "NUM_TRAMITE")
-    private int numTramite;
     @Basic(optional = false)
     @Column(name = "COD_TIPDOC")
     private String codTipdoc;
@@ -54,6 +53,9 @@ public class T022accionista implements Serializable {
     @Basic(optional = false)
     @Column(name = "COD_PARTICIPA")
     private String codParticipa;
+    @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE")
+    @ManyToOne(optional = false)
+    private T020tramite t020tramite;
 
     public T022accionista() {
     }
@@ -62,9 +64,8 @@ public class T022accionista implements Serializable {
         this.idAccionista = idAccionista;
     }
 
-    public T022accionista(Integer idAccionista, int numTramite, String codTipdoc, String numDocum, Date fecRegistro, char indAporte, BigDecimal mtoAporte, String codParticipa) {
+    public T022accionista(Integer idAccionista, String codTipdoc, String numDocum, Date fecRegistro, char indAporte, BigDecimal mtoAporte, String codParticipa) {
         this.idAccionista = idAccionista;
-        this.numTramite = numTramite;
         this.codTipdoc = codTipdoc;
         this.numDocum = numDocum;
         this.fecRegistro = fecRegistro;
@@ -79,14 +80,6 @@ public class T022accionista implements Serializable {
 
     public void setIdAccionista(Integer idAccionista) {
         this.idAccionista = idAccionista;
-    }
-
-    public int getNumTramite() {
-        return numTramite;
-    }
-
-    public void setNumTramite(int numTramite) {
-        this.numTramite = numTramite;
     }
 
     public String getCodTipdoc() {
@@ -137,6 +130,14 @@ public class T022accionista implements Serializable {
         this.codParticipa = codParticipa;
     }
 
+    public T020tramite getT020tramite() {
+        return t020tramite;
+    }
+
+    public void setT020tramite(T020tramite t020tramite) {
+        this.t020tramite = t020tramite;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -159,7 +160,7 @@ public class T022accionista implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T022accionista[idAccionista=" + idAccionista + "]";
+        return "pe.gob.pcm.constitucion.web.model.T022accionista[idAccionista=" + idAccionista + "]";
     }
 
 }

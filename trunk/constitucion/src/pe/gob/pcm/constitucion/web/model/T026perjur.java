@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,52 +30,32 @@ public class T026perjur implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_PERJUR")
     private Integer idPerjur;
-    @Basic(optional = false)
-    @Column(name = "NUM_TRAMITE")
-    private int numTramite;
-    @Basic(optional = false)
     @Column(name = "COD_TIPDOC")
     private String codTipdoc;
-    @Basic(optional = false)
     @Column(name = "NUM_DOCUM")
     private String numDocum;
-    @Basic(optional = false)
     @Column(name = "NOM_RAZSOC")
     private String nomRazsoc;
-    @Basic(optional = false)
     @Column(name = "DIR_PERJUR")
     private String dirPerjur;
-    @Basic(optional = false)
     @Column(name = "DES_SIGLAS")
     private String desSiglas;
-    @Basic(optional = false)
     @Column(name = "CLV_INSREG")
     private String clvInsreg;
-    @Basic(optional = false)
     @Column(name = "COD_ZONREG")
     private String codZonreg;
-    @Basic(optional = false)
     @Column(name = "COD_OFICREG")
     private String codOficreg;
-
+    
+    @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE")
+    @ManyToOne(optional = false)
+    private T020tramite t020tramite;
+    
     public T026perjur() {
     }
 
     public T026perjur(Integer idPerjur) {
         this.idPerjur = idPerjur;
-    }
-
-    public T026perjur(Integer idPerjur, int numTramite, String codTipdoc, String numDocum, String nomRazsoc, String dirPerjur, String desSiglas, String clvInsreg, String codZonreg, String codOficreg) {
-        this.idPerjur = idPerjur;
-        this.numTramite = numTramite;
-        this.codTipdoc = codTipdoc;
-        this.numDocum = numDocum;
-        this.nomRazsoc = nomRazsoc;
-        this.dirPerjur = dirPerjur;
-        this.desSiglas = desSiglas;
-        this.clvInsreg = clvInsreg;
-        this.codZonreg = codZonreg;
-        this.codOficreg = codOficreg;
     }
 
     public Integer getIdPerjur() {
@@ -82,14 +64,6 @@ public class T026perjur implements Serializable {
 
     public void setIdPerjur(Integer idPerjur) {
         this.idPerjur = idPerjur;
-    }
-
-    public int getNumTramite() {
-        return numTramite;
-    }
-
-    public void setNumTramite(int numTramite) {
-        this.numTramite = numTramite;
     }
 
     public String getCodTipdoc() {
@@ -156,6 +130,14 @@ public class T026perjur implements Serializable {
         this.codOficreg = codOficreg;
     }
 
+    public T020tramite getT020tramite() {
+        return t020tramite;
+    }
+
+    public void setT020tramite(T020tramite t020tramite) {
+        this.t020tramite = t020tramite;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -178,7 +160,7 @@ public class T026perjur implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T026perjur[idPerjur=" + idPerjur + "]";
+        return "pe.gob.pcm.constitucion.web.model.T026perjur[idPerjur=" + idPerjur + "]";
     }
 
 }

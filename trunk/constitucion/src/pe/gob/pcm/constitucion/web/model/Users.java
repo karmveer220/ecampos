@@ -12,11 +12,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -32,9 +30,9 @@ import org.springframework.security.core.userdetails.User;
  */
 @Entity
 @Table(name = "users")
-public class Users extends User implements Serializable {
-	
+public class Users extends User  implements Serializable {
     private static final long serialVersionUID = 1L;
+
     @Id
     @Basic(optional = false)
     @Column(name = "USERNAME")
@@ -42,25 +40,20 @@ public class Users extends User implements Serializable {
     @Basic(optional = false)
     @Column(name = "PASSWORD")
     private String password;
-    
     @Basic(optional = false)
     @Column(name = "ENABLED")
     private boolean enabled;
-    
-    @Basic(optional = false)
     @Column(name = "FEC_REGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecRegistro;
-    
     @Column(name = "COD_USUMODIF")
     private String codUsumodif;
-    
-    @Basic(optional = false)
     @Column(name = "FEC_MODIF")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecModif;
-    
-    
+    @Column(name = "COD_NOTARIA")
+    private String codNotaria;
+
     public Users() {		
 		super("default", "default", true, true, true, true , uno() );		
 	}
@@ -96,6 +89,8 @@ public class Users extends User implements Serializable {
 		else return null;
 	}
 	
+
+
     public String getUsername() {
         return username;
     }
@@ -144,7 +139,15 @@ public class Users extends User implements Serializable {
         this.fecModif = fecModif;
     }
 
-     @Override
+    public String getCodNotaria() {
+        return codNotaria;
+    }
+
+    public void setCodNotaria(String codNotaria) {
+        this.codNotaria = codNotaria;
+    }
+
+    @Override
     public int hashCode() {
         int hash = 0;
         hash += (username != null ? username.hashCode() : 0);

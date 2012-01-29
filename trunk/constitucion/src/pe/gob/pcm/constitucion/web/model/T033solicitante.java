@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,36 +30,28 @@ public class T033solicitante implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_SOLICITANTE")
     private Integer idSolicitante;
-    @Basic(optional = false)
-    @Column(name = "NUM_TRAMITE")
-    private int numTramite;
-    @Basic(optional = false)
     @Column(name = "COD_TDOCSOL")
     private String codTdocsol;
-    @Basic(optional = false)
     @Column(name = "NUM_DOCSOL")
     private String numDocsol;
-    @Basic(optional = false)
     @Column(name = "APE_PATERNO")
     private String apePaterno;
-    @Basic(optional = false)
     @Column(name = "APE_MATERNO")
     private String apeMaterno;
-    @Basic(optional = false)
     @Column(name = "NOM_SOLICITANTE")
     private String nomSolicitante;
-    @Basic(optional = false)
     @Column(name = "DES_CORREO")
     private String desCorreo;
-    @Basic(optional = false)
     @Column(name = "NUM_TELEF")
     private String numTelef;
-    @Basic(optional = false)
     @Column(name = "NUM_CELULAR")
     private String numCelular;
-    @Basic(optional = false)
     @Column(name = "DIR_SOLICITANTE")
     private String dirSolicitante;
+    
+    @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE")
+    @ManyToOne(optional = false)
+    private T020tramite t020tramite;
 
     public T033solicitante() {
     }
@@ -66,34 +60,12 @@ public class T033solicitante implements Serializable {
         this.idSolicitante = idSolicitante;
     }
 
-    public T033solicitante(Integer idSolicitante, int numTramite, String codTdocsol, String numDocsol, String apePaterno, String apeMaterno, String nomSolicitante, String desCorreo, String numTelef, String numCelular, String dirSolicitante) {
-        this.idSolicitante = idSolicitante;
-        this.numTramite = numTramite;
-        this.codTdocsol = codTdocsol;
-        this.numDocsol = numDocsol;
-        this.apePaterno = apePaterno;
-        this.apeMaterno = apeMaterno;
-        this.nomSolicitante = nomSolicitante;
-        this.desCorreo = desCorreo;
-        this.numTelef = numTelef;
-        this.numCelular = numCelular;
-        this.dirSolicitante = dirSolicitante;
-    }
-
     public Integer getIdSolicitante() {
         return idSolicitante;
     }
 
     public void setIdSolicitante(Integer idSolicitante) {
         this.idSolicitante = idSolicitante;
-    }
-
-    public int getNumTramite() {
-        return numTramite;
-    }
-
-    public void setNumTramite(int numTramite) {
-        this.numTramite = numTramite;
     }
 
     public String getCodTdocsol() {
@@ -168,6 +140,14 @@ public class T033solicitante implements Serializable {
         this.dirSolicitante = dirSolicitante;
     }
 
+    public T020tramite getT020tramite() {
+        return t020tramite;
+    }
+
+    public void setT020tramite(T020tramite t020tramite) {
+        this.t020tramite = t020tramite;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -190,7 +170,7 @@ public class T033solicitante implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T033solicitante[idSolicitante=" + idSolicitante + "]";
+        return "pe.gob.pcm.constitucion.web.model.T033solicitante[idSolicitante=" + idSolicitante + "]";
     }
 
 }

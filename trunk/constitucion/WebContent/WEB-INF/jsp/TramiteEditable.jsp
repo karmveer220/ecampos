@@ -43,40 +43,38 @@
 	<form:form name="tramiteForm" action="tramitePasoDos.htm" method="post" modelAttribute="tramite">
 			
 			<input id="modifico" type="hidden" name="modifico" value="0"/>
+			<form:hidden path="numTramite"/>
 			<div style="width:700px; padding:10px 10px 10px 10px;">
 				<table width="100%" cellspacing="10">
 					<tr>
 						<td width="212px">(<b>+</b>) <b>Tipo de Sociedad</b>:</td>
 						<td width="200px" colspan="3">
-							<select id="tramiteTipoSociedad" name="tipoSociedad"
-									onChange="notarios.cmbtraTipoSociedad()">
+							<form:select id="tramiteTipoSociedad" path="codTipsoc" onchange="notarios.cmbtraTipoSociedad()">
 								<option value="00" selected="selected">SELECCIONE UN TIPO DE SOCIEDAD</option>
 								<%	List<T001parametro> lsTipoSociedad = (List<T001parametro>)request.getAttribute("lsTipoSociedad");
 									for(T001parametro p : lsTipoSociedad) {%>
-								<option value="<%=p.getT001parametroPK().getCodParam()%>"><%=p.getDesParam()%></option>
+								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
 								<%	}%>
-							</select>
+							</form:select>
 						</td>
 					</tr>
 					<tr>
 						<td>(<b>+</b>) <b>Zona</b>:</td>
 						<td colspan="3">
-							<select id="tramiteZonaRegistral" name="zonaRegistral"
-									onChange="javascript:comboOficinaRegistral(document.getElementById('tramiteZonaRegistral'));">
+						<form:select path="codZonreg" id="tramiteZonaRegistral" onchange="javascript:comboOficinaRegistral(document.getElementById('tramiteZonaRegistral'));">
 								<option value="00" selected="selected">SELECCIONE LA ZONA REGISTRAL</option>
 								<%	List<T001parametro> lsZonaRegistral = (List<T001parametro>)request.getAttribute("lsZonaRegistral");
 									for(T001parametro p : lsZonaRegistral) {%>
-								<option value="<%=p.getT001parametroPK().getCodParam()%>"><%=p.getDesParam()%></option>
+								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
 								<%	}%>
-							</select>
+							</form:select>
 						</td>
 					</tr>
 					<tr>
 						<td>(<b>+</b>) <b>Oficina Registral</b>:</td>
 						<td colspan="3">
-							<select id="tramiteOficinaRegistral" name="oficinaRegistral"
-								style="width:370px" onChange="cambioTramite();">
-							</select>
+							<form:select path="codOficreg" id="tramiteOficinaRegistral" cssStyle="width:370px" onchange="cambioTramite();">
+							</form:select>
 						</td>
 					</tr>
 					<tr>
@@ -94,11 +92,7 @@
 					<tr>
 						<td>(*) N&uacute;mero de T&iacute;tulo de Reserva Nombre:</td>
 						<td colspan="3">
-							<input id="tramiteNumeroTitulo" name="numeroTitulo"
-								   	type="text" value="" maxLength="20"
-								   style="font-size:13px; width:170px"
-								   onChange="notarios.cambioTramite()"/>
-						</td>
+						<form:input path="numTitulo" id="tramiteNumeroTitulo" maxlength="20" cssStyle="font-size:13px; width:170px" onchange="notarios.cambioTramite()"/></td>
 					</tr>
 					<tr>
 						<td>(*) Denominaci&oacute;n o Raz&oacute;n Social:</td>
@@ -109,10 +103,7 @@
 					<tr>
 						<td>Denominaci&oacute;n abreviada:</td>
 						<td colspan="3">
-							<input id="tramiteDenominacionAbreviada" name="denominacionAbreviada"
-								   type="text" maxLength="100"
-								   style="font-size:13px; width:170px"
-								   onChange="notarios.cambioTramite()"/>
+							<form:input path="nomDenabrev" id="tramiteDenominacionAbreviada" maxlength="100" cssStyle="font-size:13px; width:170px" onchange="notarios.cambioTramite()"/>
 						</td>
 					</tr>
 					<tr>
@@ -122,7 +113,7 @@
 									onChange="javascript:comboDepartamento(document.getElementById('tramiteDepartamento'));">
 								<%	List<T001parametro> lsdepas= (List<T001parametro>)request.getAttribute("lsDepartamentos");
 									for(T001parametro p : lsdepas) {%>
-								<option value="<%=p.getT001parametroPK().getCodParam()%>"><%=p.getDesParam()%></option>
+								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
 								<%	}%>
 							</select>
 						</td>
@@ -130,17 +121,14 @@
 					<tr>
 						<td>(*) Provincia:</td>
 						<td colspan="3">
-							<select id="tramiteProvincia" name="provincia"
-									style="width:220px">
-							</select>
+							<form:select path="codUbigeo" id="tramiteProvincia" cssStyle="width:220px">							
+							</form:select>
 						</td>
 					</tr>
 					<tr>
 						<td valign="top">(*) Objeto Social:</td>
 						<td colspan="3">
-							<textarea id="tramiteObjetoSocial" name="objetoSocial"
-								      style="width:370px;font-size:13px;height:60px"
-									  onChange="notarios.cambioTramite()"></textarea>
+							<form:textarea path="objetoSocial" id="tramiteObjetoSocial" cssStyle="width:370px;font-size:13px;height:60px" onchange="notarios.cambioTramite()"/>
 						</td>
 					</tr>
 					<tr>
@@ -153,7 +141,7 @@
 								<option value="0" selected="selected">SELECCIONE TIPO APORTE</option>
 							<%	List<T001parametro> lsTipoAporte = (List<T001parametro>)request.getAttribute("lsTipoAporte");
 								for(T001parametro p : lsTipoAporte) {%>
-								<option value="<%=p.getT001parametroPK().getCodParam()%>"><%=p.getDesParam()%></option>
+								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
 							<%	}%>
 							</select>
 						</td>
@@ -161,19 +149,13 @@
 					<tr>
 						<td>(<b>+</b>) <b>Monto S/.</b>:</td>
 						<td colspan="3">
-							<input id="tramiteMontoAporte" name="montoAporte"
-								  maxlength="18" type="text"
-								   style="font-size:13px; width:150px"
-								   onChange="notarios.cmbtraValorAccion()"/>
+							<form:input path="mtoAporte" id="tramiteMontoAporte"  maxlength="18" cssStyle="font-size:13px; width:150px" onchange="notarios.cmbtraValorAccion()"/>
 						</td>
 					</tr>
 					<tr>
 						<td>(<b>+</b>) <b>Valor de accion/participaci&oacute;n S/.</b>:</td>
 						<td colspan="3">
-							<input id="tramiteValorAccion" name="valorAccion"
-								    maxlength="18" type="text"
-								   style="font-size:13px; width:150px"
-								   onChange="notarios.cmbtraValorAccion()"/>
+							<form:input path="mtoValoraccion" id="tramiteValorAccion" maxlength="18" cssStyle="font-size:13px; width:150px" onchange="notarios.cmbtraValorAccion()"/>
 						</td>
 					</tr>
 					<tr>
@@ -185,15 +167,13 @@
 					<tr>
 						<td>(*) Cancelaci&oacute;n de capital:</td>
 						<td colspan="3">
-							<input id="t1CancelacionCapital" name="cancelacionCapital"
-								   dojoType="dijit.form.RadioButton"
-								   type="radio" value="T01"
-								   onChange="notarios.cmbtraCancelCapital()"/>
-							<label for="t1CancelacionCapital">Total&nbsp;&nbsp;&nbsp;&nbsp;</label>
-							<input id="t2CancelacionCapital" name="cancelacionCapital"
-								   dojoType="dijit.form.RadioButton"
-								   type="radio" value="T02"/>
-							<label for="t2CancelacionCapital">Parcial&nbsp;&nbsp;&nbsp;&nbsp;</label>
+							<label>
+								<form:radiobutton path="indCancecapi" id="t1CancelacionCapital" value="T01" onchange="notarios.cmbtraCancelCapital()"/>
+							</label>
+							<label>
+								<form:radiobutton path="indCancecapi" id="t2CancelacionCapital" value="T02"/>
+							</label>
+							
 						</td>
 					</tr>
 					<tr>
@@ -201,15 +181,8 @@
 						<td colspan="3">
 							<table cellspacing="0" cellpadding="0">
 								<tr>
-									<td>
-										<input id="tramitePorcentajeCanceladoEx"
-											   style="width:60px;margin-left:2px"
-										 	    value="100"/>
-									</td>
-									<td>
-										<input id="tramitePorcentajeCancelado" name="porcentajeCancelado"
-										 	   style="font-size:13px;width:82px;" value="50"
-											   onChange="notarios.cambioTramite()"/>
+									<td colspan="3">
+										<form:input path="numPorcencanc" id="tramitePorcentajeCancelado" cssStyle="font-size:13px;width:82px;" onchange="notarios.cambioTramite()"/>
 									</td>
 								</tr>
 							</table>

@@ -15,7 +15,7 @@ import pe.gob.pcm.constitucion.web.service.ParticipanteService;
 public class ParticipanteServiceImpl implements ParticipanteService {
 
 	@Autowired
-	ParticipanteDAO participanteDAO;
+	private ParticipanteDAO participanteDAO;
 	
 	@Override
 	public List<T022accionista> listarAccionistas(String anioTramite, String numTramite) {

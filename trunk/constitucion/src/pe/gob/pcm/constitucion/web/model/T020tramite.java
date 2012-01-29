@@ -15,9 +15,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -27,133 +30,105 @@ import javax.persistence.TemporalType;
 @Table(name = "t020tramite")
 public class T020tramite implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
+    
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "NUM_TRAMITE")
     private Integer numTramite;
-    @Basic(optional = false)
-    @Column(name = "COD_NOTARIA")
-    private String codNotaria;
-    @Basic(optional = false)
+    
+	@Basic(optional = false)
     @Column(name = "ANN_TRAMITE")
     private short annTramite;
-    @Basic(optional = false)
-    @Column(name = "COD_TIPSOC")
+    
+	@Column(name = "COD_TIPSOC")
     private String codTipsoc;
-    @Basic(optional = false)
     @Column(name = "COD_ZONREG")
     private String codZonreg;
-    @Basic(optional = false)
     @Column(name = "COD_OFICREG")
     private String codOficreg;
-    @Basic(optional = false)
     @Column(name = "COD_PRESENTA")
     private String codPresenta;
-    @Basic(optional = false)
     @Column(name = "CLV_KARDEX")
     private String clvKardex;
-    @Basic(optional = false)
     @Column(name = "IND_LIBROSOC")
-    private char indLibrosoc;
-    @Basic(optional = false)
+    private Character indLibrosoc;
     @Column(name = "IND_LIBROCON")
-    private char indLibrocon;
-    @Basic(optional = false)
+    private Character indLibrocon;
     @Column(name = "NUM_CUO")
     private String numCuo;
-    @Basic(optional = false)
     @Column(name = "IND_CUO")
-    private char indCuo;
-    @Basic(optional = false)
+    private Character indCuo;
     @Column(name = "FEC_CUO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecCuo;
-    @Basic(optional = false)
     @Column(name = "COD_TDOCSOL")
     private String codTdocsol;
-    @Basic(optional = false)
     @Column(name = "NUM_DOCSOL")
     private String numDocsol;
-    @Basic(optional = false)
     @Column(name = "NUM_TITULO")
     private String numTitulo;
     @Basic(optional = false)
     @Column(name = "NOM_RAZSOC")
     private String nomRazsoc;
-    @Basic(optional = false)
     @Column(name = "NOM_DENABREV")
     private String nomDenabrev;
-    @Basic(optional = false)
     @Column(name = "COD_UBIGEO")
     private String codUbigeo;
-    @Basic(optional = false)
     @Column(name = "IND_APORTE")
-    private char indAporte;
-    @Basic(optional = false)
+    private Character indAporte;
     @Column(name = "MTO_APORTE")
     private BigDecimal mtoAporte;
-    @Basic(optional = false)
     @Column(name = "MTO_VALORACCION")
     private BigDecimal mtoValoraccion;
-    @Basic(optional = false)
     @Column(name = "MTO_ACCIONPART")
     private BigDecimal mtoAccionpart;
-    @Basic(optional = false)
     @Column(name = "IND_CANCECAPI")
-    private char indCancecapi;
-    @Basic(optional = false)
+    private Character indCancecapi;
     @Column(name = "NUM_PORCENCANC")
-    private int numPorcencanc;
-    @Basic(optional = false)
+    private Integer numPorcencanc;
     @Column(name = "MTO_DEREREGIS")
     private BigDecimal mtoDereregis;
-    @Basic(optional = false)
     @Column(name = "IND_FORMAPAGO")
-    private char indFormapago;
-    @Basic(optional = false)
+    private Character indFormapago;
     @Column(name = "IND_PSC")
-    private char indPsc;
-    @Basic(optional = false)
+    private Character indPsc;
     @Column(name = "IND_ESTADO")
-    private char indEstado;
-    @Basic(optional = false)
+    private Character indEstado;
     @Column(name = "FEC_INGRESO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecIngreso;
-    @Basic(optional = false)
     @Column(name = "FEC_REGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecRegistro;
-    @Basic(optional = false)
     @Column(name = "FEC_CERRADO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecCerrado;
-    @Basic(optional = false)
     @Column(name = "FEC_FIRMADO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecFirmado;
-    @Basic(optional = false)
     @Column(name = "IND_ELIMINADO")
-    private char indEliminado;
-    @Basic(optional = false)
+    private Character indEliminado;
     @Column(name = "FEC_ELIMINADO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecEliminado;
-    @Basic(optional = false)
     @Column(name = "IND_ENVIO")
-    private char indEnvio;
-    @Basic(optional = false)
+    private Character indEnvio;
     @Column(name = "FEC_ENVIO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecEnvio;
-    @Basic(optional = false)
     @Column(name = "COD_USUMODIF")
     private String codUsumodif;
-    @Basic(optional = false)
     @Column(name = "FEC_MODIF")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecModif;
+    
+    @Transient
+    private String objetoSocial;
+    
+	@JoinColumn(name = "COD_NOTARIA", referencedColumnName = "COD_NOTARIA")
+    @ManyToOne(optional = false)
+    private T021notaria t021notaria;
 
     public T020tramite() {
     }
@@ -162,46 +137,10 @@ public class T020tramite implements Serializable {
         this.numTramite = numTramite;
     }
 
-    public T020tramite(Integer numTramite, String codNotaria, short annTramite, String codTipsoc, String codZonreg, String codOficreg, String codPresenta, String clvKardex, char indLibrosoc, char indLibrocon, String numCuo, char indCuo, Date fecCuo, String codTdocsol, String numDocsol, String numTitulo, String nomRazsoc, String nomDenabrev, String codUbigeo, char indAporte, BigDecimal mtoAporte, BigDecimal mtoValoraccion, BigDecimal mtoAccionpart, char indCancecapi, int numPorcencanc, BigDecimal mtoDereregis, char indFormapago, char indPsc, char indEstado, Date fecIngreso, Date fecRegistro, Date fecCerrado, Date fecFirmado, char indEliminado, Date fecEliminado, char indEnvio, Date fecEnvio, String codUsumodif, Date fecModif) {
+    public T020tramite(Integer numTramite, short annTramite, String nomRazsoc) {
         this.numTramite = numTramite;
-        this.codNotaria = codNotaria;
         this.annTramite = annTramite;
-        this.codTipsoc = codTipsoc;
-        this.codZonreg = codZonreg;
-        this.codOficreg = codOficreg;
-        this.codPresenta = codPresenta;
-        this.clvKardex = clvKardex;
-        this.indLibrosoc = indLibrosoc;
-        this.indLibrocon = indLibrocon;
-        this.numCuo = numCuo;
-        this.indCuo = indCuo;
-        this.fecCuo = fecCuo;
-        this.codTdocsol = codTdocsol;
-        this.numDocsol = numDocsol;
-        this.numTitulo = numTitulo;
         this.nomRazsoc = nomRazsoc;
-        this.nomDenabrev = nomDenabrev;
-        this.codUbigeo = codUbigeo;
-        this.indAporte = indAporte;
-        this.mtoAporte = mtoAporte;
-        this.mtoValoraccion = mtoValoraccion;
-        this.mtoAccionpart = mtoAccionpart;
-        this.indCancecapi = indCancecapi;
-        this.numPorcencanc = numPorcencanc;
-        this.mtoDereregis = mtoDereregis;
-        this.indFormapago = indFormapago;
-        this.indPsc = indPsc;
-        this.indEstado = indEstado;
-        this.fecIngreso = fecIngreso;
-        this.fecRegistro = fecRegistro;
-        this.fecCerrado = fecCerrado;
-        this.fecFirmado = fecFirmado;
-        this.indEliminado = indEliminado;
-        this.fecEliminado = fecEliminado;
-        this.indEnvio = indEnvio;
-        this.fecEnvio = fecEnvio;
-        this.codUsumodif = codUsumodif;
-        this.fecModif = fecModif;
     }
 
     public Integer getNumTramite() {
@@ -210,14 +149,6 @@ public class T020tramite implements Serializable {
 
     public void setNumTramite(Integer numTramite) {
         this.numTramite = numTramite;
-    }
-
-    public String getCodNotaria() {
-        return codNotaria;
-    }
-
-    public void setCodNotaria(String codNotaria) {
-        this.codNotaria = codNotaria;
     }
 
     public short getAnnTramite() {
@@ -268,19 +199,19 @@ public class T020tramite implements Serializable {
         this.clvKardex = clvKardex;
     }
 
-    public char getIndLibrosoc() {
+    public Character getIndLibrosoc() {
         return indLibrosoc;
     }
 
-    public void setIndLibrosoc(char indLibrosoc) {
+    public void setIndLibrosoc(Character indLibrosoc) {
         this.indLibrosoc = indLibrosoc;
     }
 
-    public char getIndLibrocon() {
+    public Character getIndLibrocon() {
         return indLibrocon;
     }
 
-    public void setIndLibrocon(char indLibrocon) {
+    public void setIndLibrocon(Character indLibrocon) {
         this.indLibrocon = indLibrocon;
     }
 
@@ -292,11 +223,11 @@ public class T020tramite implements Serializable {
         this.numCuo = numCuo;
     }
 
-    public char getIndCuo() {
+    public Character getIndCuo() {
         return indCuo;
     }
 
-    public void setIndCuo(char indCuo) {
+    public void setIndCuo(Character indCuo) {
         this.indCuo = indCuo;
     }
 
@@ -356,11 +287,11 @@ public class T020tramite implements Serializable {
         this.codUbigeo = codUbigeo;
     }
 
-    public char getIndAporte() {
+    public Character getIndAporte() {
         return indAporte;
     }
 
-    public void setIndAporte(char indAporte) {
+    public void setIndAporte(Character indAporte) {
         this.indAporte = indAporte;
     }
 
@@ -388,19 +319,19 @@ public class T020tramite implements Serializable {
         this.mtoAccionpart = mtoAccionpart;
     }
 
-    public char getIndCancecapi() {
+    public Character getIndCancecapi() {
         return indCancecapi;
     }
 
-    public void setIndCancecapi(char indCancecapi) {
+    public void setIndCancecapi(Character indCancecapi) {
         this.indCancecapi = indCancecapi;
     }
 
-    public int getNumPorcencanc() {
+    public Integer getNumPorcencanc() {
         return numPorcencanc;
     }
 
-    public void setNumPorcencanc(int numPorcencanc) {
+    public void setNumPorcencanc(Integer numPorcencanc) {
         this.numPorcencanc = numPorcencanc;
     }
 
@@ -412,27 +343,27 @@ public class T020tramite implements Serializable {
         this.mtoDereregis = mtoDereregis;
     }
 
-    public char getIndFormapago() {
+    public Character getIndFormapago() {
         return indFormapago;
     }
 
-    public void setIndFormapago(char indFormapago) {
+    public void setIndFormapago(Character indFormapago) {
         this.indFormapago = indFormapago;
     }
 
-    public char getIndPsc() {
+    public Character getIndPsc() {
         return indPsc;
     }
 
-    public void setIndPsc(char indPsc) {
+    public void setIndPsc(Character indPsc) {
         this.indPsc = indPsc;
     }
 
-    public char getIndEstado() {
+    public Character getIndEstado() {
         return indEstado;
     }
 
-    public void setIndEstado(char indEstado) {
+    public void setIndEstado(Character indEstado) {
         this.indEstado = indEstado;
     }
 
@@ -468,11 +399,11 @@ public class T020tramite implements Serializable {
         this.fecFirmado = fecFirmado;
     }
 
-    public char getIndEliminado() {
+    public Character getIndEliminado() {
         return indEliminado;
     }
 
-    public void setIndEliminado(char indEliminado) {
+    public void setIndEliminado(Character indEliminado) {
         this.indEliminado = indEliminado;
     }
 
@@ -484,11 +415,11 @@ public class T020tramite implements Serializable {
         this.fecEliminado = fecEliminado;
     }
 
-    public char getIndEnvio() {
+    public Character getIndEnvio() {
         return indEnvio;
     }
 
-    public void setIndEnvio(char indEnvio) {
+    public void setIndEnvio(Character indEnvio) {
         this.indEnvio = indEnvio;
     }
 
@@ -516,6 +447,14 @@ public class T020tramite implements Serializable {
         this.fecModif = fecModif;
     }
 
+   public T021notaria getT021notaria() {
+        return t021notaria;
+    }
+
+    public void setT021notaria(T021notaria t021notaria) {
+        this.t021notaria = t021notaria;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -538,7 +477,17 @@ public class T020tramite implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.model.T020tramite[numTramite=" + numTramite + "]";
+        return "pe.gob.pcm.constitucion.web.model.T020tramite[numTramite=" + numTramite + "]";
     }
 
+	public String getObjetoSocial() {
+		return objetoSocial;
+	}
+
+	public void setObjetoSocial(String objetoSocial) {
+		this.objetoSocial = objetoSocial;
+	}
+
+    
+    
 }

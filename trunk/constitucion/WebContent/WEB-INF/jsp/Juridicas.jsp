@@ -1,3 +1,6 @@
+<jsp:include page="include/header.jsp" flush="true"/>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 <%@ page import="java.util.List"%>
 
 <script>
@@ -158,3 +161,6 @@
 		</tr>
 	</table>
 </form>
+
+
+<jsp:include page="include/footer.jsp" flush="true"/>

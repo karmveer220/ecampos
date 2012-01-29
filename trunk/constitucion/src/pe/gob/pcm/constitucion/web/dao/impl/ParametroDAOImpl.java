@@ -23,27 +23,30 @@ public class ParametroDAOImpl extends HibernateDaoSupport implements ParametroDA
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T001parametro> litarParametros(String padre) {
-		Query query = getSession().createQuery(" from T001parametro where t001parametroPK.codGrupo = :id ")
+		Query query = getSession().createQuery(" from T001parametro p where p.codGrupo = :id ")
         .setString("id", padre);
         return (List<T001parametro>) query.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T001parametro> litarParametros(String padre, String padre2) {
-		Query query = getSession().createQuery(" from T001parametro where t001parametroPK.codGrupo = :id and t001parametroPK.codParam like '"+padre2+"%'  ")
+		Query query = getSession().createQuery(" from T001parametro p where p.codGrupo = :id and p.codParam like '"+padre2+"%'  ")
         .setString("id", padre);
         return (List<T001parametro>) query.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T001parametro> litarParametrosDepartamentos() {
-		Query query = getSession().createQuery(" from T001parametro where t001parametroPK.codGrupo = '006' and t001parametroPK.codParam like '%0000' ");
+		Query query = getSession().createQuery(" from T001parametro p where p.codGrupo = '006' and p.codParam like '%0000' ");
         return (List<T001parametro>) query.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T001parametro> litarParametrosProvincias(String depa) {
-		Query query = getSession().createQuery(" from T001parametro where t001parametroPK.codGrupo = '006' and t001parametroPK.codParam like '"+depa+"%00'  ");
+		Query query = getSession().createQuery(" from T001parametro p where p.codGrupo = '006' and p.codParam like '"+depa+"%00'  ");
         return (List<T001parametro>) query.list();
 	}
 
