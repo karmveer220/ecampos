@@ -28,5 +28,9 @@ public class BeanValida {
 		this.resultado += cantidad;
 		this.mensaje += mensaje;
 	}
+	@Override
+	public String toString(){
+		return "Resultado = " + resultado + "; Mensaje = " + mensaje ; 
+	}
 	
 }

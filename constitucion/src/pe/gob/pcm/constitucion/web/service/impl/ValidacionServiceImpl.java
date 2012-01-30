@@ -18,6 +18,7 @@ public class ValidacionServiceImpl implements ValidacionService {
 		if( StringUtils.isEmpty( participante.getNomPernat() ) ){
 			val.aumenta(1, "Debe ingresar el nombre");
 		}
+		System.out.println( val.toString() );
 		return val;
 	}
 

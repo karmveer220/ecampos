@@ -46,7 +46,7 @@ public class T022accionista implements Serializable {
     private Date fecRegistro;
     @Basic(optional = false)
     @Column(name = "IND_APORTE")
-    private char indAporte;
+    private String indAporte;
     @Basic(optional = false)
     @Column(name = "MTO_APORTE")
     private BigDecimal mtoAporte;
@@ -64,7 +64,7 @@ public class T022accionista implements Serializable {
         this.idAccionista = idAccionista;
     }
 
-    public T022accionista(Integer idAccionista, String codTipdoc, String numDocum, Date fecRegistro, char indAporte, BigDecimal mtoAporte, String codParticipa) {
+    public T022accionista(Integer idAccionista, String codTipdoc, String numDocum, Date fecRegistro, String indAporte, BigDecimal mtoAporte, String codParticipa) {
         this.idAccionista = idAccionista;
         this.codTipdoc = codTipdoc;
         this.numDocum = numDocum;
@@ -106,11 +106,11 @@ public class T022accionista implements Serializable {
         this.fecRegistro = fecRegistro;
     }
 
-    public char getIndAporte() {
+    public String getIndAporte() {
         return indAporte;
     }
 
-    public void setIndAporte(char indAporte) {
+    public void setIndAporte(String indAporte) {
         this.indAporte = indAporte;
     }
 

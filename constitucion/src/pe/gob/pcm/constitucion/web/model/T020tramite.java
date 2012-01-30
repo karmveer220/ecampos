@@ -94,7 +94,7 @@ public class T020tramite implements Serializable {
     @Column(name = "IND_PSC")
     private Character indPsc;
     @Column(name = "IND_ESTADO")
-    private Character indEstado;
+    private String indEstado;
     @Column(name = "FEC_INGRESO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecIngreso;
@@ -359,11 +359,11 @@ public class T020tramite implements Serializable {
         this.indPsc = indPsc;
     }
 
-    public Character getIndEstado() {
+    public String getIndEstado() {
         return indEstado;
     }
 
-    public void setIndEstado(Character indEstado) {
+    public void setIndEstado(String indEstado) {
         this.indEstado = indEstado;
     }
 

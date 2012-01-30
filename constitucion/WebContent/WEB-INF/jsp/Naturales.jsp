@@ -1,3 +1,4 @@
+<%@page import="pe.gob.pcm.constitucion.web.model.T001parametro"%>
 <jsp:include page="include/header.jsp" flush="true"/>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
@@ -13,6 +14,7 @@
 <form:form name="personaForm" action="registrapn.htm" method="post" modelAttribute="persona">
 
 	<form:hidden path="idPernat"/>
+	
 	<input id="personaTipo" type="hidden" name="tipo" value="NATURAL"/>
 	<input type="hidden" name="action" value="grabaAccionista"/>
 	<table width="90%">
@@ -21,6 +23,18 @@
 				<table cellspacing="10" width="640px">
 					<tr>
 						<td colspan="3" align="left" style="color:gray;border-bottom:1px solid #ccc"><b><span id="personaAsunto">Persona Natural</span></b></td>
+					</tr>
+					<tr>
+						<td align="left" width="160px" style="padding-left:10px">(<b>+</b>) <b>Tipo Participante</b>:</td>
+						<td colspan="2" width="440px" align="left">
+							<form:select path="codParticipa" id="personaTipoParticipante" cssStyle="width:240px">
+								<option value="0000">SELECCIONE TIPO DE PARTICIPANTE</option>
+								<%	List<T001parametro> lsTipoSociedad = (List<T001parametro>)request.getAttribute("lsParticipante");
+									for(T001parametro p : lsTipoSociedad) {%>
+								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
+								<%	}%>
+							</form:select>
+						</td>
 					</tr>
 					<tr>
 						<td align="left" width="160px" style="padding-left:10px">(<b>+</b>) <b>Tipo documento</b>:</td>
@@ -36,11 +50,7 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(<b>+</b>) <b>N&uacute;mero de documento</b>:</td>
 						<td align="left" width="135px">
-							<input id="personaNumeroDocumento" name="numeroDocumento"
-								   type="text"
-								   maxLength="8" 
-								   style="font-size:13px; width:120px"
-								   onChange="notarios.cmbperNumeDocu()"/>
+							<form:input path="numDocum" id="personaNumeroDocumento" maxlength="8" cssStyle="font-size:13px; width:120px" onchange="notarios.cmbperNumeDocu()"/>
 						</td>
 						<td align="left">
 						</td>
@@ -48,49 +58,39 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Apellido Paterno:</td>
 						<td colspan="2" align="left">
-							<input id="personaApellidoPaterno" name="apellidoPaterno"
-								   type="text" maxLength="100" 
-								   style="font-size:13px; width:300px"/>
+							<form:input path="apePaterno" id="personaApellidoPaterno"  maxlength="100" cssStyle="font-size:13px; width:300px"/>
 						</td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Apellido Materno:</td>
 						<td colspan="2" align="left">
-							<input id="personaApellidoMaterno" name="apellidoMaterno"
-								   type="text" maxLength="100" 
-								   style="font-size:13px; width:300px"/>
+							<form:input path="apeMaterno" id="personaApellidoMaterno" maxlength="100" cssStyle="font-size:13px; width:300px"/>
 						</td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Nombres:</td>
 						<td colspan="2" align="left">
-							<input id="personaNombres" name="nombres"
-								   type="text" maxLength="100"
-								   style="font-size:13px; width:300px"/>
+							<form:input path="nomPernat" id="personaNombres" maxlength="100" cssStyle="font-size:13px; width:300px"/>
 						</td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Nacionalidad:</td>
 						<td colspan="2" align="left">
-							<select id="personaNacionalidad" name="nacionalidad" style="width:200px">
+							<form:select path="codPais" id="personaNacionalidad" cssStyle="width:200px">
 								<option value="PE" selected="selected">PERU</option>
-							</select>
+							</form:select>
 						</td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">Profesion/Ocupaci&oacute;n:</td>
 						<td colspan="2" align="left">
-							<input id="personaProfesion" name="profesion"
-								   type="text" maxLength="100"
-								   style="font-size:13px; width:270px"/>
+							<form:input path="desProfesion" id="personaProfesion" maxlength="100" cssStyle="font-size:13px; width:270px"/>
 						</td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Domicilio / Direcci&oacute;n:</td>
 						<td colspan="2" align="left">
-							<input id="personaDireccion" name="direccion"
-								   type="text" maxLength="100" 
-								   style="font-size:13px; width:300px"/>
+							<form:input path="dirPernat" id="personaDireccion" maxlength="100" cssStyle="font-size:13px; width:300px"/>
 						</td>						
 					</tr>
 					<tr>
@@ -119,14 +119,12 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Estado Civil:</td>
 						<td colspan="2" align="left">
-							<select id="personaEstadoCivil" name="estadoCivil"
-									style="width:200px"
-									onChange="notarios.cmbperEstadoCivil()">
+							<form:select path="codEstcivil" id="personaEstadoCivil"  cssStyle="width:200px" onchange="notarios.cmbperEstadoCivil()">
 								<option value="00" selected="selected">SELECCIONE ESTADO CIVIL</option>
 								<option value="01" selected="selected">SOLTERO</option>
 								<option value="02" selected="selected">CASADO</option>
 								<option value="03" selected="selected">DIVORCIADO</option>
-							</select>
+							</form:select>
 						</td>
 					</tr>
 					<tr>
@@ -137,22 +135,17 @@
 									<tr>
 										<td width="165px">(*) Tipo documento conyuge:</td>
 										<td width="435px" colspan="2">
-											<select id="personaTipoDocumentoCon" name="tipoDocumentoCon"
-													style="width:200px"
-													onChange="notarios.cmbperTipoDocuCon()">
+											<form:select path="codTdcon" id="personaTipoDocumentoCon" cssStyle="width:200px" onchange="notarios.cmbperTipoDocuCon()">
 												<option value="01" selected="selected">D.N.I.</option>
 												<option value="02">CARNET EXTRANJERIA</option>
 												<option value="03">PASAPORTE</option>
-											</select>
+											</form:select>
 										</td>
 									</tr>
 									<tr>
 										<td>(*) N&uacute;mero de documento:</td>
 										<td>
-											<input id="personaNumeroDocumentoCon" name="numeroDocumentoCon"
-												   type="text" maxLength="8"
-												   style="font-size:13px; width:120px"
-												   onChange="notarios.cmbperNumeDocuCon()"/>
+											<form:input path="numDoccon" id="personaNumeroDocumentoCon" maxlength="8" cssStyle="font-size:13px; width:120px" onchange="notarios.cmbperNumeDocuCon()"/>
 										</td>
 										<td>
 											<button id="personaBtnConReniec" onclick="notarios.cmbperValidDocuCon()">RENIEC</button>
@@ -161,30 +154,25 @@
 									<tr>
 										<td>(*) Apellido paterno conyuge:</td>
 										<td colspan="2">
-											<input id="personaApellidoPaternoCon" name="apellidoPaternoCon"
-												   type="text" maxLength="100"
-												   style="font-size:13px; width:270px"/>
+											<form:input path="apePatcon" id="personaApellidoPaternoCon" maxlength="100" cssStyle="font-size:13px; width:270px"/>
 										</td>
 									</tr>
 									<tr>
 										<td>(*) Apellido materno conyuge:</td>
 										<td colspan="2">
-											<input id="personaApellidoMaternoCon" name="apellidoMaternoCon"
-												   type="text" maxLength="100" style="font-size:13px; width:270px"/>
+											<form:input path="apeMatcon" id="personaApellidoMaternoCon" maxlength="100" cssStyle="font-size:13px; width:270px"/>
 										</td>
 									</tr>
 									<tr>
 										<td>(*) Nombres conyuge:</td>
 										<td colspan="2">
-											<input id="personaNombresCon" name="nombresCon"
-												   type="text" maxLength="100"  style="font-size:13px; width:270px"/>
+											<form:input path="nomConyuge" id="personaNombresCon" maxlength="100"  cssStyle="font-size:13px; width:270px"/>
 										</td>
 									</tr>
 									<tr>
 										<td>(*) Profesi&oacute;n conyuge:</td>
 										<td colspan="2">
-											<input id="personaProfesionCon" name="profesionCon"
-												   type="text" maxLength="100" style="font-size:13px; width:270px"/>
+											<form:input path="desProfcon" id="personaProfesionCon" maxlength="100" cssStyle="font-size:13px; width:270px"/>
 										</td>
 									</tr>
 								</table>
@@ -194,8 +182,7 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Tipo de aporte:</td>
 						<td colspan="2" align="left">
-							<input id="personaTipoAporte" type="hidden" name="tipoAporte" value=""/>
-							<input value="" style="width:180px;margin-left:2px"/>
+							<form:hidden path="indAporte" id="personaTipoAporte" />
 						</td>
 					</tr>	
 					<tr>
@@ -205,8 +192,7 @@
 									<tr>
 										<td width="167px" style="padding-left:10px">Monto Aporte S/.:</td>
 										<td width="433px">
-											<input id="personaMontoAporte" name="montoAporte"
-												 type="text" maxLength="18" style="font-size:13px; width:180px"/>
+											<form:input path="montoAporte" id="personaMontoAporte" maxlength="18" cssStyle="font-size:13px; width:180px"/>
 										</td>
 									</tr>
 								</table>
@@ -225,6 +211,7 @@
 								<button  onclick="notarios.editarAporte()">Editar</button>
 								<button  onclick="notarios.eliminarAporte()">Eliminar</button>
 							</div>
+							
 							<div id="divGridAportes" style="border:1px solid #99BBE8; position:relative; text-align:left; height:150px; width:614px;">
 								<table jsid="gridAportes" id="gridAportes" dojoType="dojox.grid.DataGrid" store="storeAportes" rowsPerPage="20" selectionMode="single">
 									<script type="dojo/method" event="onRowDblClick" args="cell"> 
