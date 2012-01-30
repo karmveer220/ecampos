@@ -90,7 +90,7 @@ public class T020tramite implements Serializable {
     @Column(name = "MTO_DEREREGIS")
     private BigDecimal mtoDereregis;
     @Column(name = "IND_FORMAPAGO")
-    private Character indFormapago;
+    private String indFormapago;
     @Column(name = "IND_PSC")
     private Character indPsc;
     @Column(name = "IND_ESTADO")
@@ -343,11 +343,11 @@ public class T020tramite implements Serializable {
         this.mtoDereregis = mtoDereregis;
     }
 
-    public Character getIndFormapago() {
+    public String getIndFormapago() {
         return indFormapago;
     }
 
-    public void setIndFormapago(Character indFormapago) {
+    public void setIndFormapago(String indFormapago) {
         this.indFormapago = indFormapago;
     }
 

@@ -34,10 +34,20 @@ public class InsertoDAOImpl  extends HibernateDaoSupport implements InsertoDAO {
 	}
 
 	@Override
-	public T029archivo obtenerArchivo(String idTramite) {
-		Query query = getSession().createQuery(" from T029archivo p where p.t020tramite.numTramite = :id ")
-        .setString("id", idTramite);
+	public T029archivo obtenerArchivo(String idTramite,String tipo) {
+		Query query = getSession().createQuery(" from T029archivo p where p.t020tramite.numTramite = :id and indTiparch = :tipo")
+        .setString("id", idTramite)
+        .setString("tipo", tipo);
         return (T029archivo) query.uniqueResult();
+	}
+
+	@Override
+	public void borrarParte(Integer numTramite, String tipo) {
+		getSession().createQuery(" delete from T029archivo p where p.t020tramite.numTramite = :id and indTiparch = :tipo")
+        .setInteger("id", numTramite)
+        .setString("tipo", tipo)
+        .executeUpdate();
+		
 	}
 
 }

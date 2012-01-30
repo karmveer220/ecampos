@@ -5,8 +5,7 @@
 
 <%
 	T020tramite tram = (T020tramite)session.getAttribute("tramitesistema"); 
-	T029archivo arch = (T029archivo)request.getAttribute("archivoTramite");
-	System.out.println(arch);
+	T029archivo arch = (T029archivo)request.getAttribute("archivoTramite");	
 %>
 <script>
 
@@ -17,23 +16,23 @@
 	}
 
 	function borrarParte(){
-		document.forms[1].action='${pageContext.request.contextPath}/constitucion/borrarParte.htm';
-		document.forms[1].submit();
+		document.forms[0].action='${pageContext.request.contextPath}/constitucion/borrarParte.htm';
+		document.forms[0].submit();
 	}
 
 	function contenidoParte(){
-		document.forms[1].action='${pageContext.request.contextPath}/constitucion/verParte.htm';
-		document.forms[1].submit();
+		document.forms[0].action='${pageContext.request.contextPath}/constitucion/verParte.htm';
+		document.forms[0].submit();
 	}
 
 	function grabarDerechos(){
-		document.forms[2].action='${pageContext.request.contextPath}/constitucion/grabarDerechos.htm';
-		document.forms[2].submit();
+		document.forms[1].action='${pageContext.request.contextPath}/constitucion/grabarDerechos.htm';
+		document.forms[1].submit();
 	}
 
 	function seguirMandatarios(){
-		document.forms[2].action='${pageContext.request.contextPath}/constitucion/regresaPasoTres.htm';
-		document.forms[2].submit();
+		document.forms[1].action='${pageContext.request.contextPath}/constitucion/regresaPasoTres.htm';
+		document.forms[1].submit();
 	}
 	
 </script>
@@ -97,7 +96,9 @@
 				<tr><td colspan="2">&nbsp;</td></tr>
 				<tr>
 					<td colspan="2">
-						<form id="parteForm" name="parteForm" method="post">
+					
+						<form:form name="derechosform" method="post" modelAttribute="tramite">
+						
 							<input id="parteModifico" type="hidden" name="modifico" value="0"/>
 							<table width="100%">
 								<tr>
@@ -107,37 +108,41 @@
 								<tr>
 									<td width="150px">(*) Derechos registrales S/.:</td>
 									<td width="450px">
-										<input id="parteDerechoRegistral" name="derechoRegistral" maxlength="22" type="text" style="font-size:13px; width:150px" onchange="notarios.cambioParte()"/>
+										<input id="parteDerechoRegistral" name="derechoRegistral" value="<%=tram.getMtoDereregis()==null?"":tram.getMtoDereregis() %>" maxlength="22" type="text" style="font-size:13px; width:150px" onchange="notarios.cambioParte()"/>
 									</td>
 								</tr>
 								<tr><td colspan="2" height="8px">&nbsp;</td></tr>
 								<tr>
 									<td>(*) Forma de Pago:</td>
 									<td>
-										<label><input name="formaPago" checked="checked" type="radio" value="T01">Descuento de Saldo&nbsp;&nbsp;&nbsp;&nbsp;</label>
-										<label><input name="formaPago" type="radio" value="T02" disabled="disabled"">P.O.S.&nbsp;&nbsp;&nbsp;&nbsp;</label>
-										<label><input name="formaPago"  type="radio" value="T03" disabled="disabled">Tarjeta de Cr&eacute;dito&nbsp;&nbsp;&nbsp;&nbsp;</label>
+										<label><input name="formaPago" checked="checked" type="radio" value="1">Descuento de Saldo&nbsp;&nbsp;&nbsp;&nbsp;</label>
+										<label><input name="formaPago" type="radio" value="2" disabled="disabled"">P.O.S.&nbsp;&nbsp;&nbsp;&nbsp;</label>
+										<label><input name="formaPago"  type="radio" value="3" disabled="disabled">Tarjeta de Cr&eacute;dito&nbsp;&nbsp;&nbsp;&nbsp;</label>
 									</td>
 								</tr>
 							</table>
-						</form>
+							
+							<table cellspacing="13" style="overflow:hidden;">
+								<tr>
+									<td width="100%">&nbsp;</td>
+									<td><input type="button" onClick="javascript:seguirMandatarios();" value="Anterior"></td>
+									<td>&nbsp;</td>
+									<td><input type="button" onClick="javascript:grabarDerechos();" value="Grabar"></td>
+									<td>&nbsp;</td>
+									<td><input type="button" onClick="javascript:salirTramite();" value="Salir"></td>
+								</tr>
+							</table>
+		
+						</form:form>
 					</td>
 				</tr>
 			</table>
 		</div>
 	</div>
-	<div style="overflow:hidden;height:50px;border:1px solid #99BBE8; border-top:0px">
-		<table cellspacing="13" style="overflow:hidden;">
-			<tr>
-				<td width="100%">&nbsp;</td>
-				<td><input type="button" onClick="javascript:seguirMandatarios();" value="Anterior"></td>
-				<td>&nbsp;</td>
-				<td><input type="button" onClick="javascript:grabarDerechos();" value="Grabar"></td>
-				<td>&nbsp;</td>
-				<td><input type="button" onClick="javascript:salirTramite();" value="Salir"></td>
-			</tr>
-		</table>
-	</div>
+	
+	
+		
+	
 </div>
 
 <jsp:include page="include/footer.jsp" flush="true"/>

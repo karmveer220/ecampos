@@ -17,6 +17,8 @@ public interface TramiteService {
 
 	public void registrarArchivo(T029archivo archivo);
 
-	public T029archivo obtenerArchivo(String idTramite);
+	public T029archivo obtenerArchivo(String idTramite, String tipo);
+
+	public void borrarParte(Integer numTramite, String tipo);
 	
 }

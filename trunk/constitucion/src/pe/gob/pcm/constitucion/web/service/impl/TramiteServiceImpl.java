@@ -58,8 +58,13 @@ public class TramiteServiceImpl implements TramiteService {
 	}
 
 	@Override
-	public T029archivo obtenerArchivo(String idTramite) {
-		return insertoDAO.obtenerArchivo(idTramite);
+	public T029archivo obtenerArchivo(String idTramite, String tipo) {
+		return insertoDAO.obtenerArchivo(idTramite,tipo);
+	}
+
+	@Override
+	public void borrarParte(Integer numTramite, String tipo) {
+		insertoDAO.borrarParte(numTramite,tipo);
 	}
 
 }

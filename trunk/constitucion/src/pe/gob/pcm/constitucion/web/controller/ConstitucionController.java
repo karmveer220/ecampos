@@ -1,10 +1,13 @@
 package pe.gob.pcm.constitucion.web.controller;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -38,6 +41,9 @@ public class ConstitucionController {
 
 	private static final Logger logger = Logger.getLogger(ConstitucionController.class);
 	public static String TRAMITE_SESSION = "tramitesistema";
+	public static String TIPO_ARCHIVO_PARTE = "1";
+	public static String TIPO_ARCHIVO_XML = "2";
+	public static String TIPO_ARCHIVO_PDF = "3";
 	
 	@Autowired
 	private ParametroDAO parametroDAO;
@@ -142,6 +148,7 @@ public class ConstitucionController {
     public String regresaPasoUno(ModelMap model,HttpServletRequest request) {
 		logger.debug("vuelvo al paso uno");
 		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		cargaCombos(request);
 		model.put("tramite", trm );
 		return "TramiteEditable";
     }
@@ -178,7 +185,7 @@ public class ConstitucionController {
     public String tramitePart(ModelMap model,HttpServletRequest request) {
 		logger.debug("entro a parte");
 		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
-		model.put("archivoTramite", tramiteService.obtenerArchivo( trm.getNumTramite().toString() ));
+		model.put("archivoTramite", tramiteService.obtenerArchivo( trm.getNumTramite().toString(), TIPO_ARCHIVO_PARTE ));
 		return "Parte";
     }
 	
@@ -209,6 +216,7 @@ public class ConstitucionController {
                          archivo.setNomArchivo(fileName.substring(fileName.lastIndexOf("\\")+1));
                      }
                      archivo.setArcContenido( fi.get() );
+                     archivo.setIndTiparch(TIPO_ARCHIVO_PARTE);
                      tramiteService.registrarArchivo(archivo);
                      model.put("archivoTramite", archivo );
                   }
@@ -219,7 +227,44 @@ public class ConstitucionController {
 		return "Parte";
     }
 	
-
+	@RequestMapping(value ="/constitucion/verParte.htm",method = RequestMethod.POST)
+    public String verParte(ModelMap model,HttpServletRequest request, HttpServletResponse response) {
+		 logger.debug("muestro jsp para cargar o ver imagenes");
+         try {                   
+             response.reset(); 
+             response.setContentType("application/rtf");             
+             ServletOutputStream out = response.getOutputStream();
+             T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+             T029archivo archivo =  tramiteService.obtenerArchivo( trm.getNumTramite().toString() , TIPO_ARCHIVO_PARTE);
+             response.addHeader("Content-Disposition", "attachment;filename=\""+ archivo.getNomArchivo() +"\"");
+             out.write( archivo.getArcContenido() , 0,  archivo.getArcContenido().length);
+             out.flush();
+             out.close();                  
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         return null;
+	}
+	
+	@RequestMapping(value ="/constitucion/borrarParte.htm",method = RequestMethod.POST)
+    public String borrarParte(ModelMap model,HttpServletRequest request, HttpServletResponse response) {
+		 logger.debug("muestro jsp para borrarParte");
+         T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+         tramiteService.borrarParte( trm.getNumTramite() , TIPO_ARCHIVO_PARTE);
+         return "Parte";
+	}
+	
+	@RequestMapping(value ="/constitucion/grabarDerechos.htm",method = RequestMethod.POST)
+    public String grabarDerechos(ModelMap model,HttpServletRequest request) {
+		logger.debug("entro a grabar derechos ");
+		String monto = request.getParameter("derechoRegistral");
+		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		trm.setMtoDereregis( new BigDecimal( monto ));
+		trm.setIndFormapago( request.getParameter("formaPago"));
+		tramiteService.modificarTramite(trm);
+		return "Parte";
+    }
+	
 	public void cargaCombos(HttpServletRequest request){
 		request.setAttribute("lsTipoSociedad", parametroDAO.litarParametros(ParametrosUtil.TIPO_SOCIEDAD));
 		request.setAttribute("lsZonaRegistral", parametroDAO.litarParametros(ParametrosUtil.ZONA_REGISTRAL));

@@ -36,7 +36,7 @@ public class T029archivo implements Serializable {
     @Column(name = "NUM_ARCHIVO")
     private Integer numArchivo;
     @Column(name = "IND_TIPARCH")
-    private Character indTiparch;
+    private String indTiparch;
     @Column(name = "NOM_ARCHIVO")
     private String nomArchivo;
     
@@ -71,11 +71,11 @@ public class T029archivo implements Serializable {
         this.numArchivo = numArchivo;
     }
 
-    public Character getIndTiparch() {
+    public String getIndTiparch() {
         return indTiparch;
     }
 
-    public void setIndTiparch(Character indTiparch) {
+    public void setIndTiparch(String indTiparch) {
         this.indTiparch = indTiparch;
     }
 
