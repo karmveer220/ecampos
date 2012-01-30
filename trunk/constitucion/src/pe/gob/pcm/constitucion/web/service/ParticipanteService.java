@@ -8,9 +8,9 @@ import pe.gob.pcm.constitucion.web.model.T026perjur;
 
 public interface ParticipanteService {
 
-	public List<T022accionista> listarAccionistas(String anioTramite, String numTramite);
-	public List<T025pernat> listarPersonasNaturales(String anioTramite, String numTramite);
-	public List<T026perjur> listarPersonasJuridicas(String anioTramite, String numTramite);
+	public List<T022accionista> listarAccionistas( int idtramite );
+	public List<T025pernat> listarPersonasNaturales( int idtramite );
+	public List<T026perjur> listarPersonasJuridicas( int idtramite );
 	
 	public void registrarAccionistas(T022accionista accionista);
 	public void registrarPersonaNatural(T025pernat accionista);

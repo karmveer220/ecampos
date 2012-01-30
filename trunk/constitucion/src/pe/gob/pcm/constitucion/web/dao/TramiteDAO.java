@@ -11,5 +11,7 @@ public interface TramiteDAO {
 	public void modificarTramite(T020tramite tramite);
 
 	public List<T020tramite> listarTramites(T020tramite tramite);
+
+	public T020tramite obtenerTramite(String id);
 	
 }

@@ -1,6 +1,8 @@
 package pe.gob.pcm.constitucion.web.dao.impl;
 
 import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
@@ -39,8 +41,17 @@ public class TramiteDAOImpl extends HibernateDaoSupport implements TramiteDAO {
 		if(!Utiles.nullToBlank( tramite.getClvKardex() ).equals("")){
 			criteria.add( Restrictions.ilike("clvKardex", tramite.getClvKardex() ,MatchMode.ANYWHERE) );			
 		}
-		//criteria.add( Restrictions.eq("cliestadonu", 1) );			
+		if(!Utiles.nullToBlank( tramite.getIndEstado() ).equals("")){
+			criteria.add( Restrictions.like("indEstado", tramite.getIndEstado() ) );			
+		}		
 		return getHibernateTemplate().findByCriteria(criteria);
+	}
+
+	@Override
+	public T020tramite obtenerTramite(String id) {
+		Query query = getSession().createQuery(" from T020tramite p where p.numTramite = :id ")
+        .setString("id", id);
+        return (T020tramite) query.uniqueResult();
 	}
 	
 }

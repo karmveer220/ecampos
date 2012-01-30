@@ -1,15 +1,18 @@
 package pe.gob.pcm.constitucion.web.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import pe.gob.pcm.constitucion.web.dao.ParticipanteDAO;
 import pe.gob.pcm.constitucion.web.model.T022accionista;
 import pe.gob.pcm.constitucion.web.model.T025pernat;
 import pe.gob.pcm.constitucion.web.model.T026perjur;
 import pe.gob.pcm.constitucion.web.service.ParticipanteService;
+import pe.gob.pcm.constitucion.web.util.Utiles;
 
 @Service
 public class ParticipanteServiceImpl implements ParticipanteService {
@@ -18,18 +21,18 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 	private ParticipanteDAO participanteDAO;
 	
 	@Override
-	public List<T022accionista> listarAccionistas(String anioTramite, String numTramite) {
-		return participanteDAO.listarAccionistas(anioTramite, numTramite);
+	public List<T022accionista> listarAccionistas( int idtramite ) {
+		return participanteDAO.listarAccionistas(idtramite);
 	}
 
 	@Override
-	public List<T025pernat> listarPersonasNaturales(String anioTramite, String numTramite) {
-		return participanteDAO.listarPersonasNaturales(anioTramite, numTramite);
+	public List<T025pernat> listarPersonasNaturales( int idtramite ) {
+		return participanteDAO.listarPersonasNaturales(idtramite);
 	}
 
 	@Override
-	public List<T026perjur> listarPersonasJuridicas(String anioTramite, String numTramite) {
-		return participanteDAO.listarPersonasJuridicas(anioTramite, numTramite);
+	public List<T026perjur> listarPersonasJuridicas( int idtramite ) {
+		return participanteDAO.listarPersonasJuridicas(idtramite);
 	}
 
 	@Override
@@ -38,8 +41,25 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 	}
 
 	@Override
+	@Transactional
 	public void registrarPersonaNatural(T025pernat accionista) {
 		participanteDAO.registrarPersonaNatural(accionista);
+		
+		if( !Utiles.nullToBlank(accionista.getMontoAporte()).equals("") ){
+			
+			T022accionista acc = new T022accionista();
+			acc.setFecRegistro( new Date());
+			
+			acc.setMtoAporte( accionista.getMontoAporte() );
+			acc.setIndAporte( accionista.getIndAporte() );
+			acc.setCodParticipa( accionista.getCodParticipa() );
+			
+			acc.setNumDocum( accionista.getNumDocum() );
+			acc.setCodTipdoc( accionista.getCodTipdoc());
+			acc.setT020tramite( accionista.getT020tramite() );
+			participanteDAO.registrarAccionistas( acc );
+			
+		}
 	}
 
 	@Override

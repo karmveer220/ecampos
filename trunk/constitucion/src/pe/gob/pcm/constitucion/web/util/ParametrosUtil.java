@@ -33,6 +33,7 @@ public class ParametrosUtil {
 	public static final String TIPO_DOCUMENTO = "001";
 	public static final String TIPO_SOCIEDAD = "002";
 	public static final String TIPO_APORTE = "003";
+	public static final String TIPO_PARTICIPANTE = "011";
 	public static final String ZONA_REGISTRAL = "004";
 	public static final String OFICINA_REGISTRAL = "005";
 	public static final String UBIGEO = "006";

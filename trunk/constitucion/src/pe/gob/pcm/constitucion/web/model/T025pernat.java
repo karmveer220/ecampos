@@ -6,6 +6,7 @@
 package pe.gob.pcm.constitucion.web.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -19,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -76,6 +78,13 @@ public class T025pernat implements Serializable {
     @ManyToOne(optional = false)
     private T020tramite t020tramite;
 
+    @Transient
+    private BigDecimal montoAporte;
+    @Transient
+    private String indAporte;
+    @Transient
+    private String codParticipa;
+    
     public T025pernat() {
     }
 
@@ -260,4 +269,29 @@ public class T025pernat implements Serializable {
         return "pe.gob.pcm.constitucion.web.model.T025pernat[idPernat=" + idPernat + "]";
     }
 
+	public BigDecimal getMontoAporte() {
+		return montoAporte;
+	}
+
+	public void setMontoAporte(BigDecimal montoAporte) {
+		this.montoAporte = montoAporte;
+	}
+
+	public String getIndAporte() {
+		return indAporte;
+	}
+
+	public void setIndAporte(String indAporte) {
+		this.indAporte = indAporte;
+	}
+
+	public String getCodParticipa() {
+		return codParticipa;
+	}
+
+	public void setCodParticipa(String codParticipa) {
+		this.codParticipa = codParticipa;
+	}
+
+    
 }

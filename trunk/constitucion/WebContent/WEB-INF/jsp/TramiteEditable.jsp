@@ -22,8 +22,8 @@
 	}
 
 	function seguirAccionistas(){
-		if(document.getElementById('modifico')!=0 ){
-			alert('debe grabar los cambios');
+		if(document.getElementById('modifico').value !=0 ){
+			alert('debe grabar los cambios. var = ' +  document.getElementById('modifico') );
 		}else{
 			document.forms[0].submit();	
 		}
@@ -43,6 +43,7 @@
 	<form:form name="tramiteForm" action="tramitePasoDos.htm" method="post" modelAttribute="tramite">
 			
 			<input id="modifico" type="hidden" name="modifico" value="0"/>
+			
 			<form:hidden path="numTramite"/>
 			<div style="width:700px; padding:10px 10px 10px 10px;">
 				<table width="100%" cellspacing="10">
