@@ -22,16 +22,13 @@
 			Asignaci&oacute;n de Mandatarios
 		</div>
 		<div  style="border-left:1px solid #99BBE8; border-right:1px solid #99BBE8; border-bottom:0px;">
-			<button >
-				<span>Adicionar Mandatario</span>
-				<div >
-					<div  onclick="notarios.escogerMandatario()">Socio / Accionista existente</div>
-					<div  onclick="notarios.nuevoMandatario()">Nuevo Mandatario</div>
-				</div>
-			</button>
-			<button  onclick="notarios.asignarCargos()">Asignar</button>
-			<button  onclick="notarios.editarMandatario()">Editar</button>
-			<button  onclick="notarios.eliminarMandatario()">Eliminar</button>
+			
+			<input type="button" value="Socio / Accionista existente" onclick=""/>
+			<input type="button" value="Nuevo Mandatario" onclick=""/>
+			<input type="button" value="Asignar" onclick="asignarCargos()"/>
+			<input type="button" value="Editar" onclick="editarMandatario()"/>
+			<input type="button" value="Eliminar" onclick="eliminarMandatario()"/>
+			
 		</div>
 	</div>
 	<div  style="overflow:hidden; border:1px solid #99BBE8;">
