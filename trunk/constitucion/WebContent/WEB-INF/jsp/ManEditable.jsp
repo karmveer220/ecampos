@@ -1,92 +1,78 @@
-<form id="manForm" name="manForm" dojoType="dijit.form.Form">
-	<input type="hidden" name="action" value="grabaMandatario"/>
-	<input id="manModo" type="hidden" name="modo" value="NEW"/>
-	<input id="manUid" type="hidden" name="uid" value=""/>
-	<input id="manValida" type="hidden" name="valida" value="0"/>
+<jsp:include page="include/header.jsp" flush="true"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
+<script type="text/javascript">
+<!--
+	function grabarMandatario(){
+		document.forms[0].submit();
+	}
+
+	function cancelar(){
+		
+	}
+//-->
+</script>
+
+<form:form id="manForm" name="manForm" method="post" action="registraMandatario.htm" modelAttribute="mandatario" >
+	
+	<form:hidden path="idMandatario"/>
+	
 	<table cellspacing="5" style="width:100%" cellspacing="5">
 		<tr>
 			<td width="200px">(+) <b>Tipo documento</b>:</td>
 			<td colspan="2">
-				<select id="manTipoDocumento" name="tipoDocumento"
-						dojoType="dijit.form.FilteringSelect"
-						value="01"
-						autocomplete="true"
-						style="width:200px"
-						onChange="notarios.cmbmanTipoDocu()">
+				<form:select path="codTdocman" id="manTipoDocumento" cssStyle="width:200px" onchange="notarios.cmbmanTipoDocu()">
 					<option value="01" selected="selected">D.N.I.</option>
 					<option value="02">CARNET EXTRANJERIA</option>
 					<option value="03">PASAPORTE</option>
-				</select>
+				</form:select>
 			</td>
 		</tr>
 		<tr>
 			<td>(+) <b>N&uacute;mero de documento</b>:</td>
 			<td>
-				<input id="manNumeroDocumento" name="numeroDocumento"
-					   dojoType="dojext.form.ValidationTextBox"
-					   type="text" maxLength="20"
-					   style="font-size:13px; width:120px"
-					   onChange="notarios.cmbmanNumeDocu()"/>
+				<form:input path="numDocman" id="manNumeroDocumento" maxlength="20" cssStyle="font-size:13px; width:120px" onchange="notarios.cmbmanNumeDocu()"/>
 			</td>
 			<td>
-				<button id="manBtnReniec"
-						dojoType="dijit.form.Button"
-						iconClass="icon-by-ok" disabled="true"
-						onclick="notarios.cmbmanValidDocu()">RENIEC</button>
+				<button id="manBtnReniec" disabled="disabled" onclick="notarios.cmbmanValidDocu()">RENIEC</button>
 			</td>
 		</tr>
 		<tr>
 			<td>(*) Apellido paterno:</td>
 			<td colspan="2">
-				<input id="manApellidoPaterno" name="apellidoPaterno"
-					   dojoType="dijit.form.ValidationTextBox"  
-					   type="text" maxLength="100" uppercase="true"
-					   style="font-size:13px; width:270px"/>
+				<form:input path="apePaterno" id="manApellidoPaterno" maxlength="100" cssStyle="font-size:13px; width:270px"/>
 			</td>
 		</tr>
 		<tr>
 			<td>(*) Apellido materno:</td>
 			<td colspan="2">
-				<input id="manApellidoMaterno" name="apellidoMaterno"
-					   dojoType="dijit.form.ValidationTextBox"
-					   type="text" maxLength="100" uppercase="true"
-					   style="font-size:13px; width:270px"/>
+				<form:input path="apeMaterno" id="manApellidoMaterno" maxlength="100" cssStyle="font-size:13px; width:270px"/>
 			</td>
 		</tr>
 		<tr>
 			<td>(*) Nombres:</td>
 			<td colspan="2">
-				<input id="manNombres" name="nombres"
-					   dojoType="dijit.form.ValidationTextBox"
-					   type="text" maxLength="100" uppercase="true"
-					   style="font-size:13px; width:270px"/>
+				<form:input path="nomMandat" id="manNombres" maxlength="100" cssStyle="font-size:13px; width:270px"/>
 			</td>
 		</tr>
 		<tr>
 			<td>(*) Direcci&oacute;n:</td>
 			<td colspan="2">
-				<input id="manDireccion" name="direccion"
-					   dojoType="dijit.form.ValidationTextBox"
-					   type="text" maxLength="100" uppercase="true"
-					   style="font-size:13px; width:270px"/>
+				<form:input path="dirMandat" id="manDireccion" maxlength="100" cssStyle="font-size:13px; width:270px"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Profesi&oacute;n:</td>
 			<td colspan="2">
-				<input id="manProfesion" name="profesion"
-					   dojoType="dijit.form.ValidationTextBox"
-					   type="text" maxLength="100" uppercase="true"
-					   style="font-size:13px; width:180px"/>
+				<form:input path="desProfesion" id="manProfesion" maxlength="100" cssStyle="font-size:13px; width:180px"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Insc. Registral:</td>
 			<td colspan="2">
-				<input id="manInscripcionRegistral" name="inscripcionRegistral"
-					   dojoType="dijit.form.ValidationTextBox"
-					   type="text" maxLength="100" uppercase="true"
-					   style="font-size:13px; width:180px"/>
+				<form:input path="clvInsreg" id="manInscripcionRegistral" maxlength="100" cssStyle="font-size:13px; width:180px"/>
 			</td>
 		</tr>
 	</table>
@@ -95,11 +81,13 @@
 			<td colspan="2" height="35px" valign="bottom" align="center">
 				<table cellspacing="5">
 					<tr>
-						<td><button id="manBtnGrabar" dojoType="dijit.form.Button" iconClass="icon-by-ok" onclick="notarios.grabarMandatario()">Aceptar</button></td>
-						<td><button dojoType="dijit.form.Button" iconClass="icon-by-close" onclick="dijit.byId('dialogMandatario').hide()">Cancelar</button></td>
+						<td><button id="manBtnGrabar" onclick="grabarMandatario()">Aceptar</button></td>
+						<td><button onclick="cancelar()">Cancelar</button></td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 	</table>
-</form>
+</form:form>
+
+<jsp:include page="include/footer.jsp" flush="true"/>
