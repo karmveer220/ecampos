@@ -162,7 +162,7 @@
 					<tr>
 						<td>Acciones / Participaciones:</td>
 						<td colspan="3">
-							<span id="tramiteParticipaciones" style="padding:0px 0px 0px 10px">344</span>
+							 (monto / valor de accion) 150 
 						</td>
 					</tr>
 					<tr>

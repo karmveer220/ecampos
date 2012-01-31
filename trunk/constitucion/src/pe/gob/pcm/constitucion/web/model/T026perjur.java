@@ -1,11 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package pe.gob.pcm.constitucion.web.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -24,7 +21,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t026perjur")
 public class T026perjur implements Serializable {
-    private static final long serialVersionUID = 1L;
+    
+	private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -50,6 +49,13 @@ public class T026perjur implements Serializable {
     @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE")
     @ManyToOne(optional = false)
     private T020tramite t020tramite;
+    
+    @Transient
+    private BigDecimal montoAporte;
+    @Transient
+    private String indAporte;
+    @Transient
+    private String codParticipa;
     
     public T026perjur() {
     }
@@ -147,7 +153,6 @@ public class T026perjur implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof T026perjur)) {
             return false;
         }
@@ -162,5 +167,32 @@ public class T026perjur implements Serializable {
     public String toString() {
         return "pe.gob.pcm.constitucion.web.model.T026perjur[idPerjur=" + idPerjur + "]";
     }
+
+	public BigDecimal getMontoAporte() {
+		return montoAporte;
+	}
+
+	public void setMontoAporte(BigDecimal montoAporte) {
+		this.montoAporte = montoAporte;
+	}
+
+	public String getIndAporte() {
+		return indAporte;
+	}
+
+	public void setIndAporte(String indAporte) {
+		this.indAporte = indAporte;
+	}
+
+	public String getCodParticipa() {
+		return codParticipa;
+	}
+
+	public void setCodParticipa(String codParticipa) {
+		this.codParticipa = codParticipa;
+	}
+    
+    
+    
 
 }

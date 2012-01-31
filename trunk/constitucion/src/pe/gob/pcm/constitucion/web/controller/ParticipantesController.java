@@ -68,22 +68,24 @@ public class ParticipantesController {
 	@RequestMapping(value ="/participantes/nuevopj.htm",method = RequestMethod.GET)
     public String nuevopj(ModelMap model,HttpServletRequest request) {
 		logger.debug("nuevo participante juridico");
-		model.put("lUsuarios", "aqui lista de usuarios");
+		model.put("persona", new T026perjur() );
         return "Juridicas";
     }
 	
 	@RequestMapping(value ="/participantes/registrapj.htm",method = RequestMethod.POST)
-    public String registrapj(ModelMap model,HttpServletRequest request) {
+    public String registrapj(@Valid T026perjur accionista, BindingResult result, ModelMap model,HttpServletRequest request) {
 		try {
 			logger.debug("registra participante juridico");
-			BeanValida b = validacionService.validaParticipantePj( new T026perjur() );
+			BeanValida b = validacionService.validaParticipantePj( accionista );
 			if(b.getResultado() == 0){
-				//procedo a registrar participante
+				participanteService.registrarPersonaJuridica(accionista);
 			}else{
-				model.put("msgError", b.getMensaje() );
+				throw new Exception( b.getMensaje());
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+			model.put("persona", accionista );
+			return "Juridicas";
 		}
         return "Participantes";
     }
