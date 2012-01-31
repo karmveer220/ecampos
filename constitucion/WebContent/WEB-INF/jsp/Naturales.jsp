@@ -6,7 +6,7 @@
 <%@page import="java.util.List"%>
 
 <script>
-	function grabar(){
+	function grabar(){		
 		document.forms[0].submit();
 	}
 </script>
@@ -182,7 +182,18 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Tipo de aporte:</td>
 						<td colspan="2" align="left">
+						//si tipo de aporte es != de Ambos
 							<form:hidden path="indAporte" id="personaTipoAporte" />
+							muestro desciocion del tipo de aporte
+							
+							//sino muestro combo
+								<select id="personaTipoAporte" name="tipoAporte" style="width:220px"
+								onChange="notarios.cmbperTipoAporte()">
+								<%	List<T001parametro> lsTipoAporteJ = (List<T001parametro>)request.getAttribute("lsTipoAporte");
+									for(T001parametro p : lsTipoAporteJ) {%>
+									<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
+								<%	}%>
+							</select>
 						</td>
 					</tr>	
 					<tr>
@@ -192,6 +203,7 @@
 									<tr>
 										<td width="167px" style="padding-left:10px">Monto Aporte S/.:</td>
 										<td width="433px">
+											//si en el combo escogo que aporta Dinerario o ambos muestro el campo monto
 											<form:input path="montoAporte" id="personaMontoAporte" maxlength="18" cssStyle="font-size:13px; width:180px"/>
 										</td>
 									</tr>
@@ -203,21 +215,17 @@
 						<td colspan="3" align="left">
 							
 							<button  onclick="javascript:grabar();">Grabar</button>
-						
+							
+							//si es no dinerario o ambos, muestro este detalle de bienes
 							<div id="toolbarAportes" style="border:1px solid #99BBE8; border-Bottom:0px; width:610px;">
 								<div class="dijitInline"style="color:#15428b; width:350px; padding-left:4px"><b>Lista de aporte de bienes</b></div>
-								
 								<button  onclick="notarios.adicionarAporte()">Adicionar</button>
 								<button  onclick="notarios.editarAporte()">Editar</button>
 								<button  onclick="notarios.eliminarAporte()">Eliminar</button>
-							</div>
-							
+							</div>							
 							<div id="divGridAportes" style="border:1px solid #99BBE8; position:relative; text-align:left; height:150px; width:614px;">
-								<table jsid="gridAportes" id="gridAportes" dojoType="dojox.grid.DataGrid" store="storeAportes" rowsPerPage="20" selectionMode="single">
-									<script type="dojo/method" event="onRowDblClick" args="cell"> 
-										if(cell) notarios.editarAporte();
-									</script>
-									<thead>
+								<table>
+										<thead>
 										<tr>
 											<th field="cantidadBien" width="120px">Cantidad</th>
 											<th field="descripcionBien" width="280px">Descripci&oacute;n de bienes</th>
