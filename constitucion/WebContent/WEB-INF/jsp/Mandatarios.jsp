@@ -13,50 +13,46 @@
 		document.forms[0].action='${pageContext.request.contextPath}/constitucion/regresaPasoDos.htm';
 		document.forms[0].submit();
 	}
+
+	function nuevoMandatario(){
+		document.forms[0].action='${pageContext.request.contextPath}/constitucion/nmandatario.htm';
+		document.forms[0].submit();
+	}
 </script>
 
 
 <div style="overflow:hidden">
-	<div >
+	
+	<form action="tramitePart.htm" method="post">
+	
+	<div>
 		<div class="dextPanelHeader" style="padding: 5px 8px">
 			Asignaci&oacute;n de Mandatarios
 		</div>
 		<div  style="border-left:1px solid #99BBE8; border-right:1px solid #99BBE8; border-bottom:0px;">
-			
-			<input type="button" value="Socio / Accionista existente" onclick=""/>
-			<input type="button" value="Nuevo Mandatario" onclick=""/>
-			<input type="button" value="Asignar" onclick="asignarCargos()"/>
-			<input type="button" value="Editar" onclick="editarMandatario()"/>
-			<input type="button" value="Eliminar" onclick="eliminarMandatario()"/>
-			
+			<input type="button" value="Socio / Accionista existente" onClick=""/>
+			<input type="button" value="Nuevo Mandatario" onclick="nuevoMandatario()"/>
+			<input type="button" value="Asignar" onClick="asignarCargos()"/>
+			<input type="button" value="Editar" onClick="editarMandatario()"/>
+			<input type="button" value="Eliminar" onClick="eliminarMandatario()"/>
 		</div>
 	</div>
-	<div  style="overflow:hidden; border:1px solid #99BBE8;">
-		<table  id="gridMandatarios" >
-			<script type="dojo/method" event="onRowDblClick" args="cell"> 
-				if(cell) notarios.asignarCargos();
-			</script>
-			<script type="dojo/method" event="onRowMouseOver" args="cell"> 
-				if(cell.cellNode) dijit.byId("menuMandatarios").bindDomNode(cell.cellNode);		
-			</script>
-			<script type="dojo/method" event="onRowMouseDown" args="cell">
-				if(cell) this.selection.select(cell.rowIndex);
-			</script>
-			<thead>
-				<tr>
-					<th width="300px">Nombres</th>
-					<th width="110px">Director</th>
-					<th width="110px">Gerente</th>
-					<th width="110px">Sub-Gerente</th>
-					<th width="110px">Porcentaje Llenado</th>
-					<th width="130px">Tipo Documento</th>
-					<th width="110px">N&uacute;mero Documento</th>
-				</tr>
-			</thead>
-		</table>
-	</div>
+	<div style="overflow:hidden; border:1px solid #99BBE8;">
 	
-	<form action="tramitePart.htm" method="post">
+		<display:table  name="requestScope.lmandatarios" class="displaytag" pagesize="10"
+	    	    defaultsort="1" defaultorder="ascending"  export="false" id="row" excludedParams="ajax" >	           
+	           <display:column title="Nombre" property="nomMandat" headerClass="sortable" />
+	           <display:column title="Cargo" property="codCargo" headerClass="sortable" />
+	           <display:column title="Tipo Doc." property="codTdocman" headerClass="sortable" />
+	           <display:column title="Numero Doc." property="numDocman" headerClass="sortable" />	           
+	           <display:column title="Acciones">
+	           	<a href="editarTramite.htm?codigo=${row.idMandatario}"><img title="Editar" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
+	           	<a href="verTramite.htm?codigo=${row.idMandatario}"><img title="Ver" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
+			</display:column>
+	  		</display:table>
+		
+	</div>
+		
 	<div style="overflow:hidden;height:50px;border:1px solid #99BBE8; border-top:0px">
 		<table cellspacing="13" style="overflow:hidden;">
 			<tr>
@@ -69,26 +65,9 @@
 			</tr>
 		</table>
 	</div>
+	
 	</form>
 	
-</div>
-
-<div  id="menuMandatarios" style="display: none;">
-	<div onclick="asignarCargos()">Asignar</div>
-	<div onclick="editarMandatario()">Editar</div>
-	<div onclick="eliminarMandatario()">Eliminar</div>
-</div>
-
-<div id="dialogEscoger" title="Seleccione un Accionista / Socio" style="width:550px; visibility:hidden">
-	<%@include file="SelectAccionistas.jsp"%>
-</div>
-
-<div id="dialogMandatario" title="Nuevo Mandatario" style="width:470px; visibility:hidden">
-	<%@include file="ManEditable.jsp"%>
-</div>
-
-<div id="dialogCargos" title="Asignar Cargos"  style="width:300px; visibility:hidden">
-	<%@include file="Cargos.jsp"%>
 </div>
 
 <jsp:include page="include/footer.jsp" flush="true"/>

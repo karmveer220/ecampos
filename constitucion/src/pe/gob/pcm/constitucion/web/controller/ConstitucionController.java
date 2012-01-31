@@ -27,7 +27,9 @@ import pe.gob.pcm.constitucion.web.bean.BeanValida;
 import pe.gob.pcm.constitucion.web.dao.ParametroDAO;
 import pe.gob.pcm.constitucion.web.model.T020tramite;
 import pe.gob.pcm.constitucion.web.model.T029archivo;
+import pe.gob.pcm.constitucion.web.model.T032mandatario;
 import pe.gob.pcm.constitucion.web.model.Users;
+import pe.gob.pcm.constitucion.web.service.MandatarioService;
 import pe.gob.pcm.constitucion.web.service.NotariaService;
 import pe.gob.pcm.constitucion.web.service.ParticipanteService;
 import pe.gob.pcm.constitucion.web.service.TramiteService;
@@ -59,6 +61,9 @@ public class ConstitucionController {
 	
 	@Autowired
 	private ParticipanteService participanteService;
+
+	@Autowired
+	private MandatarioService mandatarioService;
 	
 	@RequestMapping(value ="/constitucion/bandeja.htm",method = RequestMethod.GET)
     public String bandeja(ModelMap model,HttpServletRequest request) {
@@ -172,6 +177,32 @@ public class ConstitucionController {
 	@RequestMapping(value ="/constitucion/tramitePasoTres.htm",method = RequestMethod.POST)
     public String tramitePasoTres(ModelMap model,HttpServletRequest request) {
 		logger.debug("entro a paso tres, mandatarios y cargos");
+		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		model.put("lmandatarios", mandatarioService.listarMandatarios( trm.getNumTramite()));
+		return "Mandatarios";
+    }
+	
+	@RequestMapping(value ="/constitucion/nmandatario.htm",method = RequestMethod.POST)
+    public String nmandatario(ModelMap model,HttpServletRequest request) {
+		logger.debug("mandatario nuevo");
+		model.put("mandatario", new T032mandatario());
+		return "ManEditable";
+    }
+	
+	@RequestMapping(value ="/constitucion/registraMandatario.htm",method = RequestMethod.POST)
+    public String registraMandatario(@Valid T032mandatario mandatario, BindingResult result,ModelMap model,HttpServletRequest request) {
+		try {
+			logger.debug("grabo al nuevo mandatario " + mandatario);
+			T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+			mandatario.setT020tramite(trm);
+			mandatarioService.registrarMandatario(mandatario);			
+			model.put("lmandatarios", mandatarioService.listarMandatarios( trm.getNumTramite()));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			model.put("msgError", e.getMessage());
+			model.put("mandatario", mandatario);
+			return "ManEditable";
+		}		
 		return "Mandatarios";
     }
 	
@@ -288,4 +319,6 @@ public class ConstitucionController {
 		request.getSession().setAttribute("lcomboprovincias", parametroDAO.litarParametrosProvincias(cod));
 		return "ajax/cmbProv";
     }
+	
+	
 }
