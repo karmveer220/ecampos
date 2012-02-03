@@ -14,5 +14,10 @@ public interface ValidacionService {
 	 * @param tramite
 	 */
 	public BeanValida validaTramiteInicial(T020tramite tramite);
+	public BeanValida validaCerrarTramite(T020tramite tramite);
+	public BeanValida validaFirmarTramite(T020tramite obtenerTramite);
+	public BeanValida validaEnviarTramite(T020tramite obtenerTramite);
+	public BeanValida validaEliminarTramite(T020tramite obtenerTramite);
+	public BeanValida validaRestaurarTramite(T020tramite obtenerTramite);
 	
 }

@@ -48,7 +48,7 @@ public class TramiteServiceImpl implements TramiteService {
 	}
 
 	@Override
-	public T020tramite obtenerTramite(String id) {
+	public T020tramite obtenerTramite(Integer id) {
 		return tramiteDAO.obtenerTramite(id);
 	}
 
@@ -65,6 +65,44 @@ public class TramiteServiceImpl implements TramiteService {
 	@Override
 	public void borrarParte(Integer numTramite, String tipo) {
 		insertoDAO.borrarParte(numTramite,tipo);
+	}
+
+	@Override
+	public void eliminarTramite(Integer tramite) {
+		tramiteDAO.eliminarTramite(tramite);
+	}
+
+	@Override
+	public void restaurarTramite(Integer tramite) {
+		tramiteDAO.restaurarTramite(tramite);
+	}
+
+	@Override
+	public void cerrarTramite(Integer tramite) {
+		tramiteDAO.cerrarTramite(tramite);
+	}
+
+	/**
+	 * aqui se hace todo el proceso necesario
+	 * genracion de pdf, grabar en bd
+	 */
+	@Override
+	public void firmarTramite(T020tramite tr) {
+		tramiteDAO.firmarTramite(tr.getNumTramite());
+	}
+
+	@Override
+	public void recibirTramite(Integer tramite) {
+		tramiteDAO.recibirTramite(tramite);
+	}
+
+	/**
+	 * Aqui se hace todo el proceso necesario 
+	 * generacion de ZIP, xml, invocacion a WS
+	 */
+	@Override
+	public void enviarTramite(T020tramite tr) {
+		tramiteDAO.enviarTramite(tr.getNumTramite());
 	}
 
 }

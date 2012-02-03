@@ -12,5 +12,7 @@ public interface InsertoDAO {
 	public T029archivo obtenerArchivo(String idTramite, String tipo);
 
 	public void borrarParte(Integer numTramite, String tipo);
+
+	
 	
 }

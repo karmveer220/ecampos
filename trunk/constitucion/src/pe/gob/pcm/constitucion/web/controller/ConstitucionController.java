@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
@@ -68,50 +69,231 @@ public class ConstitucionController {
 	@RequestMapping(value ="/constitucion/bandeja.htm",method = RequestMethod.GET)
     public String bandeja(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de bandejas");
-		model.put("ltramites", "aqui lista de constituciones");
-		model.put("tramite", new T020tramite() );
-        return "BandejaEntrada";
-    }
-		
-	@RequestMapping(value ="/constitucion/incompletos.htm",method = RequestMethod.GET)
-    public String incompletos(ModelMap model,HttpServletRequest request) {
-		logger.debug("lista de incompletos");
 		T020tramite tr = new T020tramite();
 		tr.setIndEstado( "1" );
 		model.put("lIncompletos",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
-        return "Incompletos";
+        return "BandejaEntrada";
+    }
+		
+	@RequestMapping(value ="/constitucion/recibirTramite.htm",method = RequestMethod.GET)
+    public String recibir(ModelMap model,HttpServletRequest request) {
+		try {
+			logger.debug("recibir tramite");
+			String codigo = request.getParameter("codigo");
+			if(StringUtils.isNotEmpty(codigo)){
+				if( tramiteService.obtenerTramite( Integer.parseInt(codigo) ) != null  ){
+					tramiteService.recibirTramite(Integer.parseInt(codigo));
+				}else{
+					throw new Exception( "no se  ha encontrado el tramite" );
+				}
+			}else{
+				throw new Exception("no se encontro el codigo");
+			}
+		} catch (Exception e) {
+			model.put("msgError",e.getMessage() );
+			logger.error(e.getMessage());
+		}finally{
+			T020tramite tr = new T020tramite();
+			tr.setIndEstado( "1" );
+			model.put("lIncompletos",  tramiteService.listarTramites( tr ));
+			model.put("tramite", new T020tramite() );
+		}
+        return "BandejaEntrada";
     }
 	
+	@RequestMapping(value ="/constitucion/incompletos.htm",method = RequestMethod.GET)
+    public String incompletos(ModelMap model,HttpServletRequest request) {
+		logger.debug("lista de incompletos");
+		T020tramite tr = new T020tramite();
+		tr.setIndEstado( "2" );
+		model.put("lIncompletos",  tramiteService.listarTramites( tr ));
+		model.put("tramite", new T020tramite() );
+        return "Incompletos";
+    }
+		
+	@RequestMapping(value ="/constitucion/cerrarTramite.htm",method = RequestMethod.GET)
+    public String cerrar(ModelMap model,HttpServletRequest request) {
+		try {
+			logger.debug("cerrar tramite");
+			String codigo = request.getParameter("codigo");
+			if(StringUtils.isNotEmpty(codigo)){
+				BeanValida val = validacionService.validaCerrarTramite( tramiteService.obtenerTramite( Integer.parseInt(codigo) ) ); 
+				if( val.getResultado() == 0 ){
+					tramiteService.cerrarTramite(Integer.parseInt(codigo));
+				}else{
+					throw new Exception( val.getMensaje() );
+				}
+			}else{
+				throw new Exception("no se encontro el codigo");
+			}
+		} catch (Exception e) {
+			model.put("msgError",e.getMessage() );
+			logger.error(e.getMessage());
+		}finally{
+			T020tramite tr = new T020tramite();
+			tr.setIndEstado( "2" );
+			model.put("lIncompletos",  tramiteService.listarTramites( tr ));
+			model.put("tramite", new T020tramite() );
+		}
+        return "Incompletos";
+    }
+		
 	@RequestMapping(value ="/constitucion/pendientes.htm",method = RequestMethod.GET)
     public String pendiente(ModelMap model,HttpServletRequest request) {
-		logger.debug("lista de bandejas");
-		model.put("ltramites", "aqui lista de constituciones");
+		logger.debug("lista de pendientes de firma");
+		T020tramite tr = new T020tramite();
+		tr.setIndEstado( "3" );
+		model.put("lPendientes",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
+		return "PendienteFirma";
+    }
+	
+	/**
+	 * previo a esto cuando doy en firmar se debe mostrarun pop up para frimar digitalmente
+	 * pero para mostrarlo debi haber valdado que se peuda firmar,
+	 * una vez firmado ejecuto recien este metodo 
+	 * @param model
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value ="/constitucion/firmarTramite.htm",method = RequestMethod.GET)
+    public String firmar(ModelMap model,HttpServletRequest request) {
+		try {
+			logger.debug("firmar tramite");
+			String codigo = request.getParameter("codigo");
+			if(StringUtils.isNotEmpty(codigo)){
+				T020tramite tr =  tramiteService.obtenerTramite( Integer.parseInt(codigo) );
+				BeanValida val = validacionService.validaFirmarTramite( tr ); 
+				if( val.getResultado() == 0 ){
+					tramiteService.firmarTramite( tr );
+				}else{
+					throw new Exception( val.getMensaje() );
+				}
+			}else{
+				throw new Exception("no se encontro el codigo");
+			}
+		} catch (Exception e) {
+			model.put("msgError",e.getMessage() );
+			logger.error(e.getMessage());
+		}finally{
+			T020tramite tr = new T020tramite();
+			tr.setIndEstado( "3" );
+			model.put("lPendientes",  tramiteService.listarTramites( tr ));
+			model.put("tramite", new T020tramite() );
+		}
         return "PendienteFirma";
     }
 	
 	@RequestMapping(value ="/constitucion/firmados.htm",method = RequestMethod.GET)
     public String firmados(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de Firmados");
-		model.put("ltramites", "aqui lista de constituciones");
+		T020tramite tr = new T020tramite();
+		tr.setIndEstado( "4" );
+		model.put("lFirmados",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
+        return "Firmados";
+    }
+	
+	@RequestMapping(value ="/constitucion/enviarTramite.htm",method = RequestMethod.GET)
+    public String enviar(ModelMap model,HttpServletRequest request) {
+		try {
+			logger.debug("enviar tramite");
+			String codigo = request.getParameter("codigo");
+			if(StringUtils.isNotEmpty(codigo)){
+				T020tramite tr =  tramiteService.obtenerTramite( Integer.parseInt(codigo) );
+				BeanValida val = validacionService.validaEnviarTramite( tr ); 
+				if( val.getResultado() == 0 ){
+					tramiteService.enviarTramite( tr );
+				}else{
+					throw new Exception( val.getMensaje() );
+				}
+			}else{
+				throw new Exception("no se encontro el codigo");
+			}
+		} catch (Exception e) {
+			model.put("msgError",e.getMessage() );
+			logger.error(e.getMessage());
+		}finally{
+			T020tramite tr = new T020tramite();
+			tr.setIndEstado( "4" );
+			model.put("lFirmados",  tramiteService.listarTramites( tr ));
+			model.put("tramite", new T020tramite() );
+		}
         return "Firmados";
     }
 	
 	@RequestMapping(value ="/constitucion/enviados.htm",method = RequestMethod.GET)
     public String enviados(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de enviados");
-		model.put("ltramites", "aqui lista de constituciones");
+		T020tramite tr = new T020tramite();
+		tr.setIndEstado( "5" );
+		model.put("lEnviados",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
+        return "Enviados";
+    }
+	
+	@RequestMapping(value ="/constitucion/eliminarTramite.htm",method = RequestMethod.GET)
+    public String eliminar(ModelMap model,HttpServletRequest request) {
+		try {
+			logger.debug("eliminar tramite");
+			String codigo = request.getParameter("codigo");
+			if(StringUtils.isNotEmpty(codigo)){
+				BeanValida val = validacionService.validaEliminarTramite( tramiteService.obtenerTramite( Integer.parseInt(codigo) ) ); 
+				if( val.getResultado() == 0 ){
+					tramiteService.eliminarTramite(Integer.parseInt(codigo));
+				}else{
+					throw new Exception( val.getMensaje() );
+				}
+			}else{
+				throw new Exception("no se encontro el codigo");
+			}
+		} catch (Exception e) {
+			model.put("msgError",e.getMessage() );
+			logger.error(e.getMessage());
+		}finally{
+			T020tramite tr = new T020tramite();
+			tr.setIndEstado( "5" );
+			model.put("lEnviados",  tramiteService.listarTramites( tr ));
+			model.put("tramite", new T020tramite() );
+		}
         return "Enviados";
     }
 	
 	@RequestMapping(value ="/constitucion/eliminados.htm",method = RequestMethod.GET)
     public String eliminados(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de eliminados");
-		model.put("ltramites", "aqui lista de constituciones");
+		T020tramite tr = new T020tramite();
+		tr.setIndEstado( "6" );
+		model.put("lEliminados",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
+        return "Eliminados";
+    }
+	
+	@RequestMapping(value ="/constitucion/restaurarTramite.htm",method = RequestMethod.GET)
+    public String restaurar(ModelMap model,HttpServletRequest request) {
+		try {
+			logger.debug("restaurar tramite");
+			String codigo = request.getParameter("codigo");
+			if(StringUtils.isNotEmpty(codigo)){
+				BeanValida val = validacionService.validaRestaurarTramite( tramiteService.obtenerTramite( Integer.parseInt(codigo) ) ); 
+				if( val.getResultado() == 0 ){
+					tramiteService.restaurarTramite(Integer.parseInt(codigo));
+				}else{
+					throw new Exception( val.getMensaje() );
+				}
+			}else{
+				throw new Exception("no se encontro el codigo");
+			}
+		} catch (Exception e) {
+			model.put("msgError",e.getMessage() );
+			logger.error(e.getMessage());
+		}finally{
+			T020tramite tr = new T020tramite();
+			tr.setIndEstado( "6" );
+			model.put("lEliminados",  tramiteService.listarTramites( tr ));
+			model.put("tramite", new T020tramite() );
+		}
         return "Eliminados";
     }
 		
@@ -127,7 +309,7 @@ public class ConstitucionController {
     public String editartramite(@RequestParam("codigo")  String id,  ModelMap model,HttpServletRequest request) {
 		logger.debug("nuevoTramite");
 		cargaCombos(request);
-		T020tramite tr = tramiteService.obtenerTramite(id);
+		T020tramite tr = tramiteService.obtenerTramite(Integer.parseInt(id));
 		model.put("tramite", tr );
 		request.getSession().setAttribute("tramitesistema", tr );
         return "TramiteEditable";
@@ -202,7 +384,7 @@ public class ConstitucionController {
 			model.put("msgError", e.getMessage());
 			model.put("mandatario", mandatario);
 			return "ManEditable";
-		}		
+		}
 		return "Mandatarios";
     }
 	

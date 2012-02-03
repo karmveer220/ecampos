@@ -359,10 +359,28 @@ public class T020tramite implements Serializable {
         this.indPsc = indPsc;
     }
 
+   /**
+    * 1 = Bandeja<br>
+    * 2 = Incompletos<br>
+    * 3 = Pendiente de Firma(Cerrado)<br>
+    * 4 = Firmado<br>
+    * 5 = Enviado<br>
+    * 5 = Eliminado<br> 
+    * @return estado
+    */
     public String getIndEstado() {
         return indEstado;
     }
 
+    /**
+     * 1 = Bandeja<br>
+     * 2 = Incompletos<br>
+     * 3 = Pendiente de Firma(Cerrado)<br>
+     * 4 = Firmado<br>
+     * 5 = Enviado<br>
+     * 5 = Eliminado<br>
+     * @param indEstado
+     */
     public void setIndEstado(String indEstado) {
         this.indEstado = indEstado;
     }
