@@ -13,12 +13,28 @@ public interface TramiteService {
 
 	public List<T020tramite> listarTramites(T020tramite tramite);
 
-	public T020tramite obtenerTramite(String id);
+	public T020tramite obtenerTramite(Integer id);
 
 	public void registrarArchivo(T029archivo archivo);
 
 	public T029archivo obtenerArchivo(String idTramite, String tipo);
 
 	public void borrarParte(Integer numTramite, String tipo);
+
+	public void eliminarTramite(Integer tramite);
+
+	public void restaurarTramite(Integer tramite);
+
+	public void cerrarTramite(Integer tramite);
+
+	public void firmarTramite(T020tramite tr);
+
+	public void recibirTramite(Integer tramite);
+
+	/**
+	 * aqui llamo al servicio para el envio, generacio xml y zip
+	 * @param tr
+	 */
+	public void enviarTramite(T020tramite tr);
 	
 }

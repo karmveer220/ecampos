@@ -12,6 +12,18 @@ public interface TramiteDAO {
 
 	public List<T020tramite> listarTramites(T020tramite tramite);
 
-	public T020tramite obtenerTramite(String id);
+	public T020tramite obtenerTramite(Integer tramite);
+
+	public void eliminarTramite(Integer tramite);
+
+	public void restaurarTramite(Integer tramite);
+
+	public void cerrarTramite(Integer tramite);
+
+	public void firmarTramite(Integer tramite);
+
+	public void recibirTramite(Integer tramite);
+
+	public void enviarTramite(Integer tramite);
 	
 }

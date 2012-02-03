@@ -40,4 +40,41 @@ public class ValidacionServiceImpl implements ValidacionService {
 		return val;
 	}
 
+	@Override
+	public BeanValida validaCerrarTramite(T020tramite tramite) {
+		BeanValida val = new BeanValida(0,"");
+		if(tramite==null){
+			val.aumenta(1, "No se ha encontrado el tramite");
+			return val;
+		}
+		if( StringUtils.isEmpty( tramite.getClvKardex() ) ){
+			val.aumenta(1, "Debe ingresar el Kardex");
+		}
+		return val;
+	}
+
+	@Override
+	public BeanValida validaFirmarTramite(T020tramite obtenerTramite) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BeanValida validaEnviarTramite(T020tramite obtenerTramite) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BeanValida validaEliminarTramite(T020tramite obtenerTramite) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public BeanValida validaRestaurarTramite(T020tramite obtenerTramite) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

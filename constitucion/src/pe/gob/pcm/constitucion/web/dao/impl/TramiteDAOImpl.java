@@ -48,10 +48,53 @@ public class TramiteDAOImpl extends HibernateDaoSupport implements TramiteDAO {
 	}
 
 	@Override
-	public T020tramite obtenerTramite(String id) {
+	public T020tramite obtenerTramite(Integer id) {
 		Query query = getSession().createQuery(" from T020tramite p where p.numTramite = :id ")
-        .setString("id", id);
+        .setInteger("id", id);
         return (T020tramite) query.uniqueResult();
+	}
+
+	/**
+	 * no debo cambiar el campo estado, solo modificar el campo IND_ELIMINADO
+	 */
+	@Override
+	public void eliminarTramite(Integer tramite) {
+		getSession().createQuery(" update T020tramite t set t.indEliminado = 1, t.fecEliminado = sysdate where p.numTramite = :id ")
+        .setInteger("id", tramite)
+        .executeUpdate();
+	}
+
+	@Override
+	public void restaurarTramite(Integer tramite) {
+		getSession().createQuery(" update T020tramite t set  t.indEliminado = 0, t.fecEliminado = null where p.numTramite = :id ")
+        .setInteger("id", tramite)
+        .executeUpdate();
+	}
+
+	@Override
+	public void cerrarTramite(Integer tramite) {
+		getSession().createQuery(" update T020tramite t set t.indEstado = 0, t.fecModif = sysdate, t.fecCerrado= sysdate where p.numTramite = :id ")
+        .setInteger("id", tramite)
+        .executeUpdate();
+	}
+
+	@Override
+	public void firmarTramite(Integer tramite) {
+		getSession().createQuery(" update T020tramite t set t.indEstado = 0, t.fecModif = sysdate, t.fecCerrado= sysdate where p.numTramite = :id ")
+        .setInteger("id", tramite)
+        .executeUpdate();
+	}
+
+	@Override
+	public void recibirTramite(Integer tramite) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void enviarTramite(Integer tr) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
