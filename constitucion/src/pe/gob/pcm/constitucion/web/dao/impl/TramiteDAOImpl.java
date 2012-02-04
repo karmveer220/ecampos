@@ -1,5 +1,6 @@
 package pe.gob.pcm.constitucion.web.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -59,36 +60,41 @@ public class TramiteDAOImpl extends HibernateDaoSupport implements TramiteDAO {
 	 */
 	@Override
 	public void eliminarTramite(Integer tramite) {
-		getSession().createQuery(" update T020tramite t set t.indEliminado = 1, t.fecEliminado = sysdate where p.numTramite = :id ")
+		getSession().createQuery(" update T020tramite t set t.indEliminado = 1, t.fecEliminado = :fec where t.numTramite = :id ")
         .setInteger("id", tramite)
+        .setDate("fec", new Date())
         .executeUpdate();
 	}
 
 	@Override
 	public void restaurarTramite(Integer tramite) {
-		getSession().createQuery(" update T020tramite t set  t.indEliminado = 0, t.fecEliminado = null where p.numTramite = :id ")
+		getSession().createQuery(" update T020tramite t set  t.indEliminado = 0, t.fecEliminado = null where t.numTramite = :id ")
         .setInteger("id", tramite)
         .executeUpdate();
 	}
 
 	@Override
 	public void cerrarTramite(Integer tramite) {
-		getSession().createQuery(" update T020tramite t set t.indEstado = 0, t.fecModif = sysdate, t.fecCerrado= sysdate where p.numTramite = :id ")
+		getSession().createQuery(" update T020tramite t set t.indEstado = 0, t.fecModif = :fec , t.fecCerrado= sysdate where t.numTramite = :id ")
         .setInteger("id", tramite)
+        .setDate("fec", new Date())
         .executeUpdate();
 	}
 
 	@Override
 	public void firmarTramite(Integer tramite) {
-		getSession().createQuery(" update T020tramite t set t.indEstado = 0, t.fecModif = sysdate, t.fecCerrado= sysdate where p.numTramite = :id ")
+		getSession().createQuery(" update T020tramite t set t.indEstado = 0, t.fecModif = :fec , t.fecCerrado= sysdate where t.numTramite = :id ")
         .setInteger("id", tramite)
+        .setDate("fec", new Date())
         .executeUpdate();
 	}
 
 	@Override
 	public void recibirTramite(Integer tramite) {
-		// TODO Auto-generated method stub
-		
+		getSession().createQuery(" update T020tramite t set t.indEstado = 2, t.fecModif = :fec where t.numTramite = :id ")
+        .setInteger("id", tramite)
+        .setDate("fec", new Date())
+        .executeUpdate();
 	}
 
 	@Override
