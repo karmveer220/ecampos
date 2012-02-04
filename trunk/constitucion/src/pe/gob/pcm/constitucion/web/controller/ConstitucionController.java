@@ -71,7 +71,7 @@ public class ConstitucionController {
 		logger.debug("lista de bandejas");
 		T020tramite tr = new T020tramite();
 		tr.setIndEstado( "1" );
-		model.put("lIncompletos",  tramiteService.listarTramites( tr ));
+		model.put("lBandeja",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
         return "BandejaEntrada";
     }
@@ -96,7 +96,7 @@ public class ConstitucionController {
 		}finally{
 			T020tramite tr = new T020tramite();
 			tr.setIndEstado( "1" );
-			model.put("lIncompletos",  tramiteService.listarTramites( tr ));
+			model.put("lBandeja",  tramiteService.listarTramites( tr ));
 			model.put("tramite", new T020tramite() );
 		}
         return "BandejaEntrada";
@@ -321,7 +321,7 @@ public class ConstitucionController {
 		BeanValida val = validacionService.validaTramiteInicial(tramite);
 		if(val.getResultado() == 0 ){
 			tramite.setT021notaria( notariaService.obtenerNotaria( Users.getUsuarioBean().getCodNotaria() ) );
-			tramite.setIndEstado("1");
+			tramite.setIndEstado("2");
 			tramiteService.registrarTramite(tramite);
 			request.getSession().setAttribute("tramitesistema", tramite);
 		}else{
