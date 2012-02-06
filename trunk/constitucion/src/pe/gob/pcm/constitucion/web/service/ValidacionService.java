@@ -19,5 +19,6 @@ public interface ValidacionService {
 	public BeanValida validaEnviarTramite(T020tramite obtenerTramite);
 	public BeanValida validaEliminarTramite(T020tramite obtenerTramite);
 	public BeanValida validaRestaurarTramite(T020tramite obtenerTramite);
+	public BeanValida validaAbrirTramite(T020tramite obtenerTramite);
 	
 }

@@ -105,4 +105,9 @@ public class TramiteServiceImpl implements TramiteService {
 		tramiteDAO.enviarTramite(tr.getNumTramite());
 	}
 
+	@Override
+	public void abrirTramite(int tramite) {
+		tramiteDAO.abrirTramite(tramite);
+	}
+
 }

@@ -36,5 +36,7 @@ public interface TramiteService {
 	 * @param tr
 	 */
 	public void enviarTramite(T020tramite tr);
+
+	public void abrirTramite(int parseInt);
 	
 }

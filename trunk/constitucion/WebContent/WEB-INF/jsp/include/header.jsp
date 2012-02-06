@@ -17,7 +17,7 @@
     	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar-system.css" type="text/css" media="all" title="system" />
     	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ajaxtags.css" type="text/css"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/displaytag.css" type="text/css"/>
-        
+       
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/prototype.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/scriptaculous/scriptaculous.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/overlibmws/overlibmws.js"></script>
@@ -31,6 +31,8 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/shadowbox/shadowbox.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-latest.pack.js"></script>
         
+      
+	    
 	</head>
     <body>
     	<div id="principal">
