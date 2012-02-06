@@ -2,6 +2,7 @@ package pe.gob.pcm.constitucion.web.controller;
 
 import java.io.File;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -70,7 +71,8 @@ public class ConstitucionController {
     public String bandeja(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de bandejas");
 		T020tramite tr = new T020tramite();
-		tr.setIndEstado( "1" );
+		tr.setIndEstado( 1 );
+		tr.setIndEliminado(0);
 		model.put("lBandeja",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
         return "BandejaEntrada";
@@ -95,7 +97,7 @@ public class ConstitucionController {
 			logger.error(e.getMessage());
 		}finally{
 			T020tramite tr = new T020tramite();
-			tr.setIndEstado( "1" );
+			tr.setIndEstado( 1 );
 			model.put("lBandeja",  tramiteService.listarTramites( tr ));
 			model.put("tramite", new T020tramite() );
 		}
@@ -106,7 +108,8 @@ public class ConstitucionController {
     public String incompletos(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de incompletos");
 		T020tramite tr = new T020tramite();
-		tr.setIndEstado( "2" );
+		tr.setIndEstado( 2 );
+		tr.setIndEliminado(0);
 		model.put("lIncompletos",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
         return "Incompletos";
@@ -132,7 +135,8 @@ public class ConstitucionController {
 			logger.error(e.getMessage());
 		}finally{
 			T020tramite tr = new T020tramite();
-			tr.setIndEstado( "2" );
+			tr.setIndEstado( 2 );
+			tr.setIndEliminado(0);
 			model.put("lIncompletos",  tramiteService.listarTramites( tr ));
 			model.put("tramite", new T020tramite() );
 		}
@@ -143,12 +147,40 @@ public class ConstitucionController {
     public String pendiente(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de pendientes de firma");
 		T020tramite tr = new T020tramite();
-		tr.setIndEstado( "3" );
+		tr.setIndEstado( 3 );
+		tr.setIndEliminado(0);
 		model.put("lPendientes",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
 		return "PendienteFirma";
     }
 	
+	@RequestMapping(value ="/constitucion/abrirTramite.htm",method = RequestMethod.GET)
+    public String abrir(ModelMap model,HttpServletRequest request) {
+		try {
+			logger.debug("abrir tramite");
+			String codigo = request.getParameter("codigo");
+			if(StringUtils.isNotEmpty(codigo)){
+				BeanValida val = validacionService.validaAbrirTramite( tramiteService.obtenerTramite( Integer.parseInt(codigo) ) ); 
+				if( val.getResultado() == 0 ){
+					tramiteService.abrirTramite(Integer.parseInt(codigo));
+				}else{
+					throw new Exception( val.getMensaje() );
+				}
+			}else{
+				throw new Exception("no se encontro el codigo");
+			}
+		} catch (Exception e) {
+			model.put("msgError",e.getMessage() );
+			logger.error(e.getMessage());
+		}finally{
+			T020tramite tr = new T020tramite();
+			tr.setIndEstado( 3 );
+			tr.setIndEliminado(0);
+			model.put("lPendientes",  tramiteService.listarTramites( tr ));
+			model.put("tramite", new T020tramite() );
+		}
+        return "PendienteFirma";
+    }
 	/**
 	 * previo a esto cuando doy en firmar se debe mostrarun pop up para frimar digitalmente
 	 * pero para mostrarlo debi haber valdado que se peuda firmar,
@@ -178,7 +210,8 @@ public class ConstitucionController {
 			logger.error(e.getMessage());
 		}finally{
 			T020tramite tr = new T020tramite();
-			tr.setIndEstado( "3" );
+			tr.setIndEstado( 3 );
+			tr.setIndEliminado(0);
 			model.put("lPendientes",  tramiteService.listarTramites( tr ));
 			model.put("tramite", new T020tramite() );
 		}
@@ -189,7 +222,8 @@ public class ConstitucionController {
     public String firmados(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de Firmados");
 		T020tramite tr = new T020tramite();
-		tr.setIndEstado( "4" );
+		tr.setIndEstado( 4);
+		tr.setIndEliminado(0);
 		model.put("lFirmados",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
         return "Firmados";
@@ -216,7 +250,7 @@ public class ConstitucionController {
 			logger.error(e.getMessage());
 		}finally{
 			T020tramite tr = new T020tramite();
-			tr.setIndEstado( "4" );
+			tr.setIndEstado( 4 );
 			model.put("lFirmados",  tramiteService.listarTramites( tr ));
 			model.put("tramite", new T020tramite() );
 		}
@@ -227,7 +261,8 @@ public class ConstitucionController {
     public String enviados(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de enviados");
 		T020tramite tr = new T020tramite();
-		tr.setIndEstado( "5" );
+		tr.setIndEstado( 5 );
+		tr.setIndEliminado(0);
 		model.put("lEnviados",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
         return "Enviados";
@@ -250,11 +285,11 @@ public class ConstitucionController {
 			}
 		} catch (Exception e) {
 			model.put("msgError",e.getMessage() );
-			logger.error(e.getMessage());
+			e.printStackTrace();
 		}finally{
 			T020tramite tr = new T020tramite();
-			tr.setIndEstado( "5" );
-			model.put("lEnviados",  tramiteService.listarTramites( tr ));
+			tr.setIndEliminado(1);
+			model.put("lEliminados",  tramiteService.listarTramites( tr ));
 			model.put("tramite", new T020tramite() );
 		}
         return "Enviados";
@@ -264,7 +299,7 @@ public class ConstitucionController {
     public String eliminados(ModelMap model,HttpServletRequest request) {
 		logger.debug("lista de eliminados");
 		T020tramite tr = new T020tramite();
-		tr.setIndEstado( "6" );
+		tr.setIndEliminado(1);
 		model.put("lEliminados",  tramiteService.listarTramites( tr ));
 		model.put("tramite", new T020tramite() );
         return "Eliminados";
@@ -290,7 +325,7 @@ public class ConstitucionController {
 			logger.error(e.getMessage());
 		}finally{
 			T020tramite tr = new T020tramite();
-			tr.setIndEstado( "6" );
+			tr.setIndEstado( 6 );
 			model.put("lEliminados",  tramiteService.listarTramites( tr ));
 			model.put("tramite", new T020tramite() );
 		}
@@ -321,7 +356,8 @@ public class ConstitucionController {
 		BeanValida val = validacionService.validaTramiteInicial(tramite);
 		if(val.getResultado() == 0 ){
 			tramite.setT021notaria( notariaService.obtenerNotaria( Users.getUsuarioBean().getCodNotaria() ) );
-			tramite.setIndEstado("2");
+			tramite.setIndEstado(2);
+			tramite.setFecRegistro( new Date() );
 			tramiteService.registrarTramite(tramite);
 			request.getSession().setAttribute("tramitesistema", tramite);
 		}else{
@@ -473,7 +509,10 @@ public class ConstitucionController {
 		String monto = request.getParameter("derechoRegistral");
 		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
 		trm.setMtoDereregis( new BigDecimal( monto ));
-		trm.setIndFormapago( request.getParameter("formaPago"));
+		if(request.getParameter("formaPago") != null){
+			Integer fpago = Integer.parseInt(request.getParameter("formaPago"));
+			trm.setIndFormapago( fpago );	
+		}
 		tramiteService.modificarTramite(trm);
 		return "Parte";
     }

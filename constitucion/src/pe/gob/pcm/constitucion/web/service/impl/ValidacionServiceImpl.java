@@ -55,26 +55,32 @@ public class ValidacionServiceImpl implements ValidacionService {
 
 	@Override
 	public BeanValida validaFirmarTramite(T020tramite obtenerTramite) {
-		// TODO Auto-generated method stub
-		return null;
+		BeanValida val = new BeanValida(0,"");
+		return val;
 	}
 
 	@Override
 	public BeanValida validaEnviarTramite(T020tramite obtenerTramite) {
-		// TODO Auto-generated method stub
-		return null;
+		BeanValida val = new BeanValida(0,"");
+		return val;
 	}
 
 	@Override
 	public BeanValida validaEliminarTramite(T020tramite obtenerTramite) {
-		// TODO Auto-generated method stub
-		return null;
+		BeanValida val = new BeanValida(0,"");
+		return val;
 	}
 
 	@Override
 	public BeanValida validaRestaurarTramite(T020tramite obtenerTramite) {
-		// TODO Auto-generated method stub
-		return null;
+		BeanValida val = new BeanValida(0,"");
+		return val;
+	}
+
+	@Override
+	public BeanValida validaAbrirTramite(T020tramite obtenerTramite) {
+		BeanValida val = new BeanValida(0,"");
+		return val;
 	}
 
 }

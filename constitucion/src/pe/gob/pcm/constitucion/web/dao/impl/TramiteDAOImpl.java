@@ -43,8 +43,11 @@ public class TramiteDAOImpl extends HibernateDaoSupport implements TramiteDAO {
 			criteria.add( Restrictions.ilike("clvKardex", tramite.getClvKardex() ,MatchMode.ANYWHERE) );			
 		}
 		if(!Utiles.nullToBlank( tramite.getIndEstado() ).equals("")){
-			criteria.add( Restrictions.like("indEstado", tramite.getIndEstado() ) );			
-		}		
+			criteria.add( Restrictions.eq("indEstado", tramite.getIndEstado() ) );			
+		}
+		if(!Utiles.nullToBlank( tramite.getIndEliminado() ).equals("")){
+			criteria.add( Restrictions.eq("indEliminado", tramite.getIndEliminado() ) );			
+		}
 		return getHibernateTemplate().findByCriteria(criteria);
 	}
 
@@ -75,7 +78,7 @@ public class TramiteDAOImpl extends HibernateDaoSupport implements TramiteDAO {
 
 	@Override
 	public void cerrarTramite(Integer tramite) {
-		getSession().createQuery(" update T020tramite t set t.indEstado = 0, t.fecModif = :fec , t.fecCerrado= sysdate where t.numTramite = :id ")
+		getSession().createQuery(" update T020tramite t set t.indEstado = 3, t.fecModif = :fec , t.fecCerrado= :fec where t.numTramite = :id ")
         .setInteger("id", tramite)
         .setDate("fec", new Date())
         .executeUpdate();
@@ -83,7 +86,7 @@ public class TramiteDAOImpl extends HibernateDaoSupport implements TramiteDAO {
 
 	@Override
 	public void firmarTramite(Integer tramite) {
-		getSession().createQuery(" update T020tramite t set t.indEstado = 0, t.fecModif = :fec , t.fecCerrado= sysdate where t.numTramite = :id ")
+		getSession().createQuery(" update T020tramite t set t.indEstado = 4, t.fecModif = :fec , t.fecFirmado= :fec where t.numTramite = :id ")
         .setInteger("id", tramite)
         .setDate("fec", new Date())
         .executeUpdate();
@@ -91,7 +94,7 @@ public class TramiteDAOImpl extends HibernateDaoSupport implements TramiteDAO {
 
 	@Override
 	public void recibirTramite(Integer tramite) {
-		getSession().createQuery(" update T020tramite t set t.indEstado = 2, t.fecModif = :fec where t.numTramite = :id ")
+		getSession().createQuery(" update T020tramite t set t.indEstado = 2, t.fecModif = :fec , t.fecIngreso = :fec where t.numTramite = :id ")
         .setInteger("id", tramite)
         .setDate("fec", new Date())
         .executeUpdate();
@@ -99,8 +102,18 @@ public class TramiteDAOImpl extends HibernateDaoSupport implements TramiteDAO {
 
 	@Override
 	public void enviarTramite(Integer tr) {
-		// TODO Auto-generated method stub
-		
+		getSession().createQuery(" update T020tramite t set t.indEstado = 5, t.fecModif = :fec , t.fecEnvio= :fec where t.numTramite = :id ")
+        .setInteger("id", tr)
+        .setDate("fec", new Date())
+        .executeUpdate();
+	}
+
+	@Override
+	public void abrirTramite(int tramite) {
+		getSession().createQuery(" update T020tramite t set t.indEstado = 2, t.fecModif = :fec , t.fecCerrado= null where t.numTramite = :id ")
+        .setInteger("id", tramite)
+        .setDate("fec", new Date())
+        .executeUpdate();
 	}
 	
 }

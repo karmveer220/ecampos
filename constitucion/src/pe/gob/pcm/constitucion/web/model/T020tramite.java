@@ -52,13 +52,13 @@ public class T020tramite implements Serializable {
     @Column(name = "CLV_KARDEX")
     private String clvKardex;
     @Column(name = "IND_LIBROSOC")
-    private Character indLibrosoc;
+    private Integer indLibrosoc;
     @Column(name = "IND_LIBROCON")
-    private Character indLibrocon;
+    private Integer indLibrocon;
     @Column(name = "NUM_CUO")
     private String numCuo;
     @Column(name = "IND_CUO")
-    private Character indCuo;
+    private Integer indCuo;
     @Column(name = "FEC_CUO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecCuo;
@@ -76,7 +76,7 @@ public class T020tramite implements Serializable {
     @Column(name = "COD_UBIGEO")
     private String codUbigeo;
     @Column(name = "IND_APORTE")
-    private Character indAporte;
+    private Integer indAporte;
     @Column(name = "MTO_APORTE")
     private BigDecimal mtoAporte;
     @Column(name = "MTO_VALORACCION")
@@ -84,17 +84,17 @@ public class T020tramite implements Serializable {
     @Column(name = "MTO_ACCIONPART")
     private BigDecimal mtoAccionpart;
     @Column(name = "IND_CANCECAPI")
-    private Character indCancecapi;
+    private Integer indCancecapi;
     @Column(name = "NUM_PORCENCANC")
     private Integer numPorcencanc;
     @Column(name = "MTO_DEREREGIS")
     private BigDecimal mtoDereregis;
     @Column(name = "IND_FORMAPAGO")
-    private String indFormapago;
+    private Integer indFormapago;
     @Column(name = "IND_PSC")
-    private Character indPsc;
+    private Integer indPsc;
     @Column(name = "IND_ESTADO")
-    private String indEstado;
+    private Integer indEstado;
     @Column(name = "FEC_INGRESO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecIngreso;
@@ -108,12 +108,12 @@ public class T020tramite implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecFirmado;
     @Column(name = "IND_ELIMINADO")
-    private Character indEliminado;
+    private Integer indEliminado;
     @Column(name = "FEC_ELIMINADO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecEliminado;
     @Column(name = "IND_ENVIO")
-    private Character indEnvio;
+    private Integer indEnvio;
     @Column(name = "FEC_ENVIO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecEnvio;
@@ -199,19 +199,19 @@ public class T020tramite implements Serializable {
         this.clvKardex = clvKardex;
     }
 
-    public Character getIndLibrosoc() {
+    public Integer getIndLibrosoc() {
         return indLibrosoc;
     }
 
-    public void setIndLibrosoc(Character indLibrosoc) {
+    public void setIndLibrosoc(Integer indLibrosoc) {
         this.indLibrosoc = indLibrosoc;
     }
 
-    public Character getIndLibrocon() {
+    public Integer getIndLibrocon() {
         return indLibrocon;
     }
 
-    public void setIndLibrocon(Character indLibrocon) {
+    public void setIndLibrocon(Integer indLibrocon) {
         this.indLibrocon = indLibrocon;
     }
 
@@ -223,11 +223,11 @@ public class T020tramite implements Serializable {
         this.numCuo = numCuo;
     }
 
-    public Character getIndCuo() {
+    public Integer getIndCuo() {
         return indCuo;
     }
 
-    public void setIndCuo(Character indCuo) {
+    public void setIndCuo(Integer indCuo) {
         this.indCuo = indCuo;
     }
 
@@ -287,11 +287,11 @@ public class T020tramite implements Serializable {
         this.codUbigeo = codUbigeo;
     }
 
-    public Character getIndAporte() {
+    public Integer getIndAporte() {
         return indAporte;
     }
 
-    public void setIndAporte(Character indAporte) {
+    public void setIndAporte(Integer indAporte) {
         this.indAporte = indAporte;
     }
 
@@ -319,11 +319,11 @@ public class T020tramite implements Serializable {
         this.mtoAccionpart = mtoAccionpart;
     }
 
-    public Character getIndCancecapi() {
+    public Integer getIndCancecapi() {
         return indCancecapi;
     }
 
-    public void setIndCancecapi(Character indCancecapi) {
+    public void setIndCancecapi(Integer indCancecapi) {
         this.indCancecapi = indCancecapi;
     }
 
@@ -343,19 +343,19 @@ public class T020tramite implements Serializable {
         this.mtoDereregis = mtoDereregis;
     }
 
-    public String getIndFormapago() {
+    public Integer getIndFormapago() {
         return indFormapago;
     }
 
-    public void setIndFormapago(String indFormapago) {
+    public void setIndFormapago(Integer indFormapago) {
         this.indFormapago = indFormapago;
     }
 
-    public Character getIndPsc() {
+    public Integer getIndPsc() {
         return indPsc;
     }
 
-    public void setIndPsc(Character indPsc) {
+    public void setIndPsc(Integer indPsc) {
         this.indPsc = indPsc;
     }
 
@@ -365,23 +365,35 @@ public class T020tramite implements Serializable {
     * 3 = Pendiente de Firma(Cerrado)<br>
     * 4 = Firmado<br>
     * 5 = Enviado<br>
-    * 5 = Eliminado<br> 
+    *  
     * @return estado
     */
-    public String getIndEstado() {
+    public Integer getIndEstado() {
         return indEstado;
     }
-
+    
+    public String getEstado() {
+        switch(indEstado){
+        	case 1 : return "En Bandeja";
+        	case 2 : return "Incompleto";
+        	case 3 : return "Pendiente de Firma";
+        	case 4 : return "Firmado";
+        	case 5 : return "Enviado";
+        	default : return "--";
+        }
+        
+    }
+    
     /**
      * 1 = Bandeja<br>
      * 2 = Incompletos<br>
      * 3 = Pendiente de Firma(Cerrado)<br>
      * 4 = Firmado<br>
      * 5 = Enviado<br>
-     * 5 = Eliminado<br>
+     * 
      * @param indEstado
      */
-    public void setIndEstado(String indEstado) {
+    public void setIndEstado(Integer indEstado) {
         this.indEstado = indEstado;
     }
 
@@ -417,11 +429,11 @@ public class T020tramite implements Serializable {
         this.fecFirmado = fecFirmado;
     }
 
-    public Character getIndEliminado() {
+    public Integer getIndEliminado() {
         return indEliminado;
     }
 
-    public void setIndEliminado(Character indEliminado) {
+    public void setIndEliminado(Integer indEliminado) {
         this.indEliminado = indEliminado;
     }
 
@@ -433,11 +445,11 @@ public class T020tramite implements Serializable {
         this.fecEliminado = fecEliminado;
     }
 
-    public Character getIndEnvio() {
+    public Integer getIndEnvio() {
         return indEnvio;
     }
 
-    public void setIndEnvio(Character indEnvio) {
+    public void setIndEnvio(Integer indEnvio) {
         this.indEnvio = indEnvio;
     }
 

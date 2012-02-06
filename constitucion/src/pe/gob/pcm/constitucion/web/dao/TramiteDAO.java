@@ -25,5 +25,7 @@ public interface TramiteDAO {
 	public void recibirTramite(Integer tramite);
 
 	public void enviarTramite(Integer tramite);
+
+	public void abrirTramite(int tramite);
 	
 }

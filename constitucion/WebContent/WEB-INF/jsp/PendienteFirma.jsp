@@ -1,7 +1,7 @@
 <jsp:include page="include/header.jsp" flush="true"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 	String error = "";
 	error = request.getAttribute("msgError")!=null ? (String)request.getAttribute("msgError") : "";
@@ -20,13 +20,17 @@
 		            <display:column title="Kardex" property="clvKardex" sortable="true" headerClass="sortable" />
 		            <display:column title="Num. CUO" property="numCuo" sortable="true" headerClass="sortable" />
 		            <display:column title="Razon Soc." property="nomRazsoc" sortable="true" headerClass="sortable" />
-		            <display:column title="Fec Registro" property="fecRegistro" sortable="true" headerClass="sortable" />
-		            <display:column title="Fec Cierre" property="fecCerrado" sortable="true" headerClass="sortable" />
+		            <display:column title="Fec Registro" sortable="true" headerClass="sortable">
+		            	<fmt:formatDate value="${row.fecRegistro}" pattern="dd/MM/yyyy"/>
+		            </display:column>
+		            <display:column title="Fec Cierre" sortable="true" headerClass="sortable">
+		            	<fmt:formatDate value="${row.fecCerrado}" pattern="dd/MM/yyyy"/>
+		            </display:column>
 		            <display:column title="Acciones">
-		            	<a href="verTramite.htm?codigo=${row.numTramite}"><img title="Ver" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
-		            	<a href="abrirTramite.htm?codigo=${row.numTramite}"><img title="Abrir para edicion" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
-		            	<a href="FirmarTramite.htm?codigo=${row.numTramite}"><img title="Firmar" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
-		            	<a href="eliminarTramite.htm?codigo=${row.numTramite}"><img title="Eliminar" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
+		            	<a href="verTramite.htm?codigo=${row.numTramite}"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
+		            	<a href="abrirTramite.htm?codigo=${row.numTramite}" onclick="return confirm('Seguro de abrir para edicion al tramite?')"><img title="Abrir para edicion" src="${pageContext.request.contextPath}/img/shield_delete.png" height="16px" width="16px"/></a>
+		            	<a href="firmarTramite.htm?codigo=${row.numTramite}" onclick="return confirm('Seguro de firmar el tramite?')"><img title="Firmar" src="${pageContext.request.contextPath}/img/sign.png" height="16px" width="16px"/></a>
+		            	<a href="eliminarTramite.htm?codigo=${row.numTramite}" onclick="return confirm('Seguro de eliminar el tramite?')"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
 					</display:column>
 		   		</display:table>
 
