@@ -84,6 +84,8 @@ public class T025pernat implements Serializable {
     private String indAporte;
     @Transient
     private String codParticipa;
+    @Transient
+    private String nombreCompleto;
     
     public T025pernat() {
     }
@@ -293,5 +295,8 @@ public class T025pernat implements Serializable {
 		this.codParticipa = codParticipa;
 	}
 
+	public String getNombreCompleto(){
+		return this.apePaterno + " "  + this.apeMaterno + " " + this.nomPernat;
+	}
     
 }

@@ -9,22 +9,63 @@
 <script> 	
 $(document).ready(function() {
 	
-	$( "#anchor_123" ).click(function(){
+	$( "#soc_cargo" ).click(function(){
 	    $( "#dialog-modal" ).dialog({
 	        height: 350,
 	        width: 460,
 	        modal: true
 	    });
-	            $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/nuevomandatario.htm?id=123",
-	                    success: function(data){
-                    		$('#dialog-modal p').html(data);
-	                    },
-	                    error: function (){
-							alert('Errorrr ');
-		                    }
-	            });
-
+        $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/asignacargo.htm"+$(this).attr('href'),
+            success: function(data){ $('#dialog-modal p').html(data); },
+            error: function (){ alert('Errorrr '); }
+        });
+	});
+	
+	$("#b_mandatario").click(function(){
+	    $( "#dialog-modal2" ).dialog({
+	        height: 350,
+	        width: 460,
+	        modal: true
 	    });
+         $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/nuevomandatario.htm",
+               success: function(data){ $('#dialog-modal2 p').html(data); },
+               error: function (){ alert('Errorrr '); }
+         });
+	 });
+	
+	$("#b_socio").click(function(){
+	    $( "#dialog-modal3" ).dialog({
+	        height: 350,
+	        width: 460,
+	        modal: true
+	    });
+         $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/seleccionasocio.htm",
+               success: function(data){ $('#dialog-modal3 p').html(data); },
+               error: function (){ alert('Errorrr '); }
+         });
+	 });
+	$("#soc_edit").click(function(){
+	    $( "#dialog-modal4" ).dialog({
+	        height: 350,
+	        width: 460,
+	        modal: true
+	    });
+         $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/editarsocio.htm",
+               success: function(data){ $('#dialog-modal4 p').html(data); },
+               error: function (){ alert('Errorrr '); }
+         });
+	 });
+	$("#soc_ver").click(function(){
+	    $( "#dialog-modal5" ).dialog({
+	        height: 350,
+	        width: 460,
+	        modal: true
+	    });
+         $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/versocio.htm",
+               success: function(data){ $('#dialog-modal5 p').html(data); },
+               error: function (){ alert('Errorrr '); }
+         });
+	 });
 });	
 
 	function seguirParticipacion(){
@@ -35,12 +76,7 @@ $(document).ready(function() {
 	function mostrarAccionistas(){
 		document.forms[0].action='${pageContext.request.contextPath}/constitucion/regresaPasoDos.htm';
 		document.forms[0].submit();
-	}
-
-	function nuevoMandatario(){
-		document.forms[0].action='${pageContext.request.contextPath}/constitucion/nmandatario.htm';
-		document.forms[0].submit();
-	}
+	}	
 </script>
 
 
@@ -58,24 +94,28 @@ $(document).ready(function() {
 			Asignaci&oacute;n de Mandatarios
 		</div>
 		<div  style="border-left:1px solid #99BBE8; border-right:1px solid #99BBE8; border-bottom:0px;">
-			<input type="button" value="Socio / Accionista existente" onClick=""/>
-			<input type="button" value="Nuevo Mandatario" onclick="nuevoMandatario()"/>
-			<input type="button" value="Asignar" onClick="asignarCargos()"/>
-			<input type="button" value="Editar" onClick="editarMandatario()"/>
+			<button id="b_socio">Socio / Accionista existente</button>
 			<button id="b_mandatario">Nuevo Mandatario</button>
-			<input type="button" value="Eliminar" onClick="eliminarMandatario()"/>
 		</div>
 	</div>
 	<div style="overflow:hidden; border:1px solid #99BBE8;">
 	
-	
-	
-	
-	
 	<div style='display:none'>
 	  <div id="dialog-modal" title="Nuevo Mandatario">
+	  	<p>Loading</p>
+	  </div>
+	  <div id="dialog-modal2" title="Asignar Cargos">
 	    <p>Loading</p>
-	    </div>
+	  </div>
+	  <div id="dialog-modal3" title="Seleccionar entre socios">
+	    <p>Loading</p>
+	  </div>
+	  <div id="dialog-modal4" title="Editar Mandatario">
+	    <p>Loading</p>
+	  </div>
+	  <div id="dialog-modal4" title="Ver Mandatario">
+	    <p>Loading</p>
+	  </div>
 	</div>
 
 
@@ -86,9 +126,10 @@ $(document).ready(function() {
 	           <display:column title="Tipo Doc." property="codTdocman" headerClass="sortable" />
 	           <display:column title="Numero Doc." property="numDocman" headerClass="sortable" />	           
 	           <display:column title="Acciones">
-	           	<a href="editarTramite.htm?codigo=${row.idMandatario}"><img title="Editar" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
-	           	<a href="verTramite.htm?codigo=${row.idMandatario}"><img title="Ver" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
-	           	<a href="#" id="anchor_123"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="18px" width="18px"/></a>
+	           	<a href="?codigo=${row.idMandatario}" id="soc_edit"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></a>
+	           	<a href="?codigo=${row.idMandatario}" id="soc_ver"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
+	           	<a href="?codigo=${row.idMandatario}" id="soc_cargo"><img title="Asignar Cargo" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
+	           	<a href="eliminarMandatario.htm?codigo=${row.idMandatario}" onclick="return confirm('Seguro de eliminar el Mandatario?');"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
 			</display:column>
 	  		</display:table>
 		

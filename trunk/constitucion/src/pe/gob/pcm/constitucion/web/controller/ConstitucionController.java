@@ -337,7 +337,7 @@ public class ConstitucionController {
 		logger.debug("nuevoTramite");
 		cargaCombos(request);
 		model.put("tramite", new T020tramite() );
-		request.getSession().removeAttribute("tramitesistema" );
+		request.getSession().removeAttribute(TRAMITE_SESSION );
         return "TramiteEditable";
     }
 	
@@ -347,7 +347,7 @@ public class ConstitucionController {
 		cargaCombos(request);
 		T020tramite tr = tramiteService.obtenerTramite(Integer.parseInt(id));
 		model.put("tramite", tr );
-		request.getSession().setAttribute("tramitesistema", tr );
+		request.getSession().setAttribute(TRAMITE_SESSION, tr );
         return "TramiteEditable";
     }
 	
@@ -361,7 +361,7 @@ public class ConstitucionController {
 			tramite.setIndEliminado(0);
 			tramite.setFecRegistro( new Date() );
 			tramiteService.registrarTramite(tramite);
-			request.getSession().setAttribute("tramitesistema", tramite);
+			request.getSession().setAttribute(TRAMITE_SESSION, tramite);
 		}else{
 			request.setAttribute("msgError",val.getMensaje());
 			return "TramiteEditable";
@@ -372,7 +372,7 @@ public class ConstitucionController {
 	@RequestMapping(value ="/constitucion/regresaPasoUno.htm",method = RequestMethod.POST)
     public String regresaPasoUno(ModelMap model,HttpServletRequest request) {
 		logger.debug("vuelvo al paso uno");
-		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
 		cargaCombos(request);
 		model.put("tramite", trm );
 		return "TramiteEditable";
@@ -381,7 +381,7 @@ public class ConstitucionController {
 	@RequestMapping(value ="/constitucion/tramitePasoDos.htm",method = RequestMethod.POST)
     public String tramitePasoDos(ModelMap model,HttpServletRequest request) {
 		logger.debug("entro a paso do");
-		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
 		model.put( "lparticipantes" , participanteService.listarAccionistas( trm.getNumTramite() ));
 		return "Participantes";
     }
@@ -389,7 +389,7 @@ public class ConstitucionController {
 	@RequestMapping(value ="/constitucion/regresaPasoDos.htm",method = RequestMethod.POST)
     public String regresaPasoDos(ModelMap model,HttpServletRequest request) {
 		logger.debug("vuelvo al paso dos");
-		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
 		model.put( "lparticipantes" , participanteService.listarAccionistas( trm.getNumTramite() ));
 		return "Participantes";
     }
@@ -397,7 +397,7 @@ public class ConstitucionController {
 	@RequestMapping(value ="/constitucion/tramitePasoTres.htm",method = RequestMethod.POST)
     public String tramitePasoTres(ModelMap model,HttpServletRequest request) {
 		logger.debug("entro a paso tres, mandatarios y cargos");
-		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
 		model.put("lmandatarios", mandatarioService.listarMandatarios( trm.getNumTramite()));
 		return "Mandatarios";
     }
@@ -413,7 +413,7 @@ public class ConstitucionController {
     public String registraMandatario(@Valid T032mandatario mandatario, BindingResult result,ModelMap model,HttpServletRequest request) {
 		try {
 			logger.debug("grabo al nuevo mandatario " + mandatario);
-			T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+			T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
 			mandatario.setT020tramite(trm);
 			mandatarioService.registrarMandatario(mandatario);			
 			model.put("lmandatarios", mandatarioService.listarMandatarios( trm.getNumTramite()));
@@ -435,7 +435,7 @@ public class ConstitucionController {
 	@RequestMapping(value ="/constitucion/tramitePart.htm",method = RequestMethod.POST)
     public String tramitePart(ModelMap model,HttpServletRequest request) {
 		logger.debug("entro a parte");
-		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
 		model.put("archivoTramite", tramiteService.obtenerArchivo( trm.getNumTramite().toString(), TIPO_ARCHIVO_PARTE ));
 		return "Parte";
     }
@@ -445,7 +445,7 @@ public class ConstitucionController {
     public String subirParte(ModelMap model,HttpServletRequest request) {
 		logger.debug("grabo archivo en BD");
 		
-		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
 		T029archivo archivo = new T029archivo();
 		archivo.setT020tramite(trm);
 		
@@ -485,7 +485,7 @@ public class ConstitucionController {
              response.reset(); 
              response.setContentType("application/rtf");             
              ServletOutputStream out = response.getOutputStream();
-             T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+             T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
              T029archivo archivo =  tramiteService.obtenerArchivo( trm.getNumTramite().toString() , TIPO_ARCHIVO_PARTE);
              response.addHeader("Content-Disposition", "attachment;filename=\""+ archivo.getNomArchivo() +"\"");
              out.write( archivo.getArcContenido() , 0,  archivo.getArcContenido().length);
@@ -500,7 +500,7 @@ public class ConstitucionController {
 	@RequestMapping(value ="/constitucion/borrarParte.htm",method = RequestMethod.POST)
     public String borrarParte(ModelMap model,HttpServletRequest request, HttpServletResponse response) {
 		 logger.debug("muestro jsp para borrarParte");
-         T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+         T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
          tramiteService.borrarParte( trm.getNumTramite() , TIPO_ARCHIVO_PARTE);
          return "Parte";
 	}
@@ -509,7 +509,7 @@ public class ConstitucionController {
     public String grabarDerechos(ModelMap model,HttpServletRequest request) {
 		logger.debug("entro a grabar derechos ");
 		String monto = request.getParameter("derechoRegistral");
-		T020tramite trm = (T020tramite)request.getSession().getAttribute("tramitesistema");
+		T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
 		trm.setMtoDereregis( new BigDecimal( monto ));
 		if(request.getParameter("formaPago") != null){
 			Integer fpago = Integer.parseInt(request.getParameter("formaPago"));

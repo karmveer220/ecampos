@@ -37,6 +37,7 @@ public class ParametrosUtil {
 	public static final String ZONA_REGISTRAL = "004";
 	public static final String OFICINA_REGISTRAL = "005";
 	public static final String UBIGEO = "006";
+	public static final String TIPO_CARGOS = "012";
 
 	public static final String DEPARTAMENTO = "1";
 	public static final String PROVINCIA = "2";
