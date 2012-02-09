@@ -1,9 +1,32 @@
-<jsp:include page="include/header.jsp" flush="true"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<script>
+
+<jsp:include page="include/header.jsp" flush="true"/>
+
+
+<script> 	
+$(document).ready(function() {
+	
+	$( "#anchor_123" ).click(function(){
+	    $( "#dialog-modal" ).dialog({
+	        height: 350,
+	        width: 460,
+	        modal: true
+	    });
+	            $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/nuevomandatario.htm?id=123",
+	                    success: function(data){
+                    		$('#dialog-modal p').html(data);
+	                    },
+	                    error: function (){
+							alert('Errorrr ');
+		                    }
+	            });
+
+	    });
+});	
+
 	function seguirParticipacion(){
 		document.forms[0].action='${pageContext.request.contextPath}/constitucion/tramitePart.htm';
 		document.forms[0].submit();
@@ -39,11 +62,23 @@
 			<input type="button" value="Nuevo Mandatario" onclick="nuevoMandatario()"/>
 			<input type="button" value="Asignar" onClick="asignarCargos()"/>
 			<input type="button" value="Editar" onClick="editarMandatario()"/>
+			<button id="b_mandatario">Nuevo Mandatario</button>
 			<input type="button" value="Eliminar" onClick="eliminarMandatario()"/>
 		</div>
 	</div>
 	<div style="overflow:hidden; border:1px solid #99BBE8;">
 	
+	
+	
+	
+	
+	<div style='display:none'>
+	  <div id="dialog-modal" title="Nuevo Mandatario">
+	    <p>Loading</p>
+	    </div>
+	</div>
+
+
 		<display:table  name="requestScope.lmandatarios" class="displaytag" pagesize="10"
 	    	    defaultsort="1" defaultorder="ascending"  export="false" id="row" excludedParams="ajax" >	           
 	           <display:column title="Nombre" property="nomMandat" headerClass="sortable" />
@@ -53,10 +88,16 @@
 	           <display:column title="Acciones">
 	           	<a href="editarTramite.htm?codigo=${row.idMandatario}"><img title="Editar" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
 	           	<a href="verTramite.htm?codigo=${row.idMandatario}"><img title="Ver" src="${pageContext.request.contextPath}/img/search.png" height="18px" width="18px"/></a>
+	           	<a href="#" id="anchor_123"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="18px" width="18px"/></a>
 			</display:column>
 	  		</display:table>
 		
 	</div>
+	
+	<script type="text/javascript">
+
+
+	</script>
 		
 	<div style="overflow:hidden;height:50px;border:1px solid #99BBE8; border-top:0px">
 		<table cellspacing="13" style="overflow:hidden;">
