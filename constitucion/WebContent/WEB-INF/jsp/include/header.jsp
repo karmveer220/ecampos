@@ -17,10 +17,11 @@
     	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar-system.css" type="text/css" media="all" title="system" />
     	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ajaxtags.css" type="text/css"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/displaytag.css" type="text/css"/>
-       
+        
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/prototype.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/scriptaculous/scriptaculous.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/overlibmws/overlibmws.js"></script>
+        
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/ajaxtags.js"></script>
         
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/calendar.js"></script>
@@ -29,9 +30,11 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/tw-sack.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/validation.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/shadowbox/shadowbox.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-latest.pack.js"></script>
-        
-      
+               
+       	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/redmond/jquery-ui.css" type="text/css" media="all" />
+		
 	    
 	</head>
     <body>
