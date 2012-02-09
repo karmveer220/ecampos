@@ -1,9 +1,12 @@
-			</div>
-	        
-	        <div class="footer">
-				&copy; 2006 Desarrollado para <a href="http://www.mecaniza.com.pe">Mecaniza</a>
-			</div>
-
-        </div>
-    </body>
+		</div>
+ 		</div>
+  	<div id="dvfootercontainer">
+    <div id="foottop" >
+	  <p>
+		<a href="#" title="Home">PCM</a>
+	  </p>
+    </div>
+  </div>
+</div>
+</body>
 </html>

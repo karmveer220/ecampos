@@ -337,6 +337,7 @@ public class ConstitucionController {
 		logger.debug("nuevoTramite");
 		cargaCombos(request);
 		model.put("tramite", new T020tramite() );
+		request.getSession().removeAttribute("tramitesistema" );
         return "TramiteEditable";
     }
 	
@@ -357,6 +358,7 @@ public class ConstitucionController {
 		if(val.getResultado() == 0 ){
 			tramite.setT021notaria( notariaService.obtenerNotaria( Users.getUsuarioBean().getCodNotaria() ) );
 			tramite.setIndEstado(2);
+			tramite.setIndEliminado(0);
 			tramite.setFecRegistro( new Date() );
 			tramiteService.registrarTramite(tramite);
 			request.getSession().setAttribute("tramitesistema", tramite);

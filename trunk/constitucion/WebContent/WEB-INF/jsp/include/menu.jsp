@@ -22,6 +22,5 @@
               </ul>
         </li>
         </security:authorize>
-         <li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a></li>
      </ul>
 </div>
