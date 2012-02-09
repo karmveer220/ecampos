@@ -1,5 +1,6 @@
 <jsp:include page="include/header.jsp" flush="true"/>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="pe.gob.pcm.constitucion.web.model.T001parametro"%>
 <%@page import="pe.gob.pcm.constitucion.web.bean.Parametro"%>
 <%@page import="java.util.List"%>
@@ -36,12 +37,13 @@
             <td height="233">
 				<div align="center" style="color: red"> <%=error %> </div>
 				<div align="center" style="color: blue"> <%=mensaje %> </div>
-		<h2>
-		Editando Tramite Kardex 777
-		</h2>
+		
 		
 	<form:form name="tramiteForm" action="tramitePasoDos.htm" method="post" modelAttribute="tramite">
-			
+		<h2>
+		<c:if test="${tramitesistema.numTramite eq null }">Nuevo Tramite</c:if>
+		<c:if test="${tramitesistema.numTramite ne null }">Editando Tramite Kardex <c:out value="${tramitesistema.clvKardex}"/></c:if>		
+		</h2>	
 			<input id="modifico" type="hidden" name="modifico" value="0"/>
 			
 			<form:hidden path="numTramite"/>

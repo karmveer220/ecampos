@@ -2,7 +2,7 @@
 <%@page import="pe.gob.pcm.constitucion.web.model.T020tramite"%>
 <jsp:include page="include/header.jsp" flush="true"/>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	T020tramite tram = (T020tramite)session.getAttribute("tramitesistema"); 
 	T029archivo arch = (T029archivo)request.getAttribute("archivoTramite");	
@@ -39,7 +39,10 @@
 	
 <div  style="overflow:hidden">
 	<div class="x-panel-header" style="border-bottom: 0px; padding: 5px 8px">
-	Tr&aacute;mite - Parte
+	<h2>
+		<c:if test="${tramitesistema.numTramite eq null }">Nuevo Tramite</c:if>
+		<c:if test="${tramitesistema.numTramite ne null }">Editando Tramite Kardex <c:out value="${tramitesistema.clvKardex}"/></c:if>		
+		</h2>
 	</div>
 	<div  style="background:white; border:1px solid #99BBE8">
 		<div style="width:640px; padding:10px 10px 10px 10px;">

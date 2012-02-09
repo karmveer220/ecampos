@@ -1,5 +1,5 @@
 <jsp:include page="include/header.jsp" flush="true"/>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
@@ -32,8 +32,9 @@
 				<div align="center" style="color: blue"> <%=mensaje %> </div>
 		
 		<h2>
-		Editando Tramite Kardex 777
-		</h2>
+		<c:if test="${tramitesistema.numTramite eq null }">Nuevo Tramite</c:if>
+		<c:if test="${tramitesistema.numTramite ne null }">Editando Tramite Kardex <c:out value="${tramitesistema.clvKardex}"/></c:if>		
+		</h2>	
 
 		<table>
 			<tr>

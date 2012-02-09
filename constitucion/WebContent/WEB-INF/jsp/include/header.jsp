@@ -12,8 +12,8 @@
 		
         <title>Constituci&oacute;n</title>
         
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/master.css" type="text/css" media="screen" />
-    	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/menu_style.css" type="text/css" />    	
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/menu_style.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css" media="screen" />    	    	
     	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/calendar-system.css" type="text/css" media="all" title="system" />
     	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/ajaxtags.css" type="text/css"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/displaytag.css" type="text/css"/>
@@ -35,17 +35,25 @@
 	    
 	</head>
     <body>
-    	<div id="principal">
+    	<div id="dvmaincontainer">
 			
-			<div id="banners">
-			   <div style="float: right;">Bienvenido ${pageContext.request.userPrincipal.name} |  <a href="${pageContext.request.contextPath}/j_spring_security_logout">Cerrar Session</a></div>
-			    <a href="${pageContext.request.contextPath}/home.htm">
-			        <img src="${pageContext.request.contextPath}/img/cabecera.jpg" height="200px" />
-			    </a><br/>
-			</div>
-		
+			<div id="dvtopcontainer">
+			    <div id="dvlogocontainer">
+			      <h1>Constitucion de Empresas</h1>
+				  <h4>en 72 horas</h4>
+			    </div>
+			    <div id="dvnavicontainer">
+			      <img src="${pageContext.request.contextPath}/img/navi_left.jpg" alt="" />
+					<div id="tabs1" >
+			        <ul>
+					  <li>Bienvenido Ecampos | </li>
+			          <li><a href="${pageContext.request.contextPath}/j_spring_security_logout"><span>Cerrar Session</span></a></li>
+			        </ul>
+			      </div>
+			      <img src="${pageContext.request.contextPath}/img/navi_right.jpg" alt="" />
+			    </div>
+			  </div>
+			  
+		<div id="dvbodycontainer">		
 	    	<jsp:include page="menu.jsp"/>
-	    	
-	    	<div id="cuerpo">
-	    		
-	    	
+	    	<div id="dvcentraltpanel">

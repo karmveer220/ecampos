@@ -18,7 +18,7 @@
 				<div align="center" style="color: blue"> <%=mensaje %> </div>
 					
 					
-				 <display:table  name="requestScope.lBandeja" requestURI="bandeja.htm"  class="displaytag" pagesize="10"
+				 <display:table name="requestScope.lBandeja" requestURI="bandeja.htm"  class="displaytag" pagesize="10"
 			    	    defaultsort="1" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax" >
 		            <display:column title="Razon Soc." property="nomRazsoc" sortable="true" headerClass="sortable" />
 		            <display:column title="Num. CUO" property="numCuo" sortable="true" headerClass="sortable" />

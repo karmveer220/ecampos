@@ -37,6 +37,9 @@ public class ValidacionServiceImpl implements ValidacionService {
 		if( StringUtils.isEmpty( tramite.getClvKardex() ) ){
 			val.aumenta(1, "Debe ingresar el Kardex");
 		}
+		if( StringUtils.isEmpty( tramite.getNomRazsoc() ) ){
+			val.aumenta(1, "Debe ingresar la razon social");
+		}		
 		return val;
 	}
 
