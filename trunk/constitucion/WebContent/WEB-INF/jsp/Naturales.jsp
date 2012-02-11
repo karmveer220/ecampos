@@ -116,6 +116,9 @@
 							</select>
 						</td>
 					</tr>
+					<% try{
+						%>
+						
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Estado Civil:</td>
 						<td colspan="2" align="left">
@@ -127,6 +130,8 @@
 							</form:select>
 						</td>
 					</tr>
+					<% 
+					}catch(Exception e){System.out.println("error");} %>
 					<tr>
 						<td colspan="3" align="left">
 					
@@ -190,7 +195,7 @@
 								<select id="personaTipoAporte" name="tipoAporte" style="width:220px"
 								onChange="notarios.cmbperTipoAporte()">
 								<%	List<T001parametro> lsTipoAporteJ = (List<T001parametro>)request.getAttribute("lsTipoAporte");
-									for(T001parametro p : lsTipoAporteJ) {%>
+									if(lsTipoAporteJ!=null)for(T001parametro p : lsTipoAporteJ) {%>
 									<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
 								<%	}%>
 							</select>
@@ -227,9 +232,9 @@
 								<table>
 										<thead>
 										<tr>
-											<th field="cantidadBien" width="120px">Cantidad</th>
-											<th field="descripcionBien" width="280px">Descripci&oacute;n de bienes</th>
-											<th field="montoBien" width="120px">Valor de Mercado</th>
+											<th width="120px">Cantidad</th>
+											<th width="280px">Descripci&oacute;n de bienes</th>
+											<th width="120px">Valor de Mercado</th>
 										</tr>
 									</thead>
 								</table>

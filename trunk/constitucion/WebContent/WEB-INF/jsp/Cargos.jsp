@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<form id="registraCargo.htm" name="cargoForm" method="post">
+<html>
+<body>
+<form action="registraCargo.htm" id="cargoform" name="cargoform" method="post">
 
 	<table cellspacing="5" style="width:100%" cellspacing="5">
 		<tr><td colspan="2">&nbsp;</td></tr>
@@ -27,3 +28,5 @@
 		</tr>
 	</table>
 </form>
+</body>
+</html>

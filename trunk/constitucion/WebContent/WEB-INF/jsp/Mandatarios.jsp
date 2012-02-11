@@ -8,20 +8,22 @@
 
 <script> 	
 $(document).ready(function() {
-	
-	$( "#soc_cargo" ).click(function(){
-	    $( "#dialog-modal" ).dialog({
-	        height: 350,
-	        width: 460,
-	        modal: true
-	    });
-        $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/asignacargo.htm"+$(this).attr('href'),
-            success: function(data){ $('#dialog-modal p').html(data); },
-            error: function (){ alert('Errorrr '); }
-        });
-	});
-	
-	$("#b_mandatario").click(function(){
+
+	$( "#dialog-modal" ).dialog({        
+        autoOpen: false,
+        width: 460,
+        height: 250,
+        modal: true,
+        close: function(ev, ui) { $(this).dialog("close"); }
+    });
+    
+	 $(".soc_cargo").live("click", function () {
+		 var id = $(this).attr("noteid");
+         $("#dialog-modal").html("")
+             .dialog("option", "title", "Asignar Cargo")
+             .load("${pageContext.request.contextPath}/mandatarios/asignacargo.htm?cod="+id, function () { $("#dialog-modal").dialog("open"); });
+     });
+     $("#b_mandatario").click(function(){
 	    $( "#dialog-modal2" ).dialog({
 	        height: 350,
 	        width: 460,
@@ -101,7 +103,7 @@ $(document).ready(function() {
 	<div style="overflow:hidden; border:1px solid #99BBE8;">
 	
 	<div style='display:none'>
-	  <div id="dialog-modal" title="Nuevo Mandatario">
+	  <div id="dialog-modal" class="dialog-modal" title="Nuevo Mandatario">
 	  	<p>Loading</p>
 	  </div>
 	  <div id="dialog-modal2" title="Asignar Cargos">
@@ -128,7 +130,7 @@ $(document).ready(function() {
 	           <display:column title="Acciones">
 	           	<a href="?codigo=${row.idMandatario}" id="soc_edit"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></a>
 	           	<a href="?codigo=${row.idMandatario}" id="soc_ver"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
-	           	<a href="?codigo=${row.idMandatario}" id="soc_cargo"><img title="Asignar Cargo" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
+	           	<span class="soc_cargo ButtonLink" noteid="${row.idMandatario}"><img title="Asignar Cargo" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></span>
 	           	<a href="eliminarMandatario.htm?codigo=${row.idMandatario}" onclick="return confirm('Seguro de eliminar el Mandatario?');"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
 			</display:column>
 	  		</display:table>
