@@ -11,5 +11,6 @@ public interface MandatarioService {
 	public void registrarMandatario(T032mandatario mandatario);
 	public void editarMandatario(T032mandatario mandatario);
 	public void eliminarMandatario(Integer mandatario);
+	public void asignaCargoMandatario(Integer codman, String codCargo);
 	
 }

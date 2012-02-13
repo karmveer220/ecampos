@@ -14,60 +14,93 @@ $(document).ready(function() {
         width: 460,
         height: 250,
         modal: true,
-        close: function(ev, ui) { $(this).dialog("close"); }
-    });
-    
+        close: function(ev, ui) { $(this).dialog("close"); },
+	 	buttons:{
+            "grabar":{ text : 'Grabar',  className:'save', click: function () {  $("#cargoform").submit(); $(this).dialog("close");  }},
+            "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } }
+        }
+    });    
 	 $(".soc_cargo").live("click", function () {
 		 var id = $(this).attr("noteid");
          $("#dialog-modal").html("")
              .dialog("option", "title", "Asignar Cargo")
              .load("${pageContext.request.contextPath}/mandatarios/asignacargo.htm?cod="+id, function () { $("#dialog-modal").dialog("open"); });
      });
-     $("#b_mandatario").click(function(){
-	    $( "#dialog-modal2" ).dialog({
+
+	 $( "#dialog-modal2" ).dialog({
+		 	autoOpen: false,
 	        height: 350,
 	        width: 460,
-	        modal: true
-	    });
-         $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/nuevomandatario.htm",
-               success: function(data){ $('#dialog-modal2 p').html(data); },
-               error: function (){ alert('Errorrr '); }
-         });
+	        modal: true,
+	        close: function(ev, ui) { $(this).dialog("close"); },
+		 	buttons:{
+	            "grabar":{ text : 'Grabar',  className:'save', click: function () {  $("#cargoform").submit(); $(this).dialog("close");  }},
+	            "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } }
+	        }
 	 });
-	
-	$("#b_socio").click(function(){
-	    $( "#dialog-modal3" ).dialog({
-	        height: 350,
+	 $(".b_mandatario").live("click", function () {
+         $("#dialog-modal2").html("")
+             .dialog("option", "title", "Nuevo Mandatario")
+             .load("${pageContext.request.contextPath}/mandatarios/nuevomandatario.htm", 
+                     function () { $("#dialog-modal2").dialog("open"); }
+         );
+     });   
+     
+	 $( "#dialog-modal3" ).dialog({
+		 	autoOpen: false,
+		 	height: 350,
 	        width: 460,
-	        modal: true
-	    });
-         $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/seleccionasocio.htm",
-               success: function(data){ $('#dialog-modal3 p').html(data); },
-               error: function (){ alert('Errorrr '); }
-         });
-	 });
-	$("#soc_edit").click(function(){
-	    $( "#dialog-modal4" ).dialog({
-	        height: 350,
+	        modal: true,
+	        close: function(ev, ui) { $(this).dialog("close"); },
+		 	buttons:{
+	            "grabar":{ text : 'Grabar',  className:'save', click: function () {  $("#cargoform").submit(); $(this).dialog("close");  }},
+	            "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } }
+	        }
+	  });
+	 $(".b_socio").live("click", function () {
+		 console.log('seleccionar de entre los socio ');
+         $("#dialog-modal3").html("")
+             .dialog("option", "title", "Seleccionar Socio")
+             .load("${pageContext.request.contextPath}/mandatarios/seleccionasocio.htm", function () { $("#dialog-modal3").dialog("open"); });
+     });
+     
+	 $( "#dialog-modal4" ).dialog({
+		 	autoOpen: false,
+		 	height: 350,
 	        width: 460,
-	        modal: true
-	    });
-         $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/editarsocio.htm",
-               success: function(data){ $('#dialog-modal4 p').html(data); },
-               error: function (){ alert('Errorrr '); }
-         });
+	        modal: true,
+	        close: function(ev, ui) { $(this).dialog("close"); },
+		 	buttons:{
+	            "grabar":{ text : 'Grabar',  className:'save', click: function () {  $(this).dialog("close");  }},
+	            "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } }
+	        }
 	 });
-	$("#soc_ver").click(function(){
-	    $( "#dialog-modal5" ).dialog({
-	        height: 350,
+	 $(".soc_edit").live("click", function () {
+		 console.log('editar  socio ');
+		 var id = $(this).attr("noteid");
+         $("#dialog-modal4").html("")
+             .dialog("option", "title", "Editar Mandatario")
+             .load("${pageContext.request.contextPath}/mandatarios/editarMandatario.htm?cod="+id, function () { $("#dialog-modal4").dialog("open"); });
+     });
+
+	 $( "#dialog-modal5" ).dialog({
+		 	autoOpen: false,
+		 	height: 350,
 	        width: 460,
-	        modal: true
-	    });
-         $.ajax({ url: "${pageContext.request.contextPath}/mandatarios/versocio.htm",
-               success: function(data){ $('#dialog-modal5 p').html(data); },
-               error: function (){ alert('Errorrr '); }
-         });
+	        modal: true,
+	        close: function(ev, ui) { $(this).dialog("close"); },
+		 	buttons:{ "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } } }
 	 });
+	 $(".soc_ver").live("click", function () {
+		 console.log('ver socio '); 
+		 var id = $(this).attr("noteid");
+         $("#dialog-modal5").html("")
+             .dialog("option", "title", "Ver Mandatario")
+             .load("${pageContext.request.contextPath}/mandatarios/verMandatario.htm?cod="+id, function () { $("#dialog-modal5").dialog("open"); });
+     });
+
+	 console.log('se ve la consola'); 
+	 
 });	
 
 	function seguirParticipacion(){
@@ -96,8 +129,8 @@ $(document).ready(function() {
 			Asignaci&oacute;n de Mandatarios
 		</div>
 		<div  style="border-left:1px solid #99BBE8; border-right:1px solid #99BBE8; border-bottom:0px;">
-			<button id="b_socio">Socio / Accionista existente</button>
-			<button id="b_mandatario">Nuevo Mandatario</button>
+			<button id="b_socio" class="b_socio">Socio / Accionista existente</button>
+			<button id="b_mandatario" class="b_mandatario">Nuevo Mandatario</button>
 		</div>
 	</div>
 	<div style="overflow:hidden; border:1px solid #99BBE8;">
@@ -128,8 +161,8 @@ $(document).ready(function() {
 	           <display:column title="Tipo Doc." property="codTdocman" headerClass="sortable" />
 	           <display:column title="Numero Doc." property="numDocman" headerClass="sortable" />	           
 	           <display:column title="Acciones">
-	           	<a href="?codigo=${row.idMandatario}" id="soc_edit"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></a>
-	           	<a href="?codigo=${row.idMandatario}" id="soc_ver"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
+	           	<span class="soc_edit ButtonLink" noteid="${row.idMandatario}"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></span>
+	           	<span class="soc_ver ButtonLink" noteid="${row.idMandatario}"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></span>
 	           	<span class="soc_cargo ButtonLink" noteid="${row.idMandatario}"><img title="Asignar Cargo" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></span>
 	           	<a href="eliminarMandatario.htm?codigo=${row.idMandatario}" onclick="return confirm('Seguro de eliminar el Mandatario?');"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
 			</display:column>

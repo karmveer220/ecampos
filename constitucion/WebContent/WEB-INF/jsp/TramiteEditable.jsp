@@ -47,6 +47,7 @@
 			<input id="modifico" type="hidden" name="modifico" value="0"/>
 			
 			<form:hidden path="numTramite"/>
+			
 			<div style="width:700px; padding:10px 10px 10px 10px;">
 				<table width="100%" cellspacing="10">
 					<tr>
@@ -54,10 +55,7 @@
 						<td width="200px" colspan="3">
 							<form:select id="tramiteTipoSociedad" path="codTipsoc" onchange="notarios.cmbtraTipoSociedad()">
 								<option value="00" selected="selected">SELECCIONE UN TIPO DE SOCIEDAD</option>
-								<%	List<T001parametro> lsTipoSociedad = (List<T001parametro>)request.getAttribute("lsTipoSociedad");
-									for(T001parametro p : lsTipoSociedad) {%>
-								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
-								<%	}%>
+								<form:options items="${lsTipoSociedad}" itemLabel="desParam" itemValue="codParam"/>								
 							</form:select>
 						</td>
 					</tr>
@@ -66,10 +64,7 @@
 						<td colspan="3">
 						<form:select path="codZonreg" id="tramiteZonaRegistral" onchange="javascript:comboOficinaRegistral(document.getElementById('tramiteZonaRegistral'));">
 								<option value="00" selected="selected">SELECCIONE LA ZONA REGISTRAL</option>
-								<%	List<T001parametro> lsZonaRegistral = (List<T001parametro>)request.getAttribute("lsZonaRegistral");
-									for(T001parametro p : lsZonaRegistral) {%>
-								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
-								<%	}%>
+								<form:options items="${lsZonaRegistral}" itemLabel="desParam" itemValue="codParam"/>
 							</form:select>
 						</td>
 					</tr>
@@ -77,6 +72,7 @@
 						<td>(<b>+</b>) <b>Oficina Registral</b>:</td>
 						<td colspan="3">
 							<form:select path="codOficreg" id="tramiteOficinaRegistral" cssStyle="width:370px" onchange="cambioTramite();">
+								<form:options items="${lcombooficinas}" itemLabel="desParam" itemValue="codParam"/>
 							</form:select>
 						</td>
 					</tr>
@@ -109,22 +105,22 @@
 							<form:input path="nomDenabrev" id="tramiteDenominacionAbreviada" maxlength="100" cssStyle="font-size:13px; width:170px" onchange="notarios.cambioTramite()"/>
 						</td>
 					</tr>
+					<c:catch >
 					<tr>
 						<td>(*) Departamento:</td>
 						<td colspan="3">
-							<select id="tramiteDepartamento" name="departamento" style="width:220px" 
-									onChange="javascript:comboDepartamento(document.getElementById('tramiteDepartamento'));">
-								<%	List<T001parametro> lsdepas= (List<T001parametro>)request.getAttribute("lsDepartamentos");
-									for(T001parametro p : lsdepas) {%>
-								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
-								<%	}%>
-							</select>
+							<form:select path="codDepa" id="tramiteDepartamento" cssStyle="width:220px" 
+									onchange="javascript:comboDepartamento(document.getElementById('tramiteDepartamento'));">
+								<form:options items="${lsDepartamentos}" itemLabel="desParam" itemValue="codParam"/>								
+							</form:select>
 						</td>
 					</tr>
+					</c:catch>
 					<tr>
 						<td>(*) Provincia:</td>
 						<td colspan="3">
-							<form:select path="codUbigeo" id="tramiteProvincia" cssStyle="width:220px">							
+							<form:select path="codUbigeo" id="tramiteProvincia" cssStyle="width:220px">
+							<form:options items="${lcomboprovincias}" itemLabel="desParam" itemValue="codParam"/>							
 							</form:select>
 						</td>
 					</tr>
@@ -137,16 +133,11 @@
 					<tr>
 						<td>(<b>+</b>) <b>Aporte</b>:</td>
 						<td colspan="3">
-							<input id="tramiteTipoAporteEx" type="hidden" name="tipoAporteEx" value=""/>
-							<select id="tramiteTipoAporte" name="tipoAporte"
-									 style="width:220px"
-									onChange="notarios.cmbtraTipoAporte()">
+							<form:select path="indAporte" id="tramiteTipoAporte"  cssStyle="width:220px"
+									onchange="notarios.cmbtraTipoAporte()">
 								<option value="0" selected="selected">SELECCIONE TIPO APORTE</option>
-							<%	List<T001parametro> lsTipoAporte = (List<T001parametro>)request.getAttribute("lsTipoAporte");
-								for(T001parametro p : lsTipoAporte) {%>
-								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
-							<%	}%>
-							</select>
+								<form:options items="${lsTipoAporte}" itemLabel="desParam" itemValue="codParam"/>
+							</form:select>
 						</td>
 					</tr>
 					<tr>
@@ -164,7 +155,7 @@
 					<tr>
 						<td>Acciones / Participaciones:</td>
 						<td colspan="3">
-							 (monto / valor de accion) 150 
+							 <form:input path="mtoAccionpart" id="tramiteAccionPart" maxlength="18" cssStyle="font-size:13px; width:150px"/> 
 						</td>
 					</tr>
 					<tr>

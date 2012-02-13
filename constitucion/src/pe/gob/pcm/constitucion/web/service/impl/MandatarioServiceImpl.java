@@ -40,4 +40,9 @@ public class MandatarioServiceImpl implements MandatarioService {
 		mandatarioDAO.editarMandatario(mandatario);
 	}
 
+	@Override
+	public void asignaCargoMandatario(Integer codman, String codCargo) {
+		mandatarioDAO.asignaCargoMandatario(codman, codCargo);
+	}
+
 }

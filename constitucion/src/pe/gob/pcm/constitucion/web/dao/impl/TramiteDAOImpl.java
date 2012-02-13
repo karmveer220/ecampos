@@ -27,7 +27,7 @@ public class TramiteDAOImpl extends HibernateDaoSupport implements TramiteDAO {
 
 	@Override
 	public void registrarTramite(T020tramite tramite) {
-		this.getHibernateTemplate().save(tramite);
+		this.getHibernateTemplate().saveOrUpdate(tramite);
 	}
 
 	@Override
