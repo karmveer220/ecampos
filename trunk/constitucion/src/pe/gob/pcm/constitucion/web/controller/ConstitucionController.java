@@ -344,8 +344,8 @@ public class ConstitucionController {
 	@RequestMapping(value ="/constitucion/editarTramite.htm",method = RequestMethod.GET)
     public String editartramite(@RequestParam("codigo")  String id,  ModelMap model,HttpServletRequest request) {
 		logger.debug("nuevoTramite");
-		cargaCombos(request);
 		T020tramite tr = tramiteService.obtenerTramite(Integer.parseInt(id));
+		cargaCombos(request,tr);
 		model.put("tramite", tr );
 		request.getSession().setAttribute(TRAMITE_SESSION, tr );
         return "TramiteEditable";
@@ -526,6 +526,20 @@ public class ConstitucionController {
 		request.setAttribute("lsDepartamentos", parametroDAO.litarParametrosDepartamentos());
 	}
 	
+	public void cargaCombos(HttpServletRequest request,T020tramite tramite){
+		cargaCombos(request);
+		if(tramite.getCodOficreg()!=null){
+				request.getSession().setAttribute("lcombooficinas", parametroDAO.litarParametros(ParametrosUtil.OFICINA_REGISTRAL,tramite.getCodOficreg()));	
+		}
+		if(tramite.getCodUbigeo()!=null){
+			String cod = tramite.getCodDepa();
+			if( cod.length() > 2 ){
+				cod = cod.substring(0,2);
+				logger.debug("codDepa = " + cod );
+				request.getSession().setAttribute("lcomboprovincias", parametroDAO.litarParametrosProvincias(cod));
+			}
+		}
+	}
 	
 	@RequestMapping(value = "/*/comboficinaregistral.htm", method = RequestMethod.POST)
     public String comboficinaregistral(@RequestParam("cod") String cod,ModelMap model,HttpServletRequest request){

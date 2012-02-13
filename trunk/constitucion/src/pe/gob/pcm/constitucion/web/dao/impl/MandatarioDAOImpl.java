@@ -51,4 +51,10 @@ public class MandatarioDAOImpl extends HibernateDaoSupport implements Mandatario
 		this.getHibernateTemplate().merge(mandatario);
 	}
 
+	@Override
+	public void asignaCargoMandatario(Integer codman, String codCargo) {
+		getSession().createQuery(" update T032mandatario m set m.codCargo = :cargo where m.idMandatario = :id ")
+        .setInteger("id", codman).setString("cargo", codCargo).executeUpdate();		
+	}
+
 }

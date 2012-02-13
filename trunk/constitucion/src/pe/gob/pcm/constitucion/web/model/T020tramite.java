@@ -125,6 +125,8 @@ public class T020tramite implements Serializable {
     
     @Transient
     private String objetoSocial;
+    @Transient
+    private String codDepa;
     
 	@JoinColumn(name = "COD_NOTARIA", referencedColumnName = "COD_NOTARIA")
     @ManyToOne(optional = false)
@@ -518,6 +520,16 @@ public class T020tramite implements Serializable {
 		this.objetoSocial = objetoSocial;
 	}
 
-    
+	public String getCodDepa() {
+		if(codUbigeo!=null)
+			if(codUbigeo.length()>2)
+				return codUbigeo.substring(0,2)+"0000";
+		return "";
+	}
+
+	public void setCodDepa(String codDepa) {
+		this.codDepa = codDepa;
+	}
+  
     
 }
