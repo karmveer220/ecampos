@@ -6,101 +6,182 @@
 <jsp:include page="include/header.jsp" flush="true"/>
 
 
-<script> 	
+<script>
+
+	function guardarCargo(){
+			$.ajax({
+				url:'${pageContext.request.contextPath}/mandatarios/registraCargo.htm',
+				type:'POST',
+				async:true,
+				data:$('#cargoform').serialize(),
+				success:function(data){
+					// reload list
+				}
+			});
+	}
+
+
 $(document).ready(function() {
 
-	$( "#dialog-modal" ).dialog({        
-        autoOpen: false,
-        width: 460,
-        height: 250,
-        modal: true,
-        close: function(ev, ui) { $(this).dialog("close"); },
-	 	buttons:{
-            "grabar":{ text : 'Grabar',  className:'save', click: function () {  $("#cargoform").submit(); $(this).dialog("close");  }},
-            "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } }
-        }
-    });    
-	 $(".soc_cargo").live("click", function () {
+	 $("#cargos").live("click", function () {
 		 var id = $(this).attr("noteid");
-         $("#dialog-modal").html("")
-             .dialog("option", "title", "Asignar Cargo")
-             .load("${pageContext.request.contextPath}/mandatarios/asignacargo.htm?cod="+id, function () { $("#dialog-modal").dialog("open"); });
+		 $.ajax({
+		        url: "${pageContext.request.contextPath}/mandatarios/asignacargo.htm?cod="+id,
+		        async: false,
+		        cache: false,
+		        success: function(data) {
+		            $(function() {
+		                var moddiv = $('<div>').attr({
+		                    id: "divCargos",
+		                    align:'justify'
+		                });
+		                $('body').append(moddiv);
+		                $('#divCargos').html(data);
+		                $('#divCargos').dialog({
+		                    title: "<b>Seleccion de Cargo</b>",
+		                    modal: true,
+		                    width: 450,
+		                    height: 300,
+		                    resizable: false,
+		                    hide: "explode",
+		                    show: "blind",
+		                    buttons:{
+		                    	"Grabar": function () { guardarCargo(); $(this).dialog("close"); },
+		                        "Cerrar": function() { $(this).dialog("close"); }
+		                    }
+		                });
+		            });
+		        }
+		    });		        
      });
 
-	 $( "#dialog-modal2" ).dialog({
-		 	autoOpen: false,
-	        height: 350,
-	        width: 460,
-	        modal: true,
-	        close: function(ev, ui) { $(this).dialog("close"); },
-		 	buttons:{
-	            "grabar":{ text : 'Grabar',  className:'save', click: function () {  $("#cargoform").submit(); $(this).dialog("close");  }},
-	            "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } }
-	        }
-	 });
-	 $(".b_mandatario").live("click", function () {
-         $("#dialog-modal2").html("")
-             .dialog("option", "title", "Nuevo Mandatario")
-             .load("${pageContext.request.contextPath}/mandatarios/nuevomandatario.htm", 
-                     function () { $("#dialog-modal2").dialog("open"); }
-         );
-     });   
+	 $("#nuevom").live("click", function () {
+		 $.ajax({
+			 	url: "${pageContext.request.contextPath}/mandatarios/nuevomandatario.htm",
+		        async: false,
+		        cache: false,
+		        success: function(data) {
+		            $(function() {
+		                var moddiv = $('<div>').attr({
+		                    id: "divNuevo",
+		                    align:'justify'
+		                });
+		                $('body').append(moddiv);
+		                $('#divNuevo').html(data);
+		                $('#divNuevo').dialog({
+		                    title: "<b>Nuevo Mandatario</b>",
+		                    modal: true,
+		                    width: 450,
+		                    height: 400,
+		                    resizable: false,
+		                    hide: "explode",
+		                    show: "blind",
+		                    buttons:{
+		                    	"Grabar": function () { $(this).dialog("close"); },
+		                        "Cerrar": function() { $(this).dialog("close"); }
+		                    }
+		                });
+		            });
+		        }
+		    });
+		        
+     });
      
-	 $( "#dialog-modal3" ).dialog({
-		 	autoOpen: false,
-		 	height: 350,
-	        width: 460,
-	        modal: true,
-	        close: function(ev, ui) { $(this).dialog("close"); },
-		 	buttons:{
-	            "grabar":{ text : 'Grabar',  className:'save', click: function () {  $("#cargoform").submit(); $(this).dialog("close");  }},
-	            "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } }
-	        }
-	  });
-	 $(".b_socio").live("click", function () {
-		 console.log('seleccionar de entre los socio ');
-         $("#dialog-modal3").html("")
-             .dialog("option", "title", "Seleccionar Socio")
-             .load("${pageContext.request.contextPath}/mandatarios/seleccionasocio.htm", function () { $("#dialog-modal3").dialog("open"); });
+	 $("#editar").live("click", function () {
+		 $.ajax({
+		        url: "${pageContext.request.contextPath}/mandatarios/editarMandatario.htm?cod="+id,
+		        async: false,
+		        cache: false,
+		        success: function(data) {
+		            $(function() {
+		                var moddiv = $('<div>').attr({
+		                    id: "divEditar",
+		                    align:'justify'
+		                });
+		                $('body').append(moddiv);
+		                $('#divEditar').html(data);
+		                $('#divEditar').dialog({
+		                    title: "<b>Nuevo Mandatario</b>",
+		                    modal: true,
+		                    width: 450,
+		                    height: 400,
+		                    resizable: false,
+		                    hide: "explode",
+		                    show: "blind",
+		                    buttons:{
+		                    	"Grabar": function () { $(this).dialog("close"); },
+		                        "Cerrar": function() { $(this).dialog("close"); }
+		                    }
+		                });
+		            });
+		        }
+		    });
+		        
+     });
+
+	 $("#ver").live("click", function () {
+		 var id = $(this).attr("noteid");
+		 $.ajax({
+		        url: "${pageContext.request.contextPath}/mandatarios/verMandatario.htm?cod="+id,
+		        async: false,
+		        cache: false,
+		        success: function(data) {
+		            $(function() {
+		                var moddiv = $('<div>').attr({
+		                    id: "divVer",
+		                    align:'justify'
+		                });
+		                $('body').append(moddiv);
+		                $('#divVer').html(data);
+		                $('#divVer').dialog({
+		                    title: "<b>Ver Mandatario</b>",
+		                    modal: true,
+		                    width: 450,
+		                    height: 400,
+		                    resizable: false,
+		                    hide: "explode",
+		                    show: "blind",
+		                    buttons:{
+		                    	"Cerrar": function() { $(this).dialog("close"); }
+		                    }
+		                });
+		            });
+		        }
+		    });
+		        
+     });
+
+	 $("#seleccionar").live("click", function () {
+		 $.ajax({
+		        url: "${pageContext.request.contextPath}/mandatarios/seleccionasocio.htm",
+		        async: false,
+		        cache: false,
+		        success: function(data) {
+		            $(function() {
+		                var moddiv = $('<div>').attr({
+		                    id: "divSelecc",
+		                    align:'justify'
+		                });
+		                $('body').append(moddiv);
+		                $('#divSelecc').html(data);
+		                $('#divSelecc').dialog({
+		                    title: "<b>Seleccionar Socio / accionista</b>",
+		                    modal: true,
+		                    width: 450,
+		                    height: 400,
+		                    resizable: false,
+		                    hide: "explode",
+		                    show: "blind",
+		                    buttons:{
+		                    	"Cerrar": function() { $(this).dialog("close"); }
+		                    }
+		                });
+		            });
+		        }
+		    });
+		        
      });
      
-	 $( "#dialog-modal4" ).dialog({
-		 	autoOpen: false,
-		 	height: 350,
-	        width: 460,
-	        modal: true,
-	        close: function(ev, ui) { $(this).dialog("close"); },
-		 	buttons:{
-	            "grabar":{ text : 'Grabar',  className:'save', click: function () {  $(this).dialog("close");  }},
-	            "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } }
-	        }
-	 });
-	 $(".soc_edit").live("click", function () {
-		 console.log('editar  socio ');
-		 var id = $(this).attr("noteid");
-         $("#dialog-modal4").html("")
-             .dialog("option", "title", "Editar Mandatario")
-             .load("${pageContext.request.contextPath}/mandatarios/editarMandatario.htm?cod="+id, function () { $("#dialog-modal4").dialog("open"); });
-     });
-
-	 $( "#dialog-modal5" ).dialog({
-		 	autoOpen: false,
-		 	height: 350,
-	        width: 460,
-	        modal: true,
-	        close: function(ev, ui) { $(this).dialog("close"); },
-		 	buttons:{ "cancel":{text : 'Cancelar', className:'cancel' , click: function () { $(this).dialog("close"); } } }
-	 });
-	 $(".soc_ver").live("click", function () {
-		 console.log('ver socio '); 
-		 var id = $(this).attr("noteid");
-         $("#dialog-modal5").html("")
-             .dialog("option", "title", "Ver Mandatario")
-             .load("${pageContext.request.contextPath}/mandatarios/verMandatario.htm?cod="+id, function () { $("#dialog-modal5").dialog("open"); });
-     });
-
-	 console.log('se ve la consola'); 
-	 
 });	
 
 	function seguirParticipacion(){
@@ -129,8 +210,8 @@ $(document).ready(function() {
 			Asignaci&oacute;n de Mandatarios
 		</div>
 		<div  style="border-left:1px solid #99BBE8; border-right:1px solid #99BBE8; border-bottom:0px;">
-			<button id="b_socio" class="b_socio">Socio / Accionista existente</button>
-			<button id="b_mandatario" class="b_mandatario">Nuevo Mandatario</button>
+			<button id="seleccionar"  type="button">Socio / Accionista existente</button>
+			<button id="nuevom" type="button">Nuevo Mandatario</button>
 		</div>
 	</div>
 	<div style="overflow:hidden; border:1px solid #99BBE8;">
@@ -161,9 +242,9 @@ $(document).ready(function() {
 	           <display:column title="Tipo Doc." property="codTdocman" headerClass="sortable" />
 	           <display:column title="Numero Doc." property="numDocman" headerClass="sortable" />	           
 	           <display:column title="Acciones">
-	           	<span class="soc_edit ButtonLink" noteid="${row.idMandatario}"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></span>
-	           	<span class="soc_ver ButtonLink" noteid="${row.idMandatario}"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></span>
-	           	<span class="soc_cargo ButtonLink" noteid="${row.idMandatario}"><img title="Asignar Cargo" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></span>
+	           	<span id="editar" class="ButtonLink" noteid="${row.idMandatario}"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></span>
+	           	<span id="ver"    class="ButtonLink" noteid="${row.idMandatario}"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></span>
+	           	<span id="cargos" class="ButtonLink" noteid="${row.idMandatario}"><img title="Asignar Cargo" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></span>
 	           	<a href="eliminarMandatario.htm?codigo=${row.idMandatario}" onclick="return confirm('Seguro de eliminar el Mandatario?');"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
 			</display:column>
 	  		</display:table>
