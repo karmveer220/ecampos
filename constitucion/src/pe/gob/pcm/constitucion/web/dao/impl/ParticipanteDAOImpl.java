@@ -29,7 +29,9 @@ public class ParticipanteDAOImpl extends HibernateDaoSupport implements Particip
 	public List<T022accionista> listarAccionistas( int idtramite ) {
 		Query query = getSession().createQuery(" from T022accionista p where p.t020tramite.numTramite  = :id ")
         .setInteger("id", idtramite);
-        return query.list();
+		List<T022accionista> lis =  query.list();
+		logger.debug("encotnrados " + lis.size() );
+		return lis;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -37,7 +39,9 @@ public class ParticipanteDAOImpl extends HibernateDaoSupport implements Particip
 	public List<T025pernat> listarPersonasNaturales(int idtramite) {
 		Query query = getSession().createQuery(" from T025pernat p where p.t020tramite.numTramite  = :id ")
         .setInteger("id", idtramite);
-        return query.list();
+		List<T025pernat> lis = query.list();
+		logger.debug("encotnrados " + lis.size() );
+		return lis;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -45,7 +49,9 @@ public class ParticipanteDAOImpl extends HibernateDaoSupport implements Particip
 	public List<T026perjur> listarPersonasJuridicas(int idtramite) {
 		Query query = getSession().createQuery(" from T026perjur p where p.t020tramite.numTramite  = :id ")
         .setInteger("id", idtramite);
-        return query.list();
+		List<T026perjur> lis = query.list();
+		logger.debug("encotnrados " + lis.size() );
+		return lis;
 	}
 
 	@Override

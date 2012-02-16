@@ -58,6 +58,7 @@ private static final Logger logger = Logger.getLogger(MandatariosController.clas
 	@RequestMapping(value ="/mandatarios/registramandatario.htm",method = RequestMethod.POST)
     public String registramandatario(ModelMap model,HttpServletRequest request) {
 		logger.debug("registra mandatario");
+		
 		model.put("lUsuarios", "aqui lista de usuarios");
         return "Participantes";
     }

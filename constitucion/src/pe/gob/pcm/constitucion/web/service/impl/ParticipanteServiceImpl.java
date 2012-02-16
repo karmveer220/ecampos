@@ -3,6 +3,7 @@ package pe.gob.pcm.constitucion.web.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,8 @@ import pe.gob.pcm.constitucion.web.util.Utiles;
 @Service
 public class ParticipanteServiceImpl implements ParticipanteService {
 
+	private static final Logger logger = Logger.getLogger(ParticipanteServiceImpl.class);
+	
 	@Autowired
 	private ParticipanteDAO participanteDAO;
 	
@@ -43,10 +46,10 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 	@Override
 	@Transactional
 	public void registrarPersonaNatural(T025pernat accionista) {
+		logger.debug("registra persona natural");
 		participanteDAO.registrarPersonaNatural(accionista);
 		
-		if( !Utiles.nullToBlank(accionista.getMontoAporte()).equals("") ){
-			
+		if( !Utiles.nullToBlank(accionista.getMontoAporte()).equals("") ){			
 			T022accionista acc = new T022accionista();
 			acc.setFecRegistro( new Date());
 			
@@ -57,8 +60,8 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 			acc.setNumDocum( accionista.getNumDocum() );
 			acc.setCodTipdoc( accionista.getCodTipdoc());
 			acc.setT020tramite( accionista.getT020tramite() );
+			logger.debug("registra accionista");
 			participanteDAO.registrarAccionistas( acc );
-			
 		}
 	}
 

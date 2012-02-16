@@ -9,6 +9,9 @@
 	function grabar(){		
 		document.forms[0].submit();
 	}
+	function perEstadoCivil(){
+		document.getElementById('personaCasado').style.display='block';
+	}
 </script>
 
 <form:form name="personaForm" action="registrapn.htm" method="post" modelAttribute="persona">
@@ -122,7 +125,7 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Estado Civil:</td>
 						<td colspan="2" align="left">
-							<form:select path="codEstcivil" id="personaEstadoCivil"  cssStyle="width:200px" onchange="notarios.cmbperEstadoCivil()">
+							<form:select path="codEstcivil" id="personaEstadoCivil"  cssStyle="width:200px" onchange="perEstadoCivil()">
 								<option value="00" selected="selected">SELECCIONE ESTADO CIVIL</option>
 								<option value="01" selected="selected">SOLTERO</option>
 								<option value="02" selected="selected">CASADO</option>
@@ -135,7 +138,7 @@
 					<tr>
 						<td colspan="3" align="left">
 					
-							<div id="personaCasado" style="border:1px solid #ccc; padding:4px; ">
+							<div id="personaCasado" style="border:1px solid #ccc; padding:4px; display: none;">
 								<table cellspacing="5" width="100%">
 									<tr>
 										<td width="165px">(*) Tipo documento conyuge:</td>
