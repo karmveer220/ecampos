@@ -20,6 +20,7 @@ public interface ParametroDAO {
 	public List<T001parametro> litarParametrosDepartamentos();
 	public List<T001parametro> litarParametrosProvincias(String depa);
 	public List<T001parametro> litarParametrosdistritos(String depa, String prov);
+	public String obtenerParametro(String tipoDocumento, String codTipdoc);
 	
 	
 }

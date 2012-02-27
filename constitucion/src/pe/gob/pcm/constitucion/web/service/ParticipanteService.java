@@ -2,6 +2,7 @@ package pe.gob.pcm.constitucion.web.service;
 
 import java.util.List;
 
+import pe.gob.pcm.constitucion.web.model.T020tramite;
 import pe.gob.pcm.constitucion.web.model.T022accionista;
 import pe.gob.pcm.constitucion.web.model.T025pernat;
 import pe.gob.pcm.constitucion.web.model.T026perjur;
@@ -24,5 +25,7 @@ public interface ParticipanteService {
 	public void eliminarPersonaNatural(T025pernat accionista);
 	public void eliminarPersonaJuridica(T026perjur accionista);
 	public T025pernat obtenerParticipantePn(String cod);
+	public T025pernat completarParticipante(T020tramite trm, T025pernat per);
+	public T025pernat completarParticipanteVista(T020tramite trm, T025pernat per);
 	
 }

@@ -56,4 +56,10 @@ public class ParametroDAOImpl extends HibernateDaoSupport implements ParametroDA
         return (List<T001parametro>) query.list();
 	}
 
+	@Override
+	public String obtenerParametro(String tipoDocumento, String codTipdoc) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

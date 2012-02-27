@@ -1,3 +1,5 @@
+<%@page import="org.apache.commons.lang.StringUtils"%>
+<%@page import="pe.gob.pcm.constitucion.web.model.T025pernat"%>
 <%@page import="pe.gob.pcm.constitucion.web.bean.Parametro"%>
 <%@page import="java.util.List"%>
 <%@page import="pe.gob.pcm.constitucion.web.model.T001parametro"%>
@@ -60,7 +62,7 @@
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Provincia:</td>
-						<td colspan="2" align="left"><c:out value="${persona.codDepa}"/></td>
+						<td colspan="2" align="left"><c:out value="${persona.codProv"/></td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Distrito:</td>
@@ -73,8 +75,26 @@
 					</tr>
 					<tr>
 						<td colspan="3" align="left">
-					
-							<div id="personaCasado" style="border:1px solid #ccc; padding:4px; display: none;">
+					<% 
+						 	T025pernat persona = (T025pernat)request.getAttribute("persona");
+							String estciv = "none";
+							String aporte = "none";
+							String aporte2 = "none";
+							if( StringUtils.isNotEmpty( persona.getCodEstcivil()) ){
+								if(persona.getCodEstcivil().equals("02") ){
+									estciv = "block";
+								}
+							}
+							if( StringUtils.isNotEmpty( persona.getIndAporte()) ){
+								if( !persona.getIndAporte().equals("2") ){
+									aporte = "block";
+								}
+								if( !persona.getIndAporte().equals("1") ){
+									aporte2 = "block";
+								}
+							}
+						%>
+							<div id="personaCasado" style="border:1px solid #ccc; padding:4px; display: <%=estciv %>;">
 								<table cellspacing="5" width="100%">
 									<tr>
 										<td width="165px">(*) Tipo documento conyuge:</td>
@@ -106,25 +126,19 @@
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Tipo de aporte:</td>
-						<td colspan="2" align="left">
-							<c:if test="${persona.indAporte != 3}">								
-								<c:out value="${persona.indAporte}"/>
-								nombre tipo aporte
-								<!-- si tipo de aporte es != de Ambos  muestro desciocion del tipo de aporte -->
-							</c:if>
-							<c:if test="${persona.indAporte == 3 }">
-								<c:out value="${persona.indAporte}"/>
-							</c:if>
+						<td colspan="2" align="left">						
+							<c:if test="${persona.indAporte == 1}">Dinerario</c:if>
+							<c:if test="${persona.indAporte == 2}">No Dinerario</c:if>
+							<c:if test="${persona.indAporte == 3}">Ambos</c:if>
 						</td>
 					</tr>	
 					<tr>
 						<td colspan="3" align="left">
-							<div id="divMontoAporte" style="display:none">
+							<div id="divMontoAporte" style="display:<%=aporte %>">
 								<table cellspacing ="0" width="100%">
 									<tr>
 										<td width="167px" style="padding-left:10px">Monto Aporte S/.:</td>
 										<td width="433px">
-											<!-- si en el combo escogo que aporta Dinerario o ambos muestro el campo monto -->
 											<c:out value="${persona.montoAporte}"/>
 										</td>
 									</tr>
@@ -138,7 +152,7 @@
 							<input type="submit" name="btCancelar" value="Regresar"/>
 							
 							<!-- si es no dinerario o ambos, muestro este detalle de bienes -->
-							<div id="toolbarAportes" style="border:1px solid #99BBE8; border-Bottom:0px; width:610px; display:none;">
+							<div id="toolbarAportes" style="border:1px solid #99BBE8; border-Bottom:0px; width:610px; display:<%=aporte2 %>;">
 								<div class="dijitInline"style="color:#15428b; width:350px; padding-left:4px"><b>Lista de aporte de bienes</b></div>
 								<button  onclick="notarios.adicionarAporte()">Adicionar</button>
 								<button  onclick="notarios.editarAporte()">Editar</button>
