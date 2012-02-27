@@ -219,7 +219,7 @@ function comboOficinaRegistral(obj){
 }
 
 function comboOficinaRegistralCom(){
-	var lista = document.getElementById("tramiteOficinaRegistral");	
+	var lista = document.getElementById("OficinaRegistral");	
 	removeOptions(lista);	
 	var tmp = ajax.response;
 	tmp = tmp.split(";");
@@ -241,11 +241,34 @@ function comboDepartamento(obj){
 }
 
 function comboDepartamentoCom(){
-	var lista = document.getElementById("tramiteProvincia");	
+	var lista = document.getElementById("Provincia");	
 	removeOptions(lista);	
 	var tmp = ajax.response;
 	tmp = tmp.split(";");
 	lista.options[0] = new Option("Provincias", "");	
+	for(var i=1;i<tmp.length;i++){
+		var temp = tmp[i].split("=");
+		lista.options[i] = new Option(temp[1], temp[0]);
+	}
+}
+
+function comboProvincia(obj, obj2){
+	if(obj2.options[obj2.selectedIndex].value != ""){
+		ajax.requestFile = "comboDistritos.htm";
+		ajax.method = "POST";
+		ajax.setVar("cod", obj.options[obj.selectedIndex].value);
+		ajax.setVar("cod2", obj2.options[obj2.selectedIndex].value);
+		ajax.onCompletion = comboProvinciaCom;		
+		ajax.runAJAX();
+	}
+}
+
+function comboProvinciaCom(){
+	var lista = document.getElementById("Distrito");	
+	removeOptions(lista);	
+	var tmp = ajax.response;
+	tmp = tmp.split(";");
+	lista.options[0] = new Option("Distritos", "");
 	for(var i=1;i<tmp.length;i++){
 		var temp = tmp[i].split("=");
 		lista.options[i] = new Option(temp[1], temp[0]);

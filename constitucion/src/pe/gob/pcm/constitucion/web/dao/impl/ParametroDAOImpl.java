@@ -52,8 +52,8 @@ public class ParametroDAOImpl extends HibernateDaoSupport implements ParametroDA
 
 	@Override
 	public List<T001parametro> litarParametrosdistritos(String depa, String prov) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = getSession().createQuery(" from T001parametro p where p.codGrupo = '006' and p.codParam like '"+depa + prov +"%'  ");
+        return (List<T001parametro>) query.list();
 	}
 
 }

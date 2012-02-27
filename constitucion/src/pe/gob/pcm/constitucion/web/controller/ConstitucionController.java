@@ -557,5 +557,13 @@ public class ConstitucionController {
 		return "ajax/cmbProv";
     }
 	
+	@RequestMapping(value = "/*/comboDistritos.htm", method = RequestMethod.POST)
+    public String comboDistritos(@RequestParam("cod") String cod,@RequestParam("cod2") String cod2,ModelMap model,HttpServletRequest request){
+		logger.debug("cargar combo de Distrtitos");
+		cod = cod.substring(0,2);
+		cod2 = cod2.substring(2,4);
+		request.getSession().setAttribute("lcomboDistritos", parametroDAO.litarParametrosdistritos(cod, cod2));
+		return "ajax/cmbDist";
+    }
 	
 }

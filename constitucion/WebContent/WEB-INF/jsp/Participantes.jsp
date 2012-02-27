@@ -20,8 +20,7 @@
 	function mostrarTramite(){
 		document.forms[0].action='${pageContext.request.contextPath}/constitucion/regresaPasoUno.htm';
 		document.forms[0].submit();
-	}
-	
+	}	
 </script>
 
  <div id="cuerpo">
@@ -52,8 +51,8 @@
 	           <display:column title="Aporte" property="mtoAporte" headerClass="sortable" />
 	           
 	           <display:column title="Acciones">
-	           	<a href="verParticipante.htm?codigo=${row.idAccionista}"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
-	           	<a href="editarParticipante.htm?codigo=${row.idAccionista}"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></a>
+	           	<a href="${pageContext.request.contextPath}/participantes/verParticipante.htm?codigo=${row.idAccionista}"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
+	           	<a href="${pageContext.request.contextPath}/participantes/editarParticipante.htm?codigo=${row.idAccionista}"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></a>
 	           	<a href="eliminarParticipante.htm?codigo=${row.idAccionista}" onclick="return confirm('Seguro de eliminar el participante?')"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
 			</display:column>
 	  		</display:table>

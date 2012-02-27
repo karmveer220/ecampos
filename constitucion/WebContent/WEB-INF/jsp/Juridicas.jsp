@@ -33,24 +33,21 @@
 						<td colspan="3" align="left" style="color:gray;border-bottom:1px solid #ccc"><b><span id="personaAsunto">Nueva persona juridica</span></b></td>
 					</tr>
 					<tr>
-						<td align="left" width="210px" style="padding-left:10px">(<b>+</b>) <b>Tipo Participante</b>:</td>
-						<td colspan="2" width="395px" align="left">
-							<select id="personaTipoParticipante" name="tipoParticipante" style="width:240px">
+						<td align="left" width="160px" style="padding-left:10px">(<b>+</b>) <b>Tipo Participante</b>:</td>
+						<td colspan="2" width="440px" align="left">
+							<form:select path="codParticipa" id="personaTipoParticipante" cssStyle="width:240px">
 								<option value="0000">SELECCIONE TIPO DE PARTICIPANTE</option>
-									<%	List<T001parametro> lsParticipante = (List<T001parametro>)request.getAttribute("lsParticipante");
-										for(T001parametro p : lsParticipante) {%>
-										<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
-									<%	}%>
-							</select>
+								<form:options items="${lsParticipante}" itemLabel="desParam" itemValue="codParam"/>
+							</form:select>
 						</td>
 					</tr>
 					<tr>
 						<td align="left" width="210px" style="padding-left:10px">(<b>+</b>) <b>N&uacute;mero RUC</b>:</td>
 						<td align="left" width="130px">
-							<form:input path=""numDocum id="personaNumeroDocumento" maxlength="11" cssStyle="font-size:13px; width:120px" onchange="notarios.cmbperNumeDocuRuc()"/>
+							<form:input path="numDocum" id="personaNumeroDocumento" maxlength="11" cssStyle="font-size:13px; width:120px" onchange="notarios.cmbperNumeDocuRuc()"/>
 						</td>
 						<td align="left" width="265px">
-							<button id="personaBtnSunat" onclick="notarios.cmbperValidDocuRuc()">SUNAT</button>
+							<input type="hidden" value="05" name="codTipdoc"/>
 						</td>
 					</tr>
 					<tr>
@@ -80,19 +77,18 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Zona Registral:</td>
 						<td colspan="2" align="left">
-							<form:select path="codZonreg"></form:select>
-							<select id="personaZonaRegistral" name="zonaRegistral" style="width:370px" onChange="notarios.cmbperZonaRegistral()">
-										<option value="00" selected="selected">SELECCIONE LA ZONA REGISTRAL</option>
-										<option value="11">lima</option>
-							</select>
+							<form:select path="codZonreg" id="ZonaRegistral" cssStyle="width:370px" onchange="javascript:comboOficinaRegistral(document.getElementById('ZonaRegistral'));">
+								<option value="00" selected="selected">SELECCIONE LA ZONA REGISTRAL</option>
+								<form:options items="${lsZonaRegistral}" itemLabel="desParam" itemValue="codParam"/>
+							</form:select>
 						</td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Oficina Registral:</td>
 						<td colspan="2" align="left">
-						<form:select path="codOficreg"></form:select>
-							<select id="personaOficinaRegistral" name="oficinaRegistral" style="width:370px">
-							</select>
+							<form:select path="codOficreg" id="OficinaRegistral" cssStyle="width:370px">
+								<form:options items="${lcombooficinas}" itemLabel="desParam" itemValue="codParam"/>
+							</form:select>
 						</td>
 					</tr>
 					<tr>
@@ -121,7 +117,7 @@
 									<tr>
 										<td width="205px" style="padding-left:10px">Monto Aporte S/.:</td>
 										<td width="395px">
-											<form:input path="" id="personaMontoAporte" maxlength="18" cssStyle="font-size:13px; width:180px"/>
+											<form:input path="montoAporte" id="personaMontoAporte" maxlength="18" cssStyle="font-size:13px; width:180px"/>
 										</td>
 									</tr>
 								</table>

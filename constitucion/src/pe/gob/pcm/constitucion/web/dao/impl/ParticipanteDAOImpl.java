@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.gob.pcm.constitucion.web.dao.ParticipanteDAO;
+import pe.gob.pcm.constitucion.web.model.T020tramite;
 import pe.gob.pcm.constitucion.web.model.T022accionista;
 import pe.gob.pcm.constitucion.web.model.T025pernat;
 import pe.gob.pcm.constitucion.web.model.T026perjur;
@@ -30,7 +31,7 @@ public class ParticipanteDAOImpl extends HibernateDaoSupport implements Particip
 		Query query = getSession().createQuery(" from T022accionista p where p.t020tramite.numTramite  = :id ")
         .setInteger("id", idtramite);
 		List<T022accionista> lis =  query.list();
-		logger.debug("encotnrados " + lis.size() );
+		logger.debug("num tramite = " + idtramite + " encotnrados " + lis.size() );
 		return lis;
 	}
 
@@ -57,13 +58,13 @@ public class ParticipanteDAOImpl extends HibernateDaoSupport implements Particip
 	@Override
 	@Transactional(propagation=Propagation.MANDATORY)
 	public void registrarAccionistas(T022accionista accionista) {
-		this.getHibernateTemplate().save(accionista);
+		this.getHibernateTemplate().saveOrUpdate(accionista);
 	}
 
 	@Override
 	@Transactional(propagation=Propagation.MANDATORY)
 	public void registrarPersonaNatural(T025pernat accionista) {
-		this.getHibernateTemplate().save(accionista);
+		this.getHibernateTemplate().saveOrUpdate(accionista);
 	}
 
 	@Override
@@ -99,6 +100,22 @@ public class ParticipanteDAOImpl extends HibernateDaoSupport implements Particip
 	@Override
 	public void eliminarPersonaJuridica(T026perjur accionista) {
 		this.getHibernateTemplate().merge(accionista);
+	}
+
+	@Override
+	public T025pernat obtenerParticipantePn(String cod) {
+		Query query = getSession().createQuery(" from T025pernat p where p.idPernat = :id ")
+        .setInteger("id", Integer.parseInt(cod));
+		return (T025pernat)query.uniqueResult();
+	}
+
+	@Override
+	public T022accionista obtenerAccionista(String numDoccon, String codTipdoc, T020tramite t020tramite) {
+		Query query = getSession().createQuery(" from T022accionista p where p.codTipdoc = :tdoc and p.numDocum = :num and p.t020tramite.numTramite =:tr")
+        .setString("num", numDoccon)
+		.setString("tdoc", codTipdoc)
+		.setInteger("tr", t020tramite.getNumTramite());
+		return (T022accionista)query.uniqueResult();
 	}
 
 }

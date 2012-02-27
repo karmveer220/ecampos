@@ -22,6 +22,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 /**
  *
  * @author elvis
@@ -84,6 +87,10 @@ public class T025pernat implements Serializable {
     private String indAporte;
     @Transient
     private String codParticipa;
+    @Transient
+    private String codDepa;
+    @Transient
+    private String codProv;
     @Transient
     private String nombreCompleto;
     
@@ -268,7 +275,7 @@ public class T025pernat implements Serializable {
 
     @Override
     public String toString() {
-        return "pe.gob.pcm.constitucion.web.model.T025pernat[idPernat=" + idPernat + "]";
+    	return ReflectionToStringBuilder.toString(this,ToStringStyle.MULTI_LINE_STYLE);
     }
 
 	public BigDecimal getMontoAporte() {
@@ -297,6 +304,22 @@ public class T025pernat implements Serializable {
 
 	public String getNombreCompleto(){
 		return this.apePaterno + " "  + this.apeMaterno + " " + this.nomPernat;
+	}
+
+	public String getCodDepa() {
+		return codDepa;
+	}
+
+	public void setCodDepa(String codDepa) {
+		this.codDepa = codDepa;
+	}
+
+	public String getCodProv() {
+		return codProv;
+	}
+
+	public void setCodProv(String codProv) {
+		this.codProv = codProv;
 	}
     
 }

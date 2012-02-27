@@ -13,6 +13,16 @@
 
 <script>
 
+	function cmbtraCancelCapital(val){
+		if(val==1){
+			document.getElementById('tramitePorcentajeCancelado').value='100';
+			document.getElementById('tramitePorcentajeCancelado').readOnly=true;
+		}else{
+			document.getElementById('tramitePorcentajeCancelado').readOnly=false;
+			document.getElementById('tramitePorcentajeCancelado').focus();
+		}
+	}
+	
 	function grabarTramite(){
 		if(document.getElementById('modifico')!=0 ){
 			document.forms[0].action = 'grabarTramite.htm';
@@ -71,7 +81,7 @@
 					<tr>
 						<td>(<b>+</b>) <b>Oficina Registral</b>:</td>
 						<td colspan="3">
-							<form:select path="codOficreg" id="tramiteOficinaRegistral" cssStyle="width:370px" onchange="cambioTramite();">
+							<form:select path="codOficreg" id="OficinaRegistral" cssStyle="width:370px" onchange="cambioTramite();">
 								<form:options items="${lcombooficinas}" itemLabel="desParam" itemValue="codParam"/>
 							</form:select>
 						</td>
@@ -109,8 +119,8 @@
 					<tr>
 						<td>(*) Departamento:</td>
 						<td colspan="3">
-							<form:select path="codDepa" id="tramiteDepartamento" cssStyle="width:220px" 
-									onchange="javascript:comboDepartamento(document.getElementById('tramiteDepartamento'));">
+							<form:select path="codDepa" id="Departamento" cssStyle="width:220px" 
+									onchange="javascript:comboDepartamento(document.getElementById('Departamento'));">
 								<form:options items="${lsDepartamentos}" itemLabel="desParam" itemValue="codParam"/>								
 							</form:select>
 						</td>
@@ -119,8 +129,8 @@
 					<tr>
 						<td>(*) Provincia:</td>
 						<td colspan="3">
-							<form:select path="codUbigeo" id="tramiteProvincia" cssStyle="width:220px">
-							<form:options items="${lcomboprovincias}" itemLabel="desParam" itemValue="codParam"/>							
+							<form:select path="codUbigeo" id="Provincia" cssStyle="width:220px">
+								<form:options items="${lcomboprovincias}" itemLabel="desParam" itemValue="codParam"/>							
 							</form:select>
 						</td>
 					</tr>
@@ -161,11 +171,11 @@
 					<tr>
 						<td>(*) Cancelaci&oacute;n de capital:</td>
 						<td colspan="3">
-							<label>
-								<form:radiobutton path="indCancecapi" id="t1CancelacionCapital" value="T01" onchange="notarios.cmbtraCancelCapital()"/>
+							<label>Total
+								<form:radiobutton path="indCancecapi" id="t1CancelacionCapital" value="1" onclick="cmbtraCancelCapital(1)"/>
 							</label>
-							<label>
-								<form:radiobutton path="indCancecapi" id="t2CancelacionCapital" value="T02"/>
+							<label>Parcial
+								<form:radiobutton path="indCancecapi" id="t2CancelacionCapital" value="2"  onclick="cmbtraCancelCapital(0)"/>
 							</label>
 							
 						</td>
@@ -176,7 +186,7 @@
 							<table cellspacing="0" cellpadding="0">
 								<tr>
 									<td colspan="3">
-										<form:input path="numPorcencanc" id="tramitePorcentajeCancelado" cssStyle="font-size:13px;width:82px;" onchange="notarios.cambioTramite()"/>
+										<form:input path="numPorcencanc"  id="tramitePorcentajeCancelado" cssStyle="font-size:13px;width:82px;" onchange="notarios.cambioTramite()"/>
 									</td>
 								</tr>
 							</table>

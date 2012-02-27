@@ -8,6 +8,7 @@ import pe.gob.pcm.constitucion.web.model.T020tramite;
 import pe.gob.pcm.constitucion.web.model.T025pernat;
 import pe.gob.pcm.constitucion.web.model.T026perjur;
 import pe.gob.pcm.constitucion.web.service.ValidacionService;
+import pe.gob.pcm.constitucion.web.util.Utiles;
 
 @Service
 public class ValidacionServiceImpl implements ValidacionService {
@@ -18,6 +19,7 @@ public class ValidacionServiceImpl implements ValidacionService {
 		if( StringUtils.isEmpty( participante.getNomPernat() ) ){
 			val.aumenta(1, "Debe ingresar el nombre");
 		}
+		
 		System.out.println( val.toString() );
 		return val;
 	}
@@ -28,6 +30,7 @@ public class ValidacionServiceImpl implements ValidacionService {
 		if( StringUtils.isEmpty( participante.getNomRazsoc() ) ){
 			val.aumenta(1, "Debe ingresar la razon social");
 		}
+		
 		return val;
 	}
 
