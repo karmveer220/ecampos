@@ -1,16 +1,42 @@
-<%@page import="pe.gob.pcm.constitucion.web.model.T001parametro"%>
-<jsp:include page="include/header.jsp" flush="true"/>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
+<%@page import="org.apache.commons.lang.StringUtils"%>
+<%@page import="pe.gob.pcm.constitucion.web.model.T025pernat"%>
 <%@page import="pe.gob.pcm.constitucion.web.bean.Parametro"%>
 <%@page import="java.util.List"%>
+<%@page import="pe.gob.pcm.constitucion.web.model.T001parametro"%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<jsp:include page="include/header.jsp" flush="true"/>
 
 <script>
+
 	function grabar(){		
 		document.forms[0].submit();
 	}
+	
 	function perEstadoCivil(){
-		document.getElementById('personaCasado').style.display='block';
+		var obj = document.getElementById('personaEstadoCivil');
+		var sel = obj.options[obj.selectedIndex].value;
+		if( sel == '02' ){ 
+			document.getElementById('personaCasado').style.display='block';
+		}else{
+			document.getElementById('personaCasado').style.display='none';
+		}
+	}
+
+	function cmbperTipoAporte(){
+		var obj = document.getElementById('TipoAporte');
+		var sel = obj.options[obj.selectedIndex].value;
+		if( sel != '2' ){ 
+			document.getElementById('divMontoAporte').style.display='block';
+			document.getElementById('toolbarAportes').style.display='block';
+			document.getElementById('divGridAportes').style.display='block';  
+		}else{
+			document.getElementById('divMontoAporte').style.display='none';
+			document.getElementById('toolbarAportes').style.display='none';
+			document.getElementById('divGridAportes').style.display='none';
+		}
 	}
 </script>
 
@@ -18,8 +44,6 @@
 
 	<form:hidden path="idPernat"/>
 	
-	<input id="personaTipo" type="hidden" name="tipo" value="NATURAL"/>
-	<input type="hidden" name="action" value="grabaAccionista"/>
 	<table width="90%">
 		<tr>
 			<td align="center">
@@ -32,10 +56,7 @@
 						<td colspan="2" width="440px" align="left">
 							<form:select path="codParticipa" id="personaTipoParticipante" cssStyle="width:240px">
 								<option value="0000">SELECCIONE TIPO DE PARTICIPANTE</option>
-								<%	List<T001parametro> lsTipoSociedad = (List<T001parametro>)request.getAttribute("lsParticipante");
-									for(T001parametro p : lsTipoSociedad) {%>
-								<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
-								<%	}%>
+								<form:options items="${lsParticipante}" itemLabel="desParam" itemValue="codParam"/>
 							</form:select>
 						</td>
 					</tr>
@@ -47,7 +68,6 @@
 								<form:option value="02">CARNET EXTRANJERIA</form:option>
 								<form:option value="03">PASAPORTE</form:option>							
 							</form:select>
-
 						</td>
 					</tr>
 					<tr>
@@ -99,64 +119,75 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Departamento:</td>
 						<td colspan="2" align="left">
-							<select id="personaDepartamento" name="departamento"
-									style="width:270px" onChange="notarios.cmbperDepartamento()">
-							</select>
+							<form:select path="codDepa" id="Departamento" cssStyle="width:220px" 
+									onchange="javascript:comboDepartamento(document.getElementById('Departamento'));">
+								<form:options items="${lsDepartamentos}" itemLabel="desParam" itemValue="codParam"/>								
+							</form:select>
 						</td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Provincia:</td>
 						<td colspan="2" align="left">
-							<select id="personaProvincia" name="provincia"
-									style="width:270px" onChange="notarios.cmbperProvincia()">
-							</select>
+							<form:select path="codDepa" id="Provincia" cssStyle="width:220px"
+								onchange="javascript:comboProvincia(document.getElementById('Departamento'),document.getElementById('Provincia'));">
+								<form:options items="${lcomboprovincias}" itemLabel="desParam" itemValue="codParam"/>							
+							</form:select>
 						</td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Distrito:</td>
 						<td colspan="2" align="left">
-							<select id="personaDistrito" name="distrito" style="width:270px">
-							</select>
+							<form:select path="codUbigeo" id="Distrito" cssStyle="width:220px">
+								<form:options items="${lcombodistritos}" itemLabel="desParam" itemValue="codParam"/>							
+							</form:select>
 						</td>
 					</tr>
-					<% try{
-						%>
-						
+				
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Estado Civil:</td>
 						<td colspan="2" align="left">
 							<form:select path="codEstcivil" id="personaEstadoCivil"  cssStyle="width:200px" onchange="perEstadoCivil()">
-								<option value="00" selected="selected">SELECCIONE ESTADO CIVIL</option>
-								<option value="01" selected="selected">SOLTERO</option>
-								<option value="02" selected="selected">CASADO</option>
-								<option value="03" selected="selected">DIVORCIADO</option>
+								<form:option value="00">SELECCIONE ESTADO CIVIL</form:option>
+								<form:option value="01">SOLTERO</form:option>
+								<form:option value="02">CASADO</form:option>
+								<form:option value="03">DIVORCIADO</form:option>
 							</form:select>
 						</td>
 					</tr>
-					<% 
-					}catch(Exception e){System.out.println("error");} %>
 					<tr>
 						<td colspan="3" align="left">
-					
-							<div id="personaCasado" style="border:1px solid #ccc; padding:4px; display: none;">
+						
+						<% 
+						 	T025pernat persona = (T025pernat)request.getAttribute("persona");
+							String estciv = "none";
+							String aporte = "none";							
+							if( StringUtils.isNotEmpty( persona.getCodEstcivil()) ){
+								if(persona.getCodEstcivil().equals("02") ){
+									estciv = "block";
+								}
+							}
+							if( StringUtils.isNotEmpty( persona.getIndAporte()) ){
+								if( persona.getIndAporte().equals("3") ){
+									aporte = "block";
+								}
+							}
+						%>
+							<div id="personaCasado" style="border:1px solid #ccc; padding:4px; display: <%=estciv %>;">
 								<table cellspacing="5" width="100%">
 									<tr>
 										<td width="165px">(*) Tipo documento conyuge:</td>
 										<td width="435px" colspan="2">
 											<form:select path="codTdcon" id="personaTipoDocumentoCon" cssStyle="width:200px" onchange="notarios.cmbperTipoDocuCon()">
-												<option value="01" selected="selected">D.N.I.</option>
-												<option value="02">CARNET EXTRANJERIA</option>
-												<option value="03">PASAPORTE</option>
+												<form:option value="01">D.N.I.</form:option>
+												<form:option value="02">CARNET EXTRANJERIA</form:option>
+												<form:option value="03">PASAPORTE</form:option>
 											</form:select>
 										</td>
 									</tr>
 									<tr>
 										<td>(*) N&uacute;mero de documento:</td>
-										<td>
+										<td colspan="2">
 											<form:input path="numDoccon" id="personaNumeroDocumentoCon" maxlength="8" cssStyle="font-size:13px; width:120px" onchange="notarios.cmbperNumeDocuCon()"/>
-										</td>
-										<td>
-											<button id="personaBtnConReniec" onclick="notarios.cmbperValidDocuCon()">RENIEC</button>
 										</td>
 									</tr>
 									<tr>
@@ -190,28 +221,28 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Tipo de aporte:</td>
 						<td colspan="2" align="left">
-						//si tipo de aporte es != de Ambos
-							<form:hidden path="indAporte" id="personaTipoAporte" />
-							muestro desciocion del tipo de aporte
-							
-							//sino muestro combo
-								<select id="personaTipoAporte" name="tipoAporte" style="width:220px"
-								onChange="notarios.cmbperTipoAporte()">
-								<%	List<T001parametro> lsTipoAporteJ = (List<T001parametro>)request.getAttribute("lsTipoAporte");
-									if(lsTipoAporteJ!=null)for(T001parametro p : lsTipoAporteJ) {%>
-									<option value="<%=p.getCodParam()%>"><%=p.getDesParam()%></option>
-								<%	}%>
-							</select>
+							<c:if test="${persona.indAporte != 3}">
+								<form:hidden path="indAporte" id="personaTipoAporte" />
+								nombre tipo aporte
+								<!-- si tipo de aporte es != de Ambos  muestro desciocion del tipo de aporte -->
+							</c:if>
+							<c:if test="${persona.indAporte == 3 }">
+								<!-- sino muestro combo -->
+								<form:select id="TipoAporte" path="indAporte" cssStyle="width:220px"
+									onchange="cmbperTipoAporte()">
+									<form:options items="${lsTipoAporte}" itemLabel="desParam" itemValue="codParam"/>
+								</form:select>
+							</c:if>
 						</td>
 					</tr>	
 					<tr>
 						<td colspan="3" align="left">
-							<div id="divMontoAporte" style="">
+							<div id="divMontoAporte" style="display:<%=aporte %>">
 								<table cellspacing ="0" width="100%">
 									<tr>
 										<td width="167px" style="padding-left:10px">Monto Aporte S/.:</td>
 										<td width="433px">
-											//si en el combo escogo que aporta Dinerario o ambos muestro el campo monto
+											<!-- si en el combo escogo que aporta Dinerario o ambos muestro el campo monto -->
 											<form:input path="montoAporte" id="personaMontoAporte" maxlength="18" cssStyle="font-size:13px; width:180px"/>
 										</td>
 									</tr>
@@ -224,14 +255,14 @@
 							
 							<button  onclick="javascript:grabar();">Grabar</button>
 							
-							//si es no dinerario o ambos, muestro este detalle de bienes
-							<div id="toolbarAportes" style="border:1px solid #99BBE8; border-Bottom:0px; width:610px;">
+							<!-- si es no dinerario o ambos, muestro este detalle de bienes -->
+							<div id="toolbarAportes" style="border:1px solid #99BBE8; border-Bottom:0px; width:610px; display:none;">
 								<div class="dijitInline"style="color:#15428b; width:350px; padding-left:4px"><b>Lista de aporte de bienes</b></div>
 								<button  onclick="notarios.adicionarAporte()">Adicionar</button>
 								<button  onclick="notarios.editarAporte()">Editar</button>
 								<button  onclick="notarios.eliminarAporte()">Eliminar</button>
-							</div>							
-							<div id="divGridAportes" style="border:1px solid #99BBE8; position:relative; text-align:left; height:150px; width:614px;">
+							</div>				
+							<div id="divGridAportes" style="border:1px solid #99BBE8; position:relative; text-align:left; height:150px; width:614px;display:none;">
 								<table>
 										<thead>
 										<tr>

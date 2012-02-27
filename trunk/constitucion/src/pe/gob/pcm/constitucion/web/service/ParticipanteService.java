@@ -23,5 +23,6 @@ public interface ParticipanteService {
 	public void eliminarAccionistas(T022accionista accionista);
 	public void eliminarPersonaNatural(T025pernat accionista);
 	public void eliminarPersonaJuridica(T026perjur accionista);
+	public T025pernat obtenerParticipantePn(String cod);
 	
 }

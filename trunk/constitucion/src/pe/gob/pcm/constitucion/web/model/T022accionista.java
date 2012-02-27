@@ -44,13 +44,13 @@ public class T022accionista implements Serializable {
     @Column(name = "FEC_REGISTRO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecRegistro;
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(name = "IND_APORTE")
     private String indAporte;
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(name = "MTO_APORTE")
     private BigDecimal mtoAporte;
-    @Basic(optional = false)
+    //@Basic(optional = false)
     @Column(name = "COD_PARTICIPA")
     private String codParticipa;
     @JoinColumn(name = "NUM_TRAMITE", referencedColumnName = "NUM_TRAMITE")

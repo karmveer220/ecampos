@@ -13,7 +13,6 @@ import pe.gob.pcm.constitucion.web.model.T022accionista;
 import pe.gob.pcm.constitucion.web.model.T025pernat;
 import pe.gob.pcm.constitucion.web.model.T026perjur;
 import pe.gob.pcm.constitucion.web.service.ParticipanteService;
-import pe.gob.pcm.constitucion.web.util.Utiles;
 
 @Service
 public class ParticipanteServiceImpl implements ParticipanteService {
@@ -49,7 +48,36 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 		logger.debug("registra persona natural");
 		participanteDAO.registrarPersonaNatural(accionista);
 		
-		if( !Utiles.nullToBlank(accionista.getMontoAporte()).equals("") ){			
+	//	if( !Utiles.nullToBlank(accionista.getMontoAporte()).equals("") ){
+			logger.debug( accionista.getNumDocum() + " " + accionista.getCodTipdoc()  + " " +accionista.getT020tramite().getNumTramite() );
+			T022accionista as = participanteDAO.obtenerAccionista( accionista.getNumDocum() , accionista.getCodTipdoc() , accionista.getT020tramite() );
+		
+			T022accionista acc = new T022accionista();
+			
+			if(as != null){ 
+				logger.debug("exste acionista");
+				acc.setIdAccionista( as.getIdAccionista() );
+			}
+			
+			acc.setFecRegistro( new Date());
+			
+			acc.setMtoAporte( accionista.getMontoAporte() );
+			acc.setIndAporte( accionista.getIndAporte() );
+			acc.setCodParticipa( accionista.getCodParticipa() );
+			
+			acc.setNumDocum( accionista.getNumDocum() );
+			acc.setCodTipdoc( accionista.getCodTipdoc());
+			acc.setT020tramite( accionista.getT020tramite() );
+			logger.debug("registra accionista");
+			participanteDAO.registrarAccionistas( acc );
+	//	}
+	}
+
+	@Override
+	public void registrarPersonaJuridica(T026perjur accionista) {
+		participanteDAO.registrarPersonaJuridica(accionista);
+		
+		//if( !Utiles.nullToBlank(accionista.getMontoAporte()).equals("") ){			
 			T022accionista acc = new T022accionista();
 			acc.setFecRegistro( new Date());
 			
@@ -62,12 +90,8 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 			acc.setT020tramite( accionista.getT020tramite() );
 			logger.debug("registra accionista");
 			participanteDAO.registrarAccionistas( acc );
-		}
-	}
-
-	@Override
-	public void registrarPersonaJuridica(T026perjur accionista) {
-		participanteDAO.registrarPersonaJuridica(accionista);
+		//}
+		
 	}
 
 	@Override
@@ -98,6 +122,11 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 	@Override
 	public void eliminarPersonaJuridica(T026perjur accionista) {
 		participanteDAO.eliminarPersonaJuridica(accionista);
+	}
+
+	@Override
+	public T025pernat obtenerParticipantePn(String cod) {
+		return participanteDAO.obtenerParticipantePn(cod);
 	}
 
 }

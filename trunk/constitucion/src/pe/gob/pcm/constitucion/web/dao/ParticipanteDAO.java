@@ -2,6 +2,7 @@ package pe.gob.pcm.constitucion.web.dao;
 
 import java.util.List;
 
+import pe.gob.pcm.constitucion.web.model.T020tramite;
 import pe.gob.pcm.constitucion.web.model.T022accionista;
 import pe.gob.pcm.constitucion.web.model.T025pernat;
 import pe.gob.pcm.constitucion.web.model.T026perjur;
@@ -23,5 +24,7 @@ public interface ParticipanteDAO {
 	public void eliminarAccionistas(T022accionista accionista);
 	public void eliminarPersonaNatural(T025pernat accionista);
 	public void eliminarPersonaJuridica(T026perjur accionista);
+	public T025pernat obtenerParticipantePn(String cod);
+	public T022accionista obtenerAccionista(String numDoccon, String codTipdoc,T020tramite t020tramite);
 	
 }
