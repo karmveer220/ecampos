@@ -3,16 +3,20 @@ package pe.gob.pcm.constitucion.web.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.gob.pcm.constitucion.web.dao.ParametroDAO;
 import pe.gob.pcm.constitucion.web.dao.ParticipanteDAO;
+import pe.gob.pcm.constitucion.web.model.T020tramite;
 import pe.gob.pcm.constitucion.web.model.T022accionista;
 import pe.gob.pcm.constitucion.web.model.T025pernat;
 import pe.gob.pcm.constitucion.web.model.T026perjur;
 import pe.gob.pcm.constitucion.web.service.ParticipanteService;
+import pe.gob.pcm.constitucion.web.util.ParametrosUtil;
 
 @Service
 public class ParticipanteServiceImpl implements ParticipanteService {
@@ -21,6 +25,8 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 	
 	@Autowired
 	private ParticipanteDAO participanteDAO;
+	@Autowired
+	private ParametroDAO parametroDAO;
 	
 	@Override
 	public List<T022accionista> listarAccionistas( int idtramite ) {
@@ -127,6 +133,30 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 	@Override
 	public T025pernat obtenerParticipantePn(String cod) {
 		return participanteDAO.obtenerParticipantePn(cod);
+	}
+
+	@Override
+	public T025pernat completarParticipante(T020tramite trm, T025pernat per) {
+		per.setIndAporte( trm.getIndAporte() + "" );
+		if(	StringUtils.isNotEmpty( per.getCodUbigeo())){
+			per.setCodDepa( per.getCodUbigeo().substring(0,2) + "0000" ) ;
+			per.setCodProv( per.getCodUbigeo().substring(2,4) + "00" );
+		}
+		return per;
+	}
+
+	@Override
+	public T025pernat completarParticipanteVista(T020tramite trm, T025pernat per) {
+		//codParticipa	->descParticipa = parametroDAO.obtenerParametro(ParametrosUtil.TIPO_PARTICIPANTE , per.getCodParticipa() );
+		String descDepa = parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodProv() );
+		//codTipdoc		->descTipdoc = parametroDAO.obtenerParametro(ParametrosUtil.TIPO_DOCUMENTO , per.getCodTipdoc());
+		//codPais		->descPais = "Peru"
+		//codDepa		->descDepa = parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodDepa().substring(0,2) + "0000");
+		//codProv		->descProv
+		//codUbigeo		->descUbigeo
+		//codEstcivil	->descEstcivil
+		//codTdcon		->descTdcon
+		return per;
 	}
 
 }

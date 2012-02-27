@@ -76,16 +76,12 @@ public class ParticipantesController {
 	@RequestMapping(value ="/participantes/editarParticipante.htm",method = RequestMethod.GET)
     public String editarParticipante(@RequestParam("codigo") String cod, ModelMap model,HttpServletRequest request) {
 		logger.debug("nuevo participante editarParticipante");
-		
 		T020tramite trm = (T020tramite)request.getSession().getAttribute(ConstitucionController.TRAMITE_SESSION);
 		request.setAttribute("lsParticipante", parametroDAO.litarParametros(ParametrosUtil.TIPO_PARTICIPANTE , trm.getCodTipsoc()  ));
 		T025pernat per = participanteService.obtenerParticipantePn(cod);
-		per.setIndAporte( trm.getIndAporte() + "" );
-		model.put("persona", per );
-		
+		per = participanteService.completarParticipante(trm,per);
+		model.put("persona", per );		
 		cargarListas(request , per , null );
-		//TODO cargar combos departamento provincia distrito
-		
         return "Naturales";
     }
 	
@@ -94,7 +90,8 @@ public class ParticipantesController {
 		logger.debug("ver participante editarParticipante");
 		T020tramite trm = (T020tramite)request.getSession().getAttribute(ConstitucionController.TRAMITE_SESSION);
 		T025pernat per = participanteService.obtenerParticipantePn(cod);
-		per.setIndAporte( trm.getIndAporte() + "" );
+		per = participanteService.completarParticipante(trm,per);
+		per = participanteService.completarParticipanteVista(trm,per);
 		model.put("persona", per );
         return "NaturalesEdit";
     }
