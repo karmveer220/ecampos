@@ -22,11 +22,11 @@
 					</tr>
 					<tr>
 						<td align="left" width="160px" style="padding-left:10px">(<b>+</b>) <b>Tipo Participante</b>:</td>
-						<td colspan="2" width="440px" align="left"><c:out value="${persona.codParticipa}"/></td>
+						<td colspan="2" width="440px" align="left"><c:out value="${persona.descParticipa}"/></td>
 					</tr>
 					<tr>
 						<td align="left" width="160px" style="padding-left:10px">(<b>+</b>) <b>Tipo documento</b>:</td>
-						<td colspan="2" width="440px" align="left"><c:out value="${persona.codTipdoc}"/></td>
+						<td colspan="2" width="440px" align="left"><c:out value="${persona.descTipdoc}"/></td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(<b>+</b>) <b>N&uacute;mero de documento</b>:</td>
@@ -58,20 +58,20 @@
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Departamento:</td>
-						<td colspan="2" align="left"><c:out value="${persona.codDepa}"/></td>
+						<td colspan="2" align="left"><c:out value="${persona.descDepa}"/></td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Provincia:</td>
-						<td colspan="2" align="left"><c:out value="${persona.codProv"/></td>
+						<td colspan="2" align="left"><c:out value="${persona.descProv}"/></td>
 					</tr>
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Distrito:</td>
-						<td colspan="2" align="left"><c:out value="${persona.codUbigeo}"/></td>
+						<td colspan="2" align="left"><c:out value="${persona.descUbigeo}"/></td>
 					</tr>
 				
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Estado Civil:</td>
-						<td colspan="2" align="left"><c:out value="${persona.codEstcivil}"/></td>
+						<td colspan="2" align="left"><c:out value="${persona.descEstcivil}"/></td>
 					</tr>
 					<tr>
 						<td colspan="3" align="left">
@@ -98,7 +98,7 @@
 								<table cellspacing="5" width="100%">
 									<tr>
 										<td width="165px">(*) Tipo documento conyuge:</td>
-										<td width="435px" colspan="2"><c:out value="${persona.codTdcon}"/></td>
+										<td width="435px" colspan="2"><c:out value="${persona.descTdcon}"/></td>
 									</tr>
 									<tr>
 										<td>(*) N&uacute;mero de documento:</td>
@@ -150,15 +150,11 @@
 						<td colspan="3" align="left">
 							
 							<input type="submit" name="btCancelar" value="Regresar"/>
-							
 							<!-- si es no dinerario o ambos, muestro este detalle de bienes -->
 							<div id="toolbarAportes" style="border:1px solid #99BBE8; border-Bottom:0px; width:610px; display:<%=aporte2 %>;">
 								<div class="dijitInline"style="color:#15428b; width:350px; padding-left:4px"><b>Lista de aporte de bienes</b></div>
-								<button  onclick="notarios.adicionarAporte()">Adicionar</button>
-								<button  onclick="notarios.editarAporte()">Editar</button>
-								<button  onclick="notarios.eliminarAporte()">Eliminar</button>
 							</div>				
-							<div id="divGridAportes" style="border:1px solid #99BBE8; position:relative; text-align:left; height:150px; width:614px;display:none;">
+							<div id="divGridAportes" style="border:1px solid #99BBE8; position:relative; text-align:left; height:150px; width:614px;display:<%=aporte2 %>;">
 								<table>
 										<thead>
 										<tr>

@@ -380,9 +380,9 @@ public class ConstitucionController {
 	
 	@RequestMapping(value ="/constitucion/tramitePasoDos.htm",method = RequestMethod.POST)
     public String tramitePasoDos(ModelMap model,HttpServletRequest request) {
-		logger.debug("entro a paso do");
+		logger.debug("entro a paso dos - lista de participantes ");
 		T020tramite trm = (T020tramite)request.getSession().getAttribute(TRAMITE_SESSION);
-		model.put( "lparticipantes" , participanteService.listarAccionistas( trm.getNumTramite() ));
+		model.put( "lparticipantes" , participanteService.listarAccionistasCompleto( trm.getNumTramite() ));
 		return "Participantes";
     }
 	

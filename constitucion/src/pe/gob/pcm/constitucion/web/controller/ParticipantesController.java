@@ -60,7 +60,7 @@ public class ParticipantesController {
 			persona.setT020tramite(trm);
 			if(b.getResultado() == 0){
 				participanteService.registrarPersonaNatural(persona);
-				model.put( "lparticipantes" , participanteService.listarAccionistas( trm.getNumTramite() ));				
+				model.put( "lparticipantes" , participanteService.listarAccionistasCompleto( trm.getNumTramite() ));				
 			}else{
 				throw new Exception(b.getMensaje());
 			}
@@ -113,7 +113,7 @@ public class ParticipantesController {
 				T020tramite tramite = (T020tramite)(request.getSession().getAttribute(ConstitucionController.TRAMITE_SESSION));
 				accionista.setT020tramite(tramite);
 				participanteService.registrarPersonaJuridica(accionista);
-				model.put( "lparticipantes" , participanteService.listarAccionistas( tramite.getNumTramite() ));
+				model.put( "lparticipantes" , participanteService.listarAccionistasCompleto( tramite.getNumTramite() ));
 			}else{
 				throw new Exception( b.getMensaje());
 			}
@@ -144,6 +144,7 @@ public class ParticipantesController {
 		request.setAttribute("lsZonaRegistral", parametroDAO.litarParametros(ParametrosUtil.ZONA_REGISTRAL));
 		request.setAttribute("lsEstadoCivil", parametroDAO.litarParametros(ParametrosUtil.ESTADO_CIVIL));
 		request.setAttribute("lsPersonaNatural", parametroDAO.litarParametros(ParametrosUtil.PERSONAS_NATURALES));
+		request.setAttribute("lsTipoDoc", parametroDAO.litarParametros(ParametrosUtil.TIPO_DOCUMENTO));
 		T020tramite tramite = (T020tramite)(request.getSession().getAttribute(ConstitucionController.TRAMITE_SESSION));
 		if(tramite != null) {
 			request.setAttribute("lsParticipante", parametroDAO.litarParametros( ParametrosUtil.TIPO_PARTICIPANTE , tramite.getCodTipsoc()  ));

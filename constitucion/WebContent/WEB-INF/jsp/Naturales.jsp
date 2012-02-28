@@ -28,7 +28,7 @@
 	function cmbperTipoAporte(){
 		var obj = document.getElementById('TipoAporte');
 		var sel = obj.options[obj.selectedIndex].value;
-		if( sel != '2' ){ 
+		if( sel == '2' ){ 
 			document.getElementById('divMontoAporte').style.display='block';
 			document.getElementById('toolbarAportes').style.display='block';
 			document.getElementById('divGridAportes').style.display='block';  
@@ -64,9 +64,7 @@
 						<td align="left" width="160px" style="padding-left:10px">(<b>+</b>) <b>Tipo documento</b>:</td>
 						<td colspan="2" width="440px" align="left">
 							<form:select path="codTipdoc" id="personaTipoDocumento" cssStyle="width:200px" onchange="notarios.cmbperTipoDocu()">
-								<form:option value="01">DNI</form:option>
-								<form:option value="02">CARNET EXTRANJERIA</form:option>
-								<form:option value="03">PASAPORTE</form:option>							
+								<form:options items="${lsTipoDoc}" itemLabel="desParam" itemValue="codParam"/>
 							</form:select>
 						</td>
 					</tr>
@@ -160,15 +158,19 @@
 						<% 
 						 	T025pernat persona = (T025pernat)request.getAttribute("persona");
 							String estciv = "none";
-							String aporte = "none";							
+							String aporte = "none";
+							String aporte2 = "none";
 							if( StringUtils.isNotEmpty( persona.getCodEstcivil()) ){
 								if(persona.getCodEstcivil().equals("02") ){
 									estciv = "block";
 								}
 							}
 							if( StringUtils.isNotEmpty( persona.getIndAporte()) ){
-								if( persona.getIndAporte().equals("3") ){
+								if( !persona.getIndAporte().equals("2") ){
 									aporte = "block";
+								}
+								if( !persona.getIndAporte().equals("1") ){
+									aporte2 = "block";
 								}
 							}
 						%>
@@ -178,9 +180,7 @@
 										<td width="165px">(*) Tipo documento conyuge:</td>
 										<td width="435px" colspan="2">
 											<form:select path="codTdcon" id="personaTipoDocumentoCon" cssStyle="width:200px" onchange="notarios.cmbperTipoDocuCon()">
-												<form:option value="01">D.N.I.</form:option>
-												<form:option value="02">CARNET EXTRANJERIA</form:option>
-												<form:option value="03">PASAPORTE</form:option>
+												<form:options items="${lsTipoDoc}" itemLabel="desParam" itemValue="codParam"/>
 											</form:select>
 										</td>
 									</tr>
@@ -256,13 +256,13 @@
 							<button  onclick="javascript:grabar();">Grabar</button>
 							
 							<!-- si es no dinerario o ambos, muestro este detalle de bienes -->
-							<div id="toolbarAportes" style="border:1px solid #99BBE8; border-Bottom:0px; width:610px; display:none;">
+							<div id="toolbarAportes" style="border:1px solid #99BBE8; border-Bottom:0px; width:610px; display:<%=aporte2 %>;">
 								<div class="dijitInline"style="color:#15428b; width:350px; padding-left:4px"><b>Lista de aporte de bienes</b></div>
 								<button  onclick="notarios.adicionarAporte()">Adicionar</button>
 								<button  onclick="notarios.editarAporte()">Editar</button>
 								<button  onclick="notarios.eliminarAporte()">Eliminar</button>
 							</div>				
-							<div id="divGridAportes" style="border:1px solid #99BBE8; position:relative; text-align:left; height:150px; width:614px;display:none;">
+							<div id="divGridAportes" style="border:1px solid #99BBE8; position:relative; text-align:left; height:150px; width:614px;display:<%=aporte2 %>;">
 								<table>
 										<thead>
 										<tr>

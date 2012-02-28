@@ -45,8 +45,8 @@
 		<display:table  name="requestScope.lparticipantes" class="displaytag" pagesize="10"
 	    	    defaultsort="1" defaultorder="ascending"  export="false" id="row" excludedParams="ajax" >
 	           
-	           <display:column title="Tipo" property="codParticipa" headerClass="sortable" />
-	           <display:column title="Tipo. Documento" property="codTipdoc" headerClass="sortable" />
+	           <display:column title="Tipo" property="descParticipa" headerClass="sortable" />
+	           <display:column title="Tipo. Documento" property="descTipdoc" headerClass="sortable" />
 	           <display:column title="Documento" property="numDocum" headerClass="sortable" />
 	           <display:column title="Aporte" property="mtoAporte" headerClass="sortable" />
 	           

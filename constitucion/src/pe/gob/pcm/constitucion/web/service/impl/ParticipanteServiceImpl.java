@@ -17,6 +17,7 @@ import pe.gob.pcm.constitucion.web.model.T025pernat;
 import pe.gob.pcm.constitucion.web.model.T026perjur;
 import pe.gob.pcm.constitucion.web.service.ParticipanteService;
 import pe.gob.pcm.constitucion.web.util.ParametrosUtil;
+import pe.gob.pcm.constitucion.web.util.Utiles;
 
 @Service
 public class ParticipanteServiceImpl implements ParticipanteService {
@@ -33,6 +34,18 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 		return participanteDAO.listarAccionistas(idtramite);
 	}
 
+
+	@Override
+	public List<T022accionista> listarAccionistasCompleto(Integer numTramite) {
+		List<T022accionista> lista = listarAccionistas(numTramite);
+		for(T022accionista acc : lista){
+			 acc.setDescParticipa( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_PARTICIPANTE, acc.getCodParticipa() )  );
+			 acc.setDescTipdoc(  parametroDAO.obtenerParametro(ParametrosUtil.TIPO_DOCUMENTO, acc.getCodTipdoc() )  );
+		}
+		return lista;
+	}
+
+	
 	@Override
 	public List<T025pernat> listarPersonasNaturales( int idtramite ) {
 		return participanteDAO.listarPersonasNaturales(idtramite);
@@ -140,22 +153,28 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 		per.setIndAporte( trm.getIndAporte() + "" );
 		if(	StringUtils.isNotEmpty( per.getCodUbigeo())){
 			per.setCodDepa( per.getCodUbigeo().substring(0,2) + "0000" ) ;
-			per.setCodProv( per.getCodUbigeo().substring(2,4) + "00" );
+			per.setCodProv( per.getCodUbigeo().substring(0,4) + "00" );
+		}
+		//obtenr accionista
+		T022accionista acc = participanteDAO.obtenerAccionista(per.getNumDocum(), per.getCodTipdoc(), trm );
+		if(acc != null){
+			per.setCodParticipa( acc.getCodParticipa()  );
+			per.setMontoAporte( acc.getMtoAporte() );
+			per.setIndAporte( acc.getIndAporte() );	
 		}
 		return per;
 	}
 
 	@Override
 	public T025pernat completarParticipanteVista(T020tramite trm, T025pernat per) {
-		//codParticipa	->descParticipa = parametroDAO.obtenerParametro(ParametrosUtil.TIPO_PARTICIPANTE , per.getCodParticipa() );
-		String descDepa = parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodProv() );
-		//codTipdoc		->descTipdoc = parametroDAO.obtenerParametro(ParametrosUtil.TIPO_DOCUMENTO , per.getCodTipdoc());
-		//codPais		->descPais = "Peru"
-		//codDepa		->descDepa = parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodDepa().substring(0,2) + "0000");
-		//codProv		->descProv
-		//codUbigeo		->descUbigeo
-		//codEstcivil	->descEstcivil
-		//codTdcon		->descTdcon
+		per.setDescParticipa( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_PARTICIPANTE , per.getCodParticipa() ) );
+		per.setDescTipdoc( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_DOCUMENTO , per.getCodTipdoc()) );
+		per.setDescPais( "Peru" );
+		per.setDescDepa( parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodDepa() ) );
+		per.setDescProv( parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodProv()) );
+		per.setDescUbigeo( parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodUbigeo()) );
+		per.setDescEstcivil( parametroDAO.obtenerParametro(ParametrosUtil.ESTADO_CIVIL, per.getCodEstcivil()) );
+		per.setDescTdcon( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_DOCUMENTO, per.getCodTdcon()) );
 		return per;
 	}
 
