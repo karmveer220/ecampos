@@ -15,21 +15,21 @@
 	</p>
 	</security:authorize>
 	
-	<security:authorize ifAnyGranted="ROLE_DOS">
+	<security:authorize ifAnyGranted="ROLE_ADMIN">
 	<p>
-	puedes ver opcion dos
+	puedes ver opcion ROLE ADMIN
 	</p>
 	</security:authorize>
 	
-	<security:authorize ifAnyGranted="ROLE_TRES">
+	<security:authorize ifAnyGranted="ROLE_USER">
 	<p>
-	puedes ver opcion tres
+	puedes ver opcion ROLE USER
 	</p>
 	</security:authorize>
 	
-	<security:authorize ifAnyGranted="ROLE_UNO,ROLE_TRES">
+	<security:authorize ifAnyGranted="ROLE_UNO,ROLE_ADMIN">
 	<p>
-	puedes ver opcion uno y  tres
+	puedes ver opcion uno y  ADMIN
 	</p>
 	</security:authorize>
 	
