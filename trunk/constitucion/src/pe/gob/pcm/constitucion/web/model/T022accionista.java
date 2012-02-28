@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 /**
  *
@@ -57,6 +58,11 @@ public class T022accionista implements Serializable {
     @ManyToOne(optional = false)
     private T020tramite t020tramite;
 
+    @Transient
+    private String descParticipa;
+    @Transient
+    private String descTipdoc;
+    
     public T022accionista() {
     }
 
@@ -163,4 +169,20 @@ public class T022accionista implements Serializable {
         return "pe.gob.pcm.constitucion.web.model.T022accionista[idAccionista=" + idAccionista + "]";
     }
 
+	public String getDescParticipa() {
+		return descParticipa;
+	}
+
+	public void setDescParticipa(String descParticipa) {
+		this.descParticipa = descParticipa;
+	}
+
+	public String getDescTipdoc() {
+		return descTipdoc;
+	}
+
+	public void setDescTipdoc(String descTipdoc) {
+		this.descTipdoc = descTipdoc;
+	}
+    
 }

@@ -50,6 +50,7 @@ public class ParametroDAOImpl extends HibernateDaoSupport implements ParametroDA
         return (List<T001parametro>) query.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T001parametro> litarParametrosdistritos(String depa, String prov) {
 		Query query = getSession().createQuery(" from T001parametro p where p.codGrupo = '006' and p.codParam like '"+depa + prov +"%'  ");
@@ -57,9 +58,16 @@ public class ParametroDAOImpl extends HibernateDaoSupport implements ParametroDA
 	}
 
 	@Override
-	public String obtenerParametro(String tipoDocumento, String codTipdoc) {
-		// TODO Auto-generated method stub
-		return null;
+	public String obtenerParametro(String codGrupo, String codParam) {		
+		Query query = getSession().createQuery(" from T001parametro p where p.codGrupo = :id and p.codParam = :id2 ")
+        .setString("id", codGrupo)
+        .setString("id2", codParam);
+		T001parametro param = (T001parametro) query.uniqueResult();
+		if(param != null ){
+			return param.getDesParam();
+		}else{
+			return "";
+		}
 	}
 
 }

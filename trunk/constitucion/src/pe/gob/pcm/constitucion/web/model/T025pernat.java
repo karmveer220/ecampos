@@ -92,7 +92,23 @@ public class T025pernat implements Serializable {
     @Transient
     private String codProv;
     @Transient
-    private String nombreCompleto;
+    private String nombreCompleto;    
+    @Transient
+    private String descParticipa;
+    @Transient
+    private String descTipdoc;
+    @Transient
+    private String descPais;
+    @Transient
+    private String descDepa;
+    @Transient
+    private String descProv;
+    @Transient
+    private String descUbigeo;
+    @Transient
+    private String descEstcivil;
+    @Transient
+    private String descTdcon;
     
     public T025pernat() {
     }
@@ -320,6 +336,70 @@ public class T025pernat implements Serializable {
 
 	public void setCodProv(String codProv) {
 		this.codProv = codProv;
+	}
+
+	public String getDescParticipa() {
+		return descParticipa;
+	}
+
+	public void setDescParticipa(String descParticipa) {
+		this.descParticipa = descParticipa;
+	}
+
+	public String getDescTipdoc() {
+		return descTipdoc;
+	}
+
+	public void setDescTipdoc(String descTipdoc) {
+		this.descTipdoc = descTipdoc;
+	}
+
+	public String getDescPais() {
+		return descPais;
+	}
+
+	public void setDescPais(String descPais) {
+		this.descPais = descPais;
+	}
+
+	public String getDescDepa() {
+		return descDepa;
+	}
+
+	public void setDescDepa(String descDepa) {
+		this.descDepa = descDepa;
+	}
+
+	public String getDescProv() {
+		return descProv;
+	}
+
+	public void setDescProv(String descProv) {
+		this.descProv = descProv;
+	}
+
+	public String getDescUbigeo() {
+		return descUbigeo;
+	}
+
+	public void setDescUbigeo(String descUbigeo) {
+		this.descUbigeo = descUbigeo;
+	}
+
+	public String getDescEstcivil() {
+		return descEstcivil;
+	}
+
+	public void setDescEstcivil(String descEstcivil) {
+		this.descEstcivil = descEstcivil;
+	}
+
+	public String getDescTdcon() {
+		return descTdcon;
+	}
+
+	public void setDescTdcon(String descTdcon) {
+		this.descTdcon = descTdcon;
 	}
     
 }
