@@ -1,68 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<b:beans xmlns="http://www.springframework.org/schema/security"
-        xmlns:b="http://www.springframework.org/schema/beans"
-    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
+<b:beans xmlns="http://www.springframework.org/schema/security" xmlns:b="http://www.springframework.org/schema/beans"
+    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 	<!-- http://static.springsource.org/spring-security/site/docs/3.1.x/reference/ns-config.html#ns-minimal -->
-	<!-- Configure Spring Security -->
+	<!-- Configure Spring Security  hasRole('ROLE_Configuration')-->
 	
 	<http pattern="/css/**" security="none"/>
 	<http pattern="/img/**" security="none"/>
 	<http pattern="/js/**" security="none"/>
 	 
 	<http auto-config="true" use-expressions="true">
-				
 	 	<intercept-url pattern="/login.htm" access="permitAll"/>
-	 	<intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
-	 	
-	 	<form-login login-page="/login.htm"  
-					default-target-url="/inicio.htm" 
-					authentication-failure-url="/login.htm?login_error=1"
-					always-use-default-target="true" />
-					
-		
-		
+	 	<intercept-url pattern="/**" access="permitAll"/>
+	 	<form-login login-page="/login.htm" default-target-url="/inicio.htm" 
+	 				authentication-failure-url="/login.htm?login_error=1" always-use-default-target="true" />
 		<logout invalidate-session="true" logout-success-url="/login.jsp" />
-				
-		
-		
 	</http>
 	
+<!-- 
+ * The second constructor of the DefaultLdapAuthoritiesPopulator class is the paramerter
+   what is included in LDAP as memberOf, for example, if it have value="ou=Users" the
+   users without thios group don't have access. 
+
+ * It put to the accessed user: ROLE_USUARIO_AUTENTICADO". I use this in the interceptor. 
+   But, for example, if in the LDAP, the user have in memberOf attribute:
+   "CN=Preadm,OU=Applications,OU=Usuers,DC=preadm,DC=com" the user should have authority for
+   OU=Users, but it will work if the interceptor have "ROLE_PREADM", "ROLE_" is the default prefix,
+    "PREADM" is for CN=Preadm in the memberOf.
+      group-search-base="CN=Domain-DNS,CN=Schema,CN=Configuration,DC=mininter,DC=gob,DC=pe" 
+   -->
+
+
+	
 	<authentication-manager>
-		<!-- 
-			<authentication-provider user-service-ref="userLoginService">
-			 	<password-encoder hash="md5" />
-			</authentication-provider>
-		 -->
+	 
+		 <ldap-authentication-provider
+		 	server-ref="ldapServer"
+     		user-search-filter="(sAMAccountName={0})"
+           	user-search-base="dc=mininter,dc=gob,dc=pe"
+           	group-search-filter="memberOf={0}"
+          	group-search-base="CN=Person,CN=Schema,CN=Configuration,DC=mininter,DC=gob,DC=pe" 	
+           	group-role-attribute="cn"
+           	role-prefix="ROLE_">
+         </ldap-authentication-provider>     
 		 
-		 <ldap-authentication-provider  
-           user-search-filter="(uid={0})" 
-           user-search-base="ou=users"
-           group-search-filter="(uniqueMember={0})"
-           group-search-base="ou=groups"
-           group-role-attribute="cn"
-           role-prefix="ROLE_"> 
-         </ldap-authentication-provider> 
-         
-         
 		 
 		 <!-- 
 		<authentication-provider>
 			<password-encoder hash="md5" />
 			<user-service>
-				
 				<user name="ecampos" password="0ab33f5dd3fa33770e9e7dc3adc90d2f" authorities="ROLE_USER, ROLE_UNO" />
 				<user name="menriquez" password="0ab33f5dd3fa33770e9e7dc3adc90d2f" authorities="ROLE_USER, ROLE_DOS" />
 				<user name="jperez" password="0ab33f5dd3fa33770e9e7dc3adc90d2f" authorities="ROLE_USER, ROLE_TRES" />
 			</user-service>
 		</authentication-provider>
 		 -->
-		
 	</authentication-manager>
-	
-	<ldap-server ldif="classpath:mojo.ldif"  root="o=mojo"/> 
+
+ 	
+	<ldap-server id="ldapServer" url="ldap://mininter.gob.pe" port="389" manager-dn="intranet" manager-password="Intr@net2012"/>
 
 </b:beans>
