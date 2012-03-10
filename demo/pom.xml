@@ -6,11 +6,17 @@
   <artifactId>demo</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>demo Maven Webapp</name>
+  <name>intranet Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
   <dependencies>
-  
+  		
+  		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.3.0</version>
+		</dependency>
+  		
 	  	<dependency>
 			<groupId>org.apache.directory.server</groupId>
 			<artifactId>apacheds-all</artifactId>
@@ -18,8 +24,7 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency> 
-	  
-    
+	  	      
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -185,7 +190,7 @@
   </dependencies>
   
   <build>
-		<finalName>demo</finalName>
+		<finalName>intranet</finalName>
 		<plugins>
 		
 			<plugin>
