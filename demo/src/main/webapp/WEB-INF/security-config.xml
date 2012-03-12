@@ -24,32 +24,25 @@
 	<!-- http://forum.springsource.org/showthread.php?65975-ldap-and-Jdbc-in-Spring-Security -->
 	<!-- http://forum.springsource.org/search.php?searchid=950804 -->
     
+    
     <authentication-manager>    	    
         <authentication-provider user-service-ref="userLoginService">
             <password-encoder hash="md5"/>
-        </authentication-provider>
+        </authentication-provider>  
+        
        	<authentication-provider ref="ldapAuthProvider"/>
-       	
-       	
-       	<ldap-authentication-provider 
-			server-ref="ldapServer" 
-			user-search-filter="(sAMAccountName={0})" 
-			user-search-base="dc=mininter,dc=gob,dc=pe"
-			group-search-filter="memberOf={0}" 
-			group-search-base="CN=Person,CN=Schema,CN=Configuration,DC=mininter,DC=gob,DC=pe" >
-	    </ldap-authentication-provider>
-       	
     </authentication-manager>
-	
-	<b:bean id="authenticator" class="org.springframework.security.ldap.authentication.BindAuthenticator">
-	    <b:constructor-arg ref="ldapBindAuthenticator"/>
-	    <b:constructor-arg ref="ldapAuthoritiesPopulator"/>    
+    
+    <b:bean id="ldapAuthProvider" class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider">
+		<b:constructor-arg ref="ldapBindAuthenticator"/> 
+		<b:constructor-arg ref="ldapAuthoritiesPopulator"/> 
+		<!-- beans:property name="userDetailsContextMapper" ref="ldapUserDetailsContextMapper"/ -->
 	</b:bean>
-	
+
 	<b:bean id="ldapBindAuthenticator" class="org.springframework.security.ldap.authentication.BindAuthenticator">
 		<b:constructor-arg ref="ldapServer"/> 
 		<b:property name="userSearch" ref="ldapSearchBean"/>
-	</b:bean>
+	</b:bean>	
 	
 	<b:bean id="ldapSearchBean" class="org.springframework.security.ldap.search.FilterBasedLdapUserSearch">
 		<b:constructor-arg value="dc=mininter,dc=gob,dc=pe"/>				<!-- user-search-base --> 
@@ -66,11 +59,13 @@
 		<b:constructor-arg ref="userLoginServiceImpl"/>
 	</b:bean>
 	
-	<ldap-server id="ldapServer" url="ldap://mininter.gob.pe" port="389" manager-dn="intranet" manager-password="Intr@net2012"/>     
+	
+	     
 	<!-- 
 	<bean id="UserDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
+	<ldap-server id="ldapServer" url="ldap://mininter.gob.pe" port="389" manager-dn="intranet" manager-password="Intr@net2012"/>
 	-->
     
     <!-- 
