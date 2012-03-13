@@ -1,4 +1,5 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -32,8 +33,6 @@
 	puedes ver opcion uno y  ADMIN
 	</p>
 	</security:authorize>
-	
-
-
+		
 </body>
 </html>

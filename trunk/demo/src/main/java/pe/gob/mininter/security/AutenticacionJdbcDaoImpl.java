@@ -11,16 +11,18 @@ import org.springframework.stereotype.Repository;
 
 @Repository("userLoginService")
 public class AutenticacionJdbcDaoImpl extends JdbcDaoImpl {
-	
+	 
 	private Logger logger = Logger.getLogger(AutenticacionJdbcDaoImpl.class);
 	
 	@Autowired
 	public AutenticacionJdbcDaoImpl(DataSource dataSource){
 		setDataSource(dataSource);
+		logger.debug("jaja");
 	}
 	
 	public UserDetails loadUserDetails(String username){
 		logger.debug("llego el mensaje");
+		
 		try {
 			this.setAuthoritiesByUsernameQuery("select m.n_mst_login as username, z.n_auto_rol as authority from simin_maestro m inner join srhl_autorizaciones z on m.c_perl_codigo = z.c_perl_codigo where m.n_mst_login = ? ");
 			UserDetails user = super.loadUserByUsername(username);
