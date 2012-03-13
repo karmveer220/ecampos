@@ -14,13 +14,19 @@
 	<sec:http pattern="/js/**" security="none"/>
 
 	<sec:http>
-        <sec:intercept-url pattern="/login.htm" access="permitAll" />
-        <sec:intercept-url pattern="/**" access="permitAll" />
+        <sec:intercept-url pattern="/login.htm" access="ROLE_ANONYMOUS" />
+        <sec:intercept-url pattern="/**" access="ROLE_ANONYMOUS" />
         <sec:form-login login-page="/login.htm" default-target-url="/home.htm" />
         <sec:logout logout-success-url="/home.htm" />
     </sec:http>
 	
-	
+	<sec:authentication-manager>    	    
+        <sec:authentication-provider user-service-ref="userLoginService">
+            <sec:password-encoder hash="md5"/>
+        </sec:authentication-provider>  
+        
+       	<sec:authentication-provider ref="ldapAuthProvider"/>
+    </sec:authentication-manager>
 	
 	
 	<!-- http://appfuse.org/display/APF/LDAP+Authentication -->
