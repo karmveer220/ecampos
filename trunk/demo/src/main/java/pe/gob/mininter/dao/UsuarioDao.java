@@ -1,5 +1,5 @@
 package pe.gob.mininter.dao;
 
-public class TestDao {
+public class UsuarioDao {
 
 }
