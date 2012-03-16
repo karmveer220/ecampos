@@ -1,5 +1,5 @@
 package pe.gob.mininter.controller;
 
-public class Test {
+public class UsuarioController {
 
 }
