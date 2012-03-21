@@ -21,10 +21,16 @@ public interface ParticipanteDAO {
 	public void modificarPersonaNatural(T025pernat accionista);
 	public void modificarPersonaJuridica(T026perjur accionista);
 	
-	public void eliminarAccionistas(T022accionista accionista);
-	public void eliminarPersonaNatural(T025pernat accionista);
-	public void eliminarPersonaJuridica(T026perjur accionista);
-	public T025pernat obtenerParticipantePn(String cod);
+	public void eliminarAccionistas(Integer tramite, String codTipoDoc, String numDoc);
+	public void eliminarPersonaNatural(Integer tramite, String codTipoDoc, String numDoc);
+	public void eliminarPersonaJuridica(Integer tramite, String codTipoDoc, String numDoc);
+	
+	public T025pernat obtenerParticipantePn(Integer idPn);
+	public T025pernat obtenerParticipantePn(Integer tramite, String codTipoDoc, String numDoc);
+	public T026perjur obtenerParticipantePj(Integer tramite, String codTipoDoc, String numDoc);
+	
 	public T022accionista obtenerAccionista(String numDoccon, String codTipdoc,T020tramite t020tramite);
+	public T022accionista obtenerAccionista(Integer cod);
+		
 	
 }

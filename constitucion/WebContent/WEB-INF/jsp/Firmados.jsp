@@ -2,18 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
-<%
-	String error = "";
-	error = request.getAttribute("msgError")!=null ? (String)request.getAttribute("msgError") : "";
-	String mensaje = "";
-	mensaje = request.getAttribute("mensaje")!=null ? (String)request.getAttribute("mensaje") : "";
-%> 
+
  <div id="cuerpo">
     <table width="100%">
         <tr>
             <td height="233">
-				<div align="center" style="color: red"> <%=error %> </div>
-				<div align="center" style="color: blue"> <%=mensaje %> </div>
+				<div align="center" style="color: red"> <c:out value="${msgError}"/> </div>
+				<div align="center" style="color: blue"> <c:out value="${mensaje}"/> </div>
 					
 				<display:table  name="requestScope.lFirmados" requestURI="firmados.htm"  class="displaytag" pagesize="10"
 			    	    defaultsort="1" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax" >

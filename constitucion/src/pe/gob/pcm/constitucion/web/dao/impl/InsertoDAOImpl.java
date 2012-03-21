@@ -29,6 +29,20 @@ public class InsertoDAOImpl  extends HibernateDaoSupport implements InsertoDAO {
 	}
 
 	@Override
+	public String obtenerInserto(Integer id) {
+		return (String)getSession().createQuery("select desInserto from T030inserto p where p.t020tramite.numTramite = :id ")
+        .setInteger("id", id)
+        .uniqueResult();
+	}
+	
+	@Override
+	public void eliminarInserto(Integer numTramite) {
+		getSession().createQuery("delete from T030inserto p where p.t020tramite.numTramite = :id ")
+        .setInteger("id", numTramite)
+        .executeUpdate();
+	}
+	
+	@Override
 	public void registrarArchivo(T029archivo archivo) {
 		this.getHibernateTemplate().save(archivo);
 	}
@@ -49,5 +63,6 @@ public class InsertoDAOImpl  extends HibernateDaoSupport implements InsertoDAO {
         .executeUpdate();
 		
 	}
+
 
 }

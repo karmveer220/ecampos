@@ -29,6 +29,7 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "t022accionista")
 public class T022accionista implements Serializable {
+	
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,6 +63,12 @@ public class T022accionista implements Serializable {
     private String descParticipa;
     @Transient
     private String descTipdoc;
+    
+    @Transient
+    private T026perjur t026perjur;
+    
+    @Transient
+    private T025pernat t025pernat;
     
     public T022accionista() {
     }
@@ -144,7 +151,25 @@ public class T022accionista implements Serializable {
         this.t020tramite = t020tramite;
     }
 
-    @Override
+    
+    
+    public T026perjur getT026perjur() {
+		return t026perjur;
+	}
+
+	public void setT026perjur(T026perjur t026perjur) {
+		this.t026perjur = t026perjur;
+	}
+
+	public T025pernat getT025pernat() {
+		return t025pernat;
+	}
+
+	public void setT025pernat(T025pernat t025pernat) {
+		this.t025pernat = t025pernat;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (idAccionista != null ? idAccionista.hashCode() : 0);
@@ -183,6 +208,12 @@ public class T022accionista implements Serializable {
 
 	public void setDescTipdoc(String descTipdoc) {
 		this.descTipdoc = descTipdoc;
+	}
+	
+	public String getNombreCompleto(){
+		if( t025pernat != null ){ return t025pernat.getNombreCompleto() ; }
+		if( t026perjur != null ){ return t026perjur.getNomRazsoc() ; }
+		return "";
 	}
     
 }

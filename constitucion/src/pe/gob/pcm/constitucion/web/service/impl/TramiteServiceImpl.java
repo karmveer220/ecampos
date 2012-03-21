@@ -26,15 +26,14 @@ public class TramiteServiceImpl implements TramiteService {
 	@Override
 	@Transactional
 	public void registrarTramite(T020tramite tramite) {
-		tramiteDAO.registrarTramite(tramite);
-		
-		if(!Utiles.nullToBlank(tramite.getObjetoSocial()).equals("")){
+		tramiteDAO.registrarTramite(tramite);		
+		if(!Utiles.nullToBlank(tramite.getObjetoSocial()).equals("")){			
 			T030inserto inserto = new T030inserto();
 			inserto.setDesInserto(tramite.getObjetoSocial());
 			inserto.setT020tramite(tramite);
+			insertoDAO.eliminarInserto(tramite.getNumTramite());
 			insertoDAO.registraInserto(inserto);			
-		}
-		
+		}		
 	}
 
 	@Override
@@ -49,7 +48,9 @@ public class TramiteServiceImpl implements TramiteService {
 
 	@Override
 	public T020tramite obtenerTramite(Integer id) {
-		return tramiteDAO.obtenerTramite(id);
+		T020tramite tr =tramiteDAO.obtenerTramite(id);
+		tr.setObjetoSocial( insertoDAO.obtenerInserto( id ) );
+		return tr;
 	}
 
 	@Override

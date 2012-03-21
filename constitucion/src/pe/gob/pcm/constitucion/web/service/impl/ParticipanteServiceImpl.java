@@ -17,7 +17,6 @@ import pe.gob.pcm.constitucion.web.model.T025pernat;
 import pe.gob.pcm.constitucion.web.model.T026perjur;
 import pe.gob.pcm.constitucion.web.service.ParticipanteService;
 import pe.gob.pcm.constitucion.web.util.ParametrosUtil;
-import pe.gob.pcm.constitucion.web.util.Utiles;
 
 @Service
 public class ParticipanteServiceImpl implements ParticipanteService {
@@ -41,6 +40,17 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 		for(T022accionista acc : lista){
 			 acc.setDescParticipa( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_PARTICIPANTE, acc.getCodParticipa() )  );
 			 acc.setDescTipdoc(  parametroDAO.obtenerParametro(ParametrosUtil.TIPO_DOCUMENTO, acc.getCodTipdoc() )  );
+		}
+		return lista;
+	}
+
+
+	@Override
+	public List<T022accionista> listarAccionistasPersonaCompleto( Integer numTramite) {
+		List<T022accionista> lista = listarAccionistasCompleto(numTramite);
+		for( T022accionista acc : lista){
+			if( acc.getCodTipdoc() == ParametrosUtil.T_DOC_RUC){ acc.setT026perjur( participanteDAO.obtenerParticipantePj( acc.getT020tramite().getNumTramite() , acc.getCodTipdoc(), acc.getNumDocum() )) ; }
+			else{  acc.setT025pernat( participanteDAO.obtenerParticipantePn( acc.getT020tramite().getNumTramite() , acc.getCodTipdoc(), acc.getNumDocum() )) ; }
 		}
 		return lista;
 	}
@@ -70,7 +80,7 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 	//	if( !Utiles.nullToBlank(accionista.getMontoAporte()).equals("") ){
 			logger.debug( accionista.getNumDocum() + " " + accionista.getCodTipdoc()  + " " +accionista.getT020tramite().getNumTramite() );
 			T022accionista as = participanteDAO.obtenerAccionista( accionista.getNumDocum() , accionista.getCodTipdoc() , accionista.getT020tramite() );
-		
+			logger.debug( "accionista = "+as );
 			T022accionista acc = new T022accionista();
 			
 			if(as != null){ 
@@ -129,27 +139,9 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 	}
 
 	@Override
-	public void eliminarAccionistas(T022accionista accionista) {
-		participanteDAO.eliminarAccionistas(accionista);
-	}
-
-	@Override
-	public void eliminarPersonaNatural(T025pernat accionista) {
-		participanteDAO.eliminarPersonaNatural(accionista);
-	}
-
-	@Override
-	public void eliminarPersonaJuridica(T026perjur accionista) {
-		participanteDAO.eliminarPersonaJuridica(accionista);
-	}
-
-	@Override
-	public T025pernat obtenerParticipantePn(String cod) {
-		return participanteDAO.obtenerParticipantePn(cod);
-	}
-
-	@Override
 	public T025pernat completarParticipante(T020tramite trm, T025pernat per) {
+		logger.debug( trm );
+		logger.debug( per );
 		per.setIndAporte( trm.getIndAporte() + "" );
 		if(	StringUtils.isNotEmpty( per.getCodUbigeo())){
 			per.setCodDepa( per.getCodUbigeo().substring(0,2) + "0000" ) ;
@@ -170,12 +162,59 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 		per.setDescParticipa( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_PARTICIPANTE , per.getCodParticipa() ) );
 		per.setDescTipdoc( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_DOCUMENTO , per.getCodTipdoc()) );
 		per.setDescPais( "Peru" );
-		per.setDescDepa( parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodDepa() ) );
-		per.setDescProv( parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodProv()) );
-		per.setDescUbigeo( parametroDAO.obtenerParametro(ParametrosUtil.UBIGEO, per.getCodUbigeo()) );
-		per.setDescEstcivil( parametroDAO.obtenerParametro(ParametrosUtil.ESTADO_CIVIL, per.getCodEstcivil()) );
+		per.setDescDepa( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_UBIGEO, per.getCodDepa() ) );
+		per.setDescProv( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_UBIGEO, per.getCodProv()) );
+		per.setDescUbigeo( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_UBIGEO, per.getCodUbigeo()) );
+		per.setDescEstcivil( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_ESTADO_CIVIL, per.getCodEstcivil()) );
 		per.setDescTdcon( parametroDAO.obtenerParametro(ParametrosUtil.TIPO_DOCUMENTO, per.getCodTdcon()) );
 		return per;
 	}
+
+	public void eliminarParticipantePn(Integer idPn ) {
+		logger.debug("elimina pn " + idPn);
+		T025pernat pn = participanteDAO.obtenerParticipantePn(idPn);
+		eliminarParticipante(pn.getT020tramite().getNumTramite(), pn.getCodTipdoc(), pn.getNumDocum());
+	}
+
+	@Override
+	@Transactional
+	public void eliminarParticipante(Integer idAcc ) {
+		logger.debug("elimina participante ");
+		T022accionista acc = participanteDAO.obtenerAccionista( idAcc );		
+		eliminarParticipante(acc.getT020tramite().getNumTramite(), acc.getCodTipdoc(),  acc.getNumDocum());
+	}
+
+	private void eliminarParticipante(Integer tramite, String tipo, String num ){
+		participanteDAO.eliminarAccionistas( tramite , tipo ,num );
+		if(tipo == ParametrosUtil.T_DOC_RUC){
+			participanteDAO.eliminarPersonaJuridica( tramite , tipo , num );	
+		}else{
+			participanteDAO.eliminarPersonaNatural( tramite , tipo , num );	
+		}
+	}
+
+	@Override
+	public T022accionista obtenerAccionista(String numDoccon, String codTipdoc,T020tramite t020tramite) {
+		return participanteDAO.obtenerAccionista(numDoccon, codTipdoc, t020tramite);
+	}
+
+
+	@Override
+	public T022accionista obtenerAccionista(Integer cod) {
+		return participanteDAO.obtenerAccionista(cod);
+	}
+
+
+	@Override
+	public T025pernat obtenerParticipantePn(Integer tramite, String codTipoDoc, String numDoc) {
+		return participanteDAO.obtenerParticipantePn(tramite, codTipoDoc, numDoc);
+	}
+
+
+	@Override
+	public T026perjur obtenerParticipantePj(Integer tramite, String codTipoDoc, String numDoc) {
+		return participanteDAO.obtenerParticipantePj(tramite, codTipoDoc, numDoc);
+	}
+
 
 }

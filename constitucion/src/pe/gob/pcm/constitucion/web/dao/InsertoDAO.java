@@ -13,6 +13,10 @@ public interface InsertoDAO {
 
 	public void borrarParte(Integer numTramite, String tipo);
 
+	public String obtenerInserto(Integer id);
+
+	public void eliminarInserto(Integer numTramite);
+
 	
 	
 }
