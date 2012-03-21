@@ -45,6 +45,7 @@ public class T025pernat implements Serializable {
     
     @Column(name = "NUM_DOCUM")
     private String numDocum;
+    
     @Column(name = "APE_PATERNO")
     private String apePaterno;
     @Column(name = "APE_MATERNO")

@@ -20,8 +20,8 @@
     <table width="100%">
         <tr>
             <td height="233">
-				<div align="center" style="color: red"> <%=error %> </div>
-				<div align="center" style="color: blue"> <%=mensaje %> </div>
+				<div align="center" style="color: red"> <c:out value="${msgError}"/> </div>
+				<div align="center" style="color: blue"> <c:out value="${mensaje}"/> </div>
 		
 				<form action="nuevoTramite.htm" method="post">
 					

@@ -32,14 +32,14 @@ private static final Logger logger = Logger.getLogger(MandatariosController.clas
 	@Autowired
 	private MandatarioService mandatarioService;
 	
-	@RequestMapping(value ="/mandatarios/nuevomandatario.htm",method = RequestMethod.GET)
+	@RequestMapping(value ="/nuevomandatario.htm",method = RequestMethod.GET)
     public String nuevomandatario(ModelMap model,HttpServletRequest request) {
 		logger.debug("nuevo mandatario");
 		model.put("mandatario", new T032mandatario());
         return "ManEditable";
     }
 	
-	@RequestMapping(value ="/mandatarios/editarMandatario.htm",method = RequestMethod.GET)
+	@RequestMapping(value ="/editarMandatario.htm",method = RequestMethod.GET)
     public String editarMandatario(ModelMap model,HttpServletRequest request) {
 		logger.debug("editar mandatario");
 		Integer id = Integer.parseInt(request.getParameter("cod"));
@@ -47,7 +47,25 @@ private static final Logger logger = Logger.getLogger(MandatariosController.clas
         return "ManEditable";
     }
 	
-	@RequestMapping(value ="/mandatarios/verMandatario.htm",method = RequestMethod.GET)
+
+	@RequestMapping(value ="/eliminarMandatario.htm",method = RequestMethod.GET)
+    public String eliminarMandatario(ModelMap model,HttpServletRequest request) {
+		try {
+			logger.debug("eliminar mandatario");
+			Integer id = Integer.parseInt(request.getParameter("codigo"));
+			mandatarioService.eliminarMandatario( id );
+			model.put("mensaje", "mandatario eliminado");
+			T020tramite trm = (T020tramite)request.getSession().getAttribute(ConstitucionController.TRAMITE_SESSION);
+			model.put("lmandatarios", mandatarioService.listarMandatarios( trm.getNumTramite()));				
+		} catch (Exception e) {
+			model.put("msgError", "Error "+ e.getMessage());
+			e.printStackTrace();
+		}
+		return "Mandatarios";
+    }
+	
+	
+	@RequestMapping(value ="/verMandatario.htm",method = RequestMethod.GET)
     public String verMandatario(ModelMap model,HttpServletRequest request) {
 		logger.debug("ver mandatario");
 		Integer id = Integer.parseInt(request.getParameter("cod"));
@@ -55,7 +73,7 @@ private static final Logger logger = Logger.getLogger(MandatariosController.clas
         return "ManNoEditable";
     }
 	
-	@RequestMapping(value ="/mandatarios/registramandatario.htm",method = RequestMethod.POST)
+	@RequestMapping(value ="/registramandatario.htm",method = RequestMethod.POST)
     public String registramandatario(ModelMap model,HttpServletRequest request) {
 		logger.debug("registra mandatario");
 		
@@ -63,7 +81,7 @@ private static final Logger logger = Logger.getLogger(MandatariosController.clas
         return "Participantes";
     }
 
-	@RequestMapping(value ="/mandatarios/asignacargo.htm",method = RequestMethod.GET)
+	@RequestMapping(value ="/asignacargo.htm",method = RequestMethod.GET)
     public String asignacargo(ModelMap model,HttpServletRequest request) {
 		logger.debug("asignacargo");
 		T020tramite trm = (T020tramite)request.getSession().getAttribute(ConstitucionController.TRAMITE_SESSION);
@@ -74,7 +92,7 @@ private static final Logger logger = Logger.getLogger(MandatariosController.clas
         return "Cargos";
     }
 	
-	@RequestMapping(value ="/mandatarios/registraCargo.htm",method = RequestMethod.POST)
+	@RequestMapping(value ="/registraCargo.htm",method = RequestMethod.POST)
     public String registraCargo(ModelMap model,HttpServletRequest request) {
 		logger.debug("registraCargo");
 		Integer codman = Integer.parseInt( request.getParameter("codManda") );
@@ -86,11 +104,11 @@ private static final Logger logger = Logger.getLogger(MandatariosController.clas
 		return "Mandatarios";
     }
 	
-	@RequestMapping(value ="/mandatarios/seleccionasocio.htm",method = RequestMethod.GET)
+	@RequestMapping(value ="/seleccionasocio.htm",method = RequestMethod.GET)
     public String seleccionasocio(ModelMap model,HttpServletRequest request) {
-		logger.debug("seleccionasocio");
+		logger.debug("mostrar a los socios para elegir mandatario");
 		T020tramite trm = (T020tramite)request.getSession().getAttribute(ConstitucionController.TRAMITE_SESSION);
-		model.put( "lparticipantes" , participanteService.listarPersonasNaturales( trm.getNumTramite() ) );
+		model.put( "lparticipantes" , participanteService.listarAccionistasPersonaCompleto( trm.getNumTramite()) );
         return "SelectAccionistas";
     }
 }

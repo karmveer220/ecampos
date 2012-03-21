@@ -87,28 +87,49 @@ public class ParticipanteDAOImpl extends HibernateDaoSupport implements Particip
 		this.getHibernateTemplate().merge(accionista);
 	}
 
+	/**
+	 * eliminar un accionista de en un determinado tramite
+	 */
 	@Override
-	public void eliminarAccionistas(T022accionista accionista) {
-		this.getHibernateTemplate().merge(accionista);
+	@Transactional(propagation=Propagation.MANDATORY)
+	public void eliminarAccionistas(Integer tramite, String codTipoDoc, String numDoc) {
+		logger.debug("eliminar un accionista del tramite tram=" + tramite +"; tdoc=" + codTipoDoc +"; num="+ numDoc);
+		getSession().createQuery(" delete from T022accionista a where a.t020tramite.numTramite = :id and a.codTipdoc= :tipoDoc and a.numDocum = :numDoc")
+        .setInteger("id", tramite)
+        .setString("tipoDoc", codTipoDoc)
+        .setString("numDoc", numDoc)
+        .executeUpdate();
 	}
 
+	/**
+	 * eliminar una persona natural
+	 */
 	@Override
-	public void eliminarPersonaNatural(T025pernat accionista) {
-		this.getHibernateTemplate().merge(accionista);
+	@Transactional(propagation=Propagation.MANDATORY)
+	public void eliminarPersonaNatural(Integer tramite, String codTipoDoc, String numDoc) {
+		logger.debug("eliminar  persona natural tram=" + tramite +"; tdoc=" + codTipoDoc +"; num="+ numDoc);
+		getSession().createQuery(" delete from T025pernat p where p.t020tramite.numTramite = :tramite and p.codTipdoc = :tipoDoc and p.numDocum = :numDoc ")
+		.setInteger("tramite", tramite)
+		.setString("tipoDoc", codTipoDoc)
+		.setString("numDoc", numDoc)
+		.executeUpdate();
 	}
 
+	/**
+	 * Eliminar una persona juridica
+	 */
 	@Override
-	public void eliminarPersonaJuridica(T026perjur accionista) {
-		this.getHibernateTemplate().merge(accionista);
+	@Transactional(propagation=Propagation.MANDATORY)
+	public void eliminarPersonaJuridica(Integer tramite, String codTipoDoc, String numDoc) {
+		logger.debug("eliminar  persona juridica tram=" + tramite +"; tdoc=" + codTipoDoc +"; num="+ numDoc);
+		getSession().createQuery(" delete from T026perjur p where p.t020tramite.numTramite = :tramite and p.codTipdoc = :tipoDoc and p.numDocum = :numDoc ")
+        .setInteger("tramite", tramite)
+        .setString("tipoDoc", codTipoDoc)
+        .setString("numDoc", numDoc)
+        .executeUpdate();
 	}
 
-	@Override
-	public T025pernat obtenerParticipantePn(String cod) {
-		Query query = getSession().createQuery(" from T025pernat p where p.idPernat = :id ")
-        .setInteger("id", Integer.parseInt(cod));
-		return (T025pernat)query.uniqueResult();
-	}
-
+	
 	@Override
 	public T022accionista obtenerAccionista(String numDoccon, String codTipdoc, T020tramite t020tramite) {
 		Query query = getSession().createQuery(" from T022accionista p where p.codTipdoc = :tdoc and p.numDocum = :num and p.t020tramite.numTramite =:tr")
@@ -117,5 +138,38 @@ public class ParticipanteDAOImpl extends HibernateDaoSupport implements Particip
 		.setInteger("tr", t020tramite.getNumTramite());
 		return (T022accionista)query.uniqueResult();
 	}
+
+	@Override
+	public T022accionista obtenerAccionista(Integer cod) {
+		Query query = getSession().createQuery(" from T022accionista a where a.idAccionista = :id")
+        .setInteger("id", cod );
+		return (T022accionista)query.uniqueResult();
+	}
+
+	@Override
+	public T025pernat obtenerParticipantePn(Integer tramite, String codTipoDoc, String numDoc) {
+		Query query = getSession().createQuery(" from T025pernat p where p.codTipdoc = :tipoDoc and p.numDocum = :numDoc and p.t020tramite.numTramite = :tramite ")
+        .setInteger("tramite", tramite )
+        .setString("tipoDoc", codTipoDoc)
+        .setString("numDoc", numDoc );
+		return (T025pernat)query.uniqueResult();
+	}
+
+	@Override
+	public T026perjur obtenerParticipantePj(Integer tramite, String codTipoDoc, String numDoc) {
+		Query query = getSession().createQuery(" from T026perjur p where p.codTipdoc = :tipoDoc and p.numDocum = :numDoc and p.t020tramite.numTramite = :tramite ")
+        .setInteger("tramite", tramite )
+        .setString("tipoDoc", codTipoDoc)
+        .setString("numDoc", numDoc );
+		return (T026perjur)query.uniqueResult();
+	}
+
+	@Override
+	public T025pernat obtenerParticipantePn(Integer idPn) {
+		Query query = getSession().createQuery(" from T025pernat p where p.idPernat = :id ")
+        .setInteger("id", idPn );
+		return (T025pernat)query.uniqueResult();
+	}
+
 
 }

@@ -25,6 +25,9 @@
 	<input id="personaTipo" type="hidden" name="tipo" value="JURIDICA"/>
 	<input id="personaTipoDocumento" type="hidden" name="tipoDocumento" value="06"/>
 	
+	<div align="center" style="color: red"> <c:out value="${msgError}"/> </div>
+	<div align="center" style="color: blue"> <c:out value="${mensaje}"/> </div>
+				
 	<table width="90%">
 		<tr>
 			<td align="center">

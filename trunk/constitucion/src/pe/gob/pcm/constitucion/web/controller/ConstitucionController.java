@@ -521,7 +521,7 @@ public class ConstitucionController {
 	
 	public void cargaCombos(HttpServletRequest request){
 		request.setAttribute("lsTipoSociedad", parametroDAO.litarParametros(ParametrosUtil.TIPO_SOCIEDAD));
-		request.setAttribute("lsZonaRegistral", parametroDAO.litarParametros(ParametrosUtil.ZONA_REGISTRAL));
+		request.setAttribute("lsZonaRegistral", parametroDAO.litarParametros(ParametrosUtil.TIPO_ZONA_REGISTRAL));
 		request.setAttribute("lsTipoAporte", parametroDAO.litarParametros(ParametrosUtil.TIPO_APORTE));
 		request.setAttribute("lsDepartamentos", parametroDAO.litarParametrosDepartamentos());
 	}
@@ -529,7 +529,7 @@ public class ConstitucionController {
 	public void cargaCombos(HttpServletRequest request,T020tramite tramite){
 		cargaCombos(request);
 		if(tramite.getCodOficreg()!=null){
-				request.getSession().setAttribute("lcombooficinas", parametroDAO.litarParametros(ParametrosUtil.OFICINA_REGISTRAL,tramite.getCodOficreg()));	
+				request.getSession().setAttribute("lcombooficinas", parametroDAO.litarParametros(ParametrosUtil.TIPO_OFICINA_REGISTRAL,tramite.getCodOficreg()));	
 		}
 		if(tramite.getCodUbigeo()!=null){
 			String cod = tramite.getCodDepa();
@@ -544,7 +544,7 @@ public class ConstitucionController {
 	@RequestMapping(value = "/*/comboficinaregistral.htm", method = RequestMethod.POST)
     public String comboficinaregistral(@RequestParam("cod") String cod,ModelMap model,HttpServletRequest request){
 		logger.debug("cargar combo de comboficinaregistral");
-		request.getSession().setAttribute("lcombooficinas", parametroDAO.litarParametros(ParametrosUtil.OFICINA_REGISTRAL,cod));
+		request.getSession().setAttribute("lcombooficinas", parametroDAO.litarParametros(ParametrosUtil.TIPO_OFICINA_REGISTRAL,cod));
 		return "ajax/cmbOficinas";
     }
 	

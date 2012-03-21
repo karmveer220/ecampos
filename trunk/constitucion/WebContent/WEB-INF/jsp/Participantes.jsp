@@ -3,13 +3,6 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<%
-	String error = "";
-	error = request.getAttribute("msgError")!=null ? (String)request.getAttribute("msgError") : "";
-	String mensaje = "";
-	mensaje = request.getAttribute("mensaje")!=null ? (String)request.getAttribute("mensaje") : "";
-%> 
-
 
 <script>
 	function seguirParticipacion(){
@@ -27,8 +20,8 @@
     <table width="100%">
         <tr>
             <td height="233">
-				<div align="center" style="color: red"> <%=error %> </div>
-				<div align="center" style="color: blue"> <%=mensaje %> </div>
+				<div align="center" style="color: red"> <c:out value="${msgError}"/> </div>
+				<div align="center" style="color: blue"> <c:out value="${mensaje}"/> </div>
 		
 		<h2>
 		<c:if test="${tramitesistema.numTramite eq null }">Nuevo Tramite</c:if>
@@ -37,8 +30,8 @@
 
 		<table>
 			<tr>
-				<td><a href="${pageContext.request.contextPath}/participantes/nuevopn.htm"> Nueva P Natural </a></td>
-				<td><a href="${pageContext.request.contextPath}/participantes/nuevopj.htm"> Nueva P Juridica </a></td>
+				<td><a href="${pageContext.request.contextPath}/nuevopn.htm"> Nueva P Natural </a></td>
+				<td><a href="${pageContext.request.contextPath}/nuevopj.htm"> Nueva P Juridica </a></td>
 			</tr>
 		</table>
 
@@ -51,9 +44,9 @@
 	           <display:column title="Aporte" property="mtoAporte" headerClass="sortable" />
 	           
 	           <display:column title="Acciones">
-	           	<a href="${pageContext.request.contextPath}/participantes/verParticipante.htm?codigo=${row.idAccionista}"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
-	           	<a href="${pageContext.request.contextPath}/participantes/editarParticipante.htm?codigo=${row.idAccionista}"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></a>
-	           	<a href="eliminarParticipante.htm?codigo=${row.idAccionista}" onclick="return confirm('Seguro de eliminar el participante?')"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
+	           	<a href="${pageContext.request.contextPath}/verParticipante.htm?codigo=${row.idAccionista}"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></a>
+	           	<a href="${pageContext.request.contextPath}/editarParticipante.htm?codigo=${row.idAccionista}"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></a>
+	           	<a href="${pageContext.request.contextPath}/eliminarParticipante.htm?codigo=${row.idAccionista}" onclick="return confirm('Seguro de eliminar el participante?')"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
 			</display:column>
 	  		</display:table>
 

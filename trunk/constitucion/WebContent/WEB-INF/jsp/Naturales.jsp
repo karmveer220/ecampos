@@ -15,6 +15,11 @@
 		document.forms[0].submit();
 	}
 	
+	function cancelar(){
+		document.forms[0].action = '';
+		document.forms[0].submit();
+	}
+	
 	function perEstadoCivil(){
 		var obj = document.getElementById('personaEstadoCivil');
 		var sel = obj.options[obj.selectedIndex].value;
@@ -28,19 +33,29 @@
 	function cmbperTipoAporte(){
 		var obj = document.getElementById('TipoAporte');
 		var sel = obj.options[obj.selectedIndex].value;
-		if( sel == '2' ){ 
+		//1 dinerario
+		//2 no dinerario
+		//3 ambos
+		if( sel == '1' ){
 			document.getElementById('divMontoAporte').style.display='block';
+			document.getElementById('toolbarAportes').style.display='none';
+			document.getElementById('divGridAportes').style.display='none';
+		}else if( sel == '2' ){ 
+			document.getElementById('divMontoAporte').style.display='none';
 			document.getElementById('toolbarAportes').style.display='block';
 			document.getElementById('divGridAportes').style.display='block';  
 		}else{
-			document.getElementById('divMontoAporte').style.display='none';
-			document.getElementById('toolbarAportes').style.display='none';
-			document.getElementById('divGridAportes').style.display='none';
+			document.getElementById('divMontoAporte').style.display='block';
+			document.getElementById('toolbarAportes').style.display='block';
+			document.getElementById('divGridAportes').style.display='block';
 		}
 	}
 </script>
 
 <form:form name="personaForm" action="registrapn.htm" method="post" modelAttribute="persona">
+
+	<div align="center" style="color: red"> <c:out value="${msgError}"/> </div>
+	<div align="center" style="color: blue"> <c:out value="${mensaje}"/> </div>
 
 	<form:hidden path="idPernat"/>
 	
@@ -221,18 +236,10 @@
 					<tr>
 						<td align="left" style="padding-left:10px">(*) Tipo de aporte:</td>
 						<td colspan="2" align="left">
-							<c:if test="${persona.indAporte != 3}">
-								<form:hidden path="indAporte" id="personaTipoAporte" />
-								nombre tipo aporte
-								<!-- si tipo de aporte es != de Ambos  muestro desciocion del tipo de aporte -->
-							</c:if>
-							<c:if test="${persona.indAporte == 3 }">
-								<!-- sino muestro combo -->
 								<form:select id="TipoAporte" path="indAporte" cssStyle="width:220px"
 									onchange="cmbperTipoAporte()">
 									<form:options items="${lsTipoAporte}" itemLabel="desParam" itemValue="codParam"/>
 								</form:select>
-							</c:if>
 						</td>
 					</tr>	
 					<tr>
@@ -253,8 +260,6 @@
 					<tr>
 						<td colspan="3" align="left">
 							
-							<button  onclick="javascript:grabar();">Grabar</button>
-							
 							<!-- si es no dinerario o ambos, muestro este detalle de bienes -->
 							<div id="toolbarAportes" style="border:1px solid #99BBE8; border-Bottom:0px; width:610px; display:<%=aporte2 %>;">
 								<div class="dijitInline"style="color:#15428b; width:350px; padding-left:4px"><b>Lista de aporte de bienes</b></div>
@@ -273,7 +278,9 @@
 									</thead>
 								</table>
 							</div>
-							
+						
+								<button  onclick="javascript:grabar();">Grabar</button>
+								<button  onclick="javascript:cancelar();">Cancelar</button>	
 						</td>
 					</tr>
 				</table>

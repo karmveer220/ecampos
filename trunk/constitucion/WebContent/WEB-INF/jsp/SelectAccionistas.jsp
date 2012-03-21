@@ -14,7 +14,7 @@
 		</thead>
 		<c:forEach items="${lparticipantes}" var="socio">
 		<tr>
-			<td><input type="radio" name="socio" value="<c:out value="${socio.idPernat}"/>"/></td>
+			<td><input type="radio" name="socio" value="<c:out value="${socio.idAccionista}"/>"/></td>
 			<td><c:out value="${socio.nombreCompleto}"/></td>
 			<td><c:out value="${socio.codTipdoc}"/></td>
 			<td><c:out value="${socio.numDocum}"/></td>

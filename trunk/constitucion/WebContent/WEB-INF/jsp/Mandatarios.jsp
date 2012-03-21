@@ -10,7 +10,7 @@
 
 	function guardarCargo(){
 			$.ajax({
-				url:'${pageContext.request.contextPath}/mandatarios/registraCargo.htm',
+				url:'${pageContext.request.contextPath}/registraCargo.htm',
 				type:'POST',
 				async:true,
 				data:$('#cargoform').serialize(),
@@ -26,7 +26,7 @@ $(document).ready(function() {
 	 $("#cargos").live("click", function () {
 		 var id = $(this).attr("noteid");
 		 $.ajax({
-		        url: "${pageContext.request.contextPath}/mandatarios/asignacargo.htm?cod="+id,
+		        url: "${pageContext.request.contextPath}/asignacargo.htm?cod="+id,
 		        async: false,
 		        cache: false,
 		        success: function(data) {
@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 	 $("#nuevom").live("click", function () {
 		 $.ajax({
-			 	url: "${pageContext.request.contextPath}/mandatarios/nuevomandatario.htm",
+			 	url: "${pageContext.request.contextPath}/nuevomandatario.htm",
 		        async: false,
 		        cache: false,
 		        success: function(data) {
@@ -89,7 +89,7 @@ $(document).ready(function() {
      
 	 $("#editar").live("click", function () {
 		 $.ajax({
-		        url: "${pageContext.request.contextPath}/mandatarios/editarMandatario.htm?cod="+id,
+		        url: "${pageContext.request.contextPath}/editarMandatario.htm?cod="+id,
 		        async: false,
 		        cache: false,
 		        success: function(data) {
@@ -122,7 +122,7 @@ $(document).ready(function() {
 	 $("#ver").live("click", function () {
 		 var id = $(this).attr("noteid");
 		 $.ajax({
-		        url: "${pageContext.request.contextPath}/mandatarios/verMandatario.htm?cod="+id,
+		        url: "${pageContext.request.contextPath}/verMandatario.htm?cod="+id,
 		        async: false,
 		        cache: false,
 		        success: function(data) {
@@ -153,7 +153,7 @@ $(document).ready(function() {
 
 	 $("#seleccionar").live("click", function () {
 		 $.ajax({
-		        url: "${pageContext.request.contextPath}/mandatarios/seleccionasocio.htm",
+		        url: "${pageContext.request.contextPath}/seleccionasocio.htm",
 		        async: false,
 		        cache: false,
 		        success: function(data) {
@@ -209,6 +209,10 @@ $(document).ready(function() {
 		<div class="dextPanelHeader" style="padding: 5px 8px">
 			Asignaci&oacute;n de Mandatarios
 		</div>
+		
+		<div align="center" style="color: red"> <c:out value="${msgError}"/> </div>
+		<div align="center" style="color: blue"> <c:out value="${mensaje}"/> </div>
+				
 		<div  style="border-left:1px solid #99BBE8; border-right:1px solid #99BBE8; border-bottom:0px;">
 			<button id="seleccionar"  type="button">Socio / Accionista existente</button>
 			<button id="nuevom" type="button">Nuevo Mandatario</button>
@@ -245,7 +249,7 @@ $(document).ready(function() {
 	           	<span id="editar" class="ButtonLink" noteid="${row.idMandatario}"><img title="Editar" src="${pageContext.request.contextPath}/img/page_edit.png" height="16px" width="16px"/></span>
 	           	<span id="ver"    class="ButtonLink" noteid="${row.idMandatario}"><img title="Ver" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></span>
 	           	<span id="cargos" class="ButtonLink" noteid="${row.idMandatario}"><img title="Asignar Cargo" src="${pageContext.request.contextPath}/img/page.png" height="16px" width="16px"/></span>
-	           	<a href="eliminarMandatario.htm?codigo=${row.idMandatario}" onclick="return confirm('Seguro de eliminar el Mandatario?');"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
+	           	<a href="${pageContext.request.contextPath}/eliminarMandatario.htm?codigo=${row.idMandatario}" onclick="return confirm('Seguro de eliminar el Mandatario?');"><img title="Eliminar" src="${pageContext.request.contextPath}/img/delete.png" height="16px" width="16px"/></a>
 			</display:column>
 	  		</display:table>
 		
