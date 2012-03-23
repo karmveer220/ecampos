@@ -15,16 +15,22 @@
 
 	<sec:http>
        	<sec:intercept-url pattern="/login.htm" access="ROLE_ANONYMOUS"/>
-       	<sec:intercept-url pattern="/**" access="ROLE_ANONYMOUS"/>
+       	<sec:intercept-url pattern="/**" access="ROLE_ANONYMOUS,ROLE_SYSTEM"/>
         <sec:form-login login-page="/login.htm" default-target-url="/home.htm" />
         <sec:logout logout-success-url="/home.htm" />
     </sec:http>
 	
 	<sec:authentication-manager>
+	<!-- 
+	  	<sec:authentication-provider user-service-ref="userLoginService">
+            <sec:password-encoder hash="md5"/>
+        </sec:authentication-provider>
+         -->
        	<sec:authentication-provider ref="ldapAuthProvider"/>
+       	
     </sec:authentication-manager>
 		
-    <sec:ldap-server id="ldapServer" url="ldap://mininter.gob.pe:389" manager-dn="intranet" manager-password="Intr@net2012"/>
+    <sec:ldap-server id="ldapServer" url="ldap://mininter.gob.pe:389" manager-dn="intranet" manager-password="Wolfie2012"/>
   	
 	<bean id="ldapAuthProvider" class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider">
 		<constructor-arg ref="ldapBindAuthenticator"/> 
@@ -42,12 +48,13 @@
 		<constructor-arg ref="ldapServer"/>
 	</bean>
 	
-	<bean id="userLoginServiceImpl" class="pe.gob.mininter.security.AutenticacionJdbcDaoImpl">
-  		<constructor-arg ref="usuarioService"/>
+	<bean id="autenticacion" class="pe.gob.mininter.security.AutenticacionJdbcDaoImpl">
+  	
    	</bean>
-	
+	 
 	<bean id="ldapAuthoritiesPopulator" class="org.springframework.security.ldap.authentication.UserDetailsServiceLdapAuthoritiesPopulator">
-		<constructor-arg ref="usuarioService"/>
+		<constructor-arg ref="autenticacion"/>
 	</bean>
+	
 
 </beans>

@@ -13,12 +13,31 @@
 	
 	<import resource="security-config.xml" />
 	
-	<!-- Manage Transactions -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven transaction-manager="txManager"/>
 	
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
-		<property name="dataSource" ref="dataSource" />
-	</bean>
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"> 
+         <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource"/>
+	    <property name="configLocation">
+	    	<value>classpath:hibernate.cfg.xml</value>
+	  	</property>
+	  	<property  name="configurationClass">
+	   		<value>org.hibernate.cfg.AnnotationConfiguration</value>
+	  	</property>
+	    <property name="hibernateProperties">
+	    <!-- org.hibernate.dialect.MySQLDialect -->
+	      <value>
+	      	hibernate.bytecode.provider=javassist
+			hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+	        hibernate.show_sql=false
+	        hibernate.format_sql=false
+	        hibernate.connection.autocommit=false       
+	      </value>
+	    </property>
+  	</bean>
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"> 
 		<property name="driverClass" value="${jdbc.driverClass}" />

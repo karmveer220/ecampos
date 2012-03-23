@@ -10,15 +10,15 @@
 	<p>
 	Si ves esto, significa que estas loguead como <security:authentication property="principal.username" /> 
 	</p>
-	<security:authorize ifAnyGranted="ROLE_UNO">
+	<security:authorize ifAnyGranted="ROLE_SYSTEM">
 	<p>
-	Puedes ver opcion uno
+	Puedes ver opcion para SYSTEM
 	</p>
 	</security:authorize>
 	
-	<security:authorize ifAnyGranted="ROLE_ADMIN">
+	<security:authorize ifAnyGranted="ROLE_ASISTENCIA">
 	<p>
-	puedes ver opcion ROLE ADMIN
+	puedes ver opcion ROLE AISTENCIA
 	</p>
 	</security:authorize>
 	
