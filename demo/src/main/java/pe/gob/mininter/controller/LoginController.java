@@ -46,5 +46,11 @@ public class LoginController  {
 		return "/vision";
     }
 	
-
+	//sistemas
+	@RequestMapping("/sistemas.htm")
+    public String sistemas() {
+		return "/sistemas";
+    }
+	
+	
 }
