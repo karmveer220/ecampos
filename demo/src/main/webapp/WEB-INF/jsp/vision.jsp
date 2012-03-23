@@ -38,7 +38,7 @@
   <div class="clearfix" id="tabs-container">
    <span style="margin-left:20px;">IP:172.16.10.1</span> 
    <span style="margin-left:60px">Gerencia: Sistemas de la informaci&oacute;n</span>
-   <span style="margin-left:60px">Usuario:  ${pageContext.request.userPrincipal.name}  ${pageContext.request.userPrincipal.principal.dn} ${pageContext.request.userPrincipal}</span> 
+   <span style="margin-left:60px">Usuario:  ${pageContext.request.userPrincipal.name}</span> 
    <span style="float:right; margin-right:20px;"> <script language="javascript">
 document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_meses[mes - 1] + " de " + anio)
 </script>
