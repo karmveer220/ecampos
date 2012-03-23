@@ -41,7 +41,7 @@ public class SiminSistema implements Serializable {
 	private String nSisAbreviatura;
 
 	@Column(name="N_SIS_DESCRIPCION")
-	private String nSisDescripcion;
+	private String nsisDescripcion;
 
 	//bi-directional many-to-one association to SiminUsuariosistema
 	@OneToMany(mappedBy="siminSistema")
@@ -106,12 +106,12 @@ public class SiminSistema implements Serializable {
 		this.nSisAbreviatura = nSisAbreviatura;
 	}
 
-	public String getNSisDescripcion() {
-		return this.nSisDescripcion;
+	public String getNsisDescripcion() {
+		return this.nsisDescripcion;
 	}
 
-	public void setNSisDescripcion(String nSisDescripcion) {
-		this.nSisDescripcion = nSisDescripcion;
+	public void setNsisDescripcion(String nSisDescripcion) {
+		this.nsisDescripcion = nSisDescripcion;
 	}
 
 	public List<SiminUsuariosistema> getSiminUsuariosistemas() {

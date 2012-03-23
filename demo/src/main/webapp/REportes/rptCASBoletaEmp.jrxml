@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptCASBoleta" pageWidth="850" pageHeight="595" orientation="Landscape" columnWidth="790" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="4.177248169415723"/>
+	<property name="ireport.x" value="1889"/>
+	<property name="ireport.y" value="853"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ruta" class="java.lang.String"/>
+	<field name="dependenciaEmp" class="java.lang.String"/>
+	<field name="nombresEmp" class="java.lang.String"/>
+	<field name="dniEmp" class="java.lang.String"/>
+	<field name="nroCUSP" class="java.lang.String"/>
+	<field name="fecIngMininter" class="java.lang.String"/>
+	<field name="honorariosEmp" class="java.lang.Double"/>
+	<field name="dsctoRenta" class="java.lang.String"/>
+	<field name="dsctoPensionEmp" class="java.lang.String"/>
+	<field name="multa" class="java.lang.String"/>
+	<field name="montoMulta" class="java.lang.Double"/>
+	<field name="totalDscto" class="java.lang.Double"/>
+	<field name="anio" class="java.lang.String"/>
+	<field name="mes" class="java.lang.String"/>
+	<field name="fuentefto" class="java.lang.String"/>
+	<field name="montoseguroS" class="java.lang.String"/>
+	<field name="montoMultaS" class="java.lang.String"/>
+	<field name="dsctoRentaEmpS" class="java.lang.String"/>
+	<field name="listadodsctos" class="java.util.ArrayList"/>
+	<field name="codAutogeneradoEmp" class="java.lang.String"/>
+	<field name="nombresEmp2" class="java.lang.String"/>
+	<field name="fecAfiliacionPension" class="java.lang.String"/>
+	<field name="rucEmp" class="java.lang.String"/>
+	<field name="fecContIniEmp" class="java.lang.String"/>
+	<field name="fecBaja" class="java.lang.String"/>
+	<field name="dsctoEssaludEmp" class="java.lang.String"/>
+	<field name="honorarioNetoEmp" class="java.lang.Double"/>
+	<field name="tipoRecurso" class="java.lang.String"/>
+	<field name="sueldoContrato" class="java.lang.String"/>
+	<background>
+		<band height="555" splitType="Stretch">
+			<image>
+				<reportElement key="image-1" x="0" y="0" width="790" height="555"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA[$P{ruta}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="464" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-1" x="37" y="115" width="89" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[DEPENCIA LABORAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="37" y="130" width="89" height="10"/>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[DATOS DE EMPLEADO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-7" x="54" y="259" width="108" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<text><![CDATA[DEC. LEGISLATIVO 1057]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="125" y="115" width="615" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dependenciaEmp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="125" y="130" width="390" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombresEmp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="614" y="144" width="142" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dniEmp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="371" y="173" width="144" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nroCUSP}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField" x="422" y="360" width="78" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalDscto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="663" y="360" width="76" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dsctoEssaludEmp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="125" y="144" width="152" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dsctoPensionEmp}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField" x="177" y="259" width="83" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{honorariosEmp}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="294" y="259" width="206" height="73"/>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{listadodsctos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rptCASBoletoDsctos.jasper"]]></subreportExpression>
+			</subreport>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField" x="177" y="360" width="83" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{honorariosEmp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-2" x="37" y="158" width="89" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[CODIGO DIGITAL:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-16" x="37" y="443" width="753" height="11"/>
+				<textElement markup="none">
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<text><![CDATA[NOTA : Información sobre descuentos por tardanzas y/o faltas consultar en la Oficina de Procesos de Personal - 2373]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="37" y="144" width="89" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[SIST. PENSIONARIO:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="614" y="173" width="142" height="10"/>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecAfiliacionPension}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-2" x="37" y="173" width="89" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[FEC. DE INGRESO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="14" width="343" height="15"/>
+				<textElement>
+					<font fontName="Anonymous Pro" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RAZÓN SOCIAL: MINISTERIO DEL INTERIOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="32" width="343" height="15"/>
+				<textElement>
+					<font fontName="Anonymous Pro" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NRO RUC : 20131366966]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="82" width="719" height="15"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Anonymous Pro" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BOLETA DE PAGO DE LOS EMPLEADOS AÑO "+$F{anio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="50" width="500" height="15"/>
+				<textElement>
+					<font fontName="Anonymous Pro" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGIMEN ESPECIAL DE CONTRATACIÓN ADMINISTRATIVA DE SERVICIOS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="37" y="103" width="719" height="1"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement key="staticText-2" x="277" y="173" width="94" height="10"/>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[NRO. DE CUSSP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="277" y="144" width="94" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[INICIO DE CONTRATO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="277" y="158" width="94" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[CESE CONTRATO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="516" y="173" width="94" height="10"/>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[FEC. AFILIACIÓN:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="516" y="144" width="94" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[DOC. DE INDENTIDAD:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="516" y="158" width="94" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[NÚMERO DE RUC:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="614" y="158" width="142" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rucEmp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="125" y="173" width="152" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecIngMininter}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="125" y="158" width="152" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codAutogeneradoEmp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="371" y="144" width="144" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecContIniEmp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="371" y="158" width="144" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecBaja}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="37" y="227" width="239" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="277" y="227" width="238" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCUENTOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="515" y="227" width="241" height="10"/>
+				<textElement textAlignment="Center">
+					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APORTES DEL EMPLEADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="37" y="187" width="89" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[FT. FINACIAMIENTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-7" x="54" y="360" width="91" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL INGRESOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-7" x="294" y="360" width="91" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DESCUENTOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-7" x="536" y="360" width="91" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL APORTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-7" x="54" y="392" width="91" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL NETO]]></text>
+			</staticText>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="177" y="392" width="83" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{honorarioNetoEmp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-7" x="536" y="259" width="108" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<text><![CDATA[ESSALUD 9%]]></text>
+			</staticText>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement key="textField" x="661" y="259" width="78" height="12"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dsctoEssaludEmp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="125" y="187" width="152" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipoRecurso}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-2" x="277" y="187" width="94" height="10"/>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[REMUN. DE CONTRATO:]]></text>
+			</staticText>
+			<textField pattern="##0.00" isBlankWhenNull="true">
+				<reportElement key="textField" x="371" y="187" width="144" height="10"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sueldoContrato}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-2" x="515" y="187" width="94" height="10"/>
+				<textElement markup="styled">
+					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[MES DE PAGO:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="614" y="187" width="142" height="10"/>
+				<textElement>
+					<font fontName="Anonymous Pro" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="37" y="221" width="719" height="1"/>
+			</line>
+			<line>
+				<reportElement x="37" y="241" width="719" height="1"/>
+			</line>
+			<line>
+				<reportElement x="756" y="221" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="37" y="221" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="516" y="221" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="277" y="221" width="1" height="21"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

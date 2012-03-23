@@ -479,4 +479,57 @@ private static int getDigitAt(String origin, int position) {
 		}		
 		 return  clave;
 	}
+	
+	 
+	    public static String devolverMes(Integer mes)  {
+
+	        String mesReporte = "";
+	        
+	        if (!mes.equals("")) {
+	            switch (mes) {
+	            case 1:
+	                mesReporte = "ENERO";
+	                break;
+	            case 2:
+	                mesReporte = "FEBRERO";
+	                break;
+	            case 3:
+	                mesReporte = "MARZO";
+	                break;
+	            case 4:
+	                mesReporte = "ABRIL";
+	                break;
+	            case 5:
+	                mesReporte = "MAYO";
+	                break;
+	            case 6:
+	                mesReporte = "JUNIO";
+	                break;
+	            case 7:
+	                mesReporte = "JULIO";
+	                break;
+	            case 8:
+	                mesReporte = "AGOSTO";
+	                break;
+	            case 9:
+	                mesReporte = "SEPTIEMBRE";
+	                break;
+	            case 10:
+	                mesReporte = "OCTUBRE";
+	                break;
+	            case 11:
+	                mesReporte = "NOVIEMBRE";
+	                break;
+	            case 12:
+	                mesReporte = "DICIEMBRE";
+	                break;
+	            default:
+	                mesReporte = "Error de Sistema";
+	                break;
+	            }
+	        }
+	        
+	        return mesReporte;
+	    }
+	  
 }
