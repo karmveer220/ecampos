@@ -22,7 +22,7 @@
 					
 					<form name="f" action="${pageContext.request.contextPath}/j_spring_security_check" method="POST">
 					
-						<table align="right" width="250px">
+						<table align="center" width="250px">
 							<tr>
 								<td>Usuario</td>
 								<td>
@@ -40,7 +40,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><input type="submit" value="Login" /></td>
+								<td><input type="submit" value="Ingresar" /></td>
 								<td></td>
 							</tr>		
 						</table>

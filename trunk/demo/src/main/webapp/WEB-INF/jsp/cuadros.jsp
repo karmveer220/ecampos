@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Trial Services</title>
 
-<link href="file:///C|/COMPAQ/cuadros.css" rel="stylesheet" type="text/css" /> </link>
+  <link href="../../css/cuadros.css" rel="stylesheet" type="text/css" /> </link>
 
 
 
@@ -13,15 +13,22 @@
 <body>
 <div id="topPanel">
   <div id="headerPanelfast">
-	<h2>design</h2>
+	<h2>naranja</h2>
 	<p>Lorem Ipsum is simply try's standard dummy text ever since the 1500s,Lorem Ipsimply try's </p>
 	<a href="#">
 &nbsp;	</a></div>
+
+
 <div id="headerPanelsecond">
 	<h2>success</h2>
 	<p>Lorem Ipsum is simply try's standard dummy text ever since the 1500s,Lorem Ipsimply try's </p>
 	<a href="#">
 &nbsp;	</a></div>
+
+
+
+
+
 <div id="headerPanelthird">
 	<h2>services</h2>
 	<p>Lorem Ipsum is simply try's standard dummy text ever since the 1500s,Lorem Ipsimply try's </p>
