@@ -1,9 +1,11 @@
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
+
 <html>
 <head>
 
@@ -162,7 +164,7 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td><img border="0" class="link-img" alt="" src="images/reloj.GIF" width="25" height="25" /></td>
+                <td> <a href="rptasistencia.htm" target="_blank"> <img border="0" class="link-img" alt="" src="images/reloj.GIF" width="25" height="25" /> </a> </td>
                 <td>Record de asistencia </td>
                 <td>&nbsp;</td>
               </tr>
@@ -177,8 +179,8 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td><img border="0" class="link-img" alt="" src="images/icon_libro.png" width="25" height="25" /></td>
-                <td>Boleta de pago </td>
+                <td> <a href="rptcasboleta.htm"> <img border="0" class="link-img" alt="" src="images/icon_libro.png" width="25" height="25" /> </a> </td>
+                <td>Boleta de pago</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
@@ -192,25 +194,26 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
                 <td>&nbsp;</td>
               </tr>
             </table></td>
-            <td><table width="184" border="0" cellpadding="1">
-              <tr>
-                <td colspan="3"><div align="center"><strong>SIGE</strong></div></td>
-                </tr>
-              <tr>
-                <td colspan="3" align="center"><a href="http://ulises:8080/SIGE/pagin2.jsp" target="_blank">
-				  <img src="images/sige.jpg" width="150" height="165" /> </a></td>
-                </tr>
-              
-            </table></td>
-            <td><table width="184" border="0" cellpadding="1">
-              <tr>
-                <td colspan="3"><div align="center"><strong>Cumpleaños del dia </strong></div></td>
-                </tr>
-              <tr>
-                <td colspan="3" align="center"><img src="images/tortas.jpg" width="150" height="165" /></td>
-                </tr>
-              
-            </table></td>
+            <td>
+	            <div align="center"><strong>Sistemas</strong></div>
+            	<ul>
+				 <c:forEach items="${lstSistemas}" var="sis">
+				 	<li>
+				 		<a href="http://servermininter/${sis.siminSistema.nsisDescripcion}" target="_blank">
+				 			<c:out value="${sis.siminSistema.nsisDescripcion}"/>
+				 		</a>
+				 	</li>				 	
+				 </c:forEach>
+				 </ul>
+				 </td>
+            <td>
+            	<div align="center"><strong>Cumplea&ntilde;os del dia </strong></div>            
+                <ul>
+                <c:forEach items="${lcumpleanios}" var="sis">				 	
+				 	<li><c:out value="${sis.nombreCompleto}"/> </li>
+				 </c:forEach>
+                </ul>            
+            </td>
           </tr>
           <tr>
             <td><table width="184" border="0" cellpadding="1">

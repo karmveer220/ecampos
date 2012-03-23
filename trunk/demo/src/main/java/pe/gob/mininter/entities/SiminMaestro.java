@@ -876,4 +876,9 @@ public class SiminMaestro extends User implements Serializable {
 		this.authoritiesList = authoritiesList;
 	}
 	
+	@Transient
+	public String getNombreCompleto(){
+		return nMstNombre + " " + nMstApepaterno + " " + nMstApematerno;
+	}
+	
 }
