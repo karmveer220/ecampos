@@ -179,7 +179,7 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td> <a href="rptcasboleta.htm"> <img border="0" class="link-img" alt="" src="images/icon_libro.png" width="25" height="25" /> </a> </td>
+                <td> <a href="rptcasboleta.htm" target="_blank"> <img border="0" class="link-img" alt="" src="images/icon_libro.png" width="25" height="25" /> </a> </td>
                 <td>Boleta de pago</td>
                 <td>&nbsp;</td>
               </tr>

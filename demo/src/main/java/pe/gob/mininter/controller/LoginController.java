@@ -33,6 +33,8 @@ public class LoginController  {
 		//model.put("limagenes", "" );
 		
 		LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		logger.debug(u.getUsername());
+		
 		request.setAttribute("lstSistemas", usuarioService.listarSistemas(u.getUsername()) );
 		request.setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes( ) );
 		return "home";
