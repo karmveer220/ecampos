@@ -10,19 +10,20 @@ a{color:#333}
 a img{border:0}
 :focus{outline:none}
 h1,h2,h3,h4,h5{line-height:1.6em;margin:0 0 1em}
-p{line-height:1.6em;margin:0 0 1em; text-align:justify}
+p{line-height:1.6em;margin:0 0 1em; text-align:center}
 wbr:after{content:"\00200B"}
 form{margin:0;padding:0}
 div#main-container{min-height:600px;background:#F7F7F7;width:866px;margin:0 auto;padding:5px 0 0}
 .clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
-.clearfix{display:inline-block}
+.clearfix{display:inline-block;height: 15px}
+.otro{display:inline-block;height:10px;width:866px}
 html[xmlns] .clearfix{display:block}
 * html .clearfix{height:1%}
-#header{background-color:#333; margin:0;padding:20px 0}
-#header #topnav{float:right;display:inline;width:200px;margin:0 20px 0 0;padding:0}
+#header{margin:0;padding:0px 0;height: 90px}
+#header #topnav{float:right;display:inline;width:200px;margin:0 20px 0 0;padding:57px 60px 0px 0px}
 #header #topnav ul{display:inline;font-size:.8em;list-style:none;padding-left:0;margin:0}
 #header #topnav li{list-style:none;display:inline}
-#header #topnav li a,#header #topnav li strong{font-size:.8em;display:block;float:left;color:#FFF;margin:3px 0 3px 6px;padding:3px 0 6px 3px}
+#header #topnav li a,#header #topnav li strong{font-size:.8em;display:block;float:left;color:#000;margin:3px 0 3px 6px;padding:3px 0 6px 3px}
 #topnav li a:hover{text-decoration:underline}
 #logo{margin-left:20px}
 #tabs-container{min-height:29px;_height:29px;border-bottom:1px solid #000;background-color:#408238;color:#FFF;padding-top:10px}
