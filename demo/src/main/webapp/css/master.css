@@ -1,0 +1,799 @@
+/*------------------------------
+=NAVIGATION
+------------------------------*/
+#MENU{
+	float: left;
+	margin-top: 0px;
+	margin-bottom: 5px;
+	height: 30px;
+	width: 850px;
+}
+#MENU ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#MENU ul li{
+	display: inline;
+}
+#MENU li a{
+	display: block;
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+/*	background-color: black;*/
+	color: white;
+    cursor: pointer;
+	padding: 3px 25px;
+	text-decoration: none;
+	font-weight: bold;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	-moz-transition: all 400ms ease;  
+	-webkit-transition: all 400ms ease;
+	-o-transition: all 400ms ease;
+	transition: all 400ms ease;
+
+}
+#MENU a:hover{
+/*	background-color: #FC0;*/
+	color: black;	
+}
+
+
+#MENU li a.inicio{
+	background-image:url(../imgs/inicio.png);
+/*	padding: 0px 0px;
+	margin-left: 2px;
+	margin-top: 2px;
+	width: 35px;
+	height: 25px;
+	color:#066;*/
+	background-repeat: no-repeat;
+	padding: 0px 0px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:3px;
+	width: 28px;
+	height: 28px;
+	float:left;	
+	
+}
+#MENU li a.inicio:hover{
+	background-image:url(../imgs/inicio2.png);
+	background-color:#eaf3e2;	
+
+}
+
+#MENU li a.correo{
+	background-image:url(../imgs/correo1.png);
+	background-repeat: no-repeat;
+	padding: 0px 0px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:3px;
+	width: 28px;
+	height: 28px;
+	float: right;
+}
+#MENU li a.correo:hover{
+	background-image:url(../imgs/correo2.png);
+}
+
+
+#MENU li a.nuestra{
+	/*	background-color:#eaf3e2;*/
+	color:#E5E5E5;
+	margin-top:3px;
+	margin-left:35px
+}
+#MENU li a.nuestra:hover{
+	background-color:#eaf3e2;
+	color:#066;
+}
+
+
+#MENU li a.trans{
+	/*	background-color:#eaf3e2;*/
+	color:#E5E5E5;
+	margin-top:3px;
+	margin-left:15px;
+	margin-right:15px;	
+}
+#MENU li a.trans:hover{
+	background-color:#eaf3e2;
+	color:#066;
+}
+
+#MENU li a.twitter{
+	background-image:url(../imgs/ico_twitter.png);
+	background-repeat: no-repeat;
+	padding: 0px 0px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:3px;
+	width: 28px;
+	height: 28px;
+	float:right;
+}
+#MENU li a.twitter:hover{
+/*	background-color:#eaf3e2;*/
+	background-image:url(../imgs/ico_twitteron.png);
+}
+
+#MENU li a.facebook{
+	background-image:url(../imgs/ico_faceoff.png);
+	background-repeat: no-repeat;
+	padding: 0px 0px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:3px;
+	width: 28px;
+	height: 28px;
+	float:right;
+}
+#MENU li a.facebook:hover{
+/*	background-color:#eaf3e2;*/
+	background-image:url(../imgs/ico_faceon.png);
+}
+
+#MENU li a.youtube{
+	background-image:url(../imgs/ico_youtubeoff.png);
+	background-repeat: no-repeat;
+	padding: 0px 0px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:3px;
+	width: 28px;
+	height: 28px;
+	float:right;
+}
+#MENU li a.youtube:hover{
+	background-image:url(../imgs/ico_youtubeon.png);
+}
+
+
+/*
+#MENU li a.oci{
+	background-color:#eaf3e2;
+	color:#066;
+
+}
+#MENU li a.oci:hover{
+	background-color:#4a8a41;
+	color:#FF0;
+}
+#MENU li a.directorio{
+	background-color:#eaf3e2;
+	color:#066;
+
+}
+#MENU li a.directorio:hover{
+	background-color:#4a8a41;
+	color:#FF0;
+}
+
+#MENU li a.prensa{
+	background-color:#eaf3e2;
+	color:#066;
+
+}
+#MENU li a.prensa:hover{
+	background-color:#4a8a41;
+	color:#FF0;
+}
+
+*/
+
+
+
+
+/*nav {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background-color: #333;
+}
+
+	nav ul {
+		
+		margin: 0 auto;
+		width: 940px;
+		list-style: none;
+	}
+
+		nav ul li {
+			float: left;
+		}
+		
+			nav ul li a {
+				display: block;
+				margin-right: 20px;
+				width: 140px;
+				font-size: 14px;
+				line-height: 44px;
+				text-align: center;
+				text-decoration: none;
+				color: #777;
+			}
+			
+				nav ul li a:hover {
+					color: #fff;
+				}
+			
+			nav ul li.selected a {
+				color: #fff;
+			}
+			
+			nav ul li.subscribe a {
+				margin-left: 22px;
+				padding-left: 33px;
+				text-align: left;
+				background: url("images/rss.png") left center no-repeat;
+			}
+
+*/
+
+
+/*------------------------------
+=BANNERS
+------------------------------*/
+
+.BANNER_MEDIO {
+	width: 1000px;
+	padding-top:5px;
+
+	
+/*	height: 22px;*/
+}
+#laterali {
+	width: 770px;
+	padding-top:5px;
+	float:left;
+}
+#laterald {
+	width: 230px;
+	padding-top:5px;
+	float:right;
+}
+#col1 {
+	width: 190px;
+	padding-top:0px;
+	float:left;
+}
+#banner1{
+	float:left;
+	width:170px;
+	height:20px;
+	background-image:url(../imgs/bgmenu.jpg);
+	margin-right:50px;
+	margin-bottom:1px;
+	margin-top:1px;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+
+
+#banner2{
+	float:left;
+	width:170px;
+	height:20px;
+	background-color:#999;
+	margin-right:240px;
+	margin-left:150px;
+	margin-bottom:1px;
+	margin-top:1px;
+	background-image:url(../imgs/bgmenu.jpg);
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}	
+
+
+#banner3{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	float:left;
+	width:170px;
+	height:20px;
+	background-color:#999;
+	margin-bottom:1px;
+	margin-top:1px;
+	background-image:url(../imgs/bgmenu.jpg);
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}	
+
+#banner1, #banner2, #banner3  p{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-align:left;
+	font-size:14px;
+	font-weight: bold;
+	color:#FC0;
+	margin-left:0px 0px;
+	padding-left:5px;
+	padding-bottom:1px;
+	padding-top:1px;
+}
+
+
+
+
+
+
+/* Creamos los estilos del boton */
+.contacto {
+	width:220px !important;
+	float:right;
+	margin:0 0 0 0;
+	background-color:#FFF;
+	padding-top:5px;
+	padding-left:5px;
+	text-align:center;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+
+/*	height: 200px;*/
+}
+.contacto h2{
+	background:url(../imgs/botomedio3.jpg) no-repeat 0 0 #fffffe;
+	margin:0 5px 5px 0px;
+	display:block;
+	padding:0 0 0 5px;
+	height:25px;
+	color:#FFE064;
+	font:bold 16px/25px Arial, Helvetica, sans-serif;
+	width:200px;
+	text-align:left;
+}
+
+.button{
+  width:190px;
+  height:50px;
+  background: #e5e5e5;
+  display: block;
+  margin-bottom:10px;
+  margin-top:10px;
+  margin-left:0px;
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-left:0px;
+  color:#255641;
+  font-family:Verdana, Geneva, sans-serif;
+  font-size:13px;
+  font-weight:bold;
+  text-decoration:none;
+  text-shadow: 0 1px 1px #FFF;
+  border:1px solid #ccc;
+  cursor: pointer;
+	
+
+  /* Bordes redondenados - Border Radius */
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+
+  /* Fondo Degradado - Background Gradient */
+  background:-webkit-linear-gradient(top, #fefefe, #e5e5e5); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #e5e5e5); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #e5e5e5); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #e5e5e5); 
+  
+  /* Aplcamos sombras al boton - Box Shadow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  -moz-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+
+  /* Animacion - Transition */
+  -webkit-transition: all ease-in-out .3s;
+  -moz-transition: all ease-in-out .3s;
+  transition: all ease-in-out .3s;
+}
+.button:hover{
+  border-color:#adcce2; /* Modificamos el color del borde */
+
+  /* Cambiamos los colores del fondo degradado */
+  background:-webkit-linear-gradient(top, #fefefe, #f1f1f1); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #f1f1f1); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #f1f1f1); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #f1f1f1);
+  
+  /* Modificamos las propiedades del Box Shadow para un efecto Glow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 6px rgba(36, 168, 229, .3);
+  -moz-box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+  box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+}
+.buttono{
+  width:190px;
+  height:50px;
+  background: #e5e5e5;
+  display: block;
+  margin-bottom:0px;
+  margin-top:12px;
+  margin-left:0px;
+  padding-top:5px;
+  padding-bottom:3px;
+  padding-left:0px;
+  color:#255641;
+  font-family:Verdana, Geneva, sans-serif;
+  font-size:13px;
+  font-weight:bold;
+  text-decoration:none;
+  text-shadow: 0 1px 1px #FFF;
+  border:1px solid #ccc;
+  cursor: pointer;
+	
+
+  /* Bordes redondenados - Border Radius */
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+
+  /* Fondo Degradado - Background Gradient */
+  background:-webkit-linear-gradient(top, #fefefe, #e5e5e5); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #e5e5e5); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #e5e5e5); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #e5e5e5); 
+  
+  /* Aplcamos sombras al boton - Box Shadow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  -moz-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+
+  /* Animacion - Transition */
+  -webkit-transition: all ease-in-out .3s;
+  -moz-transition: all ease-in-out .3s;
+  transition: all ease-in-out .3s;
+}
+.buttono:hover{
+  border-color:#adcce2; /* Modificamos el color del borde */
+
+  /* Cambiamos los colores del fondo degradado */
+  background:-webkit-linear-gradient(top, #fefefe, #f1f1f1); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #f1f1f1); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #f1f1f1); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #f1f1f1);
+  
+  /* Modificamos las propiedades del Box Shadow para un efecto Glow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 6px rgba(36, 168, 229, .3);
+  -moz-box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+  box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+}
+
+/*BOTONES OFICINAS */
+/* Creamos los estilos del boton */
+.OFICINAS {
+	width: 260px;
+/*	height: 200px;*/
+}
+.botonfi2{
+  width:165px;
+  background: #e5e5e5;
+  display: block;
+  margin-bottom:0px;
+  margin-top:4px;
+  margin-left:5px;
+  padding:3px 3px 2px;
+  padding-right:2px;
+  color:#255641;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size:11px;
+  font-weight:bold;
+  text-align:left;
+  text-decoration:none;
+  text-shadow: 0 1px 1px #FFF;
+  border:1px solid #ccc;
+  cursor: pointer;
+	
+
+  /* Bordes redondenados - Border Radius */
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+
+  /* Fondo Degradado - Background Gradient */
+  background:-webkit-linear-gradient(top, #fefefe, #e5e5e5); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #e5e5e5); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #e5e5e5); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #e5e5e5); 
+  
+  /* Aplcamos sombras al boton - Box Shadow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  -moz-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+
+  /* Animacion - Transition */
+  -webkit-transition: all ease-in-out .3s;
+  -moz-transition: all ease-in-out .3s;
+  transition: all ease-in-out .3s;
+}
+.botonfi2:hover{
+  border-color:#adcce2; /* Modificamos el color del borde */
+
+  /* Cambiamos los colores del fondo degradado */
+  background:-webkit-linear-gradient(top, #fefefe, #f1f1f1); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #f1f1f1); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #f1f1f1); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #f1f1f1);
+  
+  /* Modificamos las propiedades del Box Shadow para un efecto Glow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 6px rgba(36, 168, 229, .3);
+  -moz-box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+  box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+}
+.botonfi{
+  width:165px;
+  background: #e5e5e5;
+  display: block;
+  margin-bottom:5px;
+  margin-top:13px;
+  margin-left:5px;
+  padding:5px 3px 5px;
+  padding-right:2px;
+  color:#255641;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size:11px;
+  font-weight:bold;
+  text-align:left;
+  text-decoration:none;
+  text-shadow: 0 1px 1px #FFF;
+  border:1px solid #ccc;
+  cursor: pointer;
+	
+
+  /* Bordes redondenados - Border Radius */
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+
+  /* Fondo Degradado - Background Gradient */
+  background:-webkit-linear-gradient(top, #fefefe, #e5e5e5); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #e5e5e5); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #e5e5e5); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #e5e5e5); 
+  
+  /* Aplcamos sombras al boton - Box Shadow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  -moz-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+  box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 2px rgba(0, 0, 0, .1);
+
+  /* Animacion - Transition */
+  -webkit-transition: all ease-in-out .3s;
+  -moz-transition: all ease-in-out .3s;
+  transition: all ease-in-out .3s;
+}
+.botonfi:hover{
+  border-color:#adcce2; /* Modificamos el color del borde */
+	  text-decoration:none;
+  /* Cambiamos los colores del fondo degradado */
+  background:-webkit-linear-gradient(top, #fefefe, #f1f1f1); /* Chrome 10+ */
+  background:   -moz-linear-gradient(top, #fefefe, #f1f1f1); /* Firefox 3.6+ */
+  background:    -ms-linear-gradient(top, #fefefe, #f1f1f1); /* IE10 */
+  background:        linear-gradient(top, #fefefe, #f1f1f1);
+  
+  /* Modificamos las propiedades del Box Shadow para un efecto Glow */
+  -webkit-box-shadow:inset 0 1px 0 rgba(255,255,255, .3), inset 0 0 0 1px rgba(255,255,255, .6), 0 1px 6px rgba(36, 168, 229, .3);
+  -moz-box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+  box-shadow:inset 0 1px 0 rgba(251,247,193, .3), inset 0 0 0 1px rgba(251,247,193, .3), 0 1px 6px rgba(36, 168, 229, .3);
+}
+
+.subdiv{
+	width:186px !important;
+	float:left;
+	margin:0 1px 0 0;
+	background-color:#FFFFFF;
+	padding-top:5px;
+	text-align:center;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+
+}
+.subdiv h2{
+	background:url(../imgs/botomedio.jpg) no-repeat 0 0 #fffffe;
+	margin:0 5px 3px 5px;
+	display:block;
+	padding:0 0 0 5px;
+	height:25px;
+	color:#FFE064;
+	font:bold 16px/25px Arial, Helvetica, sans-serif;
+	width:175px;
+	text-align:left;
+}
+
+.menucinas{
+	width:186px !important;
+	height:333px;
+	float:left;
+    text-decoration:none;
+	margin:8px 12px 10px 0;
+	background-color:#FFFFFF;
+	padding-top:5px;
+	text-align:left;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+
+.menucinas h2{
+	background:url(../imgs/botomedio.jpg) no-repeat 0 0 #fffffe;
+	margin:0 5px 3px 5px;
+	display:block;
+	padding:0 0 0 5px;
+	height:25px;
+	color:#FFE064;
+	font:bold 16px/25px Arial, Helvetica, sans-serif;
+	width:175px;
+	text-align:left;
+}
+.menucinas2{
+	width:186px !important;
+/*	height:235px;*/
+	float:left;
+	margin:-10px 12px 10px 0;
+	background-color:#FFFFFF;
+	padding-top:5px;
+	text-align:left;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+.menucinas2 h2{
+	background:url(../imgs/botomedio.jpg) no-repeat 0 0 #fffffe;
+	margin:0 5px 3px 5px;
+	display:block;
+	padding:0 0 0 5px;
+	height:25px;
+	color:#FFE064;
+	font:bold 16px/25px Arial, Helvetica, sans-serif;
+	width:175px;
+	text-align:left;
+}
+
+
+.noticias{
+	width:560px !important;
+	float:right;
+	margin:0 5px 0 0;
+	background-color:#FFF;
+	padding-top:5px;
+	padding-left:6px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+.noticias h2{
+	background-image:url(../imgs/botomedio2.jpg);
+	/*	background:url(../imgs/botomedio.jpg) no-repeat 0 0  #fffffe;*/
+	margin:0 0px 3px 0px;
+	display:block;
+	padding:0 0 0 5px;
+	height:25px;
+	color:#FFE064;
+	font:bold 16px/25px Arial, Helvetica, sans-serif;
+	width:550px;
+	text-align:left;
+
+
+
+}
+.videoteca{
+	width:560px !important;
+	float:right;
+	margin:10px 5px 10px 0px;
+	background-color:#FFF;
+	padding-top:5px;
+	padding-left:6px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+.videoteca h2{
+	background:url(../imgs/botomedio2.jpg) no-repeat 0 0 #fffffe;
+	margin:0 0 1px 0;
+	display:block;
+	padding:0 0 0 5px;
+	height:25px;
+	color:#FFE064;
+	font:bold 16px/25px Arial, Helvetica, sans-serif;
+	width:550px;
+	text-align:left;
+}
+.otros {
+	width:220px !important;
+	height:385px;
+	float:right;
+	margin:8px 0 0 0;
+	background-color:#FFF;
+	padding-top:5px;
+	padding-left:5px;
+	text-align:center;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+
+/*	height: 200px;*/
+}
+.otros h2{
+	background:url(../imgs/botomedio3.jpg) no-repeat 0 0 #fffffe;
+	margin:0 5px 5px 0px;
+	display:block;
+	padding:0 0 0 5px;
+	height:25px;
+	color:#FFE064;
+	font:bold 16px/25px Arial, Helvetica, sans-serif;
+	width:200px;
+	text-align:left;
+}
+.cuerpito{
+	width:770px !important;
+	height:620px;
+	float:right;
+	margin:10px 0px 10px 0px;
+	background-color:#FFF;
+	padding-top:15px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+.menuizquierdo {
+	float:left;
+	margin-top:10px;
+	padding-top:10px;	
+	width: 210px;
+	height:620px;
+	padding-left:10px;
+	background-color:#FFF;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+.transpa{
+	margin-top:3px;
+	height:720px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}	
+.resultadito{
+	width:720px !important;
+	height:300px;
+	float:right;
+	margin:10px 0px 10px 0px;
+	background-color:#FFF;
+	padding-top:15px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+.notitas{
+	width:720px !important;
+	height:355px;
+	float:right;
+	margin:10px 0px 10px 0px;
+	background-color:#FFF;
+	padding-top:15px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}

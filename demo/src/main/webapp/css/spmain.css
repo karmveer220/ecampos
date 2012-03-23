@@ -1,0 +1,104 @@
+BODY { background:url(../imgs/bg.gif) repeat-x 0 0 #D6D7A0; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; FONT-WEIGHT: normal; FONT-SIZE: 11px; FONT-FAMILY: Arial; SCROLLBAR-FACE-COLOR: #80b6b4; SCROLLBAR-HIGHLIGHT-COLOR: #408238; SCROLLBAR-SHADOW-COLOR: #408238; SCROLLBAR-3DLIGHT-COLOR: #FFFFFF; SCROLLBAR-ARROW-COLOR: #FFFFFF; SCROLLBAR-TRACK-COLOR: #FFFFFF; SCROLLBAR-DARKSHADOW-COLOR: #FFFFFF; }
+       
+ul { list-style:url(../imgs/ul_bullets.gif); margin-left:10px; margin-right:10px; padding-left:19px; margin-top:-2px; }
+.f18_port_titu { font-family: Verdana; font-size: 18px; font-weight: bold; color: #333333; text-align: justify }
+.f18_port_titu :link { font-weight: bold; text-decoration: none; color : #333333; }
+.f18_port_titu :visited { font-weight: bold; text-decoration: none; color : #333333; }
+.f18_port_titu :hover { font-weight: bold; text-decoration: none; color : #DC0000; }
+.f18_tituencu { font-family: Tahoma; font-size: 18px; font-weight: bold; color: #000000; text-align: justify }
+.f12_port_text { font-family: Verdana, Arial, sans-serif; font-size: 11px; color: #000000; text-align: justify }
+.f11_fencu { font-family: Tahoma; font-size: 11px; color: #333333; text-align: justify }
+.f14_title { font-family: Verdana; font-size: 14px; font-weight: bold; color: #346A2C; text-align: justify }
+.f14_title :link { font-weight: bold; text-decoration: none; color : #346A2C; }
+.f14_title :visited { font-weight: bold; text-decoration: none; color : #346A2C; }
+.f14_title :hover { font-weight: bold; text-decoration: none; color : #346A2C; }
+.f12_gvideo { font-family: Arial; font-size: 12px; font-weight: normal; color: #05665F; text-align: justify }
+.f12_gvideo :link { font-weight: normal; text-decoration: none; color : #05665F; }
+.f12_gvideo :visited { font-weight: normal; text-decoration: none; color : #05665F; }
+.f12_gvideo :hover { font-weight: normal; text-decoration: none; color : #DC0000; }
+.f12_negro { font-family: Tahoma; font-size: 12px; font-weight: bold; color: #000000; text-align: justify }
+.f12_negro :link { font-weight: bold; text-decoration: none; color : #000000; }
+.f12_negro :visited { font-weight: bold; text-decoration: none; color : #000000; }
+.f12_negro :hover { font-weight: bold; text-decoration: none; color : #004E0A; }
+.f12_verde { font-family: Arial; font-size: 12px; font-weight: bold; color: #157809; text-align: justify }
+.f12_verde :link { font-weight: bold; text-decoration: none; color : #157809; }
+.f12_verde :visited { font-weight: bold; text-decoration: none; color : #157809; }
+.f12_verde :hover { font-weight: bold; text-decoration: none; color : #FF0000; }
+.f11_negro { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #000000; text-align: justify }
+.f11_negro :link { font-weight: normal; text-decoration: none; color : #000000; }
+.f11_negro :visited { font-weight: normal; text-decoration: none; color : #000000; }
+.f11_negro :hover { font-weight: normal; text-decoration: none; color : #157809; }
+.fvideo { font-family: Arial; font-size: 12px; color: #4B4746; text-align: justify }
+.fvideo :link { font-weight: normal; text-decoration: none; color : #4B4746; }
+.fvideo :visited { font-weight: normal; text-decoration: none; color : #4B4746; }
+.fvideo :hover { font-weight: normal; text-decoration: none; color : #046961; }
+.f11_333 { font-family: Tahoma; font-size: 11px; font-weight: normal; color: #333333; text-align: justify }
+.f11_333 :link { font-weight: normal; text-decoration: none; color : #333333; }
+.f11_333 :visited { font-weight: normal; text-decoration: none; color : #333333; }
+.f11_333 :hover { font-weight: normal; text-decoration: none; color : #DC0000; }
+.f11n_333 { font-family: Tahoma; font-size: 11px; font-weight: normal; color: #333333; text-align: justify }
+.f11n_333 :link { font-weight: normal; text-decoration: none; color : #333333; }
+.f11n_333 :visited { font-weight: normal; text-decoration: none; color : #333333; }
+.f11n_333 :hover { font-weight: normal; text-decoration: none; color : #DC0000; }
+.f11_rencu { font-family: Tahoma; font-size: 11px; font-weight: bold; color: #0B14ED; text-align: justify }
+.f11_rencu :link { font-weight: bold; text-decoration: none; color : #0B14ED; }
+.f11_rencu :visited { font-weight: bold; text-decoration: none; color : #0B14ED; }
+.f11_rencu :hover { font-weight: bold; text-decoration: none; color : #DC0000; }
+.f11_blanco {
+	font-family: Arial;
+	font-size: 11px;
+	color: #330;
+	text-align: center;
+}
+.fechita {
+	font-family: Arial;
+	font-size: 11px;
+	color: #999;
+	text-align: right;
+}
+.f11_tipreg { font-family: Arial; font-size: 11px; color: #333333; text-align: justify }
+.f11_frase { font-family: Arial; font-size: 11px; color: #FFCE00; text-align: justify }
+.f11_linkbot { font-family: Arial; font-size: 11px; color: #FFFFFF; text-align: justify }
+.f11_linkbot :link { font-weight: normal; text-decoration: none; color : #FFFFFF; }
+.f11_linkbot :visited { font-weight: normal; text-decoration: none; color : #FFFFFF; }
+.f11_linkbot :hover {
+	font-weight: normal;
+	text-decoration: none;
+	color : #2C7180;
+}
+.f9_hrtitu { font-family: Arial; font-size: 9px; font-weight: normal; color: #C0C0C0; text-align: justify }
+.textbox1 { height: 20px; width: 100px; font-family: Arial; font-size: 12px; color: #333333 }
+.textbox2 { height: 20px; width: 150px; font-family: Arial; font-size: 12px; color: #333333 }
+.textbox3 { height: 20px; width: 200px; font-family: Arial; font-size: 12px; color: #333333 }
+.textbox4 { height: 20px; width: 250px; font-family: Arial; font-size: 12px; color: #333333 }
+.textbox5 { height: 20px; width: 300px; font-family: Arial; font-size: 12px; color: #333333 }
+.textbox6 { height: 20px; width: 400px; font-family: Arial; font-size: 12px; color: #333333 }
+.textbox7 { height: 20px; width: 500px; font-family: Arial; font-size: 12px; color: #333333 }
+.textbox8 { height: 20px; width: 600px; font-family: Arial; font-size: 12px; color: #333333 }
+.cmbbox1 { height: 20px; width: 50px; font-family: Arial; font-size: 12px; color: #333333 }
+.cmbbox2 { height: 20px; width: 100px; font-family: Arial; font-size: 12px; color: #333333 }
+.cmbbox3 { height: 20px; width: 150px; font-family: Arial; font-size: 12px; color: #333333 }
+.cmbbox4 { height: 20px; width: 200px; font-family: Arial; font-size: 12px; color: #333333 }
+.cmbbox5 { height: 20px; width: 250px; font-family: Arial; font-size: 12px; color: #333333 }
+.cmbbox6 { height: 20px; width: 300px; font-family: Arial; font-size: 12px; color: #333333 }
+.cmbbox7 { height: 20px; width: 350px; font-family: Arial; font-size: 12px; color: #333333 }
+.skinboton { BORDER-RIGHT: #575757 1px solid; BORDER-TOP: #575757 1px solid; BACKGROUND: url('') #4A4A4C repeat-x 50% bottom; BORDER-LEFT: #575757 1px solid; COLOR: #FFFFFF; BORDER-BOTTOM: #454545 1px solid }
+.dl_tb TD { PADDING-RIGHT: 0px; BORDER-TOP: #fff 2px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; BORDER-BOTTOM: #ccc 1px solid; TEXT-ALIGN: left }
+.dl_tb TH { BORDER-TOP: #fff 2px solid; PADDING-LEFT: 30px; FONT-WEIGHT: bold; BACKGROUND: url(download_mb_biosdetail_t.gif) #e6f4fb no-repeat 10px 50%; PADDING-BOTTOM: 6px; PADDING-TOP: 6px; BORDER-BOTTOM: #ccc 1px solid }
+.bg_contearju { background-image:url(../imgs/arju_center.jpg); }
+.bg_conteladizq { background-image:url(../imgs/conteladizq_center.png); }
+.bg_title { background-image:url(../imgs/bg_title.jpg); }
+.bg_livideos { background-image:url(../imgs/bg_livideos.jpg); }
+.bg_busqueda { background-image:url(../imgs/bg_busqueda2.jpg); }
+.bg_busquedaa { 
+	background-image:url(../imgs/bg_busqueda3.png);
+	 }
+.bg_redess { background-image:url(../imgs/redess_center.png); }
+.bg_encuresu { background-image:url(../imgs/encuresu_center.jpg); }
+.bg_archivonotas { background-image:url(../imgs/archivonotas_center.jpg); }
+.bg_logomininter { background-image:url(../imgs/bg_logomininter.jpg); }
+h1 { margin: 1em 0 1.5em; font-size: 18px; }
+h2 { margin: 2em 0 1.5em; font-size: 16px; }
+p { margin: 0; }
+pre, pre+p, p+p { margin: 1em 0 0; }
+code { font-family: "Arial", monospace; }

@@ -13,11 +13,15 @@
 	<sec:http pattern="/img/**" security="none"/>
 	<sec:http pattern="/js/**" security="none"/>
 
-	<sec:http>
-       	<sec:intercept-url pattern="/login.htm" access="ROLE_ANONYMOUS"/>
-       	<sec:intercept-url pattern="/**" access="ROLE_ANONYMOUS,ROLE_SYSTEM"/>
-        <sec:form-login login-page="/login.htm" default-target-url="/home.htm" />
-        <sec:logout logout-success-url="/home.htm" />
+	<sec:http use-expressions="true">
+       	<sec:intercept-url pattern="/login.htm" access="permitAll"/>
+       	<sec:intercept-url pattern="/**" access="hasRole('ROLE_USUARIO')"/>
+       	
+        <sec:form-login login-page="/login.htm" 
+        				default-target-url="/home.htm" 
+        				always-use-default-target="true"
+        				authentication-failure-url="/login.htm"	/>
+        <sec:logout logout-success-url="/login.htm" />
     </sec:http>
 	
 	<sec:authentication-manager>

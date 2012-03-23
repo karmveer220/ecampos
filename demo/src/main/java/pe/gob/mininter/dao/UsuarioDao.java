@@ -1,9 +1,9 @@
 package pe.gob.mininter.dao;
 
-import pe.gob.mininter.entities.Users;
+import org.springframework.security.core.userdetails.User;
 
 public interface UsuarioDao {
 	
-	public Users obtenerUsuarioPorUsername(String username);
+	public User obtenerUsuarioPorUsername(String username);
 	
 }

@@ -38,7 +38,7 @@ public class Users extends User implements Serializable {
 	
 	public Users(String username, String password, boolean enabled,List<GrantedAuthority> authorities,
 			String usrnombrevh,String usrapepaternovh, String usrapematernovh,
-			Date usrfechanacimientodt,Integer estado) {
+			Date usrfechanacimientodt,String estado) {
 		super(username, password, enabled, true, true, true, authorities);
 		this.usuario = username;
 		this.clave = password;
