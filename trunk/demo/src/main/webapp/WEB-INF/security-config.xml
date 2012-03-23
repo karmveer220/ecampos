@@ -52,9 +52,7 @@
 		<constructor-arg ref="ldapServer"/>
 	</bean>
 	
-	<bean id="autenticacion" class="pe.gob.mininter.security.AutenticacionJdbcDaoImpl">
-  	
-   	</bean>
+	<bean id="autenticacion" class="pe.gob.mininter.security.AutenticacionJdbcDaoImpl"/>
 	 
 	<bean id="ldapAuthoritiesPopulator" class="org.springframework.security.ldap.authentication.UserDetailsServiceLdapAuthoritiesPopulator">
 		<constructor-arg ref="autenticacion"/>
