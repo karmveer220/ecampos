@@ -38,4 +38,11 @@ public class LoginController  {
 		return "home";
 	}
 	
+	//segundopaso
+	@RequestMapping("/vision.htm")
+    public String vision() {
+		return "/vision";
+    }
+	
+
 }
