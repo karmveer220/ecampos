@@ -1,10 +1,27 @@
 package pe.gob.mininter.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 
 /**
@@ -13,9 +30,12 @@ import java.util.List;
  */
 @Entity
 @Table(name="SIMIN_MAESTRO")
-public class SiminMaestro implements Serializable {
+public class SiminMaestro extends User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Transient
+	private List<Authorities> authoritiesList;
+	
 	@Id
 	@Column(name="C_PERL_CODIGO")
 	private long cPerlCodigo;
@@ -243,9 +263,43 @@ public class SiminMaestro implements Serializable {
 	@OneToMany(mappedBy="siminMaestro")
 	private List<SiminUsuariosistema> siminUsuariosistemas;
 
-    public SiminMaestro() {
-    }
+   
+	public SiminMaestro(String username, String password, boolean enabled,Collection<GrantedAuthority> authorities) {
+		super(username, password, enabled, true, true, true, authorities);
+		this.cSitCodigo = enabled==true ? "1" : "0";
+		this.nMstLogin = username;
+		this.nMstClave = password;
+	}
+	
+	public SiminMaestro(String username, String password, boolean enabled,List<GrantedAuthority> authorities,
+			String usrnombrevh,String usrapepaternovh, String usrapematernovh,
+			Date usrfechanacimientodt,String estado) {
+		super(username, password, enabled, true, true, true, authorities);
+		this.nMstLogin = username;
+//		this.nMstClave = password;
+		this.nMstNombre=usrnombrevh;
+		this.nMstApepaterno= usrapepaternovh;
+		this.nMstApematerno = usrapematernovh;
+	    this.dMstFechanacimiento = usrfechanacimientodt;
+	    this.cSitCodigo = estado;
+	}
 
+	public static SiminMaestro getUsuarioBean() {
+		SiminMaestro nu = (SiminMaestro)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		if(nu != null) {
+			return nu;
+		}
+		else return null;
+	}
+	 public SiminMaestro() {		
+			super("default", "default", true, true, true, true , uno() );		
+		}
+	 public static List<GrantedAuthority> uno(){
+			List<GrantedAuthority> oo = new ArrayList<GrantedAuthority>(); 
+			oo.add(new GrantedAuthorityImpl("IS_AUTHENTICATED_ANONYMOUSLY") );
+			return oo;
+		}
+		
 	public long getCPerlCodigo() {
 		return this.cPerlCodigo;
 	}
@@ -812,6 +866,14 @@ public class SiminMaestro implements Serializable {
 
 	public void setSiminUsuariosistemas(List<SiminUsuariosistema> siminUsuariosistemas) {
 		this.siminUsuariosistemas = siminUsuariosistemas;
+	}
+
+	public List<Authorities> getAuthoritiesList() {
+		return authoritiesList;
+	}
+
+	public void setAuthoritiesList(List<Authorities> authoritiesList) {
+		this.authoritiesList = authoritiesList;
 	}
 	
 }

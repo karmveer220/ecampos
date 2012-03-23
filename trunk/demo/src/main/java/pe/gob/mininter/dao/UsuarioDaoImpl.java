@@ -10,11 +10,13 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
 
 import pe.gob.mininter.entities.SiminMaestro;
 import pe.gob.mininter.entities.SiminUsuariosistema;
 import pe.gob.mininter.entities.Users;
+import pe.gob.mininter.utiles.Parametros;
 
 @Repository
 public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
@@ -25,16 +27,17 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 	}
 	
 	@Override
-	public Users obtenerUsuarioPorUsername(String username) {
+	public User obtenerUsuarioPorUsername(String username) {
 		logger.debug("obtenr usuario  por username en la bd");
 	
 		Query q = getSession().createQuery("from SiminMaestro s where  s.nMstLogin = :username ")
         .setString("username", username);
 		SiminMaestro user = (SiminMaestro) q.uniqueResult();
-		logger.debug(user);
+		logger.debug("Usuario en BD = "+user);
 		
-		Query q2 =  getSession().createQuery("from SiminUsuariosistema u where u.siminMaestro.cPerlCodigo  = :iduser ")
-	        .setInteger("iduser",new Long(user.getCPerlCodigo()).intValue() );
+		Query q2 =  getSession().createQuery("from SiminUsuariosistema u where u.siminMaestro.cPerlCodigo  = :iduser and u.siminSistema.cSisCodigo = :idsis ")
+	        .setInteger("iduser",new Long(user.getCPerlCodigo()).intValue() )
+	        .setInteger("idsis", Parametros.SISTEMA_INTRANET );
 		
 		 List<SiminUsuariosistema> permisos = q2.list();
 		 logger.debug("permisos para esta persona = "+permisos.size());
@@ -44,9 +47,8 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 			 oo.add(new GrantedAuthorityImpl("ROLE_" + rol.getSiminTipousuario().getCTusuDetalle() ) );
 			 logger.debug( "ROLE_" + rol.getSiminTipousuario().getCTusuDetalle()  );
 		 }
-			
 		
-		 Users usuario= new Users(user.getNMstLogin(), user.getNMstClave(), true, oo);
+		 SiminMaestro usuario= new SiminMaestro(user.getNMstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDMstFechanacimiento(), user.getCSitCodigo() );
 		
         return usuario; 
 		        

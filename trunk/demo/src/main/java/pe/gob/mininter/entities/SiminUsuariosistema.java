@@ -2,6 +2,9 @@ package pe.gob.mininter.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.security.core.userdetails.User;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -12,7 +15,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name="SIMIN_USUARIOSISTEMA")
-public class SiminUsuariosistema implements Serializable {
+public class SiminUsuariosistema  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
