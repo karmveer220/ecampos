@@ -18,7 +18,7 @@ public class LoginController  {
 		return "/login";
     }
 	
-	@RequestMapping("/inicio.htm")
+	@RequestMapping("/home.htm")
 	public String inicio( ModelMap model , HttpServletRequest request ){
 		logger.debug("primer metodo al que ingresa");
 		//model.put("limagenes", "" );

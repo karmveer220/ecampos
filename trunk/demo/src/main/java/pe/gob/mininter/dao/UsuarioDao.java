@@ -1,5 +1,9 @@
 package pe.gob.mininter.dao;
 
-public class UsuarioDao {
+import pe.gob.mininter.entities.Users;
 
+public interface UsuarioDao {
+	
+	public Users obtenerUsuarioPorUsername(String username);
+	
 }
