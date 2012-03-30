@@ -43,8 +43,7 @@ public class Empleado implements Serializable {
 	
 	
 	public String getNombreCompleto() {
-		
-		return getNombresEmp() + " "+ getApeMaternoEmp() + " "+ getApePaternoEmp();
+	return getNombresEmp() + " "+ getApeMaternoEmp() + " "+ getApePaternoEmp() ;
 	}
 
 	public void setNombreCompleto(String nombreCompleto) {
@@ -52,7 +51,8 @@ public class Empleado implements Serializable {
 	}
 
 
-
+	
+	
 	String nombreCompleto;
 	String apeNombre;
 	String apePaternoEmp;
@@ -354,6 +354,9 @@ public class Empleado implements Serializable {
 		this.lug_nac_disEmp = lug_nac_disEmp;
 	}
 
+	
+
+	
 	public String getFecNacimEmp() {
 		return fecNacimEmp;
 	}
