@@ -38,7 +38,7 @@ public class SiminSistema implements Serializable {
 	private BigDecimal fSisEstado;
 
 	@Column(name="N_SIS_ABREVIATURA")
-	private String nSisAbreviatura;
+	private String nsisAbreviatura;
 
 	@Column(name="N_SIS_DESCRIPCION")
 	private String nsisDescripcion;
@@ -98,12 +98,12 @@ public class SiminSistema implements Serializable {
 		this.fSisEstado = fSisEstado;
 	}
 
-	public String getNSisAbreviatura() {
-		return this.nSisAbreviatura;
+	public String getNsisAbreviatura() {
+		return this.nsisAbreviatura;
 	}
 
-	public void setNSisAbreviatura(String nSisAbreviatura) {
-		this.nSisAbreviatura = nSisAbreviatura;
+	public void setNsisAbreviatura(String nSisAbreviatura) {
+		this.nsisAbreviatura = nSisAbreviatura;
 	}
 
 	public String getNsisDescripcion() {

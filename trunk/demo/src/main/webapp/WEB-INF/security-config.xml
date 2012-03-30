@@ -21,6 +21,7 @@
         				default-target-url="/home.htm" 
         				always-use-default-target="true"
         				authentication-failure-url="/login.htm"	/>
+        				<sec:remember-me/>
         <sec:logout logout-success-url="/login.htm" />
     </sec:http>
 	

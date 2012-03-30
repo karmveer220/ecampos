@@ -73,7 +73,7 @@ public class SiminUnidadorganica implements Serializable {
 	private String nUnoAbreviatura;
 
 	@Column(name="N_UNO_DESCRIPCION")
-	private String nUnoDescripcion;
+	private String nunoDescripcion;
 
 	@Column(name="N_UNO_GENERAL")
 	private String nUnoGeneral;
@@ -242,14 +242,14 @@ public class SiminUnidadorganica implements Serializable {
 		this.nUnoAbreviatura = nUnoAbreviatura;
 	}
 
-	public String getNUnoDescripcion() {
-		return this.nUnoDescripcion;
+	public String getNunoDescripcion() {
+		return this.nunoDescripcion;
 	}
 
-	public void setNUnoDescripcion(String nUnoDescripcion) {
-		this.nUnoDescripcion = nUnoDescripcion;
+	public void setNunoDescripcion(String nunoDescripcion) {
+		this.nunoDescripcion = nunoDescripcion;
 	}
-
+	
 	public String getNUnoGeneral() {
 		return this.nUnoGeneral;
 	}

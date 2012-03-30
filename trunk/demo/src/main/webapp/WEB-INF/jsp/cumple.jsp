@@ -29,7 +29,7 @@ body {background-color: #D9ECFF;}
 <form id="form1" name="form1" method="post" action="">
        <table width="600" border="0" cellpadding="1" class="soporte">
          <tr>
-           <td colspan="3" bgcolor="#0066CC" style="color:#FFFFFF; font-size:18px">Cumpleaños del Mes </td>
+           <td colspan="3" bgcolor="#0066CC" style="color:#FFFFFF; font-size:18px">Cumpleaños del D&iacute;a </td>
          </tr>
          <tr>
            <td width="231" bgcolor="#B0D8FF">    <ul>

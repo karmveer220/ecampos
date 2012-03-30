@@ -15,6 +15,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import pe.gob.mininter.dao.UsuarioDao;
@@ -36,25 +37,32 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 	public User obtenerUsuarioPorUsername(String username) {
 		logger.debug("obtenr usuario  por username en la bd");
 	
-		Query q = getSession().createQuery("from SiminMaestro s where  s.nMstLogin = :username ")
-        .setString("username", username);
+		Query q = getSession().createQuery("select s from SiminMaestro s, SiminUnidadorganica o where s.siminUnidadorganica1.cUnoCodigo = o.cUnoCodigo " +
+				" and  s.nMstLogin = :username ")
+			.setString("username", username);
 		SiminMaestro user = (SiminMaestro) q.uniqueResult();
-		logger.debug("Usuario en BD = "+user);
+		user.getSiminUnidadorganica1().getNunoDescripcion();
+		logger.debug("ahora"+user.getSiminUnidadorganica1().getNunoDescripcion());
+
 		
 		Query q2 =  getSession().createQuery("from SiminUsuariosistema u where u.siminMaestro.cPerlCodigo  = :iduser and u.siminSistema.cSisCodigo = :idsis ")
 	        .setInteger("iduser",new Long(user.getCPerlCodigo()).intValue() )
 	        .setInteger("idsis", Parametros.SISTEMA_INTRANET );
 		
-		 List<SiminUsuariosistema> permisos = q2.list();
-		 logger.debug("permisos para esta persona = "+permisos.size());
+		List<SiminUsuariosistema> permisos = q2.list();
+		logger.debug("permisos para esta persona = "+permisos.size());
 		 
-		 List<GrantedAuthority> oo = new ArrayList<GrantedAuthority>(); 
-		 for(SiminUsuariosistema rol : permisos){
-			 oo.add(new GrantedAuthorityImpl("ROLE_" + rol.getSiminTipousuario().getCTusuDetalle() ) );
-			 logger.debug( "ROLE_" + rol.getSiminTipousuario().getCTusuDetalle()  );
-		 }
+		List<GrantedAuthority> oo = new ArrayList<GrantedAuthority>(); 
+		for(SiminUsuariosistema rol : permisos){
+			oo.add(new GrantedAuthorityImpl("ROLE_" + rol.getSiminTipousuario().getCTusuDetalle() ) );
+			logger.debug( "ROLE_" + rol.getSiminTipousuario().getCTusuDetalle()  );
+		}
 		
-		 SiminMaestro usuario= new SiminMaestro(user.getNMstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDMstFechanacimiento(), user.getCSitCodigo() );
+		SiminMaestro usuario= new SiminMaestro(user.getNMstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDMstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion() );
+		//usuario.setNMstNombre(user.getNMstNombre());
+		
+		logger.debug(usuario.toString());
+		
 		
         return usuario; 
 		        
@@ -67,8 +75,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 				.setString("username", username)
 				.list();
 	}
-	
-	
+		
 	@Override
 	public List<SiminMaestro> listarCumpleaniosMes() {
 		Calendar hoy = new GregorianCalendar();
@@ -76,16 +83,23 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		
 		SQLQuery query = (SQLQuery) this.getSession().createSQLQuery(" select s.* from simin_maestro s " +
 				"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
-		 		" and to_char(s.d_mst_fechanacimiento, 'MM')" +
-		 		" like :fec  and s.c_sit_codigo=1 and substr(c_uno_codigointerno,0,3) like (select substr(ue.c_uno_codigointerno,0,3) from simin_unidadorganica ue where ue.c_uno_codigo = 67) ") ;
+		 		" and to_char(s.d_mst_fechanacimiento, 'dd/MM')" +
+		 		" like :fec  and s.c_sit_codigo=1 ") ;
 		query.addEntity(SiminMaestro.class);
-		query.setString("fec", ("0"+(hoy.get(Calendar.MONTH)+1)));
+		query.setString("fec", (""+(hoy.get(Calendar.DATE)+"/0"+ (hoy.get(Calendar.MONTH)+1))));
 
+		// hoy.get(Calendar.DATE)+"/0"+ (hoy.get(Calendar.MONTH)+1)
 
 		logger.debug("as"+hoy.get(Calendar.MONTH)+1);
 		 logger.debug("pinta algo"+query.getQueryString());
 		 
 		 List<SiminMaestro> lis =query.list();
+		 
+		 
+		 /*SQLQuery query = (SQLQuery) this.getSession().createSQLQuery(" select s.* from simin_maestro s " +
+					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
+			 		" and to_char(s.d_mst_fechanacimiento, 'dd')" +
+			 		" like :fec  and s.c_sit_codigo=1 and substr(c_uno_codigointerno,0,3) like (select substr(ue.c_uno_codigointerno,0,3) from simin_unidadorganica ue where ue.c_uno_codigo = 67) ") ;*/
 		 
 		 /*List<SiminMaestro> lis = this.getSession().createQuery(" from SiminMaestro s, SiminUnidadOrganica u where s.siminUnidadorganica1.cUnoCodigo = u.cUnoCodigo " +
 		 		" and to_char(s.dMstFechanacimiento, 'dd/MM')" +

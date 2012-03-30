@@ -27,7 +27,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 	@Override
 	public UserDetails loadUserByUsername(String username) {
-		return null;
+		return usuarioDao.obtenerUsuarioPorUsername(username);
 	}
 	
 	@Override
