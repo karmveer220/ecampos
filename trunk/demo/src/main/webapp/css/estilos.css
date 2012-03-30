@@ -43,8 +43,8 @@ h4{font-weight:700;font-size:1em;margin:0 0 .5em}
 h5{font-weight:700;font-size:.8em;margin:0 0 .5em}
 #content{padding-bottom:1em;margin-bottom:3em;min-height:550px}
 #full-content{padding-top:30px}
-#left-content{background:none repeat scroll 0 0 #EBEBEB;border:1px solid #D3D3D3;float:left;min-height:515px;position:relative;width:190px;padding:20px}
-#right-content{float:right;position:relative;width:606px}
+#left-content{background:none repeat scroll 0 0 #EBEBEB;border:1px solid #D3D3D3;float:left;min-height:515px;position:relative;width:160px;padding:20px}
+#right-content{float:right;position:relative;width:650px}
 #left-content .sider{padding-bottom:2em}
 #left-content .sider h2{background:none repeat scroll 0 0 transparent;font-size:.9em;margin-bottom:4px;padding-bottom:10px;padding-top:3px}
 #left-content .sider img{vertical-align:middle;background-color:transparent;margin:-3px 0 0}
@@ -60,3 +60,4 @@ ul.navlist a{display:block;font-size:.9em;margin:0;padding:3px 0}
 .clean{margin:0;padding:0}
 .link-img{vertical-align:middle;background-color:transparent;padding-right:4px;margin:-2px 0 0}
 .left{margin-top:5px;text-align:right}
+

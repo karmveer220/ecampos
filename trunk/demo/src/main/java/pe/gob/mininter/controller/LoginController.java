@@ -46,11 +46,46 @@ public class LoginController  {
 		return "/vision";
     }
 	
+
+	
+	//eco
+	@RequestMapping("/eco.htm")
+    public String eco() {
+		return "/eco";
+    }
+	
+
+	//cumple
+	@RequestMapping("/cumple.htm")
+	public String cumple( ModelMap model , HttpServletRequest request ){
+	LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());			
+	request.setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes( ) );
+	return "cumple";
+	}
+	
 	//sistemas
 	@RequestMapping("/sistemas.htm")
-    public String sistemas() {
-		return "/sistemas";
+	public String sistemas( ModelMap model , HttpServletRequest request ){
+	LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());			
+	request.setAttribute("lstSistemas", usuarioService.listarSistemas(u.getUsername()) );
+	return "sistemas";
+	}
+	
+	//soporte
+	@RequestMapping("/soporte.htm")
+    public String soporte() {
+		return "/soporte";
     }
+	
+	//campañas
+	@RequestMapping("/campanas.htm")
+    public String campanas() {
+		return "/campanas";
+    }
+	
+	
+	
+		
 	
 	
 }
