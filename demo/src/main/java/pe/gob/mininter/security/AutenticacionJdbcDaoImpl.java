@@ -19,11 +19,11 @@ public class AutenticacionJdbcDaoImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) {
 		try {
-			logger.debug("debo entregar unusuariocolalista depermisos cargada");
+			logger.debug("debo entregar unusuariocolalista depermisos cargada");			
 			return usuarioDao.obtenerUsuarioPorUsername(username);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new UsernameNotFoundException("No hay notaria relacionada a este usuario");
+			throw new UsernameNotFoundException("No existe el usuario en la base de datos");
 		}
 	}
 

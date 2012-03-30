@@ -1,12 +1,10 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  
  
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-
 
 <html>
 <head>
@@ -25,63 +23,45 @@
 <body>
 
 	<div id="main-container">
-  <div id="header" style="background-image: url('images/cabeceraa.jpg');">
-    <ul id="topnav">
-    
-<li><a href="home.htm" > <img class="link-img" alt="inicio" src="images/home.png">Inicio</a></li>
-      
-<li><a href="http://www.mininter.gob.pe" target="_blank"> <img class="link-img" alt="Portal" src="images/logo_min.png">Portal</a></li>
-      
- <li><a href="http://correo.mininter.gob.pe" target="_blank" > <img class="link-img" alt="Correo" src="images/mail.png">Correo</a></li>
-    </ul>
-    
-    
-    <a id="logo" href="#"><img src="images/logo_peru.jpg" alt="Ministerio del Interior" name="logo_img" width="201" height="47" border="0" id="logo_img"></a> </div>
- 
- 
-  <!-- #header -->
-  <div class="otro" id="tabs-container">
-    
-   
-   <span style="margin-left:60px">Usuario:  ${pageContext.request.userPrincipal.name}</span>
-   <!--  <span style="margin-left:60px">Usuario:  ${pageContext.request.userPrincipal.name}  ${pageContext.request.userPrincipal.principal.dn} ${pageContext.request.userPrincipal}</span> -->  
-   <span style="float:right; margin-right:20px;"> <script language="javascript">
-document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_meses[mes - 1] + " de " + anio)
-</script>
-   </span>
-
-   
-   
-   
-   </div>
+    <div id="header" style="background-image: url('images/cabecera.jpg');">
+        <a id="logo" href="#"><img src="images/logo_peru.jpg" alt="Ministerio del Interior" name="logo_img" width="201" height="47" border="0" id="logo_img"></a> 
+        <ul id="topnav">
+            <li><a href="home.htm" > <img class="link-img" alt="inicio" src="images/home.png">Home</a></li>
+            <li><a href="http://www.mininter.gob.pe/ target="_blank""> <img class="link-img" alt="Portal" src="images/logo_min.png">Portal</a></li>
+            <li><a href="http://correo.mininter.gob.pe" target="_blank" > <img class="link-img" alt="Correo" src="images/mail.png">Correo</a></li>
+        </ul>
+    </div>
+	<div class="clearfix" id="tabs-container">
+        <table cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="left"><span style="margin-left:10px" >Bienvenido: <c:out value="${usuario.nombreCompleto}"/>  </span></td>
+                <td align="center"><span>Area: <c:out value="${usuario.siminUnidadorganica1.nunoDescripcion}"/> </span></td>
+                <td align="right"><span style="margin-right:10px">IP: <c:out value="${usuario.ipPrivada}"/></span> </td>
+            </tr>        
+        </table>
+        <span style="float:right; margin-right:20px;"> 
+        <script language="javascript">
+            document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_meses[mes - 1] + " de " + anio)
+        </script>
+	</span>
+	</div>
   <!-- #tabs-container -->
   <div class="clearfix" style="background: none repeat scroll 0% 0% #F7F7F7;" id="content">
     <div id="full-content">
       <div id="left-content">
-        <div class="sider">
-         
-         
-          <!--   <h2><img border="0" class="link-img" alt="" src="images/Favorite.png">Menu Principal</h2>-->
-         
-         <div  > <jsp:include page="menu.html" /></div>
-         
-         
-         
-         
-          <br />
-          <h2><img border="0" class="link-img" alt="" src="images/Users_Chat.png">Avisos importantes</h2>
+      <div class="sider">
+      <div  > <jsp:include page="menu.html" /></div>
+      <br />
+      
+	  <h2><img border="0" class="link-img" alt="" src="images/Users_Chat.png">Avisos importantes</h2>
 		  
-		  <marquee direction=up onMouseOver="this.stop();" onMouseOut="this.start();">
-			Avisos Importantes<br>
-			Avisos Importantes<br>
-		  <a href="doc/varios/LoncherasEscolares[1].pdf">Lonchera Escolar</a><br>
-		  </marquee>
-		  
-      <!--  <p style="padding:0; margin:0; margin-bottom:5px;">La Candelaria</p>   -->  
-    
- <!--	<img style="border:1px solid #D3D3D3;" border="0" class="link-img" alt="Fiesta de la Virgen de la Candelaria" src="images/candelaria.jpg">  -->  
+	  <marquee direction=up onMouseOver="this.stop();" onMouseOut="this.start();">
+		Avisos Importantes<br>
+		Avisos Importantes<br>
+	  <a href="doc/varios/LoncherasEscolares[1].pdf">Lonchera Escolar</a><br>
+	  </marquee>
 	
-	 <DIV class=menucinas>
+	 <div class=menucinas>
 	 
 	  <h2><img border="0" class="link-img" alt="" src="images/oficinass.png" height="30" width="30">Oficinas del Sector</h2>
 	  
@@ -136,13 +116,12 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
                         border=0 
                         src="images/pnp.png" 
                         width=15 height=15> POLICIA 
-                        NACIONAL</A></P></DIV></DIV></DIV>
-	
+                        NACIONAL</A></P></div></div></div>
 	
 	 </div>
 		  
       </div>
-      <!-- #left-content -->
+      
       <div id="right-content">
         	<div class="emo verytop"> 
 				<iframe  id="baner" name="baner" frameborder="0" width="600px" height="300px" src="eco.htm" >
@@ -153,8 +132,8 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
 		
 
 		
-	    <div id="right-content">
-        <div class="verytop">
+	<div id="right-content">
+	<div class="verytop">
         
           <div id="topPanel">
   			
@@ -196,9 +175,7 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
 			
 		</div>
 
-	</div>  
-        
-	  
+	</div> 
               
               <tr>
                 <td> <a href="rptasistencia.htm" target="_blank"> <img border="0" class="link-img" alt="" src="images/reloj.GIF" width="25" height="25" /> </a> </td>
@@ -206,13 +183,9 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
               </tr>
               
               <tr>
-                <td> <a href="rptcasboleta.htm" target="baner"> <img border="0" class="link-img" alt="" src="images/icon_libro.png" width="25" height="25" /> </a> </td>
+                <td> <a href="rptcasboleta.htm" target="_blank"> <img border="0" class="link-img" alt="" src="images/icon_libro.png" width="25" height="25" /> </a> </td>
                 <td>Boleta de pago</td>
-              </tr>
-        
-		</div>
-		
-	    </div>
+              </tr>	
 		
 	  </div>
       <!-- #right-content --> 
@@ -222,8 +195,8 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
   </div>
   <!-- #content -->
   <div id="footer" >
-    <p align="center"  id="copyright" >Direccin: Plaza 30 de Agosto s/n Urb. Corpac - San Isidro - Lima | Atencin: 8:00 a 16:15 hrs.<br />
-      Telfonos: Central 01 518-0000 - Prensa 980122710<br />
+    <p align="center"  id="copyright" >Direcci&oacute;n: Plaza 30 de Agosto s/n Urb. Corpac - San Isidro - Lima | Atención: 8:00 a 16:15 hrs.<br />
+      Tel&eacute;fonos: Central 01 518-0000 - Prensa 980122710<br />
       <strong>Ministerio del Interior</strong></p>
     <div class="clear"></div>
   </div>

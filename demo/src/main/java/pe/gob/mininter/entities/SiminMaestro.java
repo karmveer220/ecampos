@@ -23,6 +23,8 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
+import pe.gob.mininter.utiles.Utiles;
+
 
 /**
  * The persistent class for the SIMIN_MAESTRO database table.
@@ -263,7 +265,13 @@ public class SiminMaestro extends User implements Serializable {
 	@OneToMany(mappedBy="siminMaestro")
 	private List<SiminUsuariosistema> siminUsuariosistemas;
 
-   
+	//Valores Propios
+	@Transient
+	private String ipPublica;
+	
+	@Transient
+	private String ipPrivada;
+
 	public SiminMaestro(String username, String password, boolean enabled,Collection<GrantedAuthority> authorities) {
 		super(username, password, enabled, true, true, true, authorities);
 		this.cSitCodigo = enabled==true ? "1" : "0";
@@ -273,7 +281,7 @@ public class SiminMaestro extends User implements Serializable {
 	
 	public SiminMaestro(String username, String password, boolean enabled,List<GrantedAuthority> authorities,
 			String usrnombrevh,String usrapepaternovh, String usrapematernovh,
-			Date usrfechanacimientodt,String estado) {
+			Date usrfechanacimientodt,String estado, String nunoDescripcion) {
 		super(username, password, enabled, true, true, true, authorities);
 		this.nMstLogin = username;
 //		this.nMstClave = password;
@@ -282,7 +290,10 @@ public class SiminMaestro extends User implements Serializable {
 		this.nMstApematerno = usrapematernovh;
 	    this.dMstFechanacimiento = usrfechanacimientodt;
 	    this.cSitCodigo = estado;
-	}
+	    this.siminUnidadorganica1 = new SiminUnidadorganica();
+	    this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
+	    
+	}//, String nUnoDescripcion
 
 	public static SiminMaestro getUsuarioBean() {
 		SiminMaestro nu = (SiminMaestro)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
@@ -294,7 +305,9 @@ public class SiminMaestro extends User implements Serializable {
 	 public SiminMaestro() {		
 			super("default", "default", true, true, true, true , uno() );		
 		}
-	 public static List<GrantedAuthority> uno(){
+
+
+	public static List<GrantedAuthority> uno(){
 			List<GrantedAuthority> oo = new ArrayList<GrantedAuthority>(); 
 			oo.add(new GrantedAuthorityImpl("IS_AUTHENTICATED_ANONYMOUSLY") );
 			return oo;
@@ -876,9 +889,26 @@ public class SiminMaestro extends User implements Serializable {
 		this.authoritiesList = authoritiesList;
 	}
 	
+	public String getIpPublica() {
+		return ipPublica;
+	}
+
+	public void setIpPublica(String ipPublica) {
+		this.ipPublica = ipPublica;
+	}
+
+	public String getIpPrivada() {
+		return ipPrivada;
+	}
+
+	public void setIpPrivada(String ipPrivada) {
+		this.ipPrivada = ipPrivada;
+	}
+
 	@Transient
 	public String getNombreCompleto(){
-		return nMstNombre + " " + nMstApepaterno + " " + nMstApematerno;
+		String nombreCompleto = nMstNombre + " " + nMstApepaterno + " " + nMstApematerno;
+		return Utiles.primeraMayuscula(nombreCompleto.toLowerCase());
 	}
 	
 }

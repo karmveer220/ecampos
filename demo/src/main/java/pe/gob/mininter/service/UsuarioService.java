@@ -17,4 +17,6 @@ public interface UsuarioService {
 	public List<SiminUsuariosistema> listarSistemas(String username);
 
 	public List<SiminMaestro> listarCumpleaniosMes();
+	
+	
 }

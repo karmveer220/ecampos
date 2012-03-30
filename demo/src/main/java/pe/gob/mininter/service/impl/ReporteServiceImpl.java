@@ -1,4 +1,4 @@
-package pe.gob.mininter.service;
+package pe.gob.mininter.service.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import pe.gob.mininter.dao.ReporteDao;
 import pe.gob.mininter.entities.BReporteCas;
 import pe.gob.mininter.entities.Marcacion;
+import pe.gob.mininter.service.ReporteService;
 
 @Service
 public class ReporteServiceImpl implements ReporteService {

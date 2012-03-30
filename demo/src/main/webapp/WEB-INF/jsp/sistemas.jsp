@@ -24,7 +24,7 @@
                 <ul>
           	 <c:forEach items="${lstSistemas}" var="sis">
 				 	<li>
-				 		<a href="http://servermininter/${sis.siminSistema.nsisDescripcion}" target="_blank">
+				 		<a href="http://srvprueba:8080/${sis.siminSistema.nsisAbreviatura}" target="_blank">
 				 			<c:out value="${sis.siminSistema.nsisDescripcion}"/>
 				 		</a>
 				 	</li>				 	
