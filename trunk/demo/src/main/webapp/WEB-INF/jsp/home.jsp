@@ -19,12 +19,13 @@
       <tr>
         <td colspan="3" align="center">
         	<div id="header" style="background-image: url('images/cabecera.jpg');">
-                <a id="logo" href="#"><img src="images/logo_peru.jpg" alt="Ministerio del Interior" name="logo_img" width="201" height="47" border="0" id="logo_img"></a> 
+                 
                 <ul id="topnav">
                     <li><a href="home.htm" > <img class="link-img" alt="inicio" src="images/home.png">Home</a></li>
                     <li><a href="http://www.mininter.gob.pe/ target="_blank""> <img class="link-img" alt="Portal" src="images/logo_min.png">Portal</a></li>
                     <li><a href="http://correo.mininter.gob.pe" target="_blank" > <img class="link-img" alt="Correo" src="images/mail.png">Correo</a></li>
                 </ul>
+                <a id="logo" href="#"><img src="images/logo_peru.jpg" alt="Ministerio del Interior" name="logo_img" width="201" height="47" border="0" id="logo_img"></a>
             </div>
         </td>
       </tr>
@@ -55,8 +56,8 @@
 		  		</marquee>
 				
 		 		<div class=menucinas>
-		 		<h2><img border="0" class="link-img" alt="" src="images/oficinass.png" height="30" width="30">Oficinas del Sector</h2>
-					<div align="left">
+		 			<h2><img border="0" class="link-img" alt="" src="images/oficinass.png" height="30" width="30">Oficinas del Sector</h2>
+					<div align="left" class="botonfi">
 					<div>
 						<p class=botonfi><a style="COLOR:#333333; TEXT-DECORATION: none" href="http://www.mininter.gob.pe/defensoria/" target=_blank><img class=buttonimg border=0 alt="" src="images/defensoria.png"width=15 height=15> DEFENSORIA DE LA PNP</a></p>
 					</div>
@@ -81,41 +82,51 @@
 		        </div>	
     		</div>
         </td>  
-        <td colspan="2">
-			<iframe  id="baner" name="baner" frameborder="0" width="600px" height="300px" src="eco.htm" ></iframe>
-        	<div id="topPanel">
-	  			<div id="headerPanelfast">
-					<h2>Utilitarios</h2>
-						<p>
-							<a href="rptasistencia.htm" target="_blank"> Boleta de Pago </a>
-							<a href="rptcasboleta.htm" target="_blank"> Asitencia </a>
-						</p>
-				</div>
-				<div id="headerPanelthird">
-					<h2>Onomásticos</h2>
-						<p>Relación de cumpleaños </br>
-			 			del Ministerio del Interior </p><a href="cumple.htm" target="baner"></a>
-				</div>
-			    <div id="headerPanelsecond">
-	        		<h2>Sistemas</h2>
-						<p>Sistemas Informáticos  </br>
-						del Ministerio del Interior</p><a href="sistemas.htm" target="baner" > </a>
-			   </div>
-			    <div id="headerPanelfour" >
-					<h2 >Menu</h2>
-						<p>Semana del 26 al </br>
-						31 de Marzo</p><a href="http://www.mininter.gob.pe/comunicados/menu.pdf" target="_blank"></a>
-				</div>
-				<div id="headerPanelfive">
-					<h2>Soporte</h2>
-						<p>Soporte Técnico </p><a href="soporte.htm" target="baner" ></a>
-				</div>
-			    <div id="headerPanelsix">
-	        		<h2>Campañas</h2>
-					<p>Campañas Actuales</p><a href="campanas.htm" target="baner" > </a>
-				</div>
-			</div>
-		   
+        <td colspan="2" valign="top" class="emo verytop">
+        	<table>	
+        		<tr>
+        			<td><iframe  id="baner" name="baner" frameborder="0" width="600px" height="300px" src="eco.htm" ></iframe></td>			
+        		</tr>
+        		<tr>
+        			<td>&nbsp;</td>			
+        		</tr>
+        		<tr>
+        			<td>
+        				<div id="topPanel">
+			  			<div id="headerPanelfast">
+							<h2>Utilitarios</h2>
+								<p>
+									Boleta de Pago
+									Asitencia
+								</p><a href="rptasistencia.htm" target="_blank"></a>
+						</div>
+						<div id="headerPanelthird">
+							<h2>Onomásticos</h2>
+								<p>Relación de cumpleaños </br>
+					 			del Ministerio del Interior </p><a href="cumple.htm" target="baner"></a>
+						</div>
+					    <div id="headerPanelsecond">
+			        		<h2>Sistemas</h2>
+								<p>Sistemas Informáticos  </br>
+								del Ministerio del Interior</p><a href="sistemas.htm" target="baner" > </a>
+					   </div>
+					    <div id="headerPanelfour" >
+							<h2 >Menu</h2>
+								<p>Semana del 26 al </br>
+								31 de Marzo</p><a href="http://www.mininter.gob.pe/comunicados/menu.pdf" target="_blank"></a>
+						</div>
+						<div id="headerPanelfive">
+							<h2>Soporte</h2>
+								<p>Soporte Técnico </p><a href="soporte.htm" target="baner" ></a>
+						</div>
+					    <div id="headerPanelsix">
+			        		<h2>Campañas</h2>
+							<p>Campañas Actuales</p><a href="campanas.htm" target="baner" > </a>
+						</div>
+						</div>
+        			</td>			
+        		</tr>
+        	</table>
         </td>    
       </tr>
       <tr>
