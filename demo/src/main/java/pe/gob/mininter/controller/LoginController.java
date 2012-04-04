@@ -65,9 +65,9 @@ public class LoginController  {
 		return "home";
 	}
 
-	@RequestMapping("/vision.htm")
+	@RequestMapping("/infinst.htm")
     public String vision() {
-		return "/vision";
+		return "/infinst";
     }
 	
 	//eco
@@ -104,7 +104,7 @@ public class LoginController  {
 		return "/campanas";
     }
 	
-	
+
 	
 		
 	

@@ -102,8 +102,8 @@ public class ReportesController {
    			//Reciber parametros
    			
    		//	BNombrado nom = (BNombrado) request.getSession().getAttribute("beanNom");
-   			String  FechaIni = "01/02/2012";//request.getParameter("fec_ini_asistencia");
-			String  FechaFin = "29/02/2012";//request.getParameter("fec_fin_asistencia");
+   			String  FechaIni = "01/03/2012";//request.getParameter("fec_ini_asistencia");
+			String  FechaFin = "31/03/2012";//request.getParameter("fec_fin_asistencia");
 			
 			logger.debug("FechaIni = "+FechaIni);
    			logger.debug("FechaFin = "+FechaFin);

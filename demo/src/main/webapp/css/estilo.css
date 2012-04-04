@@ -10,21 +10,20 @@ a{color:#333}
 a img{border:0}
 :focus{outline:none}
 h1,h2,h3,h4,h5{line-height:1.6em;margin:0 0 1em}
-p{line-height:1.6em;margin:0 0 1em; text-align:left}
+p{line-height:1.6em;margin:0 0 1em; text-align:center}
 wbr:after{content:"\00200B"}
 form{margin:0;padding:0}
 div#main-container{min-height:600px;background:#F7F7F7;width:866px;margin:0 auto;padding:5px 0 0}
 .clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
-.clearfix{display:inline-block;height: 15px }
-.datuser{display:inline-block;height: 15px;background-color:#666666; font-family:tahoma;font-size: 10px; color:white;text-align: left;  }
+.clearfix{display:inline-block;height: 15px}
 .otro{display:inline-block;height:10px;width:866px}
 html[xmlns] .clearfix{display:block}
 * html .clearfix{height:1%}
 #header{margin:0;padding:0px 0;height: 90px}
-#topnav{float:right;display:inline;width:210px;margin:5px 10px 0 0;}
-#topnav ul{display:inline;font-size:.8em;list-style:none;padding-left:0;margin:0}
-#topnav li{list-style:none;display:inline}
-#topnav li a,#header #topnav li strong{font-size:.8em;display:block;float:left;color:#fff;margin:3px 0 3px 6px;padding:3px 0 6px 3px;font-weight: bold;}
+#header #topnav{float:right;display:inline;width:200px;margin:0 20px 0 0;padding:57px 60px 0px 0px}
+#header #topnav ul{display:inline;font-size:.8em;list-style:none;padding-left:0;margin:0}
+#header #topnav li{list-style:none;display:inline}
+#header #topnav li a,#header #topnav li strong{font-size:.8em;display:block;float:left;color:#000;margin:3px 0 3px 6px;padding:3px 0 6px 3px}
 #topnav li a:hover{text-decoration:underline}
 #logo{margin-left:20px}
 #tabs-container{min-height:29px;_height:29px;border-bottom:1px solid #000;background-color:#408238;color:#FFF;padding-top:10px}
@@ -44,7 +43,7 @@ h4{font-weight:700;font-size:1em;margin:0 0 .5em}
 h5{font-weight:700;font-size:.8em;margin:0 0 .5em}
 #content{padding-bottom:1em;margin-bottom:3em;min-height:550px}
 #full-content{padding-top:30px}
-#left-content{background:none repeat scroll 0 0 #EBEBEB;border:1px solid #D3D3D3;float:left;min-height:515px;position:relative;width:160px;padding:20px; text-align:left;}
+#left-content{background:none repeat scroll 0 0 #EBEBEB;border:1px solid #D3D3D3;float:left;min-height:515px;position:relative;width:160px;padding:20px}
 #right-content{float:right;position:relative;width:650px}
 #left-content .sider{padding-bottom:2em}
 #left-content .sider h2{background:none repeat scroll 0 0 transparent;font-size:.9em;margin-bottom:4px;padding-bottom:10px;padding-top:3px}
@@ -61,51 +60,3 @@ ul.navlist a{display:block;font-size:.9em;margin:0;padding:3px 0}
 .clean{margin:0;padding:0}
 .link-img{vertical-align:middle;background-color:transparent;padding-right:4px;margin:-2px 0 0}
 .left{margin-top:5px;text-align:right}
-
-.avisos{background-color: fuchsia;margin-top: 35px;margin-left: 0px;}
-
-.menucinas{
-	margin:200px 0 0 0;
-     height:200px;
-     float:left;
-     text-decoration:none;
-     background-color:#FFFFFF;
-     padding-top:5px;
-     text-align:left;
-     -webkit-border-radius:4px;
-     -moz-border-radius:4px;
-     border-radius:4px;
-}
-.sistemas{color: blue;}
-
-.tituintra1{ color: #333; font-family: tahoma;font-size: 45px; marin-top:5px; margin-left: 10px}
-.tituintra2{ color: #333; font-family: tahoma;font-size: 16px; marin-top:35px;  margin-left: 10px}
-
-.pie{ color:#FFFFFF; text-align: center; font-size: 10px ; background-color:#666666 }
-.botones{
-	height:25px;
-	width: 230px;
-	float: left;
-	display: block;
-	background-color:gray;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-o-border-radius: 5px;
-	border-radius: 5px;
-	-moz-transition: all 400ms ease;  
-	-webkit-transition: all 400ms ease;
-	-o-transition: all 400ms ease;
-	transition: all 400ms ease;}
-
-#centro {
-	overflow:auto;
-	position:absolute;
-	left:101px;
-	top:276px;
-	width:662px;
-	height:429px;
-	z-index:5;
-	background-color: #CDE;
-	visibility: visible;
-}
-	
