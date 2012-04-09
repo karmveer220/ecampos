@@ -9,6 +9,8 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <link href="css/cuadros.css" rel="stylesheet" type="text/css" />
@@ -40,15 +42,22 @@
 <title>test seguridad</title>
 </head>
 <body>
-<center>
-<table width="900" height="800" border="0" cellspacing="0" cellpadding="0">
+<left>
+  <table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr>
+      <td>
+	  
+	  
+	  
+	  
+	<table width="900" height="800" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td height="115" colspan="2" valign="top"><table width="900" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td height="10" colspan="4" align="right" valign="top" bgcolor="#666666">
 		  		<ul id="topnav">
                     <li><a href="home.htm" > <img src="images/home.png" alt="inicio" width="20" height="20" class="link-img" />Home</a></li>
-                    <li><a href="http://www.mininter.gob.pe/ target="_blank""><img src="images/logo_min.png" alt="Portal" width="20" height="20" class="link-img" />Portal</a></li>
+                    <li><a href="http://www.mininter.gob.pe" target="_blank"><img src="images/logo_min.png" alt="Portal" width="20" height="20" class="link-img" />Portal</a></li>
                     <li><a href="http://correo.mininter.gob.pe" target="_blank" > <img src="images/mail.png" alt="Correo" width="20" height="20" class="link-img" />Correo</a></li>
                 </ul>	</td>
         </tr>
@@ -170,18 +179,22 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
         <td width="230"><div   class="botones"><img src="images/pastel.jpg" width="20" height="20" />Cumplea&ntilde;os</div></td>
       </tr>
       <tr>
-        <td height="150" valign="top" bgcolor="#EAEAEA"><img src="images/reloj.GIF" width="20" height="20" />Asistencia <br>
-        <img src="images/icon_libro.png" width="20" height="20" />Boleta de pago</td>
+        <td height="150" valign="top" bgcolor="#EAEAEA">
+		<br>
+		<div align="left"><img src="images/reloj.GIF" width="20" height="20" />Asistencia <br><br><br>
+              <img src="images/icon_libro.png" width="20" height="20" />Boleta de pago</div></td>
         <td valign="top" bgcolor="#EAEAEA" >
 
-		
+		<br>
 			<c:forEach items="${lstSistemas}" var="sis">
 				 	<li>
 			 		  <a href="http://srvprueba:8080/${sis.siminSistema.nsisAbreviatura}" target="_blank">
 				 			<c:out value="${sis.siminSistema.nsisDescripcion}"/>
 			 		  </a>				 	</li>				 	
 		    </c:forEach>			</td>
-        <td valign="top" bgcolor="#EAEAEA">    <c:forEach items="${lcumpleanios}" var="sis">				 	
+        <td valign="top" bgcolor="#EAEAEA"> 
+		<br>
+		   <c:forEach items="${lcumpleanios}" var="sis">				 	
 				 	<li>
 				 	  <c:out value="${sis.nombreCompleto}"/> </li>
 		    </c:forEach></td>
@@ -197,9 +210,12 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
         <td valign="top"><div class="botones"><img src="images/campanas.jpg" width="20" height="20" />Campa&ntilde;as</div></td>
         </tr>
       <tr >
-        <td height="150" bgcolor="#EAEAEA">&nbsp;</td>
-        <td bgcolor="#EAEAEA">&nbsp;</td>
-        <td bgcolor="#EAEAEA">&nbsp;</td>
+        <td height="150" valign="top" bgcolor="#EAEAEA"><br>
+		Carlos Valenzuela&nbsp;&nbsp;#422747 <br><br>
+		Jimmy Jorge&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#422824 <br>
+		</td>
+        <td valign="top" bgcolor="#EAEAEA">&nbsp;</td>
+        <td valign="top" bgcolor="#EAEAEA">&nbsp;</td>
         </tr>
     </table></td>
 	
@@ -213,7 +229,17 @@ document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_mese
       <strong>Ministerio del Interior</strong>
     </td>
   </tr>
-</table>
-</center>		
+</table>  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  </td>
+    </tr>
+  </table>
+</left>		
 </body>
 </html>
