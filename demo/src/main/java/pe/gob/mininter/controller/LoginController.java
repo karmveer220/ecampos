@@ -32,8 +32,27 @@ public class LoginController  {
 	private UsuarioService  usuarioService;
 	
 	@RequestMapping("/login.htm")
-    public String login() {
-		return "/login";
+    public String login(ModelMap model , HttpServletRequest request) {
+		String username = System.getProperty("user.name");
+		SiminMaestro usuario = (SiminMaestro) usuarioService.loadUserByUsername(username);
+		try {
+			URL autoIP = new URL("http://testip.edpsciences.org/");
+			BufferedReader in = new BufferedReader( new InputStreamReader(autoIP.openStream()));
+			String ip_address = (in.readLine()).trim();
+			InetAddress thisIp = InetAddress.getLocalHost(); 
+			String  thisIpAddress = thisIp.getHostAddress().toString();
+			usuario.setIpPublica(ip_address);
+			usuario.setIpPrivada(thisIpAddress);
+			logger.debug("IP Publico"+ip_address+"IP Privada"+thisIpAddress);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		logger.debug(usuario);
+		request.getSession().setAttribute("usuario", usuario);
+		request.setAttribute("lstSistemas", usuarioService.listarSistemas(username) );
+		request.setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes( ) );
+		return "/home";
+		
     }
 	
 	@RequestMapping("/home.htm")

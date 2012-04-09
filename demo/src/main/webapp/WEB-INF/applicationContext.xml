@@ -11,8 +11,8 @@
 	
 	<context:property-placeholder location="WEB-INF/jdbc.properties" />
 	
-	<import resource="security-config.xml" />
-	
+	<!-- <import resource="security-config.xml" /> -->
+	 
 	<tx:annotation-driven transaction-manager="txManager"/>
 	
     <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager"> 
