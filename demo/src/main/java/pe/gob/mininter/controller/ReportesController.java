@@ -39,16 +39,14 @@ public class ReportesController {
 	@RequestMapping("/rptcasboleta.htm")
 	public String rptCASBoleta( HttpServletRequest request, HttpServletResponse response){
 		
-		LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		//LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		
-		logger.debug( u   );
-		logger.debug( u.getUsername()  );
-		logger.debug( u.getDn()  );
 		
+		String username = System.getProperty("user.name");
 		String periodo = "2012";//request.getParameter("anio");
 		String mes =   "03";//request.getParameter("meses");
 		String dependencia = "OFITEL";//request.getParameter("dependenciaEmp");
-		String nombres = u.getUsername()  ;//request.getParameter("nombresEmp");
+		String nombres = username  ;//request.getParameter("nombresEmp");
 		//String ue = request.getParameter("ue_id");
 		
 		try {
@@ -97,11 +95,9 @@ public class ReportesController {
    		try {
 
    			ouputStream = response.getOutputStream();
-   			LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+   			//LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
    			
-   			//Reciber parametros
-   			
-   		//	BNombrado nom = (BNombrado) request.getSession().getAttribute("beanNom");
+   			String username = System.getProperty("user.name");
    			String  FechaIni = "01/03/2012";//request.getParameter("fec_ini_asistencia");
 			String  FechaFin = "31/03/2012";//request.getParameter("fec_fin_asistencia");
 			
@@ -110,7 +106,7 @@ public class ReportesController {
    			
    			
    			
-   			List<Marcacion> rptAsistencia = reporteService.obtenerAsistenciaxEmpleado(FechaIni, FechaFin, u.getUsername() );
+   			List<Marcacion> rptAsistencia = reporteService.obtenerAsistenciaxEmpleado(FechaIni, FechaFin, username );
    			
    			logger.debug(rptAsistencia.size());
    				
