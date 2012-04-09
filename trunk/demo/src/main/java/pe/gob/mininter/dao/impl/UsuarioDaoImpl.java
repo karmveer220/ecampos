@@ -71,7 +71,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SiminUsuariosistema> listarSistemas(String username) {
-		return this.getSession().createQuery(" from SiminUsuariosistema s where s.siminMaestro.nMstLogin = :username ")
+		return this.getSession().createQuery(" from SiminUsuariosistema s where s.siminMaestro.nMstLogin = :username and siminSistema.cSisCodigo <> 16  ")
 				.setString("username", username)
 				.list();
 		
