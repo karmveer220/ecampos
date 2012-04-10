@@ -25,7 +25,7 @@
 <body>	  
 	
 	<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
-		<form:form action="" method="post">
+		<form action="" method="post">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
@@ -49,30 +49,30 @@
 		        				<td>P&eacute;riodo</td>
 		       					<td>:</td>
 		       					<td>
-		       						<form:select path="anio">
-		       							<form:option value="2010">2010</form:option>
-		       							<form:option value="2011">2011</form:option>
-		       							<form:option value="2012">2012</form:option>
-		       							<form:option value="2013">2013</form:option>
-		       						</form:select>
+		       						<select name="anio">
+		       							<option value="2010">2010</option>
+		       							<option value="2011">2011</option>
+		       							<option value="2012">2012</option>
+		       							<option value="2013">2013</option>
+		       						</select>
 		       					</td>
 		       					<td>Mes</td>
 		       					<td>:</td>
 								<td>
-									<form:select path="mes">
-		       							<form:option value="1">Enero</form:option>
-		       							<form:option value="2">Febrero</form:option>
-		       							<form:option value="3">Marzo</form:option>
-		       							<form:option value="4">Abril</form:option>
-		       							<form:option value="5">Mayo</form:option>
-		       							<form:option value="6">Junio</form:option>
-		       							<form:option value="7">Julio</form:option>
-		       							<form:option value="8">Agosto</form:option>
-		       							<form:option value="9">Septiembre</form:option>
-		       							<form:option value="10">Octubre</form:option>
-		       							<form:option value="11">Noviembre</form:option>
-		       							<form:option value="12">Diciembre</form:option>
-		       						</form:select>
+									<select name="mes">
+		       							<option value="1">Enero</option>
+		       							<option value="2">Febrero</option>
+		       							<option value="3">Marzo</option>
+		       							<option value="4">Abril</option>
+		       							<option value="5">Mayo</option>
+		       							<option value="6">Junio</option>
+		       							<option value="7">Julio</option>
+		       							<option value="8">Agosto</option>
+		       							<option value="9">Septiembre</option>
+		       							<option value="10">Octubre</option>
+		       							<option value="11">Noviembre</option>
+		       							<option value="12">Diciembre</option>
+		       						</select>
 								</td>
 								<td>                	
 		                   			<div align="left">                      
@@ -92,7 +92,7 @@
 	  	<tr>
 	    	<td colspan="2" class="pie">  <jsp:include page="copyright.jsp"/> </td>
 	  	</tr>
-	  	</form:form>
+	  	</form>
 	</table>
 	
 </body>
