@@ -21,6 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.ldap.userdetails.LdapUserDetailsImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import pe.gob.mininter.entities.BReporteCas;
 import pe.gob.mininter.entities.Marcacion;
@@ -36,19 +37,12 @@ public class ReportesController {
 	private ReporteService reporteService;
 	
 	@SuppressWarnings("deprecation")
-	@RequestMapping("/rptcasboleta.htm")
+	@RequestMapping(value ="/rptcasboleta.htm",method = RequestMethod.POST)
 	public String rptCASBoleta( HttpServletRequest request, HttpServletResponse response){
 		
-		//LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-		
-		logger.debug("pinta algo"+request.getAttribute("año"));
-		logger.debug("pinta algo"+request.getAttribute("mes"));
-		
-		
-		
 		String username = System.getProperty("user.name");
-		String periodo = "2012";//request.getParameter("anio");
-		String mes =   "03";//request.getParameter("meses");
+		String periodo = request.getParameter("anio");//request.getParameter("anio");
+		String mes =   "0"+request.getParameter("mes");//request.getParameter("meses");
 		String dependencia = "OFITEL";//request.getParameter("dependenciaEmp");
 		String nombres = username  ;//request.getParameter("nombresEmp");
 		//String ue = request.getParameter("ue_id");
