@@ -38,7 +38,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		logger.debug("obtenr usuario  por username en la bd");
 	
 		Query q = getSession().createQuery("select s from SiminMaestro s, SiminUnidadorganica o where s.siminUnidadorganica1.cUnoCodigo = o.cUnoCodigo " +
-				" and  s.nMstLogin = :username ")
+				" and  s.nmstLogin = :username ")
 			.setString("username", username);
 		SiminMaestro user = (SiminMaestro) q.uniqueResult();
 		user.getSiminUnidadorganica1().getNunoDescripcion();
@@ -58,7 +58,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 			logger.debug( "ROLE_" + rol.getSiminTipousuario().getCTusuDetalle()  );
 		}
 		
-		SiminMaestro usuario= new SiminMaestro(user.getNMstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDMstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion() );
+		SiminMaestro usuario= new SiminMaestro(user.getNmstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDMstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion() );
 		//usuario.setNMstNombre(user.getNMstNombre());
 		
 		logger.debug(usuario.toString());
@@ -71,7 +71,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SiminUsuariosistema> listarSistemas(String username) {
-		return this.getSession().createQuery(" from SiminUsuariosistema s where s.siminMaestro.nMstLogin = :username and siminSistema.cSisCodigo <> 16  ")
+		return this.getSession().createQuery(" from SiminUsuariosistema s where s.siminMaestro.nmstLogin = :username and siminSistema.cSisCodigo <> 16  ")
 				.setString("username", username)
 				.list();
 		

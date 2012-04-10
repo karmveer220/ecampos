@@ -207,7 +207,7 @@ public class SiminMaestro extends User implements Serializable {
 	private String nMstLm;
 
 	@Column(name="N_MST_LOGIN")
-	private String nMstLogin;
+	private String nmstLogin;
 
 	@Column(name="N_MST_LT")
 	private String nMstLt;
@@ -275,7 +275,7 @@ public class SiminMaestro extends User implements Serializable {
 	public SiminMaestro(String username, String password, boolean enabled,Collection<GrantedAuthority> authorities) {
 		super(username, password, enabled, true, true, true, authorities);
 		this.cSitCodigo = enabled==true ? "1" : "0";
-		this.nMstLogin = username;
+		this.nmstLogin = username;
 		this.nMstClave = password;
 	}
 	
@@ -283,7 +283,7 @@ public class SiminMaestro extends User implements Serializable {
 			String usrnombrevh,String usrapepaternovh, String usrapematernovh,
 			Date usrfechanacimientodt,String estado, String nunoDescripcion) {
 		super(username, password, enabled, true, true, true, authorities);
-		this.nMstLogin = username;
+		this.nmstLogin = username;
 //		this.nMstClave = password;
 		this.nMstNombre=usrnombrevh;
 		this.nMstApepaterno= usrapepaternovh;
@@ -736,14 +736,14 @@ public class SiminMaestro extends User implements Serializable {
 	public void setNMstLm(String nMstLm) {
 		this.nMstLm = nMstLm;
 	}
-
-	public String getNMstLogin() {
-		return this.nMstLogin;
+	
+	public String getNmstLogin() {
+		return nmstLogin;
 	}
 
-	public void setNMstLogin(String nMstLogin) {
-		this.nMstLogin = nMstLogin;
-	}
+	public void setNmstLogin(String nmstLogin) {
+		this.nmstLogin = nmstLogin;
+	}	
 
 	public String getNMstLt() {
 		return this.nMstLt;

@@ -108,4 +108,34 @@ ul.navlist a{display:block;font-size:.9em;margin:0;padding:3px 0}
 	background-color: #CDE;
 	visibility: visible;
 }
+
+.tFormulario{
+	background-color:#EAEAEA;
+    FONT-FAMILY: Tahoma, 'Microsoft Sans Serif', Arial;
+    BORDER-BOTTOM: #afc4d5 1px solid;
+    BORDER-RIGHT: #afc4d5 1px solid;
+    BORDER-LEFT: #afc4d5 1px solid;
+}
+
+.tFormulario td{
+	padding-top:5px;
+	padding-bottom:5px;
+	text-align:center;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+
+.tituloEncabezado{
+	padding-top:5px;
+	padding-bottom:5px;
+	text-align:center;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	color:black;
+	font-weight:bold;
+}
 	
