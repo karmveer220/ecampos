@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.ldap.userdetails.LdapUserDetailsImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,85 +45,17 @@ public class LoginController  {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		logger.debug(usuario);
+		
 		request.getSession().setAttribute("usuario", usuario);
-		request.setAttribute("lstSistemas", usuarioService.listarSistemas(username) );
+		request.getSession().setAttribute("lstSistemas", usuarioService.listarSistemas(username) );
 		request.setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes( ) );
 		return "/home";
-		
     }
 	
 	@RequestMapping("/home.htm")
 	public String inicio( ModelMap model , HttpServletRequest request ) throws UnknownHostException, MalformedURLException{
 		logger.debug("primer metodo al que ingresa");
-		LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-		
-		//UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getDetails();
-		logger.debug("inicio");
-		SiminMaestro usuario = (SiminMaestro) usuarioService.loadUserByUsername(u.getUsername());
-		logger.debug("fin"+usuario.getSiminUnidadorganica1().getNunoDescripcion());
-		logger.debug(usuario.getSiminUnidadorganica1().getNunoDescripcion());
-		try {
-			URL autoIP = new URL("http://testip.edpsciences.org/");
-			BufferedReader in = new BufferedReader( new InputStreamReader(autoIP.openStream()));
-			String ip_address = (in.readLine()).trim();
-			InetAddress thisIp = InetAddress.getLocalHost(); 
-			String  thisIpAddress = thisIp.getHostAddress().toString();
-			usuario.setIpPublica(ip_address);
-			usuario.setIpPrivada(thisIpAddress);
-			logger.debug("IP Publico"+ip_address+"IP Privada"+thisIpAddress);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-				
-		request.getSession().setAttribute("usuario", usuario);
-		request.setAttribute("lstSistemas", usuarioService.listarSistemas(u.getUsername()) );
-		request.setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes( ) );
 		return "home";
-	}
-
-	@RequestMapping("/infinst.htm")
-    public String vision() {
-		return "/infinst";
-    }
-	
-	//eco
-	@RequestMapping("/eco.htm")
-    public String eco() {
-		return "/eco";
-    }	
-
-	//cumple
-	@RequestMapping("/cumple.htm")
-	public String cumple( ModelMap model , HttpServletRequest request ){
-	LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());			
-	request.setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes( ) );
-	return "cumple";
-	}
-	
-	//sistemas
-	@RequestMapping("/sistemas.htm")
-	public String sistemas( ModelMap model , HttpServletRequest request ){
-	LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());			
-	request.setAttribute("lstSistemas", usuarioService.listarSistemas(u.getUsername()) );
-	return "sistemas";
-	}
-	
-	//soporte
-	@RequestMapping("/soporte.htm")
-    public String soporte() {
-		return "/soporte";
-    }
-	
-	//campañas
-	@RequestMapping("/campanas.htm")
-    public String campanas() {
-		return "/campanas";
-    }
-	
-
-	
-		
-	
+	}	
 	
 }

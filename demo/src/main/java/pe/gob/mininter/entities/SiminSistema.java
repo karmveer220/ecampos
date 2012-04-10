@@ -42,6 +42,10 @@ public class SiminSistema implements Serializable {
 
 	@Column(name="N_SIS_DESCRIPCION")
 	private String nsisDescripcion;
+	
+	@Column(name="N_SIS_METODO")
+	private String nsisMetodo;
+
 
 	//bi-directional many-to-one association to SiminUsuariosistema
 	@OneToMany(mappedBy="siminSistema")
@@ -112,6 +116,14 @@ public class SiminSistema implements Serializable {
 
 	public void setNsisDescripcion(String nSisDescripcion) {
 		this.nsisDescripcion = nSisDescripcion;
+	}
+
+	public String getNsisMetodo() {
+		return nsisMetodo;
+	}
+
+	public void setNsisMetodo(String nsisMetodo) {
+		this.nsisMetodo = nsisMetodo;
 	}
 
 	public List<SiminUsuariosistema> getSiminUsuariosistemas() {

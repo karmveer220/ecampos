@@ -41,6 +41,10 @@ public class ReportesController {
 		
 		//LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		
+		logger.debug("pinta algo"+request.getAttribute("año"));
+		logger.debug("pinta algo"+request.getAttribute("mes"));
+		
+		
 		
 		String username = System.getProperty("user.name");
 		String periodo = "2012";//request.getParameter("anio");
