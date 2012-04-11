@@ -11,11 +11,16 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <link href="css/cuadros.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="css/calendar-system.css" ></link>
 <script  src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
 
+<script type="text/javascript" src="js/calendar.js"></script>
+<script type="text/javascript" src="js/calendar-es.js"></script>
+<script type="text/javascript" src="js/calendar-setup.js"></script>
+
 <script language="javascript" type="text/javascript">
-	function buscarBoleta(){	
-		document.forms[0].action = "rptcasboleta.htm";
+	function buscarAsistencia(){	
+		document.forms[0].action = "rptasistencia.htm";
 		document.forms[0].target="_blank";
 		document.forms[0].submit();
 	}
@@ -26,7 +31,7 @@
 <body>	  
 	
 	<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
-		<form action="rptcasboleta.htm">
+		<form action="" method="post">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
@@ -43,41 +48,49 @@
 		        		<table width="100%" border="0" class="">
 		        			<tr><td colspan="7">&nbsp;</td></tr>
 		        			<tr>
-		        				<th colspan="7" class="">Reporte de Boletas de Pago</th>
+		        				<th colspan="7" class="">Reporte de Asistencia </th>
 		        			</tr>
 		        			<tr><td colspan="7">&nbsp;</td></tr>
 		        			<tr>
-		        				<td>P&eacute;riodo</td>
+		        				<td>Fecha Inicio </td>
 		       					<td>:</td>
 		       					<td>
-		       						<select name="anio">
-		       							<option value="2010">2010</option>
-		       							<option value="2011">2011</option>
-		       							<option value="2012">2012</option>
-		       							<option value="2013">2013</option>
-		       						</select>
-		       					</td>
-		       					<td>Mes</td>
+		       						<input type="text" name="fechaInicio" id="fechaInicio" maxlength="10" class="texto"
+						size="10" />
+		       						&nbsp; <img src="images/cal.gif"
+						alt="Fecha de Inicio" width="16" height="16" border="0"
+						id="triggerCal39" /> <script type="text/javascript">
+						Calendar.setup( {
+							inputField :"fechaInicio", // id del campo de texto
+							ifFormat :"%d/%m/%Y", // Formato de la Fecha
+							showsTime :false, // Flag para mostrar la Fecha
+							button :"triggerCal39", // ID del elemento que llamara al calendario
+							singleClick :true
+						// Flag Modo doble-click 
+								});
+					</script>
+							  </td>
+		       					<td>Fecha Fin </td>
 		       					<td>:</td>
 								<td>
-									<select name="mes">
-		       							<option value="1">Enero</option>
-		       							<option value="2">Febrero</option>
-		       							<option value="3">Marzo</option>
-		       							<option value="4">Abril</option>
-		       							<option value="5">Mayo</option>
-		       							<option value="6">Junio</option>
-		       							<option value="7">Julio</option>
-		       							<option value="8">Agosto</option>
-		       							<option value="9">Septiembre</option>
-		       							<option value="10">Octubre</option>
-		       							<option value="11">Noviembre</option>
-		       							<option value="12">Diciembre</option>
-		       						</select>
+									<input type="text" name="fechaFin" id="fechaFin"  maxlength="10" class="texto" size="10" />
+									&nbsp;
+					<img src="images/cal.gif" alt="Fecha de Fin" width="16"
+						height="16" border="0" id="triggerCal40" /> <script
+						type="text/javascript">
+	Calendar.setup( {
+		inputField :"fechaFin", // id del campo de texto
+		ifFormat :"%d/%m/%Y", // Formato de la Fecha
+		showsTime :false, // Flag para mostrar la Fecha
+		button :"triggerCal40", // ID del elemento que llamara al calendario
+		singleClick :true
+	// Flag Modo doble-click 
+			});
+</script>
 								</td>
 								<td>                	
 		                   			<div align="left">                      
-	                     				<a href="javascript:buscarBoleta();"><img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar"/></a>                
+	                     				<a href="javascript:buscarAsistencia();"><img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar"/></a>                
 		                   			</div>
                     			</td>
 							</tr>
