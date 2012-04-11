@@ -25,7 +25,7 @@
 <body>	  
 	
 	<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
-		<form action="" method="post">
+		<form action="rptcasboleta.htm">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
