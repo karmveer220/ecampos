@@ -47,8 +47,8 @@
 		        				<td valign="top">
 		        					<a href="rptasistencia.htm" target="_blank"><img src="images/reloj.GIF" width="16" height="16" />Asistencia</a>
 		       					</td>
-		       					<td valign="baseline" align="right">
-		        					<a href="#">Ver Mas...</a>
+		       					<td align="right">
+		        					<a href="asistencia.htm">Ver Mas...</a>
 		       					</td>
 		       				</tr>
 		        			<tr>
@@ -104,7 +104,13 @@
 		        		<div align="right"><a href="#">Ver mas..</a></div>
 					</td>
 					<td>&nbsp;</td>
-					<td valign="top" bgcolor="#EAEAEA"><br/>test</td>
+					<td valign="top" bgcolor="#EAEAEA"><br/>
+					    Menú Semanal<br/>
+					    del <br/>
+						09 al 15 de abril
+					    <br/><br/>
+				    	<div align="right"><a href="menuSemanal.htm">Ver mas..</a></div>
+					</td>
 					<td>&nbsp;</td>
 			        <td valign="top" bgcolor="#EAEAEA"><br/>test</td>
 		        </tr>

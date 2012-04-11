@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.ldap.userdetails.LdapUserDetailsImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,6 +39,16 @@ public class ReportesController {
 	
 	@Autowired
 	private ReporteService reporteService;
+	
+	@RequestMapping("/asistencia.htm")
+	public String inicio( ModelMap model , HttpServletRequest request ){
+		return "lstAsistencia";
+	}	
+	
+	@RequestMapping("/boleta.htm")	
+	public String sistema(ModelMap model , HttpServletRequest request ){
+		return "/lstBoleta";
+	}
 	
 	@SuppressWarnings("deprecation")
 	@RequestMapping(value="/rptcasboleta.htm", method = RequestMethod.GET)
@@ -105,23 +116,41 @@ public class ReportesController {
 	@RequestMapping("/rptasistencia.htm")
 	public String rptReporteAsistenciaxEmpleado( HttpServletRequest request, HttpServletResponse response) {
 	   	
-   		ServletOutputStream ouputStream = null;
-   		
+		ServletOutputStream ouputStream = null;
    		try {
-
-   			ouputStream = response.getOutputStream();
-   			//LdapUserDetailsImpl u = (LdapUserDetailsImpl)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
    			
    			String username = System.getProperty("user.name");
-   			String  FechaIni = "01/03/2012";//request.getParameter("fec_ini_asistencia");
-			String  FechaFin = "31/03/2012";//request.getParameter("fec_fin_asistencia");
-			
-			logger.debug("FechaIni = "+FechaIni);
-   			logger.debug("FechaFin = "+FechaFin);
+   			ouputStream = response.getOutputStream();
    			
+   			Calendar hoy = new GregorianCalendar();
+   			Calendar fecha = new GregorianCalendar();
    			
+   			String inicio ="";
+   			String fin = "";
    			
-   			List<Marcacion> rptAsistencia = reporteService.obtenerAsistenciaxEmpleado(FechaIni, FechaFin, username );
+   			String dia, mes, año = "";
+   			
+   			inicio =  Utiles.nullToBlank(request.getParameter("fechaInicio"));
+   			fin = Utiles.nullToBlank(request.getParameter("fechaFin"));
+   			
+   			if (inicio.equals("")) {
+   				mes = Utiles.completarCero(hoy.get(Calendar.MONTH));   				
+   				año = hoy.get(Calendar.YEAR)+"";
+   				String formatoFecha = Utiles.completarCero(hoy.get(Calendar.DAY_OF_MONTH))+"/"+Utiles.completarCero(Integer.parseInt(mes))+"/"+año;
+   				fecha = Utiles.stringToCalendar(formatoFecha, Utiles.FORMATO_FECHA_CORTA);
+   				dia = fecha.getActualMaximum(Calendar.DAY_OF_MONTH)+"";
+   				
+   				inicio = "01/"+mes+"/"+año;
+   				fin = dia+"/"+mes+"/"+año;
+   						
+			}else {
+				inicio= request.getParameter("fechaInicio");
+				fin =   request.getParameter("fechaFin");
+			}
+   			
+   			logger.debug(inicio+" "+fin);
+   			
+   			List<Marcacion> rptAsistencia = reporteService.obtenerAsistenciaxEmpleado(inicio, fin, username );
    			
    			logger.debug(rptAsistencia.size());
    				
@@ -141,8 +170,8 @@ public class ReportesController {
 
       			pars.put("ruta", ruta);
       			pars.put("ruta1", ruta1);	
-      			pars.put("fecIni", FechaIni);
-      		    pars.put("fecFin", FechaFin);
+      			pars.put("fecIni", inicio);
+      		    pars.put("fecFin", fin);
       			
       			dataSource = new JRBeanCollectionDataSource(col);
    	        logger.debug("datasource lleno con lista documento " + col.size());
