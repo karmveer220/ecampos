@@ -547,5 +547,11 @@ private static int getDigitAt(String origin, int position) {
 		    } 
 		    return new String(chars); 
 		} 
+	    
+	    public static String completarCero(int n){
+	        if(n<10)
+	            return "0"+n;
+	        return ""+n;
+	    }
 	  
 }

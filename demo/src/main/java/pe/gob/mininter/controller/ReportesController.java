@@ -2,7 +2,9 @@ package pe.gob.mininter.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pe.gob.mininter.entities.BReporteCas;
 import pe.gob.mininter.entities.Marcacion;
 import pe.gob.mininter.service.ReporteService;
+import pe.gob.mininter.utiles.Utiles;
 
 @Controller
 @Scope("session")
@@ -37,14 +40,28 @@ public class ReportesController {
 	private ReporteService reporteService;
 	
 	@SuppressWarnings("deprecation")
-	@RequestMapping(value ="/rptcasboleta.htm",method = RequestMethod.POST)
+	@RequestMapping(value="/rptcasboleta.htm", method = RequestMethod.GET)
 	public String rptCASBoleta( HttpServletRequest request, HttpServletResponse response){
 		
+		logger.debug("pinta");
 		String username = System.getProperty("user.name");
-		String periodo = request.getParameter("anio");//request.getParameter("anio");
-		String mes =   "0"+request.getParameter("mes");//request.getParameter("meses");
-		String dependencia = "OFITEL";//request.getParameter("dependenciaEmp");
-		String nombres = username  ;//request.getParameter("nombresEmp");
+		Calendar hoy = new GregorianCalendar();
+		String mes = "";
+		String año = "";
+		
+		año = Utiles.nullToBlank(request.getParameter("anio"));		
+		mes = Utiles.nullToBlank(request.getParameter("mes"));
+		
+		if (año.equals("") || mes.equals("")) {			
+			mes = Utiles.completarCero(hoy.get(Calendar.MONTH));
+			año = hoy.get(Calendar.YEAR)+"";
+		}else {
+			año = Utiles.nullToBlank(request.getParameter("anio"));		
+			mes = Utiles.completarCero(Integer.parseInt(request.getParameter("mes")));
+		}
+		
+		String dependencia = "OFITEL";
+		String nombres = username  ;
 		//String ue = request.getParameter("ue_id");
 		
 		try {
@@ -52,7 +69,7 @@ public class ReportesController {
 			ServletOutputStream ouputStream = response.getOutputStream();
 			logger.debug(ouputStream.toString());
 					
-			List<BReporteCas> listaGeneral = reporteService.listarCasBoletas(periodo, mes, dependencia, nombres );
+			List<BReporteCas> listaGeneral = reporteService.listarCasBoletas(año, mes, dependencia, nombres );
 			request.getSession().setAttribute("listGeneral", 0);			
 			Collection<BReporteCas> col  = new ArrayList<BReporteCas>();
 			
