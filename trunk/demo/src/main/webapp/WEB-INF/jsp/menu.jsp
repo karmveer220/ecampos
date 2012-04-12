@@ -3,15 +3,15 @@
 		<jsp:include page="menu.html" />
 	</div>
 
+	<h2>Avisos de Interés</h2>
+
+
 	<div class="avisos">
 		<jsp:include page="banner.html" />
 	</div>
 
 	<div class="menucinas">
-		<h2>
-			<img border="0" class="link-img" alt="" src="images/oficinass.png"
-				height="30" width="30" />Oficinas del Sector
-		</h2>
+		<h2>Oficinas del Sector</h2>
 		<div align="left" class="botonfi">
 
 			<div>

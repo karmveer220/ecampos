@@ -12,11 +12,20 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <link href="css/cuadros.css" rel="stylesheet" type="text/css" />
-
+<link type="text/css" rel="stylesheet" href="css/calendar-system.css"></link>
 <script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
 
+<script type="text/javascript" src="js/calendar.js"></script>
+<script type="text/javascript" src="js/calendar-es.js"></script>
+<script type="text/javascript" src="js/calendar-setup.js"></script>
 
-
+<script language="javascript" type="text/javascript">
+	function buscar() {
+		document.forms[0].action = "rptdirectorio.htm";
+		document.forms[0].target = "_blank";
+		document.forms[0].submit();
+	}
+</script>
 </head>
 
 
@@ -43,13 +52,28 @@
 									<tr>
 										<td colspan="7">&nbsp;</td>
 									</tr>
-
-
 									<tr>
-										<td colspan="7"><iframe scrolling="yes" frameborder="0"
-												width="750px" height="600px"
-												src="http://www.mininter.gob.pe/contenido_02_deta.php?codmenu=2&niv1=11&niv2=13&niv3=15">
-											</iframe></td>
+										<th colspan="7" class="">Reporte de Asistencia</th>
+									</tr>
+									<tr>
+										<td colspan="7">&nbsp;</td>
+									</tr>
+									<tr>
+										<td>Oficina</td>
+										<td>:</td>
+										<td></td>
+										<td>Usuario</td>
+										<td>:</td>
+										<td></td>
+										<td>
+											<div align="left">
+												<a href="javascript:buscar();"><img width="30"
+													height="30" src="images/buscar.png" border="0" alt="Buscar" /></a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="7">&nbsp;</td>
 									</tr>
 								</table></td>
 						</tr>
