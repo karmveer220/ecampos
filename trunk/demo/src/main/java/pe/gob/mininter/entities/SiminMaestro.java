@@ -155,7 +155,7 @@ public class SiminMaestro extends User implements Serializable {
 
     @Temporal( TemporalType.DATE)
 	@Column(name="D_MST_FECHANACIMIENTO")
-	private Date dMstFechanacimiento;
+	private Date dmstFechanacimiento;
 
     @Temporal( TemporalType.DATE)
 	@Column(name="D_MST_FECHAREGISTRO")
@@ -264,6 +264,16 @@ public class SiminMaestro extends User implements Serializable {
 	//bi-directional many-to-one association to SiminUsuariosistema
 	@OneToMany(mappedBy="siminMaestro")
 	private List<SiminUsuariosistema> siminUsuariosistemas;
+	
+	//bi-directional many-to-one association to SiminGrado
+    @ManyToOne
+	@JoinColumn(name="C_ENC_CODIGO", insertable = false, updatable = false)
+	private SiminGrado siminGrado1;
+
+	//bi-directional many-to-one association to SiminGrado
+    @ManyToOne
+	@JoinColumn(name="C_GRA_CODIGO", insertable = false, updatable = false)
+	private SiminGrado siminGrado2;
 
 	//Valores Propios
 	@Transient
@@ -288,7 +298,7 @@ public class SiminMaestro extends User implements Serializable {
 		this.nMstNombre=usrnombrevh;
 		this.nMstApepaterno= usrapepaternovh;
 		this.nMstApematerno = usrapematernovh;
-	    this.dMstFechanacimiento = usrfechanacimientodt;
+	    this.dmstFechanacimiento = usrfechanacimientodt;
 	    this.cSitCodigo = estado;
 	    this.siminUnidadorganica1 = new SiminUnidadorganica();
 	    this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
@@ -601,17 +611,17 @@ public class SiminMaestro extends User implements Serializable {
 		this.dMstFechamodificacion = dMstFechamodificacion;
 	}
 
-	public Date getDMstFechanacimiento() {
-		return this.dMstFechanacimiento;
+	public Date getDmstFechanacimiento() {
+		return dmstFechanacimiento;
 	}
 
-	public void setDMstFechanacimiento(Date dMstFechanacimiento) {
-		this.dMstFechanacimiento = dMstFechanacimiento;
+	public void setDmstFechanacimiento(Date dmstFechanacimiento) {
+		this.dmstFechanacimiento = dmstFechanacimiento;
 	}
 
 	public Date getDMstFecharegistro() {
 		return this.dMstFecharegistro;
-	}
+	}	
 
 	public void setDMstFecharegistro(Date dMstFecharegistro) {
 		this.dMstFecharegistro = dMstFecharegistro;
@@ -903,6 +913,22 @@ public class SiminMaestro extends User implements Serializable {
 
 	public void setIpPrivada(String ipPrivada) {
 		this.ipPrivada = ipPrivada;
+	}
+	
+	public SiminGrado getSiminGrado1() {
+		return this.siminGrado1;
+	}
+
+	public void setSiminGrado1(SiminGrado siminGrado1) {
+		this.siminGrado1 = siminGrado1;
+	}
+	
+	public SiminGrado getSiminGrado2() {
+		return this.siminGrado2;
+	}
+
+	public void setSiminGrado2(SiminGrado siminGrado2) {
+		this.siminGrado2 = siminGrado2;
 	}
 
 	@Transient

@@ -36,8 +36,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public List<SiminMaestro> listarCumpleaniosMes() {
-		return usuarioDao.listarCumpleaniosMes();
+	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) {
+		return usuarioDao.listarCumpleaniosMes(rptMensual);
 	}
 
 }

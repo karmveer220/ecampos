@@ -11,7 +11,9 @@
    	<mapping class="pe.gob.mininter.entities.SiminTipousuario"/>
    	<mapping class="pe.gob.mininter.entities.SiminUnidadorganica"/>
    	<mapping class="pe.gob.mininter.entities.SiminUsuariosistema"/>
-
+   	
+   	<mapping class="pe.gob.mininter.entities.SiminGrado"/>
+   	<mapping class="pe.gob.mininter.entities.SiminFunciones"/>
    	
   </session-factory>
 </hibernate-configuration>

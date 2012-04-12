@@ -18,20 +18,15 @@
    }
 </script>
 
-<table width="900" border="0" cellspacing="0" cellpadding="0">
+<table width="905" border="0" cellspacing="0" cellpadding="0" width="100%">
 	<tr>
 		<td height="10" colspan="4" align="right" valign="top" bgcolor="#666666">
 			<ul id="topnav">
 				<li><a href="login.htm"> <img src="images/home.png"
 						alt="inicio" width="20" height="20" class="link-img" />Home
 				</a></li>
-				<li><a href="http://www.mininter.gob.pe" target="_blank"><img
-						src="images/logo_min.png" alt="Portal" width="20" height="20"
-						class="link-img" />Portal</a></li>
-				<li><a href="http://correo.mininter.gob.pe" target="_blank">
-						<img src="images/mail.png" alt="Correo" width="20" height="20"
-						class="link-img" />Correo
-				</a></li>
+				<li><a href="http://www.mininter.gob.pe" target="_blank"><img src="images/logo_min.png" alt="Portal" width="20" height="20" class="link-img" />Portal</a></li>
+				<li><a href="http://correo.mininter.gob.pe" target="_blank"> <img src="images/mail.png" alt="Correo" width="20" height="20"class="link-img" />Correo</a></li>
 			</ul>
 		</td>
 	</tr>
@@ -39,14 +34,11 @@
 		<td height="90" colspan="4" align="left" valign="top">
 			<table width="900" height="90" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="245"><img src="images/min.jpg" width="245"
-						height="90" /></td>
-					<td width="490">
-						<div class="tituintra1">M I N I N T E R</div>
-						<div class="tituintra2">Ministerio del Interior</div>
+					<td width="360"><img src="images/logomininter.jpg" width="360"height="100" /></td>
+					<td width="375">&nbsp;</td>
+					<td width="165">
+						<div class="tituintra1">Intranet</div>
 					</td>
-					<td width="165" align="right" valign="top"><img
-						src="images/mintranet.jpg" width="165" height="83" /></td>
 				</tr>
 			</table>
 		</td>
