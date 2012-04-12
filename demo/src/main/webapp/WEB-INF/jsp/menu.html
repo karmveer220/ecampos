@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-   
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 
 
@@ -15,29 +15,38 @@
 
 
 <script type="text/javascript">
-//<![CDATA[
-//------------------------------
-// Developed by Roshan Bhattarai
-// Visit http://roshanbh.com.np for this script and more.
-// This notice MUST stay intact for legal use
-// ---------------------------------
-$(document).ready(function()
-{
-$("#firstpane p.menu_head").click(function()
-{
-$(this).css({backgroundImage:"url(imgs/flecha-arriba.png)"}).next("div.menu_body").slideToggle(300).siblings("div.menu_body").slideUp("slow");
-$(this).siblings().css({backgroundImage:"url(imgs/flecha-abajo.png)"});
-});
+	//         
+	//------------------------------
+	// Developed by Roshan Bhattarai
+	// Visit http://roshanbh.com.np for this script and more.
+	// This notice MUST stay intact for legal use
+	// ---------------------------------
+	$(document).ready(
+			function() {
+				$("#firstpane p.menu_head").click(
+						function() {
+							$(this).css({
+								backgroundImage : "url(imgs/flecha-arriba.png)"
+							}).next("div.menu_body").slideToggle(300).siblings(
+									"div.menu_body").slideUp("slow");
+							$(this).siblings().css({
+								backgroundImage : "url(imgs/flecha-abajo.png)"
+							});
+						});
 
+				$("#secondpane p.menu_head").mouseover(
+						function() {
+							$(this).css({
+								backgroundImage : "url(imgs/flecha-arriba.png)"
+							}).next("div.menu_body").slideDown(500).siblings(
+									"div.menu_body").slideUp("slow");
+							$(this).siblings().css({
+								backgroundImage : "url(imgs/flecha-arriba.png)"
+							});
+						});
+			});
 
-$("#secondpane p.menu_head").mouseover(function()
-{
-$(this).css({backgroundImage:"url(imgs/flecha-arriba.png)"}).next("div.menu_body").slideDown(500).siblings("div.menu_body").slideUp("slow");
-$(this).siblings().css({backgroundImage:"url(imgs/flecha-arriba.png)"});
-});
-});
-
-//]]>
+	//
 </script>
 
 <style type="text/css">
@@ -46,53 +55,57 @@ $(this).siblings().css({backgroundImage:"url(imgs/flecha-arriba.png)"});
  Menï¿½ vertical desplegable
 ----------------------------------------------- */
 .menu_list {
-width: 170px; /* Ancho del menï¿½ */
+	width: 170px; /* Ancho del menï¿½ */
 }
+
 .menu_head {
 	padding: 7px 10px;
-	color:#255641; /* Color del texto de las pestaï¿½as principales */
+	color: #255641; /* Color del texto de las pestaï¿½as principales */
 	cursor: pointer;
 	position: relative;
-	margin:1px;
-	margin-left:0;
-	margin-right:0;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:10px;
-	font-weight:bold;
+	margin: 1px;
+	margin-left: 0;
+	margin-right: 0;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
 	/* Color de fondo */
-	background-color: #FFFFFF;!important
-	background-image: url(imgs/flecha-abajo.png);
-	background-position:center right;
-	background-repeat:no-repeat;
+	background-color: #FFFFFF; !
+	important background-image: url(imgs/flecha-abajo.png);
+	background-position: center right;
+	background-repeat: no-repeat;
 	/* Animacion - Transition */
-  	-webkit-transition: all ease-in-out 400ms;
+	-webkit-transition: all ease-in-out 400ms;
 	-moz-transition: all ease-in-out 400ms;
 	transition: all ease-in-out 400ms;
 	border-top-width: medium;
 	border-top-style: groove;
 	border-top-color: #999;
 }
+
 .menu_body {
-display:none;
+	display: none;
 }
-.menu_body a{
-	display:block;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:10px;
-	color:#428e70; /* Color de los enlaces */
-	background-color:#fdfdea; /* Color de fondo de los enlaces */
-	padding-top:4px;
-	padding-left:10px;
-	padding-bottom:4px;
-	font-weight:bold;
-	text-decoration:none;
+
+.menu_body a {
+	display: block;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	color: #428e70; /* Color de los enlaces */
+	background-color: #fdfdea; /* Color de fondo de los enlaces */
+	padding-top: 4px;
+	padding-left: 10px;
+	padding-bottom: 4px;
+	font-weight: bold;
+	text-decoration: none;
 }
-.menu_body a:hover{
-	display:block;
-	font-family:Verdana, Geneva, sans-serif;
-	font-size:10px;
-	background-color:#F8F8BA; /* Color de fondo al pasar el cursor */
-	color:#663;
+
+.menu_body a:hover {
+	display: block;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	background-color: #F8F8BA; /* Color de fondo al pasar el cursor */
+	color: #663;
 	text-decoration: none;
 }
 </style>
@@ -101,55 +114,51 @@ display:none;
 
 
 
- 
- 
+
+
 
 
 </head>
 
 <body bgcolor="#FFFFFF">
-<div class="menu_list" id="secondpane">
+	<div class="menu_list" id="secondpane">
 
-<p class="menu_head">Informaci&oacute;n institucional </p>
-<div class="menu_body">
-<a href="vision.htm" target="_top">Visi&oacute;n</a>
-</div>
-
-
-
-<p class="menu_head" >Documentos de Gestion</p>
-<div class="menu_body">
-<a href="cap.htm" target="_top">CAP</a>
-<a href="mof.htm" target="_top">MOF</a>
-<a href="rof.htm" target="_top">ROF</a>
-<a href="tupa.htm" target="_top">TUPA</a>
-<a href="directivas.htm" target="_top">DIRECTIVAS</a>
-<a href="organigrama.htm" target="_top">ORGANIGRAMA</a>
-<a href="procedimientos.htm" target="_top">PROCEDIMIENTOS</a>
-
-</div>
-
-
-<p class="menu_head">Directorio telefonico</p>
-<div class="menu_body">
-
-
-</div>
+		<p class="menu_head">Informaci&oacute;n institucional</p>
+		<div class="menu_body">
+			<a href="vision.htm" target="_top">Visi&oacute;n/Misi&oacute;n</a> <a
+				href="marcoLegal.htm" target="_top">Marco Legal</a>
+		</div>
 
 
 
-<p class="menu_head">Eventos</p>
-<div class="menu_body">
+		<p class="menu_head">Documentos de Gesti&oacute;n</p>
+		<div class="menu_body">
+			<a href="cap.htm" target="_top">CAP</a> <a href="mof.htm"
+				target="_top">MOF</a> <a href="rof.htm" target="_top">ROF</a> <a
+				href="tupa.htm" target="_top">TUPA</a> <a href="directivas.htm"
+				target="_top">DIRECTIVAS</a> <a href="organigrama.htm" target="_top">ORGANIGRAMA</a>
+			<a href="procedimientos.htm" target="_top">MAPRO</a>
 
-</div>
-
-<p class="menu_head">Galeria de fotos</p>
-<div class="menu_body">
+		</div>
 
 
-</div>
+		<p class="menu_head">Directorio telef&oacute;nico</p>
+		<div class="menu_body">
+
+			<a href="directorio.htm" target="_top">Directorio</a>
+		</div>
 
 
-</div>
+
+		<p class="menu_head">Boletines</p>
+		<div class="menu_body">
+			<a href="boletines.htm" target="_top">Boletines</a>
+		</div>
+
+		<p class="menu_head">Galer&iacute;a de fotos</p>
+		<div class="menu_body"></div>
+
+
+	</div>
 </body>
 </html>
