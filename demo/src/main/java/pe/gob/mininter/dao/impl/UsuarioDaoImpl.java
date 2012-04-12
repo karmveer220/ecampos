@@ -24,6 +24,7 @@ import pe.gob.mininter.entities.SiminUnidadorganica;
 import pe.gob.mininter.entities.SiminUsuariosistema;
 import pe.gob.mininter.entities.Users;
 import pe.gob.mininter.utiles.Parametros;
+import pe.gob.mininter.utiles.Utiles;
 
 @Repository
 public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
@@ -58,7 +59,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 			logger.debug( "ROLE_" + rol.getSiminTipousuario().getCTusuDetalle()  );
 		}
 		
-		SiminMaestro usuario= new SiminMaestro(user.getNmstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDMstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion() );
+		SiminMaestro usuario= new SiminMaestro(user.getNmstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDmstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion() );
 		//usuario.setNMstNombre(user.getNMstNombre());
 		
 		logger.debug(usuario.toString());
@@ -79,16 +80,32 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 	
 		
 	@Override
-	public List<SiminMaestro> listarCumpleaniosMes() {
+	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) {
 		Calendar hoy = new GregorianCalendar();
 		logger.debug("================ rtaercumpleanosdelmes =============== "+ hoy.get(Calendar.DATE)+"/"+hoy.get(Calendar.MONTH));
 		
-		SQLQuery query = (SQLQuery) this.getSession().createSQLQuery(" select s.* from simin_maestro s " +
-				"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
-		 		" and to_char(s.d_mst_fechanacimiento, 'dd/MM')" +
-		 		" like :fec  and s.c_sit_codigo=1 ") ;
+		SQLQuery query = null ;
+		
+		if (rptMensual.equals("1")) {
+			query = (SQLQuery) this.getSession().createSQLQuery(" select s.* from simin_maestro s " +
+					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
+			 		" and to_char(s.d_mst_fechanacimiento, 'MM')" +
+			 		" = :fec  and s.c_sit_codigo=1 ") ;
+		}else {
+			query = (SQLQuery) this.getSession().createSQLQuery(" select s.* from simin_maestro s " +
+					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
+			 		" and to_char(s.d_mst_fechanacimiento, 'dd/MM')" +
+			 		" like :fec  and s.c_sit_codigo=1 ") ;
+		}
+		
+		
 		query.addEntity(SiminMaestro.class);
-		query.setString("fec", (""+(hoy.get(Calendar.DATE)+"/0"+ (hoy.get(Calendar.MONTH)+1))));
+		if (rptMensual.equals("1")) {
+			query.setString("fec", (Utiles.completarCero((hoy.get(Calendar.MONTH)+1))));
+		}else {
+			query.setString("fec", (""+(hoy.get(Calendar.DATE)+"/"+ Utiles.completarCero((hoy.get(Calendar.MONTH)+1)))));
+		}
+		
 
 		// hoy.get(Calendar.DATE)+"/0"+ (hoy.get(Calendar.MONTH)+1)
 
@@ -97,6 +114,8 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		 
 		 List<SiminMaestro> lis =query.list();
 		 
+		 //lis.get(0).getSiminUnidadorganica1().getNUnoAbreviatura();
+		 //logger.debug(lis.get(0).getSiminUnidadorganica1().getNUnoAbreviatura());
 		 
 		 /*SQLQuery query = (SQLQuery) this.getSession().createSQLQuery(" select s.* from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +

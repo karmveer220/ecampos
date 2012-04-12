@@ -48,7 +48,7 @@ public class LoginController  {
 		
 		request.getSession().setAttribute("usuario", usuario);
 		request.getSession().setAttribute("lstSistemas", usuarioService.listarSistemas(username) );
-		request.setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes( ) );
+		request.setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes("") );
 		return "/home";
     }
 	

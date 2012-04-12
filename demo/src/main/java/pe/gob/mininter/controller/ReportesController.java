@@ -62,6 +62,7 @@ public class ReportesController {
 		
 		año = Utiles.nullToBlank(request.getParameter("anio"));		
 		mes = Utiles.nullToBlank(request.getParameter("mes"));
+		logger.debug("ptm"+request.getParameter("rptmensual"));
 		
 		if (año.equals("") || mes.equals("")) {			
 			mes = Utiles.completarCero(hoy.get(Calendar.MONTH));

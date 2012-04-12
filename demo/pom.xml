@@ -209,13 +209,31 @@
 	      <version>4.8.1</version>
 	      <scope>test</scope>
 	    </dependency>
-    
-    <dependency>
-	<groupId>net.sf.jasperreports</groupId>
-	<artifactId>jasperreports</artifactId>
-	<version>4.5.0</version>
-</dependency>
-            
+	    
+	    <dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>4.5.0</version>
+		</dependency>
+		
+		 <dependency>
+			<groupId>displaytag</groupId>
+			<artifactId>displaytag</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- 
+		<dependency>
+			<groupId>org.ajaxtags</groupId>
+			<artifactId>ajaxtags</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.ajaxtags</groupId>
+			<artifactId>ajaxtags-resources</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+        -->
             
   </dependencies>
   

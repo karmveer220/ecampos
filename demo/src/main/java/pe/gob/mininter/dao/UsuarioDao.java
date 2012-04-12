@@ -13,6 +13,6 @@ public interface UsuarioDao {
 
 	public List<SiminUsuariosistema> listarSistemas(String username);
 
-	public List<SiminMaestro> listarCumpleaniosMes();
+	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual);
 	
 }
