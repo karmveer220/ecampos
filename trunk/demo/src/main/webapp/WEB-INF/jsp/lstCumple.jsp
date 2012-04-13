@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://ajaxtags.sourceforge.net/tags/ajaxtags" prefix="ajax"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -12,6 +14,8 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <link href="css/cuadros.css" rel="stylesheet" type="text/css" />
+<link href="css/displaytag.css" rel="stylesheet" type="text/css" />
+<link href="css/ajaxtags.css" rel="stylesheet" type="text/css" />
 <script  src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
 
 <script language="javascript" type="text/javascript">
@@ -49,11 +53,14 @@
 		        			<tr><td colspan="7">&nbsp;</td></tr>
 		        			<tr>
 								<td colspan="7" align="left">
-							    	<display:table  name="requestScope.lcumpleaniosMensual" requestURI="buscardocumentos.htm?ajx=1"  class="displaytag" pagesize="30"
-							            defaultsort="1" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax" >
+							    	<display:table  name="requestScope.lcumpleaniosMensual" requestURI="cumplemensual.htm"  class="displaytag" pagesize="30"
+							            defaultsort="4" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax" >
 							            <display:column title="Nombre Completo" property="nombreCompleto" sortable="true" headerClass="sortable" />
 							            <display:column title="Unidad Organica" property="siminUnidadorganica1.nunoDescripcion" sortable="true" headerClass="sortable" />
-							            
+							            <display:column title="Cargo" property="siminGrado2.ngraNombre" sortable="true" headerClass="sortable" />
+							            <display:column title="Fec. Nacimiento" sortable="true" headerClass="sortable">
+                                           <fmt:formatDate value="${row.dmstFechanacimiento}" pattern="dd/MM/yyyy"/>
+                                   		</display:column>
 							   		</display:table>
 								</td>
 							</tr>

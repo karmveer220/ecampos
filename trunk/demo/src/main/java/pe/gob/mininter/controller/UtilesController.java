@@ -77,8 +77,13 @@ public class UtilesController {
 		return "/marcoLegal";
 	}
 	
+	@RequestMapping("/campanas.htm")
+	public String campanas() {
+		return "/campanas";
+	}
+	
 	@RequestMapping("/cumplemensual.htm")
-	public String lstCumpleMensual(ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+	public String lstCumpleMensual(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, Exception {
 		request.setAttribute("lcumpleaniosMensual", usuarioService.listarCumpleaniosMes("1") );
 		return "/lstCumple";
 	}

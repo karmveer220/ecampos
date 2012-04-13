@@ -15,30 +15,25 @@
 </head>
 
 <body>	  
-	<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
+	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
 	  	<tr>
 		    <td width="200" valign="top" > <jsp:include page="menu.jsp"/> </td>
 		    <td width="700" valign="top">
-		    	<table width="795" border="0" cellspacing="0" cellpadding="0">
-		      	<tr>
-		        	<td width="660" height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
-		        </tr>
-		      	<tr>
-		        	<td height="200" colspan="5" valign="top">
-		        		<iframe scrolling="no" frameborder="0" width="795px" height="700px" src="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-62.pdf" > </iframe>
-		        	</td>
-		        </tr>
-		      	<tr>
-		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" height="5" /></td>
-		        </tr>
-		      	
-		      	
-		      	<tr>
-			        <td valign="top" colspan="5">&nbsp;</td>
-		      	</tr>
+		    	<table width="700" border="0" cellspacing="0" cellpadding="0">
+			      	<tr>
+			        	<td width="700" height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
+			        </tr>
+			      	<tr>
+			        	<td height="200" colspan="5" valign="top">
+			        		<iframe scrolling="no" frameborder="0" width="700" height="680" src="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-62.pdf" > </iframe>
+			        	</td>
+			        </tr>
+			      	<tr>
+			        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" height="5" /></td>
+			        </tr>		     
 		    	</table>
 	    	</td>
 	  	</tr>

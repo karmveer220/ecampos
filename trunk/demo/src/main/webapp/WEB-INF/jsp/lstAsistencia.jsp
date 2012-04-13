@@ -21,7 +21,7 @@
 <script language="javascript" type="text/javascript">
 	function buscarAsistencia(){	
 		document.forms[0].action = "rptasistencia.htm";
-		document.forms[0].target="_blank";
+		document.forms[0].target="baner";
 		document.forms[0].submit();
 	}
 </script>
@@ -29,26 +29,27 @@
 
 
 <body>	  
-	
-	<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
-		<form action="" method="post">
+	<form action="" method="post">
+	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
+		
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
 	  	<tr>
 		    <td width="200" valign="top" > <jsp:include page="menu.jsp"/> </td>
 		    <td width="700" valign="top">
+		    	<div align="center">
 		    	<table width="680" border="0" cellspacing="0" cellpadding="0">
 		      	<tr>
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
 		        </tr>
 		      	<tr>
-		        	<td height="150" valign="top" bgcolor="#EAEAEA">	
+		        	<td height="150" valign="top" bgcolor="#FFFFFF">	
 		        		<br/>
-		        		<table width="100%" border="0" class="">
+		        		<table width="700" border="0" class="">
 		        			<tr><td colspan="7">&nbsp;</td></tr>
 		        			<tr>
-		        				<th colspan="7" class="">Reporte de Asistencia </th>
+		        				<th colspan="7" class="tituloEncabezado">Reporte de Asistencia </th>
 		        			</tr>
 		        			<tr><td colspan="7">&nbsp;</td></tr>
 		        			<tr>
@@ -78,15 +79,15 @@
 					<img src="images/cal.gif" alt="Fecha de Fin" width="16"
 						height="16" border="0" id="triggerCal40" /> <script
 						type="text/javascript">
-	Calendar.setup( {
-		inputField :"fechaFin", // id del campo de texto
-		ifFormat :"%d/%m/%Y", // Formato de la Fecha
-		showsTime :false, // Flag para mostrar la Fecha
-		button :"triggerCal40", // ID del elemento que llamara al calendario
-		singleClick :true
-	// Flag Modo doble-click 
-			});
-</script>
+									Calendar.setup( {
+										inputField :"fechaFin", // id del campo de texto
+										ifFormat :"%d/%m/%Y", // Formato de la Fecha
+										showsTime :false, // Flag para mostrar la Fecha
+										button :"triggerCal40", // ID del elemento que llamara al calendario
+										singleClick :true
+									// Flag Modo doble-click 
+											});
+								</script>
 								</td>
 								<td>                	
 		                   			<div align="left">                      
@@ -97,17 +98,22 @@
 		        			<tr>
 		        				<td colspan="7">&nbsp;</td>
 		        			</tr>
+		        			<tr>
+			        			<td colspan="7" height="200" colspan="5" valign="top">
+					        		<iframe id="baner" name="baner" scrolling="no" frameborder="0" width="690" height="540" src="" > </iframe>
+					        	</td>
+				        	</tr>
 		        		</table>	        		
 		           	</td>
 		        </tr>
 		    	</table>
+		    	</div>
 	    	</td>
 	  	</tr>
 	  	<tr>
 	    	<td colspan="2" class="pie">  <jsp:include page="copyright.jsp"/> </td>
 	  	</tr>
-	  	</form>
 	</table>
-	
+	</form>
 </body>
 </html>

@@ -16,7 +16,7 @@ public interface UsuarioService {
 
 	public List<SiminUsuariosistema> listarSistemas(String username);
 
-	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual);
+	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) throws NumberFormatException, Exception;
 	
 	
 }

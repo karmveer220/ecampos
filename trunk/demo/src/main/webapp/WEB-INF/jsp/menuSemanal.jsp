@@ -15,13 +15,13 @@
 </head>
 
 <body>	  
-	<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center">
+	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
 	  	<tr>
 		    <td width="200" valign="top" > <jsp:include page="menu.jsp"/> </td>
-		    <td width="700" valign="top">
+		    <td width="700" valign="top" align="center">
 		    	<table width="680" border="0" cellspacing="0" cellpadding="0">
 		      	<tr>
 		        	<td width="660" height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
