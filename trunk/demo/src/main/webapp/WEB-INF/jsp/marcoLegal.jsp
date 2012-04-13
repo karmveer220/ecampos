@@ -19,9 +19,9 @@
 
 <body>
 
-	<table width="1000" border="0" cellspacing="0" cellpadding="0"
+	<table width="900" border="0" cellspacing="0" cellpadding="0"
 		align="center">
-		<form action="" method="post">
+	
 			<tr>
 				<td height="115" colspan="2" valign="top"><jsp:include
 						page="cabecera.jsp" /></td>
@@ -167,7 +167,7 @@
 				<td colspan="2" class="pie"><jsp:include page="copyright.jsp" />
 				</td>
 			</tr>
-		</form>
+		
 	</table>
 
 </body>
