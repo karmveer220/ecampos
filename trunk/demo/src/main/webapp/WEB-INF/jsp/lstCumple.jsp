@@ -26,34 +26,34 @@
 
 <body>	  
 	<form action="rptcasboleta.htm">
-	<table width="950" border="0" cellspacing="0" cellpadding="0" align="center">
+	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
 	  	<tr>
 		    <td width="200" valign="top" > <jsp:include page="menu.jsp"/> </td>
 		    <td width="700" valign="top">
+		    	<div align="center">
 		    	<table width="680" border="0" cellspacing="0" cellpadding="0">
 		      	<tr>
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
 		        </tr>
 		      	<tr>
-		        	<td height="150" valign="top" bgcolor="#EAEAEA">	
+		        	<td height="150" valign="top" bgcolor="#FFFFFF">	
 		        		<br/>
 		        		<table width="100%" border="0">
 		        			<tr><td colspan="7">&nbsp;</td></tr>
 		        			<tr>
-		        				<th colspan="7" class="">Reporte de los Cumpleaños Mensualizados</th>
+		        				<th colspan="7" class="tituloEncabezado">Reporte de los Cumpleaños Mensualizados</th>
 		        			</tr>
 		        			<tr><td colspan="7">&nbsp;</td></tr>
 		        			<tr>
-								<td colspan="7">
+								<td colspan="7" align="left">
 							    	<display:table  name="requestScope.lcumpleaniosMensual" requestURI="buscardocumentos.htm?ajx=1"  class="displaytag" pagesize="30"
 							            defaultsort="1" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax" >
 							            <display:column title="Nombre Completo" property="nombreCompleto" sortable="true" headerClass="sortable" />
 							            <display:column title="Unidad Organica" property="siminUnidadorganica1.nunoDescripcion" sortable="true" headerClass="sortable" />
-							            <display:column title="Cargo" property="siminGrado2.ngraNombre" sortable="true" headerClass="sortable" />
-							            <display:column title="Fec. Nacimiento" property="dmstFechanacimiento" sortable="true" headerClass="sortable" />
+							            
 							   		</display:table>
 								</td>
 							</tr>
@@ -64,6 +64,7 @@
 		           	</td>
 		        </tr>
 		    	</table>
+		    	</div>
 	    	</td>
 	  	</tr>
 	  	<tr>

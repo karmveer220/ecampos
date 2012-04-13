@@ -17,6 +17,8 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import pe.gob.mininter.dao.UsuarioDao;
 import pe.gob.mininter.entities.SiminMaestro;
@@ -80,39 +82,48 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 	
 		
 	@Override
+	@Transactional(propagation=Propagation.MANDATORY)
 	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) {
 		Calendar hoy = new GregorianCalendar();
-		logger.debug("================ rtaercumpleanosdelmes =============== "+ hoy.get(Calendar.DATE)+"/"+hoy.get(Calendar.MONTH));
-		
 		SQLQuery query = null ;
 		
 		if (rptMensual.equals("1")) {
-			query = (SQLQuery) this.getSession().createSQLQuery(" select s.* from simin_maestro s " +
+			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
+					" u.n_uno_descripcion, g.n_gra_nombre, s.d_mst_fechanacimiento from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
+					"inner join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
 			 		" and to_char(s.d_mst_fechanacimiento, 'MM')" +
 			 		" = :fec  and s.c_sit_codigo=1 ") ;
 		}else {
-			query = (SQLQuery) this.getSession().createSQLQuery(" select s.* from simin_maestro s " +
+			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
+					" u.n_uno_descripcion  from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
 			 		" and to_char(s.d_mst_fechanacimiento, 'dd/MM')" +
-			 		" like :fec  and s.c_sit_codigo=1 ") ;
+			 		" = :fec  and s.c_sit_codigo=1 ") ;
 		}
-		
-		
-		query.addEntity(SiminMaestro.class);
+
 		if (rptMensual.equals("1")) {
 			query.setString("fec", (Utiles.completarCero((hoy.get(Calendar.MONTH)+1))));
 		}else {
 			query.setString("fec", (""+(hoy.get(Calendar.DATE)+"/"+ Utiles.completarCero((hoy.get(Calendar.MONTH)+1)))));
 		}
+
+		List<SiminMaestro> lis = new ArrayList<SiminMaestro>();
 		
-
-		// hoy.get(Calendar.DATE)+"/0"+ (hoy.get(Calendar.MONTH)+1)
-
-		logger.debug("as"+hoy.get(Calendar.MONTH)+1);
-		 logger.debug("pinta algo"+query.getQueryString());
-		 
-		 List<SiminMaestro> lis =query.list();
+		List<Object[]> oj = query.list();
+		for(Object[] o : oj){
+			logger.debug(o[0]);
+			logger.debug(o[1]);
+			logger.debug(o[2]);
+			logger.debug(o[4]);
+			lis.add(new SiminMaestro(
+					new Long(o[0].toString()),
+					o[1]+"",
+					o[2]+"",
+					o[3]+"",
+					o[4]+"" ));
+		}
+		logger.debug("================================================== lista");
 		 
 		 //lis.get(0).getSiminUnidadorganica1().getNUnoAbreviatura();
 		 //logger.debug(lis.get(0).getSiminUnidadorganica1().getNUnoAbreviatura());
