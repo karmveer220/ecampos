@@ -304,6 +304,20 @@ public class SiminMaestro extends User implements Serializable {
 	    this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
 	    
 	}//, String nUnoDescripcion
+	
+	
+	public SiminMaestro(Long cPerlCodigo ,String usrnombrevh,String usrapepaternovh, String usrapematernovh, 
+			String nunoDescripcion ) {
+		super("m", "e", true, true, true, true, uno());
+		
+		this.nMstNombre=usrnombrevh;
+		this.nMstApepaterno= usrapepaternovh;
+		this.nMstApematerno = usrapematernovh;
+	    this.cPerlCodigo = cPerlCodigo;
+	    this.siminUnidadorganica1 = new SiminUnidadorganica();
+        this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
+	}
+	
 
 	public static SiminMaestro getUsuarioBean() {
 		SiminMaestro nu = (SiminMaestro)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
