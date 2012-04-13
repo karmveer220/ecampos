@@ -17,46 +17,29 @@
 
 
 
-<style type="text/css">
-<!--
-.Estilo1 {
-	color: #660000;
-	font-weight: bold;
-	text-decoration: none;
-}
--->
-</style>
 </head>
 
 
 <body>
 
-	<table width="1000" border="0" cellspacing="0" cellpadding="0"
+	<table width="900" border="0" cellspacing="0" cellpadding="0"
 		align="center">
-		<form action="" method="post">
-			<tr>
-				<td height="115" colspan="2" valign="top"><jsp:include
-						page="cabecera.jsp" /></td>
-			</tr>
-			<tr>
-				<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
-				<td width="700" valign="top">
-					<table width="795" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td height="115" colspan="2" valign="top"><jsp:include
+					page="cabecera.jsp" /></td>
+		</tr>
+		<tr>
+			<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
+			<td width="700" valign="top">
+				<div align="center">
+					<table width="700" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td height="2" colspan="5"><img src="images/blank.jpg"
 								width="2" /></td>
 						</tr>
 						<tr>
-							<td height="150" valign="top" bgcolor="#EAEAEA"><br />
-								<table width="100%" border="0" class="">
-									<tr>
-										<td colspan="7">&nbsp;</td>
-									</tr>
-									<tr>
-										<th colspan="7" class="">
-											<div align="left">ROF</div>
-										</th>
-									</tr>
+							<td height="150" valign="top" bgcolor="#FFFFFF"><br />
+								<table width="700" border="0" class="">
 									<tr>
 										<td colspan="7">&nbsp;</td>
 									</tr>
@@ -70,13 +53,13 @@
 								</table></td>
 						</tr>
 					</table>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" class="pie"><jsp:include page="copyright.jsp" />
-				</td>
-			</tr>
-		</form>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="pie"><jsp:include page="copyright.jsp" />
+			</td>
+		</tr>
 	</table>
 
 </body>
