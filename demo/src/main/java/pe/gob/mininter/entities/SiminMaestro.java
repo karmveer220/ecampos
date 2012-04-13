@@ -307,7 +307,7 @@ public class SiminMaestro extends User implements Serializable {
 	
 	
 	public SiminMaestro(Long cPerlCodigo ,String usrnombrevh,String usrapepaternovh, String usrapematernovh, 
-			String nunoDescripcion ) {
+			String nunoDescripcion, Date usrfechanacimientodt, String ngraNombre) {
 		super("m", "e", true, true, true, true, uno());
 		
 		this.nMstNombre=usrnombrevh;
@@ -316,6 +316,9 @@ public class SiminMaestro extends User implements Serializable {
 	    this.cPerlCodigo = cPerlCodigo;
 	    this.siminUnidadorganica1 = new SiminUnidadorganica();
         this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
+        this.siminGrado2 = new SiminGrado();
+        this.siminGrado2.setNgraNombre(ngraNombre);
+        this.dmstFechanacimiento = usrfechanacimientodt;
 	}
 	
 

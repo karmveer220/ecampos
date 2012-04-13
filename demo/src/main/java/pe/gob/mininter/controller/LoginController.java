@@ -30,7 +30,7 @@ public class LoginController  {
 	private UsuarioService  usuarioService;
 	
 	@RequestMapping("/login.htm")
-    public String login(ModelMap model , HttpServletRequest request) {
+    public String login(ModelMap model , HttpServletRequest request) throws NumberFormatException, Exception {
 		String username = System.getProperty("user.name");
 		SiminMaestro usuario = (SiminMaestro) usuarioService.loadUserByUsername(username);
 		try {

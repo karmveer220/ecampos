@@ -83,21 +83,22 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		
 	@Override
 	@Transactional(propagation=Propagation.MANDATORY)
-	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) {
+	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) throws NumberFormatException, Exception {
 		Calendar hoy = new GregorianCalendar();
 		SQLQuery query = null ;
 		
 		if (rptMensual.equals("1")) {
 			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
-					" u.n_uno_descripcion, g.n_gra_nombre, s.d_mst_fechanacimiento from simin_maestro s " +
+					" u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, g.n_gra_nombre from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
 					"inner join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
 			 		" and to_char(s.d_mst_fechanacimiento, 'MM')" +
 			 		" = :fec  and s.c_sit_codigo=1 ") ;
 		}else {
 			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
-					" u.n_uno_descripcion  from simin_maestro s " +
+					" u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, g.n_gra_nombre  from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
+					"inner join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
 			 		" and to_char(s.d_mst_fechanacimiento, 'dd/MM')" +
 			 		" = :fec  and s.c_sit_codigo=1 ") ;
 		}
@@ -115,31 +116,22 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 			logger.debug(o[0]);
 			logger.debug(o[1]);
 			logger.debug(o[2]);
-			logger.debug(o[4]);
-			lis.add(new SiminMaestro(
-					new Long(o[0].toString()),
-					o[1]+"",
-					o[2]+"",
-					o[3]+"",
-					o[4]+"" ));
+			logger.debug(o[5]);
+			lis.add(
+					new SiminMaestro(
+						new Long(o[0].toString()),
+						Utiles.nullToBlank(o[1]),
+						Utiles.nullToBlank(o[2]),
+						Utiles.nullToBlank(o[3]),
+						Utiles.nullToBlank(o[4]),
+						Utiles.stringToDate(o[5].toString(), Utiles.FORMATO_FECHA_CORTA),
+						Utiles.nullToBlank(o[6])
+						)
+					);
 		}
-		logger.debug("================================================== lista");
-		 
-		 //lis.get(0).getSiminUnidadorganica1().getNUnoAbreviatura();
-		 //logger.debug(lis.get(0).getSiminUnidadorganica1().getNUnoAbreviatura());
-		 
-		 /*SQLQuery query = (SQLQuery) this.getSession().createSQLQuery(" select s.* from simin_maestro s " +
-					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
-			 		" and to_char(s.d_mst_fechanacimiento, 'dd')" +
-			 		" like :fec  and s.c_sit_codigo=1 and substr(c_uno_codigointerno,0,3) like (select substr(ue.c_uno_codigointerno,0,3) from simin_unidadorganica ue where ue.c_uno_codigo = 67) ") ;*/
-		 
-		 /*List<SiminMaestro> lis = this.getSession().createQuery(" from SiminMaestro s, SiminUnidadOrganica u where s.siminUnidadorganica1.cUnoCodigo = u.cUnoCodigo " +
-		 		" and to_char(s.dMstFechanacimiento, 'dd/MM')" +
-		 		" like :fec  and s.cSitCodigo=1").setString("fec", hoy.get(Calendar.DATE)+"/0"+ (hoy.get(Calendar.MONTH)+1) )
-				 .list();           	*/
-		 
-		 logger.debug(lis.size());
-		 return lis;
+
+		logger.debug(lis.size());
+		return lis;
 	}
 
 }

@@ -36,7 +36,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) {
+	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) throws NumberFormatException, Exception {
 		return usuarioDao.listarCumpleaniosMes(rptMensual);
 	}
 

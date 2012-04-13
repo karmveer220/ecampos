@@ -76,7 +76,7 @@
 				   		<c:forEach items="${lcumpleanios}" var="sis">				 	
 						 	<c:out value="${sis.nombreCompleto}"/>
 						 	<br/>
-				    	</c:forEach><br/><br/><br/><br/>
+				    	</c:forEach><br/><br/><br/><br/><br/><br/>
 				    	<div align="right"><a href="cumplemensual.htm">Ver mas..</a></div>
 				    </td>
 		        </tr>
@@ -124,7 +124,7 @@
 							<tr>
 								<td colspan="2" align="center">soporte@mininter.gob.pe</td>
 							</tr>
-		        		</table><br/><br/><br/><br/><br/><br/><br/>
+		        		</table><br/>		        		
 		        		<div align="right"><a href="#">Ver mas..</a></div>
 					</td>
 					<td>&nbsp;</td>
@@ -135,9 +135,7 @@
 			        <td valign="top" bgcolor="#EAEAEA"><br/>
 			        	<div align="center">
 							<a
-								href="http://www.minsa.gob.pe/portada/Especiales/2010/donacion/default.asp"
-								target="_blank"> <img alt="Campañas de Salud"
-								src="images/campanas.jpg" width="200" height="150" />
+								href="campanas.htm"> <img alt="Campañas" src="images/campanas.png" width="176" height="166" />
 							</a>
 						</div>
 			        </td>
