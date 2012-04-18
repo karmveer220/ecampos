@@ -22,8 +22,7 @@
 
 <body>
 
-	<table width="900" border="0" cellspacing="0" cellpadding="0"
-		align="center">
+	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">		
 		<tr>
 			<td height="115" colspan="2" valign="top"><jsp:include
 					page="cabecera.jsp" /></td>
@@ -31,29 +30,28 @@
 		<tr>
 			<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
 			<td width="700" valign="top">
-				
-					<table width="700" border="0" cellspacing="0" cellpadding="0">
-						<tr>
-							<td height="2" colspan="5"><img src="images/blank.jpg"
-								width="2" /></td>
-						</tr>
-						<tr>
-							<td height="150" valign="top" bgcolor="#FFFFFF"><br />
-								<table width="700" border="0" class="">
-									<tr>
-										<td colspan="7">&nbsp;</td>
-									</tr>
-
-									<tr>
-										<td colspan="7"><a
-											href="http://www.mininter.gob.pe/contenidos/archivos/200802061836130.ROF%20MININTER%20FINAL.pdf"
-											target="_blank"> Reglamento de Organizaci&oacute;n y
-												Funciones del Ministerio del Interior </a></td>
-									</tr>
-								</table></td>
-						</tr>
-					</table>
-				
+				<div align="center">
+				<table width="700" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td height="2" colspan="5"><img src="images/blank.jpg"
+							width="2" /></td>
+					</tr>
+					<tr>
+						<td height="150" valign="top" bgcolor="#FFFFFF"><br />
+							<table width="700" border="0" class="">
+								<tr>
+									<td colspan="7">&nbsp;</td>
+								</tr>
+								<tr>
+									<td colspan="7"><iframe scrolling="yes" frameborder="0"
+											width="700" height="600"
+											src="fotos.htm">
+										</iframe></td>
+								</tr>
+							</table></td>
+					</tr>
+				</table>
+				</div>
 			</td>
 		</tr>
 		<tr>
