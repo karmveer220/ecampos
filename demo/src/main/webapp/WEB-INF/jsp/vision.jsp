@@ -22,7 +22,7 @@
 
 <body>
 
-	<table width="1000" border="0" cellspacing="0" cellpadding="0"
+	<table width="900" border="0" cellspacing="0" cellpadding="0"
 		align="center">
 		<form action="" method="post">
 			<tr>
@@ -32,22 +32,31 @@
 			<tr>
 				<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
 				<td width="700" valign="top">
-					<table width="795" border="0" cellspacing="0" cellpadding="0">
+					<table width="700" border="0" cellspacing="0" cellpadding="0">
 						<tr>
 							<td height="2" colspan="5"><img src="images/blank.jpg"
 								width="2" /></td>
 						</tr>
 						<tr>
 							<td height="150" valign="top"><br />
-								<table width="100%" border="0" class="">
+								<table width="700" border="0" class="">
 
+									<tr>
+									  <th class="">&nbsp;</th>
+									  <th colspan="9" class="">&nbsp;</th>
+									  <th class="">&nbsp;</th>
+								  </tr>
 									<tr>
 										<th class="">&nbsp;</th>
 										<th colspan="9" class="">
-											<div align="left">VISI&Oacute;N</div>
-										</th>
+											<div align="left">VISI&Oacute;N</div>										</th>
 										<th class="">&nbsp;</th>
 									</tr>
+									<tr>
+									  <td>&nbsp;</td>
+									  <td colspan="9">&nbsp;</td>
+									  <td>&nbsp;</td>
+								  </tr>
 									<tr>
 										<td>&nbsp;</td>
 										<td colspan="9"><div align="justify">
@@ -62,12 +71,21 @@
 									</tr>
 
 									<tr>
+									  <th class="">&nbsp;</th>
+									  <th colspan="9" class="">&nbsp;</th>
+									  <th class="">&nbsp;</th>
+								  </tr>
+									<tr>
 										<th class="">&nbsp;</th>
 										<th colspan="9" class="">
-											<div align="left">MISI&Oacute;N</div>
-										</th>
+											<div align="left">MISI&Oacute;N</div>										</th>
 										<th class="">&nbsp;</th>
 									</tr>
+									<tr>
+									  <td>&nbsp;</td>
+									  <td colspan="9">&nbsp;</td>
+									  <td>&nbsp;</td>
+								  </tr>
 									<tr>
 										<td>&nbsp;</td>
 										<td colspan="9"><div align="justify">El Ministerio
