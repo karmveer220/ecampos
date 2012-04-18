@@ -1,4 +1,4 @@
-package pe.gob.mininter.entities;
+package pe.gob.mininter.entities; 
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -104,6 +104,7 @@ public class BReporteCas implements Serializable, Comparable<BReporteCas> {
 	
 	private List<BMonto> listaDscto;
 	private Double totalDscto;
+	private Double totalHaberes;
 	/****/
 	private String fuentefto;
 	private Double montodsctoEssaludEmp;
@@ -157,6 +158,7 @@ public class BReporteCas implements Serializable, Comparable<BReporteCas> {
 	private String numFaltas;
 	
 	private List<BDsctoHaber> listadodsctos;
+	private List<BDsctoHaber> listadodsctos1;
 	
 	//Impresion de Adendas Personalizadas
 	private String codDirector;
@@ -187,9 +189,12 @@ public class BReporteCas implements Serializable, Comparable<BReporteCas> {
 	
 	private Double dsctTotalSP;
 	
+	private String nroPlaza;
+	
 	public BReporteCas(){
 		listaDscto = new ArrayList<BMonto>();
 		listadodsctos = new ArrayList<BDsctoHaber>();
+		listadodsctos1 = new ArrayList<BDsctoHaber>();
 	}
 	
 	public String getFuncion() {
@@ -1220,6 +1225,30 @@ public class BReporteCas implements Serializable, Comparable<BReporteCas> {
 
     public void setTipoRecurso(String tipoRecurso) {
         this.tipoRecurso = tipoRecurso;
+    }
+
+    public List<BDsctoHaber> getListadodsctos1() {
+        return listadodsctos1;
+    }
+
+    public void setListadodsctos1(List<BDsctoHaber> listadodsctos1) {
+        this.listadodsctos1 = listadodsctos1;
+    }
+
+    public Double getTotalHaberes() {
+        return totalHaberes;
+    }
+
+    public void setTotalHaberes(Double totalHaberes) {
+        this.totalHaberes = totalHaberes;
+    }
+
+    public String getNroPlaza() {
+        return nroPlaza;
+    }
+
+    public void setNroPlaza(String nroPlaza) {
+        this.nroPlaza = nroPlaza;
     }
 
     @Override

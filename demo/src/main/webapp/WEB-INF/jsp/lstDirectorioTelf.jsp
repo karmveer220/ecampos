@@ -46,56 +46,52 @@
 		        	<td height="150" valign="top" bgcolor="#FFFFFF">	
 		        		<br/>
 		        		<table width="100%" border="0">
-		        			<tr><td colspan="7">&nbsp;</td></tr>
-		        			<tr>
-		        				<th colspan="7" class="tituloEncabezado">Reporte Directorio Telefonico</th>
-		        			</tr>
-		        			
-		        			<tr><td colspan="7">&nbsp;</td></tr>
-		        			<tr><td>Dependencia </td>
-		       					<td>:</td>
-		       					<td>
-		       						<input type="text" name="n_dir_descripcion" id="n_dir_descripcion" maxlength="10" class="texto"
-						size="10" /></td>
-						 </tr>
-						 <tr><td>Telefono </td>
-		       					<td>:</td>
-		       					<td>
-		       						<input type="text" name="n_dir_telefono" id="n_dir_telefono" maxlength="10" class="texto"
-						size="10" /></td>
-						 </tr>
-						 <tr><td>Anexo </td>
-		       					<td>:</td>
-		       					<td>
-		       						<input type="text" name="n_dir_anexo" id="n_dir_anexo" maxlength="10" class="texto"
-						size="10" /></td>
-						 </tr>
-						 <tr>
-						 <td>                	
-		                   			<div align="left">                      
-	                     				<a href="javascript:buscarDirectorioTelf();"><img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar"/></a>                
-		                   			</div>
-                    			</td>
-						 </tr>
-		        			<tr><td colspan="7">&nbsp;</td></tr>
-		        			<tr>
-								<td colspan="7" align="left">
-							    	<display:table  name="requestScope.ldirectorioTelf" requestURI="directorioTelf.htm"  class="displaytagJ"
-							            defaultsort="4" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax" >
-							            <display:column title="Dependencia" property="n_dir_descripcion" sortable="true" headerClass="sortable" />
-							            <display:column title="Telefono" property="n_dir_telefono" sortable="true" headerClass="sortable" />
-							            <display:column title="Anexo" property="n_dir_anexo" sortable="true" headerClass="sortable" />
-							           
-							           
-							           
-							   		</display:table>
+										<tr>
+											<td colspan="4">&nbsp;</td>
+										</tr>
+										<tr>
+											<th colspan="4" class="tituloEncabezado">Reporte Directorio Telefonico</th>
+										</tr>
+										<tr>
+											<td colspan="4">&nbsp;</td>
+										</tr>
+										<tr>
+											<th>Dependencia</th>
+											<td>:</td>
+											<td> <input type="text" name=ndirDescripcion maxlength="10" class="texto" size="10" /></td>
+											<td>&nbsp;</td>
+										</tr>
+										<tr>
+											<th>Telefono</th>
+											<td>:</td>
+											<td><input type="text" name="ndirTelefono" maxlength="10" class="texto" size="10" /></td>
+											<td align="center"><a href="javascript:buscarDirectorioTelf();"><img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar" /></a></td>
+										</tr>
+										<tr>
+											<th>Anexo</th>
+											<td>:</td>
+											<td><input type="text" name="ndirAnexo" maxlength="10" class="texto" size="10" /></td>
+											<td>&nbsp;</td>
+										</tr>
+										<tr>
+											<td colspan="4">&nbsp;</td>
+										</tr>
+										<tr>
+											<td colspan="4" align="left">
+												<display:table name="requestScope.ldirectorioTelf" requestURI="directorioTelf.htm" class="displaytag" 
+												defaultsort="4" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax">
+													<display:column title="Dependencia" property="ndirDescripcion" sortable="true" headerClass="sortable" />
+													<display:column title="Abreviatura" property="siminUnidadorganica.nunoAbreviatura" sortable="true" headerClass="sortable" />
+													<display:column title="Telefono" property="ndirTelefono" sortable="true" headerClass="sortable" />
+													<display:column title="Anexo" property="ndirAnexo" sortable="true" headerClass="sortable" />
+												</display:table>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="4">&nbsp;</td>
+										</tr>
+									</table>
 								</td>
-							</tr>
-		        			<tr>
-		        				<td colspan="7">&nbsp;</td>
-		        			</tr>
-		        		</table>	        		
-		           	</td>
 		        </tr>
 		    	</table>
 		    	</div>

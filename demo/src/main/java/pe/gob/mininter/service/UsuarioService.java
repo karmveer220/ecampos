@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
+import pe.gob.mininter.entities.SiminDirectorio;
 import pe.gob.mininter.entities.SiminMaestro;
 import pe.gob.mininter.entities.SiminUsuariosistema;
 import pe.gob.mininter.entities.Users;
@@ -18,5 +19,5 @@ public interface UsuarioService {
 
 	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) throws NumberFormatException, Exception;
 	
-	
+	public List<SiminDirectorio> listarDirectorioTelf( String dependencia, String telefono, String anexo) throws NumberFormatException, Exception;
 }

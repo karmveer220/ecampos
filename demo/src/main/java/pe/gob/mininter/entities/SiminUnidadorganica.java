@@ -70,7 +70,7 @@ public class SiminUnidadorganica implements Serializable {
 	private BigDecimal marcacion;
 
 	@Column(name="N_UNO_ABREVIATURA")
-	private String nUnoAbreviatura;
+	private String nunoAbreviatura;
 
 	@Column(name="N_UNO_DESCRIPCION")
 	private String nunoDescripcion;
@@ -94,6 +94,10 @@ public class SiminUnidadorganica implements Serializable {
 	//bi-directional many-to-one association to SiminMaestro
 	@OneToMany(mappedBy="siminUnidadorganica2")
 	private List<SiminMaestro> siminMaestros2;
+	
+	//bi-directional many-to-one association to SiminDirectorio
+	@OneToMany(mappedBy="siminUnidadorganica")
+	private List<SiminDirectorio> siminDirectorios;
 
     public SiminUnidadorganica() {
     }
@@ -234,14 +238,6 @@ public class SiminUnidadorganica implements Serializable {
 		this.marcacion = marcacion;
 	}
 
-	public String getNUnoAbreviatura() {
-		return this.nUnoAbreviatura;
-	}
-
-	public void setNUnoAbreviatura(String nUnoAbreviatura) {
-		this.nUnoAbreviatura = nUnoAbreviatura;
-	}
-
 	public String getNunoDescripcion() {
 		return this.nunoDescripcion;
 	}
@@ -297,5 +293,20 @@ public class SiminUnidadorganica implements Serializable {
 	public void setSiminMaestros2(List<SiminMaestro> siminMaestros2) {
 		this.siminMaestros2 = siminMaestros2;
 	}
-	
+
+	public List<SiminDirectorio> getSiminDirectorios() {
+		return siminDirectorios;
+	}
+
+	public void setSiminDirectorios(List<SiminDirectorio> siminDirectorios) {
+		this.siminDirectorios = siminDirectorios;
+	}
+
+	public String getNunoAbreviatura() {
+		return nunoAbreviatura;
+	}
+
+	public void setNunoAbreviatura(String nunoAbreviatura) {
+		this.nunoAbreviatura = nunoAbreviatura;
+	}
 }

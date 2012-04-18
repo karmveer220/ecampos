@@ -291,10 +291,10 @@ public class SiminMaestro extends User implements Serializable {
 	
 	public SiminMaestro(String username, String password, boolean enabled,List<GrantedAuthority> authorities,
 			String usrnombrevh,String usrapepaternovh, String usrapematernovh,
-			Date usrfechanacimientodt,String estado, String nunoDescripcion) {
+			Date usrfechanacimientodt,String estado, String nunoDescripcion, String cTingCodigo, String nUnoGeneralAbrev) {
 		super(username, password, enabled, true, true, true, authorities);
 		this.nmstLogin = username;
-//		this.nMstClave = password;
+		//this.nMstClave = password;
 		this.nMstNombre=usrnombrevh;
 		this.nMstApepaterno= usrapepaternovh;
 		this.nMstApematerno = usrapematernovh;
@@ -302,8 +302,9 @@ public class SiminMaestro extends User implements Serializable {
 	    this.cSitCodigo = estado;
 	    this.siminUnidadorganica1 = new SiminUnidadorganica();
 	    this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
-	    
-	}//, String nUnoDescripcion
+	    this.siminUnidadorganica1.setNUnoGeneralAbrev(nUnoGeneralAbrev);
+	    this.cTingCodigo = cTingCodigo;
+	}
 	
 	
 	public SiminMaestro(Long cPerlCodigo ,String usrnombrevh,String usrapepaternovh, String usrapematernovh, 

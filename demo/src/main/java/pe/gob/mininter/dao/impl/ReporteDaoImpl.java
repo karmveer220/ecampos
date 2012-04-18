@@ -73,11 +73,10 @@ public class ReporteDaoImpl extends HibernateDaoSupport implements ReporteDao {
     	  		.append(" and p.n_plan_anio=" +periodo+" ")
     	  		.append(" and p.n_plan_mes ="+mes+" ");
     	  s_sql.append("and m.n_mst_login = '"+username + "'");
-    	  //s_sql.append("and m.n_mst_dni = '40000415' ");
     	  
-    	  if(!Utiles.nullToBlank(dependencia).equals("-1")){
+    	  /*if(!Utiles.nullToBlank(dependencia).equals("-1")){
     	      s_sql.append("and u.n_uno_general_abrev = '"+ Utiles.nullToBlank(dependencia) +"'  ");	            	 
-          }
+          }*/
     	  
     	  s_sql.append("group by m.n_mst_dni, m.c_mst_codigo, m.n_mst_teleban,m.d_mst_fech_min, p.c_perl_codigo, m.n_mst_apepaterno,m.n_mst_apematerno, ");
 	      s_sql.append("m.n_mst_nombre, m.n_mst_dni, n_plan_tipo, p.n_plan_monto, co.n_cont_sueld, ");
@@ -499,6 +498,75 @@ public class ReporteDaoImpl extends HibernateDaoSupport implements ReporteDao {
 		}
 		logger.debug(lista.size());
 		return lista;
+	}
+
+	@Override
+	public BReporteCas listarBoletaNom(String periodo, String mes, String usuario) {
+        StringBuffer s_sql = new StringBuffer();
+        ResultSet rs = null;
+        Statement stm = null;
+        List<BReporteCas> lista = new ArrayList<BReporteCas>();
+        BReporteCas planilla = null;
+        
+        NumberFormat formatter = new DecimalFormat("000000");
+        formatter = new DecimalFormat("#,###,###.00");
+        
+        try{  
+            s_sql.append("select m.c_perl_codigo, m.n_mst_dni, m.c_mst_codigo, m.n_mst_teleban, to_char(m.d_mst_fech_min,'dd/MM/yyyy') as d_mst_fech_min, ");
+            s_sql.append("m.n_mst_apepaterno || ' ' || m.n_mst_apematerno || ' ' || m.n_mst_nombre as nomcompleto, h.c_hbds_codigo, ");
+            s_sql.append("n_plnom_mes, c_mst_num_plaza, ca.n_car_descripcion, upper(u.n_uno_descripcion) as n_uno_descripcion, ");
+            s_sql.append("n_hbds_descripcion, n_plnom_monto, u.n_uno_general_abrev, f_hbds_tipo, n_hbds_partida, n_hbds_generico ");
+            s_sql.append("from srhl_planilla_nom p inner join srhl_detalleplanilla_nom d on p.c_plnom_codigo = d.c_plnom_codigo ");
+            s_sql.append("inner join srhl_haber_dscto h on h.c_hbds_codigo=d.c_hbds_codigo inner join simin_maestro m on p.c_mst_codigo = m.c_mst_codigo ");
+            s_sql.append("inner join simin_cargo ca on ca.c_car_codigo = m.c_car_codigo ");
+            s_sql.append("left join simin_unidadorganica u on m.c_uno_codigo_of_destaque = u.c_uno_codigo  where p.n_plnom_periodo = "+periodo+" " );
+            s_sql.append("and p.n_plnom_mes = "+mes+" and n_mst_login = '"+usuario+"' group by h.c_hbds_codigo,n_hbds_descripcion, u.n_uno_descripcion, n_uno_general_abrev, ");
+            s_sql.append("f_hbds_tipo, n_hbds_partida, n_hbds_generico, m.n_mst_dni, m.c_mst_codigo, m.n_mst_teleban, m.d_mst_fech_min, m.n_mst_apepaterno, ");
+            s_sql.append("m.n_mst_apematerno, m.n_mst_nombre, m.c_perl_codigo, n_plnom_monto, n_plnom_mes, n_plnom_orden, c_mst_num_plaza, ca.n_car_descripcion ");
+            s_sql.append("order by n_plnom_orden ");
+            logger.debug(s_sql.toString());
+            
+            stm = this.getSession().connection().prepareStatement(s_sql.toString());
+            rs = stm.executeQuery(s_sql.toString());
+          
+            Double sumDsctos = 0.0, sumHaberes = 0.0;
+            planilla = new BReporteCas();
+            
+            while (rs.next()){
+                planilla.setNombresEmp(rs.getString("nomcompleto"));
+                planilla.setDniEmp(rs.getString("n_mst_dni"));
+                planilla.setCodigoEmp(rs.getString("c_mst_codigo"));
+                planilla.setAnio(periodo);
+                planilla.setMes(Utiles.devolverMes(rs.getInt("n_plnom_mes")));
+                planilla.setDependenciaEmp(rs.getString("n_uno_descripcion"));
+                planilla.setCodAutogeneradoEmp(rs.getString("c_mst_codigo"));
+                planilla.setFecIngMininter(rs.getString("d_mst_fech_min"));
+                planilla.setNroPlaza(rs.getString("c_mst_num_plaza"));
+                planilla.setCargoEmp(rs.getString("n_car_descripcion"));
+                
+                if (rs.getInt("f_hbds_tipo") == 2) {
+                    planilla.getListadodsctos().add(new BDsctoHaber(rs.getString("n_hbds_descripcion"), formatter.format(Double.parseDouble(rs.getString("n_plnom_monto")))));
+                    sumDsctos += rs.getDouble("n_plnom_monto");
+                }
+                
+                if (rs.getInt("f_hbds_tipo") == 1) {
+                    planilla.getListadodsctos1().add(new BDsctoHaber(rs.getString("n_hbds_descripcion"), formatter.format(Double.parseDouble(rs.getString("n_plnom_monto")))));
+                    sumHaberes += rs.getDouble("n_plnom_monto");
+                }
+            }
+            planilla.setTotalDscto(sumDsctos);
+            planilla.setTotalHaberes(sumHaberes);
+            lista.add(planilla); 
+        }catch(Exception e ){
+            e.printStackTrace();
+            logger.debug(e.getMessage());
+        }finally{
+            try {
+                if(rs !=null){rs.close(); rs = null;}
+                if (stm != null) stm.close();
+            } catch (Exception e2) {}
+        }
+        return planilla;
 	}
 
 }

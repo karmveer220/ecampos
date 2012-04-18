@@ -33,6 +33,7 @@ public class LoginController  {
     public String login(ModelMap model , HttpServletRequest request) throws NumberFormatException, Exception {
 		String username = System.getProperty("user.name");
 		SiminMaestro usuario = (SiminMaestro) usuarioService.loadUserByUsername(username);
+		logger.debug("ingreso "+ usuario.getCTingCodigo()+" "+usuario.getSiminUnidadorganica1().getNUnoGeneralAbrev());
 		try {
 			URL autoIP = new URL("http://testip.edpsciences.org/");
 			BufferedReader in = new BufferedReader( new InputStreamReader(autoIP.openStream()));

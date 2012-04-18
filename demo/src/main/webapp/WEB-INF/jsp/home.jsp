@@ -27,17 +27,17 @@
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
 		        </tr>
 		      	<tr align="center">
-		        	<td height="200" colspan="5" valign="top"><img src="images/tres.JPG" width="700" height="200" /></td>
+		        	<td height="200" colspan="5" valign="top"><img src="images/tres.png" width="700" height="200" /></td>
 		        </tr>
 		      	<tr>
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" height="5" /></td>
 		        </tr>
 		      	<tr>
-			        <td width="210"><div class="botones"><img src="images/utilitarios.gif" width="20" height="20" />Utilitarios</div></td>
+			        <td width="210"><div><img src="images/boton_util.png" width="230" height="25" /></div></td>			        
 			        <td><img src="images/blank.jpg" width="5" height="5" /></td>
-			        <td width="210"> <div class="botones"> <img src="images/Computer.png" width="20" height="20" />Sistemas </div></td>
+			        <td width="210"> <div> <img src="images/boton_sistemas.png" width="230" height="25" /></div></td>
 				    <td><img src="images/blank.jpg" width="5" height="5" /></td>
-			        <td width="210"><div class="botones"><img src="images/pastel.jpg" width="20" height="20" />Cumplea&ntilde;os del d&iacute;a</div></td>
+			        <td width="210"><div><img src="images/boton_cumple.png" width="230" height="25" /></div></td>
 		      	</tr>
 		      	<tr>
 		        	<td height="150" valign="top" bgcolor="#EAEAEA">	
@@ -64,11 +64,11 @@
 		           	<td><img src="images/blank.jpg" width="5" height="5" /></td>
 		        	<td valign="top" bgcolor="#EAEAEA" align="left">
 		        		<br/>
-		        		<ul>
+		        		
 						<c:forEach items="${lstSistemas}" var="sis">
-							<li><a href="http://srvprueba:8080/${sis.siminSistema.nsisAbreviatura}/${sis.siminSistema.nsisMetodo}=${usuario.nmstLogin}&var=1" target="_blank"> <c:out value="${sis.siminSistema.nsisDescripcion}"/></a><br/></li><br/>
+							<a href="http://srvprueba:8080/${sis.siminSistema.nsisAbreviatura}/${sis.siminSistema.nsisMetodo}=${usuario.nmstLogin}&var=1" target="_blank"> <c:out value="${sis.siminSistema.nsisDescripcion}"/></a><br/><br/>
 					    </c:forEach>
-					    </ul>			
+					    		
 				    </td>
 				    <td><img src="images/blank.jpg" width="5" height="5" /></td>
 		       	 	<td valign="top" bgcolor="#EAEAEA">
@@ -84,14 +84,18 @@
 			        <td valign="top" colspan="5">&nbsp;</td>
 		      	</tr>
 		      	<tr>
-			        <td valign="top"><div class="botones"><img src="images/soporte.png" width="16" height="16" />Soporte T&eacute;cnico</div></td>
+			        <td valign="top"><div><img src="images/boton_menu.png" width="230" height="25" /></div></td>
 			        <td>&nbsp;</td>		        
-			        <td valign="top"><div class="botones"><img src="images/menu.gif" width="20" height="20" />Men&uacute;de la Semana</div></td>
+			        <td valign="top"><div><img src="images/boton_soporte.png" width="230" height="25" /></div></td>
 			        <td>&nbsp;</td>		        
-			        <td valign="top"><div class="botones"><img src="images/campanas.jpg" width="20" height="20" />Campa&ntilde;as</div></td>
+			        <td valign="top"><div><img src="images/boton_campana.png" width="230" height="25" /></div></td>
 		        </tr>
 		      	<tr>
-			        <td height="150" valign="top" width="100%" bgcolor="#EAEAEA">
+					<td valign="middle" align="center" bgcolor="#EAEAEA"><br/>
+						<a href="menuSemanal.htm"> <img alt="Menú Semanal" src="images/pizarra.png" width="200" height="70" /></a>
+					</td>
+					<td>&nbsp;</td>
+					<td height="150" valign="top" width="100%" bgcolor="#EAEAEA">
 			        	<br/>
 			        	<table width="100%">
 			        			<tr>
@@ -118,18 +122,14 @@
 								<td colspan="2" align="center">&nbsp;</td>
 							</tr>
 							<tr>
-								<td colspan="2" align="center">Horario de Atenci&oacute;n:
-									8:30 am-21:00 pm</td>
+								<td colspan="2" align="center">
+									Horario de Atenci&oacute;n:8:30 - 21:00 horas
+								</td>
 							</tr>
 							<tr>
 								<td colspan="2" align="center">soporte@mininter.gob.pe</td>
 							</tr>
-		        		</table><br/>		        		
-		        		<div align="right"><a href="#">Ver mas..</a></div>
-					</td>
-					<td>&nbsp;</td>
-					<td valign="top" bgcolor="#EAEAEA"><br />
-						<a href="menuSemanal.htm"> <img alt="Menú Semanal" src="images/pizarra.jpg" width="200" height="70" /></a>
+		        		</table><br/>
 					</td>
 					<td>&nbsp;</td>
 			        <td valign="top" bgcolor="#EAEAEA"><br/>

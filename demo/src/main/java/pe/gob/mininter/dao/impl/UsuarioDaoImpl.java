@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import pe.gob.mininter.dao.UsuarioDao;
+import pe.gob.mininter.entities.SiminDirectorio;
 import pe.gob.mininter.entities.SiminMaestro;
 import pe.gob.mininter.entities.SiminUnidadorganica;
 import pe.gob.mininter.entities.SiminUsuariosistema;
@@ -61,7 +62,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 			logger.debug( "ROLE_" + rol.getSiminTipousuario().getCTusuDetalle()  );
 		}
 		
-		SiminMaestro usuario= new SiminMaestro(user.getNmstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDmstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion() );
+		SiminMaestro usuario= new SiminMaestro(user.getNmstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDmstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion(), user.getCTingCodigo(), user.getSiminUnidadorganica1().getNUnoGeneralAbrev());
 		//usuario.setNMstNombre(user.getNMstNombre());
 		
 		logger.debug(usuario.toString());
@@ -92,15 +93,15 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 					" u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, g.n_gra_nombre from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
 					"inner join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
-			 		" and to_char(s.d_mst_fechanacimiento, 'MM')" +
-			 		" = :fec  and s.c_sit_codigo=1 ") ;
+			 		"where to_char(s.d_mst_fechanacimiento, 'MM')" +
+			 		" = :fec  and s.c_sit_codigo=1  and u.c_ue_codigo = 1  ") ;
 		}else {
 			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
 					" u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, g.n_gra_nombre  from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
 					"inner join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
 			 		" and to_char(s.d_mst_fechanacimiento, 'dd/MM')" +
-			 		" = :fec  and s.c_sit_codigo=1 ") ;
+			 		" = :fec  and s.c_sit_codigo=1  and u.c_ue_codigo = 1 ") ;
 		}
 
 		if (rptMensual.equals("1")) {
@@ -132,6 +133,15 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 
 		logger.debug(lis.size());
 		return lis;
+	}
+
+	@Override
+	public List<SiminDirectorio> listarDirectorioTelf(String dependencia, String telefono, String anexo) throws NumberFormatException,Exception {
+		Query q = getSession().createQuery("select d from SiminDirectorio d, SiminUnidadorganica o where d.siminUnidadorganica.cUnoCodigo = o.cUnoCodigo" +
+					" and upper(d.ndirDescripcion) like '"+dependencia+"%'");
+		
+		List<SiminDirectorio> listaDirec = q.list();
+		return listaDirec;
 	}
 
 }
