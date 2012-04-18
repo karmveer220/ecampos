@@ -14,6 +14,7 @@
    	
    	<mapping class="pe.gob.mininter.entities.SiminGrado"/>
    	<mapping class="pe.gob.mininter.entities.SiminFunciones"/>
+   	<mapping class="pe.gob.mininter.entities.SiminDirectorio"/>
    	
   </session-factory>
 </hibernate-configuration>

@@ -23,9 +23,9 @@
 <style type="text/css">
 /* jQuery lightBox plugin - Gallery style */
 #gallery {
-	background-color: #444;
+	background-color: #FFFFFF;
 	padding: 10px;
-	width: 520px;
+	width: 700px;
 }
 
 #gallery ul {
@@ -37,7 +37,7 @@
 }
 
 #gallery ul img {
-	border: 5px solid #3e3e3e;
+	border: 5px solid #FFFFFF;
 	border-width: 5px 5px 20px;
 }
 
@@ -54,64 +54,65 @@
 </head>
 
 <body>
-
-	<h2 id="example">Galería Fotográfica</h2>
-	<p>Click en la imagen para ver la foto completa</p>
+	
 	<div id="gallery">
 		<ul>
 			<li><a href="imgsgale/Campeonato_2011_001.jpg" title="texto 1">
-					<img src="imgsgale/Campeonato_2011_001.jpg" width="72" height="72"
+					<img src="imgsgale/Campeonato_2011_001.jpg" width="120" height="100"
 					alt="" />
 			</a></li>
 			<li><a href="imgsgale/Campeonato_2011_002.jpg" title="texto 1">
-					<img src="imgsgale/Campeonato_2011_002.jpg" width="72" height="72"
+					<img src="imgsgale/Campeonato_2011_002.jpg" width="120" height="100"
 					alt="" />
 			</a></li>
 			<li><a href="imgsgale/Campeonato_2011_003.jpg" title="texto 1">
-					<img src="imgsgale/Campeonato_2011_003.jpg" width="72" height="72"
+					<img src="imgsgale/Campeonato_2011_003.jpg" width="120" height="100"
 					alt="" />
 			</a></li>
 			<li><a href="imgsgale/Campeonato_2011_004.jpg" title="texto 1">
-					<img src="imgsgale/Campeonato_2011_004.jpg" width="72" height="72"
+					<img src="imgsgale/Campeonato_2011_004.jpg" width="120" height="100"
 					alt="" />
 			</a></li>
-
 			<li><a href="imgsgale/Campeonato_2011_005.jpg" title="texto 1">
-					<img src="imgsgale/Campeonato_2011_005.jpg" width="72" height="72"
+					<img src="imgsgale/Campeonato_2011_005.jpg" width="120" height="100"
 					alt="" />
 			</a></li>
 
 			<li><a href="imgsgale/Campeonato_2011_006.jpg" title="texto 2">
-					<img src="imgsgale/Campeonato_2011_006.jpg" width="72" height="72"
+					<img src="imgsgale/Campeonato_2011_006.jpg" width="120" height="100"
 					alt="" />
 			</a></li>
 			<li><a href="imgsgale/Campeonato_2011_007.jpg" title="texto 2"> <img
-					src="imgsgale/Campeonato_2011_007.jpg" width="72" height="72" alt="" />
+					src="imgsgale/Campeonato_2011_007.jpg" width="120" height="100" alt="" />
 			</a></li>
 			<li><a href="imgsgale/Campeonato_2011_008.jpg" title="texto 2"> <img
-					src="imgsgale/Campeonato_2011_008.jpg" width="72" height="72" alt="" />
+					src="imgsgale/Campeonato_2011_008.jpg" width="120" height="100" alt="" />
 			</a></li>
 			<li><a href="imgsgale/Campeonato_2011_009.jpg" title="texto 2"> <img
-					src="imgsgale/Campeonato_2011_009.jpg" width="72" height="72" alt="" />
+					src="imgsgale/Campeonato_2011_009.jpg" width="120" height="100" alt="" />
 			</a></li>
 			<li><a href="imgsgale/Campeonato_2011_010.jpg" title="texto 2"> <img
-					src="imgsgale/Campeonato_2011_010.jpg" width="72" height="72" alt="" />
+					src="imgsgale/Campeonato_2011_010.jpg" width="120" height="100" alt="" />
 			</a></li>
 			<li><a href="imgsgale/Campeonato_2011_011.jpg" title="texto 2"> <img
-					src="imgsgale/Campeonato_2011_011.jpg" width="72" height="72" alt="" />
+					src="imgsgale/Campeonato_2011_011.jpg" width="120" height="100" alt="" />
 			</a></li>
 			<li><a href="imgsgale/Campeonato_2011_012.jpg" title="texto 2"> <img
-					src="imgsgale/Campeonato_2011_013.jpg" width="72" height="72" alt="" />
+					src="imgsgale/Campeonato_2011_012.jpg" width="120" height="100" alt="" />
 			</a></li>
-			<li><a href="imgsgale/maura-rivera9.jpg" title="texto 2"> <img
-					src="imgsgale/maura-rivera9.jpg" width="72" height="72" alt="" />
+			<li><a href="imgsgale/Campeonato_2011_013.jpg" title="texto 2"> <img
+					src="imgsgale/Campeonato_2011_013.jpg" width="120" height="100" alt="" />
 			</a></li>
-			<li><a href="imgsgale/maura-rivera10.jpg" title="texto 2"> <img
-					src="imgsgale/maura-rivera10.jpg" width="72" height="72" alt="" />
+			<li><a href="imgsgale/Campeonato_2011_014.jpg" title="texto 2"> <img
+					src="imgsgale/Campeonato_2011_014.jpg" width="120" height="100" alt="" />
 			</a></li>
-			<li><a href="imgsgale/maura-rivera11.jpg" title="texto 2"> <img
-					src="imgsgale/maura-rivera11.jpg" width="72" height="72" alt="" />
+			<li><a href="imgsgale/Campeonato_2011_015.jpg" title="texto 2"> <img
+					src="imgsgale/Campeonato_2011_015.jpg" width="120" height="100" alt="" />
 			</a></li>
+			<li><a href="imgsgale/Campeonato_2011_016.jpg" title="texto 2"> <img
+					src="imgsgale/Campeonato_2011_016.jpg" width="120" height="100" alt="" />
+			</a></li>
+			
 		</ul>
 	</div>
 

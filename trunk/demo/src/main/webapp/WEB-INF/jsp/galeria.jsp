@@ -33,22 +33,33 @@
 				<div align="center">
 				<table width="700" border="0" cellspacing="0" cellpadding="0">
 					<tr>
-						<td height="2" colspan="5"><img src="images/blank.jpg"
-							width="2" /></td>
+						<td height="2"><img src="images/blank.jpg" width="2" /></td>
 					</tr>
 					<tr>
 						<td height="150" valign="top" bgcolor="#FFFFFF"><br />
-							<table width="700" border="0" class="">
+							<table width="700" border="0">
 								<tr>
-									<td colspan="7">&nbsp;</td>
+									<td class="tituloEncabezado">
+										Galer&iacute;a Fotogr&aacute;fica
+									</td>
 								</tr>
 								<tr>
-									<td colspan="7"><iframe scrolling="yes" frameborder="0"
-											width="700" height="600"
-											src="fotos.htm">
-										</iframe></td>
+									<td>&nbsp;</td>
 								</tr>
-							</table></td>
+								<tr>
+									<th align="left">
+										Click en la imagen para ver la foto completa
+									</th>
+								</tr>
+								<tr>
+									<td align="center">
+										<div align="center">
+										<iframe scrolling="no" frameborder="0" width="700" height="600" src="fotos.htm"></iframe>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</td>
 					</tr>
 				</table>
 				</div>

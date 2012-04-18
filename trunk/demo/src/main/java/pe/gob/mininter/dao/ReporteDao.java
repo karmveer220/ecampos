@@ -11,4 +11,6 @@ public interface ReporteDao {
 
 	public List<Marcacion> obtenerAsistenciaxEmpleado(String fecIni,String fecFin, String codEmp);
 	
+	public BReporteCas listarBoletaNom(String periodo, String mes, String usuario);
+	
 }

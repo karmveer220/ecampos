@@ -26,4 +26,9 @@ public class ReporteServiceImpl implements ReporteService {
 		return reporteDao.obtenerAsistenciaxEmpleado(fecIni,fecFin,codEmp);
 	}
 
+	@Override
+	public BReporteCas listarBoletaNom(String periodo, String mes, String usuario) {
+		return reporteDao.listarBoletaNom(periodo, mes, usuario);
+	}
+	
 }

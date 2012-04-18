@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import pe.gob.mininter.entities.BReporteCas;
 import pe.gob.mininter.entities.Marcacion;
+import pe.gob.mininter.entities.SiminMaestro;
 import pe.gob.mininter.service.ReporteService;
 import pe.gob.mininter.utiles.Utiles;
 
@@ -47,6 +48,7 @@ public class ReportesController {
 	
 	@RequestMapping("/boleta.htm")	
 	public String sistema(ModelMap model , HttpServletRequest request ){
+		request.getSession().getAttribute("usuario");
 		return "/lstBoleta";
 	}
 	
@@ -54,15 +56,14 @@ public class ReportesController {
 	@RequestMapping(value="/rptcasboleta.htm", method = RequestMethod.GET)
 	public String rptCASBoleta( HttpServletRequest request, HttpServletResponse response){
 		
-		logger.debug("pinta");
 		String username = System.getProperty("user.name");
+		SiminMaestro maestro = (SiminMaestro) request.getSession().getAttribute("usuario");
+		
 		Calendar hoy = new GregorianCalendar();
-		String mes = "";
-		String año = "";
+		String mes, año = "";
 		
 		año = Utiles.nullToBlank(request.getParameter("anio"));		
 		mes = Utiles.nullToBlank(request.getParameter("mes"));
-		logger.debug("ptm"+request.getParameter("rptmensual"));
 		
 		if (año.equals("") || mes.equals("")) {			
 			mes = Utiles.completarCero(hoy.get(Calendar.MONTH));
@@ -72,26 +73,29 @@ public class ReportesController {
 			mes = Utiles.completarCero(Integer.parseInt(request.getParameter("mes")));
 		}
 		
-		String dependencia = "OFITEL";
-		String nombres = username  ;
-		//String ue = request.getParameter("ue_id");
+		//String dependencia = "OFITEL";
+		
 		
 		try {
 			
 			ServletOutputStream ouputStream = response.getOutputStream();
-			logger.debug(ouputStream.toString());
-					
-			List<BReporteCas> listaGeneral = reporteService.listarCasBoletas(año, mes, dependencia, nombres );
-			request.getSession().setAttribute("listGeneral", 0);			
+			String reportName = "";
 			Collection<BReporteCas> col  = new ArrayList<BReporteCas>();
 			
-        	for(int i=0;i<listaGeneral.size();i++){
-            	BReporteCas bdo = listaGeneral.get(i);
-            	col.add(bdo);
-            }
-            String reportName = request.getRealPath("/Reportes/rptCASBoletaEmp.jasper");
-	        	        
-	        JRBeanCollectionDataSource dataSource;
+			if (maestro.getCTingCodigo().equals("5") || maestro.getCTingCodigo().equals("7")) {
+				List<BReporteCas> listaGeneral = reporteService.listarCasBoletas(año, mes, "", maestro.getNmstLogin() );
+	        	for(int i=0;i<listaGeneral.size();i++){
+	            	BReporteCas bdo = listaGeneral.get(i);
+	            	col.add(bdo);
+	            }
+	        	reportName = request.getRealPath("/Reportes/rptCASBoletaEmp.jasper");
+			}else {
+				BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", maestro.getNmstLogin());
+            	col.add(bdo);            	
+            	reportName = request.getRealPath("/Reportes/rptNOMBoletaEmp.jasper");
+			}
+			
+			JRBeanCollectionDataSource dataSource;
 	        Map<String, Object> pars = new HashMap<String, Object>();
 	        String ruta = request.getRealPath("/images/documento.jpg");
             pars.put("ruta", ruta);

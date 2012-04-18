@@ -37,9 +37,8 @@
                 <td>&nbsp;</td>
               </tr>
               <tr>
-                <td><img src="images/blank.jpg"
-							width="2" height="5" /></td>
-                <td>Oficina de Comunicaci&oacute;n Social / Bolet&iacute;n Informativo</td>
+                <td><img src="images/blank.jpg" width="2" height="5" /></td>
+                <td class="tituloEncabezado">Oficina de Comunicaci&oacute;n Social / Bolet&iacute;n Informativo</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
@@ -49,10 +48,10 @@
               </tr>
               <tr>
                 <td>&nbsp;</td>
-                <td><a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-63.pdf" target="baner"><strong>
-				<img src="images/boletin.png"
-							width="15" height="15" />
-				BOLETIN  INFORMATIVO N&ordm; 063 - A&ntilde;o IV</strong></a></td>
+                <td align="center">
+                	<a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-63.pdf" target="baner"><strong>
+					<img src="images/boletin.png" width="15" height="15" /> BOLETIN  INFORMATIVO N&ordm; 063 - A&ntilde;o IV</strong></a>
+				</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
@@ -62,21 +61,23 @@
               </tr>
               <tr>
                 <td>&nbsp;</td>
-                <td><a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-62.pdf" target="baner"><strong><img src="images/boletin.png"
-							width="15" height="15" />BOLETIN  INFORMATIVO N&ordm; 062 - A&ntilde;o IV</strong></a></td>
+                <td align="center"> 
+	                <a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-62.pdf" target="baner"><strong>
+	                <img src="images/boletin.png" width="15" height="15" />BOLETIN  INFORMATIVO N&ordm; 062 - A&ntilde;o IV</strong></a>
+                </td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr >
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td><a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-61-V.pdf" target="baner"><strong>
-				<img src="images/boletin.png"
-							width="15" height="15" />
-				BOLETIN  INFORMATIVO N&ordm; 061 - A&ntilde;o </strong></a><a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-62.pdf" target="_blank"><strong>IV</strong></a></td>
+                <td align="center">
+                	<a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-61-V.pdf" target="baner"><strong>
+					<img src="images/boletin.png" width="15" height="15" /> BOLETIN  INFORMATIVO N&ordm; 061 - A&ntilde;o </strong></a><a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-62.pdf" target="_blank"><strong>IV</strong></a>
+				</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
