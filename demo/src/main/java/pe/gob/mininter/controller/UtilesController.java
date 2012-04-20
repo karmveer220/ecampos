@@ -115,8 +115,9 @@ public class UtilesController {
 	
 	@RequestMapping("/cumplemensual.htm")
 	public String lstCumpleMensual(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, Exception {
-		request.getSession().getAttribute("usuario");
-		request.getSession().setAttribute("lcumpleaniosMensual", usuarioService.listarCumpleaniosMes("1") );
+		//request.getSession().getAttribute("usuario");
+		request.setAttribute("lcumpleaniosMensual", usuarioService.listarCumpleaniosMes("1") );
+		logger.debug(usuarioService.listarCumpleaniosMes("1").size());
 		return "/lstCumple";
 	}
 	
