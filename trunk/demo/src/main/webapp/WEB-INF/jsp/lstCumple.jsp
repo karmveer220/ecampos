@@ -53,7 +53,7 @@
 		        			<tr><td colspan="7">&nbsp;</td></tr>
 		        			<tr>
 								<td colspan="7" align="left">
-							    	<display:table  name="requestScope.lcumpleaniosMensual" requestURI="cumplemensual.htm"  class="displaytag" 
+							    	<display:table  name="requestScope.lcumpleaniosMensual" requestURI="lcumpleaniosMensual.htm"  class="displaytag" 
 							            defaultsort="4" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax" >
 							            <display:column title="Nombre Completo" property="nombreCompleto" sortable="true" headerClass="sortable" />
 							            <display:column title="Unidad Organica" property="siminUnidadorganica1.nunoDescripcion" sortable="true" headerClass="sortable" />

@@ -65,14 +65,15 @@ public class ReporteDaoImpl extends HibernateDaoSupport implements ReporteDao {
     	  s_sql.append("inner join srhl_sueldo s on co.c_cont_codigo = s.c_cont_codigo and s.n_suel_anio = " +periodo+" and s.n_suel_mes = "+mes+" ");
     	  s_sql.append("inner join simin_unidadorganica u on m.c_uno_codigo_oficina = u.c_uno_codigo ");
     	  s_sql.append("inner join srhl_sist_pension sp on sp.c_spen_codigo=p.c_spen_codigo ");
-    	  s_sql.append("inner join srhmint.srhl_monto_asignados ma on ma.c_perl_codigo=m.c_perl_codigo and ma.d_mont_anio=" +periodo+" and ma.d_mont_mes="+mes+" ");    	  
-    	  s_sql.append("left join srhmint.srhl_comisionafp afp on  afp.c_spen_codigo=p.c_spen_codigo and afp.n_comi_anio =" +periodo+" and afp.n_comi_mes="+mes+" ");
-    	  s_sql.append("inner join srhl_dsct_perc dp on ma.c_dspe_codigo = dp.c_dspe_codigo ");
-    	  s_sql.append("where p.n_plan_pago = '1' ")
-    	  		.append(" and p.n_plan_tipo = 1 ")
-    	  		.append(" and p.n_plan_anio=" +periodo+" ")
+    	  s_sql.append("left join srhmint.srhl_monto_asignados ma on ma.c_perl_codigo=m.c_perl_codigo and ma.d_mont_anio=" +periodo+" and ma.d_mont_mes="+mes+" ");    	  
+    	  s_sql.append("inner join srhmint.srhl_comisionafp afp on  afp.c_spen_codigo=p.c_spen_codigo and afp.n_comi_anio =" +periodo+" and afp.n_comi_mes="+mes+" ");
+    	  s_sql.append("left join srhl_dsct_perc dp on ma.c_dspe_codigo = dp.c_dspe_codigo ");
+    	  s_sql.append("where ")
+    	  	
+    	  		.append(" p.n_plan_anio=" +periodo+" ")
     	  		.append(" and p.n_plan_mes ="+mes+" ");
     	  s_sql.append("and m.n_mst_login = '"+username + "'");
+    	  //s_sql.append("and m.n_mst_login = 'pcaro'");
     	  
     	  /*if(!Utiles.nullToBlank(dependencia).equals("-1")){
     	      s_sql.append("and u.n_uno_general_abrev = '"+ Utiles.nullToBlank(dependencia) +"'  ");	            	 
