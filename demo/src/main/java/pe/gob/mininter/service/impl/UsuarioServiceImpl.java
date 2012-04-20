@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import pe.gob.mininter.dao.UsuarioDao;
 import pe.gob.mininter.entities.SiminDirectorio;
 import pe.gob.mininter.entities.SiminMaestro;
+import pe.gob.mininter.entities.SiminUnidadorganica;
 import pe.gob.mininter.entities.SiminUsuariosistema;
 import pe.gob.mininter.entities.Users;
 import pe.gob.mininter.service.UsuarioService;
@@ -44,6 +45,11 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Override
 	public List<SiminDirectorio> listarDirectorioTelf(String dependencia, String telefono, String anexo) throws NumberFormatException, Exception {
 		return usuarioDao.listarDirectorioTelf(dependencia, telefono, anexo);
+	}
+
+	@Override
+	public List<SiminUnidadorganica> listarUnidadOrganica() {
+		return usuarioDao.listarUnidadOrganica();
 	}
 
 }

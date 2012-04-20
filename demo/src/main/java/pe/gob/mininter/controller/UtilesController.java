@@ -88,30 +88,44 @@ public class UtilesController {
 		return "/galeria";
 	}
 	
-	@RequestMapping("/fotos.htm")
-	public String fotos() {
-		return "/fotos";
+	@RequestMapping("/galeriaFotos.htm")
+	public String galeriaFotos() {
+		return "/galeriaFotos";
+	}
+	@RequestMapping("/fotosCampe2011.htm")
+	public String fotosCampe2011() {
+		return "/fotosCampe2011";
+	}
+	@RequestMapping("/avisosUno.htm")
+	public String avisosUno() {
+		return "/avisosUno";
+	}
+	@RequestMapping("/avisosDos.htm")
+	public String avisosDos() {
+		return "/avisosDos";
+	}
+	@RequestMapping("/avisosTres.htm")
+	public String avisosTres() {
+		return "/avisosTres";
+	}
+	@RequestMapping("/avisosCuatro.htm")
+	public String avisosCuatro() {
+		return "/avisosCuatro";
 	}
 	
 	@RequestMapping("/cumplemensual.htm")
 	public String lstCumpleMensual(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, Exception {
-		request.setAttribute("lcumpleaniosMensual", usuarioService.listarCumpleaniosMes("1") );
+		request.getSession().getAttribute("usuario");
+		request.getSession().setAttribute("lcumpleaniosMensual", usuarioService.listarCumpleaniosMes("1") );
 		return "/lstCumple";
 	}
 	
 	@RequestMapping("/directorioTelf.htm")
 	public String lstDirectorioTelf(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, Exception {
-		String descripcion = "";
-		String telefono = "";
-		String anexo = "";
+		request.getSession().getAttribute("usuario");
+		String descripcion = Utiles.nullToBlank(request.getParameter("ndirDescripcion"));
 		
-		descripcion = Utiles.nullToBlank(request.getParameter("ndirDescripcion"));		
-		telefono = Utiles.nullToBlank(request.getParameter("ndirTelefono"));
-		anexo = Utiles.nullToBlank(request.getParameter("ndirAnexo"));
-		logger.debug("param "+descripcion+" "+telefono);
-		
-		
-		request.setAttribute("ldirectorioTelf", usuarioService.listarDirectorioTelf(descripcion,telefono,anexo) );
+		request.setAttribute("ldirectorioTelf", usuarioService.listarDirectorioTelf(descripcion,"","") );
 		return "/lstDirectorioTelf";
 	}
 }

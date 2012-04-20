@@ -41,10 +41,9 @@
 							<table width="700" border="0" class="">
 								
 								<tr>
-									<td colspan="7"><iframe scrolling="yes" frameborder="0"
-											width="700" height="700"
-											src="http://www.mininter.gob.pe/comunicados/BoletinBienestar01.pdf">
-										</iframe></td>
+									<td colspan="7">
+										<iframe scrolling="yes" frameborder="0" width="700" height="700" src="http://www.mininter.gob.pe/comunicados/LoncherasEscolares.pdf"></iframe>
+									</td>
 								</tr>
 							</table></td>
 					</tr>

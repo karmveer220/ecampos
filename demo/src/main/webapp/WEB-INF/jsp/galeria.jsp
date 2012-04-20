@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -12,20 +11,15 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <link href="css/cuadros.css" rel="stylesheet" type="text/css" />
-
 <script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
-
-
-
 </head>
 
-
 <body>
-
 	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">		
 		<tr>
-			<td height="115" colspan="2" valign="top"><jsp:include
-					page="cabecera.jsp" /></td>
+			<td height="115" colspan="2" valign="top">
+				<jsp:include page="cabecera.jsp" />
+			</td>
 		</tr>
 		<tr>
 			<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
@@ -48,13 +42,13 @@
 								</tr>
 								<tr>
 									<th align="left">
-										Click en la imagen para ver la foto completa
+										Click en la imagen para ver el album completo
 									</th>
 								</tr>
 								<tr>
 									<td align="center">
-										<div align="center">
-										<iframe scrolling="no" frameborder="0" width="700" height="600" src="fotos.htm"></iframe>
+									  <div align="center">
+										<iframe scrolling="no" frameborder="0" width="700" height="600" src="galeriaFotos.htm"></iframe>
 										</div>
 									</td>
 								</tr>

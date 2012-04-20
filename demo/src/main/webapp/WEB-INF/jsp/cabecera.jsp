@@ -22,7 +22,7 @@
 	<tr>
 		<td height="10" colspan="4" align="right" valign="top" bgcolor="#666666">
 			<ul id="topnav">
-				<li><a href="login.htm"> <img src="images/home.png"
+				<li><a href="home.htm"> <img src="images/home.png"
 						alt="inicio" width="20" height="20" class="link-img" />Home
 				</a></li>
 				<li><a href="http://www.mininter.gob.pe" target="_blank"><img src="images/logo_min.png" alt="Portal" width="20" height="20" class="link-img" />Portal</a></li>

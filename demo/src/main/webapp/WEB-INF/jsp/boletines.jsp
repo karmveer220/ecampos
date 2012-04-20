@@ -46,6 +46,20 @@
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
+              
+               <tr>
+                <td>&nbsp;</td>
+                <td align="center">
+                	<a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-64.pdf" target="baner"><strong>
+					<img src="images/boletin.png" width="15" height="15" /> BOLETIN  INFORMATIVO N&ordm; 064 - A&ntilde;o IV</strong></a>
+				</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
               <tr>
                 <td>&nbsp;</td>
                 <td align="center">
