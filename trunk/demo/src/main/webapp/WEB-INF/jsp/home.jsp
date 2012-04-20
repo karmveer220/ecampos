@@ -21,7 +21,7 @@
 	 	</tr>
 	  	<tr>
 		    <td width="200" valign="top" > <jsp:include page="menu.jsp"/> </td>
-		    <td width="700" valign="top">
+		    <td width="700" valign="top" bgcolor="#EAEAEA">
 		    	<table width="600" border="0" cellspacing="0" cellpadding="0" >
 		      	<tr>
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
@@ -34,9 +34,9 @@
 		        </tr>
 		      	<tr>
 			        <td width="210"><div><img src="images/boton_util.png" width="230" height="25" /></div></td>			        
-			        <td><img src="images/blank.jpg" width="5" height="5" /></td>
+			        <td>&nbsp;</td>		
 			        <td width="210"> <div> <img src="images/boton_sistemas.png" width="230" height="25" /></div></td>
-				    <td><img src="images/blank.jpg" width="5" height="5" /></td>
+				    <td>&nbsp;</td>		
 			        <td width="210"><div><img src="images/boton_cumple.png" width="230" height="25" /></div></td>
 		      	</tr>
 		      	<tr>
@@ -45,23 +45,19 @@
 		        		<table width="100%">
 		        			<tr>
 		        				<td valign="top">
-		        					<a href="rptasistencia.htm" target="_blank"><img src="images/reloj.GIF" width="16" height="16" />Asistencia</a>
+		        					<a href="asistencia.htm"><img src="images/reloj.GIF" width="16" height="16" />Asistencia</a>
 		       					</td>
-		       					<td align="right">
-		        					<a href="asistencia.htm">Ver Mas...</a>
-		       					</td>
+		       					<td align="right">&nbsp;</td>
 		       				</tr>
 		        			<tr>
 		        				<td>
-		        					<a href="rptcasboleta.htm" target="_blank"><img src="images/icon_libro.png" width="16" height="16" />Boleta de pago</a>
+		        					<a href="boleta.htm"><img src="images/icon_libro.png" width="16" height="16" />Boleta de pago</a>
 		        				</td>
-		        				<td align="right">
-		        					<a href="boleta.htm">Ver Mas...</a>
-		       					</td>
+		        				<td align="right">&nbsp;</td>
 		        			</tr>
 		        		</table>	        		
 		           	</td>
-		           	<td><img src="images/blank.jpg" width="5" height="5" /></td>
+		           	<td>&nbsp;</td>
 		        	<td valign="top" bgcolor="#EAEAEA" align="left">
 		        		<br/>
 		        		
@@ -70,7 +66,7 @@
 					    </c:forEach>
 					    		
 				    </td>
-				    <td><img src="images/blank.jpg" width="5" height="5" /></td>
+				    <td>&nbsp;</td>
 		       	 	<td valign="top" bgcolor="#EAEAEA">
 		       	 		<br/>
 				   		<c:forEach items="${lcumpleanios}" var="sis">				 	

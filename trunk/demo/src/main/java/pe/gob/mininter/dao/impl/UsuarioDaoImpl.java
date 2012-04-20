@@ -2,7 +2,6 @@ package pe.gob.mininter.dao.impl;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +23,6 @@ import pe.gob.mininter.entities.SiminDirectorio;
 import pe.gob.mininter.entities.SiminMaestro;
 import pe.gob.mininter.entities.SiminUnidadorganica;
 import pe.gob.mininter.entities.SiminUsuariosistema;
-import pe.gob.mininter.entities.Users;
 import pe.gob.mininter.utiles.Parametros;
 import pe.gob.mininter.utiles.Utiles;
 
@@ -138,10 +135,17 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 	@Override
 	public List<SiminDirectorio> listarDirectorioTelf(String dependencia, String telefono, String anexo) throws NumberFormatException,Exception {
 		Query q = getSession().createQuery("select d from SiminDirectorio d, SiminUnidadorganica o where d.siminUnidadorganica.cUnoCodigo = o.cUnoCodigo" +
-					" and upper(d.ndirDescripcion) like '"+dependencia+"%'");
+					" and upper(d.ndirDescripcion) like upper('"+dependencia+"%')");
 		
 		List<SiminDirectorio> listaDirec = q.list();
 		return listaDirec;
+	}
+
+	@Override
+	public List<SiminUnidadorganica> listarUnidadOrganica() {
+		Query q = getSession().createQuery("select t from SiminUnidadorganica t order by n_uno_descripcion"   );
+		List<SiminUnidadorganica> listaUnidadOrg = q.list();
+		return listaUnidadOrg;
 	}
 
 }

@@ -53,10 +53,9 @@ public class ReportesController {
 	}
 	
 	@SuppressWarnings("deprecation")
-	@RequestMapping(value="/rptcasboleta.htm", method = RequestMethod.GET)
+	@RequestMapping("/rptcasboleta.htm")
 	public String rptCASBoleta( HttpServletRequest request, HttpServletResponse response){
 		
-		String username = System.getProperty("user.name");
 		SiminMaestro maestro = (SiminMaestro) request.getSession().getAttribute("usuario");
 		
 		Calendar hoy = new GregorianCalendar();
@@ -73,9 +72,6 @@ public class ReportesController {
 			mes = Utiles.completarCero(Integer.parseInt(request.getParameter("mes")));
 		}
 		
-		//String dependencia = "OFITEL";
-		
-		
 		try {
 			
 			ServletOutputStream ouputStream = response.getOutputStream();
@@ -90,7 +86,7 @@ public class ReportesController {
 	            }
 	        	reportName = request.getRealPath("/Reportes/rptCASBoletaEmp.jasper");
 			}else {
-				BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", maestro.getNmstLogin());
+				BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", "gcabrejos");
             	col.add(bdo);            	
             	reportName = request.getRealPath("/Reportes/rptNOMBoletaEmp.jasper");
 			}
@@ -115,7 +111,7 @@ public class ReportesController {
 			request.setAttribute("msgError", e.getMessage());
 			logger.debug(e.getMessage());
 		}
-		return null;
+		return "/lstBoleta";
 	}
 	
 	@RequestMapping("/rptasistencia.htm")
@@ -123,8 +119,8 @@ public class ReportesController {
 	   	
 		ServletOutputStream ouputStream = null;
    		try {
+   			SiminMaestro maestro = (SiminMaestro) request.getSession().getAttribute("usuario");
    			
-   			String username = System.getProperty("user.name");
    			ouputStream = response.getOutputStream();
    			
    			Calendar hoy = new GregorianCalendar();
@@ -155,7 +151,7 @@ public class ReportesController {
    			
    			logger.debug(inicio+" "+fin);
    			
-   			List<Marcacion> rptAsistencia = reporteService.obtenerAsistenciaxEmpleado(inicio, fin, username );
+   			List<Marcacion> rptAsistencia = reporteService.obtenerAsistenciaxEmpleado(inicio, fin, maestro.getNmstLogin() );
    			
    			logger.debug(rptAsistencia.size());
    				

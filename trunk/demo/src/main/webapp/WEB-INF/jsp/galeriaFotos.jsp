@@ -11,7 +11,7 @@
 
                                       <tr>
                                         <td width="225" height="150"><a href="fotosCampe2011.htm">
-										<img src="imgsgale/Campeonato_2011_001.jpg" width="225" height="150" border="0" /></a></td>
+										<img src="images/campeonato/Campeonato_2011_001.jpg" width="225" height="150" border="0" /></a></td>
                                         <td width="10"><img src="images/blank.jpg" width="10" /></td>
                                         <td width="225"></td>
                                         <td width="10"><img src="images/blank.jpg" width="10" /></td>

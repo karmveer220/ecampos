@@ -14,11 +14,13 @@
 <script  src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
 
 <script language="javascript" type="text/javascript">
-	function buscarBoleta(){	
+
+	function buscarBoleta(){		
 		document.forms[0].action = "rptcasboleta.htm";
 		document.forms[0].target="baner";
 		document.forms[0].submit();
 	}
+	
 </script>
 </head>
 
@@ -50,9 +52,7 @@
 		        				<th>P&eacute;riodo</th>
 		       					<td>:</td>
 		       					<td>
-		       						<select name="anio">
-		       							<option value="2010">2010</option>
-		       							<option value="2011">2011</option>
+		       						<select name="anio">		       						
 		       							<option value="2012">2012</option>
 		       							<option value="2013">2013</option>
 		       						</select>
@@ -86,7 +86,7 @@
 		        			</tr>
 		        			<tr>
 			        			<td colspan="7" height="200" colspan="5" valign="top">
-					        		<iframe id="baner" name="baner" scrolling="no" frameborder="0" width="690" height="540" src="" > </iframe>
+					        		<iframe name="baner" scrolling="no" frameborder="0" width="690" height="540" src="" > </iframe>
 					        	</td>
 				        	</tr>
 		        		</table>	        		

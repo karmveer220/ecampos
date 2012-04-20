@@ -11,9 +11,7 @@
 	</div>
 
 	<div class="menucinas">
-		<h2>Oficinas del Sector</h2>
 		<div align="left" class="botonfi">
-
 			<div>
 				<p>
 					<a style="COLOR: #333333; TEXT-DECORATION: none"
