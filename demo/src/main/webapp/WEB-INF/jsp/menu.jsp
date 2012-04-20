@@ -10,4 +10,12 @@
 		<jsp:include page="banner.html" />
 	</div>
 
+	<div class="menucinas">
+		<div align="left" >
+			<div>
+				.
+			</div>			
+		</div>
+	</div>
+
 </div>
