@@ -3,7 +3,7 @@
   <display-name>intranet</display-name>
   <context-param>
     <param-name>webAppRootKey</param-name>
-    <param-value>demomininster</param-value>
+    <param-value>intranet</param-value>
   </context-param>
   <context-param>
     <param-name>log4jConfigLocation</param-name>

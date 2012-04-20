@@ -20,7 +20,7 @@
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
 	  	<tr>
-		    <td width="200" valign="top" > <jsp:include page="menu.jsp"/> </td>
+		    <td width="200" valign="top"> <jsp:include page="menu.jsp"/> </td>
 		    <td width="700" valign="top" bgcolor="#EAEAEA">
 		    	<table width="600" border="0" cellspacing="0" cellpadding="0" >
 		      	<tr>
