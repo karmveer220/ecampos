@@ -69,11 +69,22 @@
 				    <td>&nbsp;</td>
 		       	 	<td valign="top" bgcolor="#EAEAEA">
 		       	 		<br/>
-				   		<c:forEach items="${lcumpleanios}" var="sis">				 	
-						 	<c:out value="${sis.nombreCompleto}"/>
-						 	<br/>
-				    	</c:forEach><br/><br/><br/><br/><br/><br/>
-				    	<div align="right"><a href="cumplemensual.htm">Ver mas..</a></div>
+		       	 		<table border="0">
+		       	 			<tr>
+		       	 				<td colspan="2" height="100px" width="450px">
+		       	 					<c:forEach items="${lcumpleanios}" var="sis">				 	
+									 	<c:out value="${sis.nombreCompleto}"/>
+									 	<br/>
+							    	</c:forEach>			
+		       	 				</td>
+		       	 			</tr>
+		       	 			<tr>
+		       	 				<td>&nbsp;</td>
+		       	 				<td align="left">
+		       	 					<div align="right"><a href="cumplemensual.htm">Ver mas..</a></div>		
+	       	 					</td>
+		       	 			</tr>
+		       	 		</table>
 				    </td>
 		        </tr>
 		      	<tr>

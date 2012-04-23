@@ -81,7 +81,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		
 	@Override
 	@Transactional(propagation=Propagation.MANDATORY)
-	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual) throws NumberFormatException, Exception {
+	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual, String mes) throws NumberFormatException, Exception {
 		Calendar hoy = new GregorianCalendar();
 		SQLQuery query = null ;
 		
@@ -91,7 +91,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
 					"inner join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
 			 		"where to_char(s.d_mst_fechanacimiento, 'MM')" +
-			 		" = :fec  and s.c_sit_codigo=1  and u.c_ue_codigo = 1  ") ;
+			 		" = :fec  and s.c_sit_codigo=1  and u.c_ue_codigo = 1 ") ;
 		}else {
 			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
 					" u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, g.n_gra_nombre  from simin_maestro s " +
@@ -102,7 +102,13 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		}
 
 		if (rptMensual.equals("1")) {
-			query.setString("fec", (Utiles.completarCero((hoy.get(Calendar.MONTH)+1))));
+			logger.debug("h"+mes+"h");
+			if (mes.equals("")) {
+				query.setString("fec", (Utiles.completarCero((hoy.get(Calendar.MONTH)+1))));
+			}else {
+				query.setString("fec", (Utiles.completarCero(Integer.parseInt(mes))));
+			}
+			
 		}else {
 			query.setString("fec", (""+(hoy.get(Calendar.DATE)+"/"+ Utiles.completarCero((hoy.get(Calendar.MONTH)+1)))));
 		}
