@@ -44,16 +44,24 @@
 		</td>
 	</tr>
 	<tr valign="top" class="datuser">
-		<td width="260" height="25">Bienvenido:<br> <c:out
-				value="${usuario.nombreCompleto}" /></td>
-		<td width="410" height="25">Area:<br> <c:out
-				value="${usuario.siminUnidadorganica1.nunoDescripcion}" /></td>
-		<td width="100" height="25">IP:<br> <c:out
-				value="${usuario.ipPrivada}" /></td>
-		<td width="140" height="25">Fecha:<br>
-		<script language="javascript">
-			document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_meses[mes - 1] + " de " + anio)
-		</script>
+		<td width="260">Bienvenido: </td>
+		<td width="410">Area: </td>
+		<td width="100">IP: </td>
+		<td width="140">Fecha: </td>
+	</tr>
+	<tr valign="top" class="datuser">
+		<td width="260" height="18"> 
+			<c:out value="${usuario.nombreCompleto}" />
+		</td>
+		<td width="410" height="18">
+			<c:out value="${usuario.siminUnidadorganica1.nunoDescripcion}" />
+		</td>
+		<td width="100" height="18">
+			<c:out value="${usuario.ipPrivada}" /></td>
+		<td width="140" height="18">
+			<script language="javascript">
+				document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_meses[mes - 1] + " de " + anio)
+			</script>
 		</td>
 	</tr>
 </table>

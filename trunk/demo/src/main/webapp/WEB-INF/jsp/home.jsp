@@ -131,7 +131,7 @@
 			        <td valign="top" bgcolor="#EAEAEA"><br/>
 			        	<div align="center">
 							<a
-								href="campanas.htm"> <img alt="Campañas" src="images/campanas.png" width="176" height="166" />
+								href="campanas.htm"> <img alt="Campañas" src="images/campanas.png" width="160" height="150" />
 							</a>
 						</div>
 			        </td>
