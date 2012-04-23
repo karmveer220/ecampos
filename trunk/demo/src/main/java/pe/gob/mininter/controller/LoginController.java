@@ -38,20 +38,22 @@ public class LoginController  {
 			System.out.println("intento de logueo = " +username);
 			SiminMaestro usuario = (SiminMaestro) usuarioService.loadUserByUsername(username);	
 				
-			//InetAddress thisIp = InetAddress.getLocalHost();//no sirve de nada
-			//thisIp.getHostAddress().toString(); --> trae la ip del servidor
-			String  thisIpAddress =  request.getRemoteAddr(); //--> request.getRemoteAddr(); trae la ip de quien ha llamado a esta pagina 
-			usuario.setIpPrivada(thisIpAddress);
+			InetAddress thisIp = InetAddress.getLocalHost();
+			thisIp.getHostAddress().toString();
+			//String  thisIpAddress =  request.getRemoteAddr(); //--> request.getRemoteAddr(); trae la ip de quien ha llamado a esta pagina 
+			usuario.setIpPrivada(thisIp.getHostAddress().toString());
 			
+
 			request.getSession().setAttribute("usuario", usuario);
 			request.getSession().setAttribute("lstSistemas", usuarioService.listarSistemas(username) );
-			request.getSession().setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes("") );
+			request.getSession().setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes("","") );
 			return "/home";	
 		}else{
 			//si es que no he podido obtener el username muestro pantalla de login
 			model.put("msgError", "no se ha encontrado el parametro username");
-			return "/login";
+			return "/home";
 		}
+
     }
 	
 	@RequestMapping("/home.htm")
