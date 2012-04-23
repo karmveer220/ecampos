@@ -10,7 +10,7 @@
 	</head>
 	
     <body onload="document.forms[0].j_username.focus();">
-    	
+    	<c:out value="${msgError}"/>
 	    <div style="margin-top: 50px; margin-bottom: 100px;">
 		
 					<c:if test="${not empty param.login_error}">
