@@ -20,7 +20,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form action="http://200.48.4.150:8080/intranet/login.htm" method="post">
+        <form action="http://localhost:7085/intranet/login.htm" method="post">
         <%
         
   String userID = null;
