@@ -46,53 +46,43 @@
 		        	<td height="150" valign="top" bgcolor="#FFFFFF">	
 		        		<br/>
 		        		<table width="100%" border="0">
-										<tr>
-											<td colspan="4">&nbsp;</td>
-										</tr>
-										<tr>
-											<th colspan="4" class="tituloEncabezado">Reporte Directorio Telefonico</th>
-										</tr>
-										<tr>
-											<td colspan="4">&nbsp;</td>
-										</tr>
-										<tr>
-											<th>Dependencia</th>
-											<td>:</td>
-											<td> <input type="text" name=ndirDescripcion maxlength="10" class="texto" size="10" /></td>
-											<td>&nbsp;</td>
-										</tr>
-										<tr>
-											<th>Telefono</th>
-											<td>:</td>
-											<td><input type="text" name="ndirTelefono" maxlength="10" class="texto" size="10" /></td>
-											<td align="center"><a href="javascript:buscarDirectorioTelf();"><img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar" /></a></td>
-										</tr>
-										<tr>
-											<th>Anexo</th>
-											<td>:</td>
-											<td><input type="text" name="ndirAnexo" maxlength="10" class="texto" size="10" /></td>
-											<td>&nbsp;</td>
-										</tr>
-										<tr>
-											<td colspan="4">&nbsp;</td>
-										</tr>
-										<tr>
-											<td colspan="4" align="left">
-												<display:table name="requestScope.ldirectorioTelf" requestURI="directorioTelf.htm" class="displaytag" 
-												defaultsort="4" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax">
-													<display:column title="Dependencia" property="ndirDescripcion" sortable="true" headerClass="sortable" />
-													<display:column title="Abreviatura" property="siminUnidadorganica.nunoAbreviatura" sortable="true" headerClass="sortable" />
-													<display:column title="Telefono" property="ndirTelefono" sortable="true" headerClass="sortable" />
-													<display:column title="Anexo" property="ndirAnexo" sortable="true" headerClass="sortable" />
-												</display:table>
-											</td>
-										</tr>
-										<tr>
-											<td colspan="4">&nbsp;</td>
-										</tr>
-									</table>
+							<tr>
+								<td colspan="4">&nbsp;</td>
+							</tr>
+							<tr>
+								<th colspan="4" class="tituloEncabezado">Reporte Directorio Telefonico</th>
+							</tr>
+							<tr>
+								<td colspan="4">&nbsp;</td>
+							</tr>
+							<tr>
+								<th>Dependencia</th>
+								<td>:</td>
+								<td><input type="text" name=ndirDescripcion maxlength="10" class="texto" size="10" /></td>
+								<td>
+									<a href="javascript:buscarDirectorioTelf();"><img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar" /></a>
 								</td>
-		        </tr>
+							</tr>
+							<tr>
+								<td colspan="4">&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="4" align="left">
+									<display:table name="requestScope.ldirectorioTelf" requestURI="directorioTelf.htm" class="displaytag" pagesize="20"
+									defaultsort="1" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax">
+										<display:column title="Dependencia" property="ndirDescripcion" sortable="true" headerClass="sortable" />
+										<display:column title="Abreviatura" property="siminUnidadorganica.nunoAbreviatura" sortable="true" headerClass="sortable" />
+										<display:column title="Telefono" property="ndirTelefono" sortable="true" headerClass="sortable" />
+										<display:column title="Anexo" property="ndirAnexo" sortable="true" headerClass="sortable" />
+									</display:table>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4">&nbsp;</td>
+							</tr>
+							</table>
+						</td>
+		       		</tr>
 		    	</table>
 		    	</div>
 	    	</td>

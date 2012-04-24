@@ -89,7 +89,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
 					" u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, g.n_gra_nombre from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
-					"inner join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
+					"left join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
 			 		"where to_char(s.d_mst_fechanacimiento, 'MM')" +
 			 		" = :fec  and s.c_sit_codigo=1  and u.c_ue_codigo = 1 ") ;
 		}else {
@@ -118,9 +118,8 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		List<Object[]> oj = query.list();
 		for(Object[] o : oj){
 			logger.debug(o[0]);
-			logger.debug(o[1]);
-			logger.debug(o[2]);
-			logger.debug(o[5]);
+			
+			
 			lis.add(
 					new SiminMaestro(
 						new Long(o[0].toString()),

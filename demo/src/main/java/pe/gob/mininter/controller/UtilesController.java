@@ -113,6 +113,15 @@ public class UtilesController {
 		return "/avisosCuatro";
 	}
 	
+	@RequestMapping("/fotosDigemin.htm")
+	public String fotosDigemin() {
+		return "/fotosDigemin";
+	}
+	@RequestMapping("/fotosDicscamec.htm")
+	public String fotosDicscamec() {
+		return "/fotosDicscamec";
+	}
+	
 	@RequestMapping("/cumplemensual.htm")
 	public String lstCumpleMensual(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, Exception {
 		//request.getSession().getAttribute("usuario");
