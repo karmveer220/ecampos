@@ -19,7 +19,7 @@
         </script>
     </head>
     <body>
-        <form action="http://localhost:8086/intranet/login.htm" method="post">
+        <form action="http://apolo:8080/intranet/login.htm" method="post">
         <%
         
   String userID = null;

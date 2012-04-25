@@ -43,7 +43,7 @@
 								<tr>
 									<td colspan="7"><iframe scrolling="yes" frameborder="0"
 											width="700" height="700"
-											src="images/medida_calzado.jpg">
+											src="images/evento_Oper.jpg">
 										</iframe></td>
 								</tr>
 							</table></td>
