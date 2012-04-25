@@ -71,11 +71,16 @@
 		       	 		<br/>
 		       	 		<table border="0">
 		       	 			<tr>
-		       	 				<td colspan="2" height="100px" width="450px">
-		       	 					<c:forEach items="${lcumpleanios}" var="sis">				 	
-									 	<c:out value="${sis.nombreCompleto}"/>
+		       	 				<td colspan="2" height="100px" width="450px" valign="top">
+		       	 					<c:forEach items="${lcumpleanios}" var="sis">
+		       	 						<table border="0" width="100%">
+		       	 							<tr>
+		       	 								<td><c:out value="${sis.nombreCompleto}"/></td>
+		       	 								<td align="right"><c:out value="${sis.siminUnidadorganica1.nunoAbreviatura}"/></td>
+		       	 							</tr>
+		       	 						</table>
 									 	<br/>
-							    	</c:forEach>			
+							    	</c:forEach>
 		       	 				</td>
 		       	 			</tr>
 		       	 			<tr>
