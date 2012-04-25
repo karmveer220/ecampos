@@ -182,17 +182,17 @@ public class ReportesController {
 			pars.put("ruta1", ruta1);	
 			pars.put("fecIni", inicio);
 			pars.put("fecFin", fin);
-
+			
 			dataSource = new JRBeanCollectionDataSource(col);
 			logger.debug("datasource lleno con lista documento " + col.size());
+			
+			
 			File f = new File(reportName);
 			byte[] bytes2 = JasperRunManager.runReportToPdf(f.getPath(),pars,dataSource);			
 			response.setContentType("application/pdf"); 
-			response.setContentLength(bytes2.length); 
-			ouputStream.write(bytes2, 0, bytes2.length);     
-
+			response.setContentLength(bytes2.length);
+			ouputStream.write(bytes2, 0, bytes2.length);
 			ouputStream.close();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msgError", e.getMessage());
