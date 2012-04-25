@@ -19,8 +19,7 @@
         </script>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <form action="http://localhost:7085/intranet/login.htm" method="post">
+        <form action="http://localhost:8086/intranet/login.htm" method="post">
         <%
         
   String userID = null;

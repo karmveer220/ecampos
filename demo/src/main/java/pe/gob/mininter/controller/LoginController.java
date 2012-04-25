@@ -3,6 +3,7 @@ package pe.gob.mininter.controller;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.UnknownHostException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -45,8 +46,16 @@ public class LoginController  {
 				usuario.setIpPrivada(thisIp.getHostAddress().toString());
 					
 				request.getSession().setAttribute("usuario", usuario);
-				request.getSession().setAttribute("lstSistemas", usuarioService.listarSistemas(username) );
+				request.getSession().setAttribute("lstSistemas", usuarioService.listarSistemas(username) );		
+				
+				List<SiminMaestro> lstCumpleaños = usuarioService.listarCumpleaniosMes("","");
+				if (lstCumpleaños.size() == 0) {
+					logger.debug("");
+				}else {
+					request.getSession().setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes("","") );
+				}
 				request.getSession().setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes("","") );
+				
 				return "/home";	
 			}else{
 				//si es que no he podido obtener el username muestro pantalla de login

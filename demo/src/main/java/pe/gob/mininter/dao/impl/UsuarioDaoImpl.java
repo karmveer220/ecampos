@@ -59,7 +59,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 			logger.debug( "ROLE_" + rol.getSiminTipousuario().getCTusuDetalle()  );
 		}
 		
-		SiminMaestro usuario= new SiminMaestro(user.getNmstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDmstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion(), user.getCTingCodigo(), user.getSiminUnidadorganica1().getNUnoGeneralAbrev());
+		SiminMaestro usuario= new SiminMaestro(user.getNmstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDmstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion(), user.getCtingCodigo(), user.getSiminUnidadorganica1().getNunoGeneralAbrev());
 		//usuario.setNMstNombre(user.getNMstNombre());
 		
 		logger.debug(usuario.toString());
@@ -87,28 +87,30 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		
 		if (rptMensual.equals("1")) {
 			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
-					" u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, g.n_gra_nombre from simin_maestro s " +
+					"u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, " +
+					"g.n_gra_nombre, f.n_fun_abreviatura, s.c_ting_codigo, u.n_uno_general_abrev from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
 					"left join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
+					"left join simin_funciones f on f.c_fun_codigo = s.c_fun_codigo " +
 			 		"where to_char(s.d_mst_fechanacimiento, 'MM')" +
-			 		" = :fec  and s.c_sit_codigo=1  and u.c_ue_codigo = 1 ") ;
+			 		" = :fec  and s.c_sit_codigo=1  and u.c_ue_codigo = 1 order by d_mst_fechanacimiento") ;
 		}else {
 			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
-					" u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, g.n_gra_nombre  from simin_maestro s " +
+					"u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, " +
+					"g.n_gra_nombre, f.n_fun_abreviatura, s.c_ting_codigo, u.n_uno_general_abrev from simin_maestro s " +
 					"inner join simin_unidadorganica u on s.c_uno_codigo_of_destaque = u.c_uno_codigo " +
-					"inner join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
-			 		" and to_char(s.d_mst_fechanacimiento, 'dd/MM')" +
+					"left join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
+					"left join simin_funciones f on f.c_fun_codigo = s.c_fun_codigo " +
+			 		"where to_char(s.d_mst_fechanacimiento, 'dd/MM')" +
 			 		" = :fec  and s.c_sit_codigo=1  and u.c_ue_codigo = 1 ") ;
 		}
 
 		if (rptMensual.equals("1")) {
-			logger.debug("h"+mes+"h");
 			if (mes.equals("")) {
 				query.setString("fec", (Utiles.completarCero((hoy.get(Calendar.MONTH)+1))));
 			}else {
 				query.setString("fec", (Utiles.completarCero(Integer.parseInt(mes))));
 			}
-			
 		}else {
 			query.setString("fec", (""+(hoy.get(Calendar.DATE)+"/"+ Utiles.completarCero((hoy.get(Calendar.MONTH)+1)))));
 		}
@@ -117,9 +119,6 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		
 		List<Object[]> oj = query.list();
 		for(Object[] o : oj){
-			logger.debug(o[0]);
-			
-			
 			lis.add(
 					new SiminMaestro(
 						new Long(o[0].toString()),
@@ -128,7 +127,10 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 						Utiles.nullToBlank(o[3]),
 						Utiles.nullToBlank(o[4]),
 						Utiles.stringToDate(o[5].toString(), Utiles.FORMATO_FECHA_CORTA),
-						Utiles.nullToBlank(o[6])
+						Utiles.nullToBlank(o[6]),
+						Utiles.nullToBlank(o[7]),
+						Utiles.nullToBlank(o[8]),
+						Utiles.nullToBlank(o[9])
 						)
 					);
 		}

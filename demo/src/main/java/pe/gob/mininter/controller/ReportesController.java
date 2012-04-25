@@ -78,7 +78,7 @@ public class ReportesController {
 			String reportName = "";
 			Collection<BReporteCas> col  = new ArrayList<BReporteCas>();
 			
-			if (maestro.getCTingCodigo().equals("5") || maestro.getCTingCodigo().equals("7")) {
+			if (maestro.getCtingCodigo().equals("5") || maestro.getCtingCodigo().equals("7")) {
 				List<BReporteCas> listaGeneral = reporteService.listarCasBoletas(año, mes, "", maestro.getNmstLogin() );
 	        	for(int i=0;i<listaGeneral.size();i++){
 	            	BReporteCas bdo = listaGeneral.get(i);
@@ -118,84 +118,93 @@ public class ReportesController {
 	public String rptReporteAsistenciaxEmpleado( HttpServletRequest request, HttpServletResponse response) {
 	   	
 		ServletOutputStream ouputStream = null;
-   		try {
-   			SiminMaestro maestro = (SiminMaestro) request.getSession().getAttribute("usuario");
-   			
-   			ouputStream = response.getOutputStream();
-   			
-   			Calendar hoy = new GregorianCalendar();
-   			Calendar fecha = new GregorianCalendar();
-   			
-   			String inicio ="";
-   			String fin = "";
-   			
-   			String dia, mes, año = "";
-   			
-   			inicio =  Utiles.nullToBlank(request.getParameter("fechaInicio"));
-   			fin = Utiles.nullToBlank(request.getParameter("fechaFin"));
-   			
-   			if (inicio.equals("")) {
-   				mes = Utiles.completarCero(hoy.get(Calendar.MONTH));   				
-   				año = hoy.get(Calendar.YEAR)+"";
-   				String formatoFecha = Utiles.completarCero(hoy.get(Calendar.DAY_OF_MONTH))+"/"+Utiles.completarCero(Integer.parseInt(mes))+"/"+año;
-   				fecha = Utiles.stringToCalendar(formatoFecha, Utiles.FORMATO_FECHA_CORTA);
-   				dia = fecha.getActualMaximum(Calendar.DAY_OF_MONTH)+"";
-   				
-   				inicio = "01/"+mes+"/"+año;
-   				fin = dia+"/"+mes+"/"+año;
-   						
+		try {
+			SiminMaestro maestro = (SiminMaestro) request.getSession().getAttribute("usuario");
+
+			ouputStream = response.getOutputStream();
+
+			Calendar hoy = new GregorianCalendar();
+			Calendar fecha = new GregorianCalendar();
+
+			String inicio ="";
+			String fin = "";
+
+			String dia, mes, año = "";
+
+			inicio =  Utiles.nullToBlank(request.getParameter("fechaInicio"));
+			fin = Utiles.nullToBlank(request.getParameter("fechaFin"));
+
+			if (inicio.equals("")) {
+				mes = Utiles.completarCero(hoy.get(Calendar.MONTH));   				
+				año = hoy.get(Calendar.YEAR)+"";
+				String formatoFecha = Utiles.completarCero(hoy.get(Calendar.DAY_OF_MONTH))+"/"+Utiles.completarCero(Integer.parseInt(mes))+"/"+año;
+				fecha = Utiles.stringToCalendar(formatoFecha, Utiles.FORMATO_FECHA_CORTA);
+				dia = fecha.getActualMaximum(Calendar.DAY_OF_MONTH)+"";
+
+				inicio = "01/"+mes+"/"+año;
+				fin = dia+"/"+mes+"/"+año;
+
 			}else {
 				inicio= request.getParameter("fechaInicio");
 				fin =   request.getParameter("fechaFin");
 			}
-   			
-   			logger.debug(inicio+" "+fin);
-   			
-   			List<Marcacion> rptAsistencia = reporteService.obtenerAsistenciaxEmpleado(inicio, fin, maestro.getNmstLogin() );
-   			
-   			logger.debug(rptAsistencia.size());
-   				
-   			Collection<Marcacion> col  = new ArrayList<Marcacion>();
-               for(int i=0;i<rptAsistencia.size();i++){
-            	   Marcacion bdo = rptAsistencia.get(i);
-               	col.add(bdo);            
-               }
 
-            String reportName = request.getRealPath("/Reportes/rptAsistenciaPorEmpleado.jasper");
-            String ruta = request.getRealPath("/images/mi.gif");
-   	        String ruta1 = request.getRealPath("/images/ofitel.gif");
-   	        	        
-   	        JRBeanCollectionDataSource dataSource;
-   	        Map<String, Object> pars = new HashMap<String, Object>();
-   	        
+			logger.debug(inicio+" "+fin);
 
-      			pars.put("ruta", ruta);
-      			pars.put("ruta1", ruta1);	
-      			pars.put("fecIni", inicio);
-      		    pars.put("fecFin", fin);
-      			
-      			dataSource = new JRBeanCollectionDataSource(col);
-   	        logger.debug("datasource lleno con lista documento " + col.size());
-   	        File f = new File(reportName);
-               byte[] bytes2 = JasperRunManager.runReportToPdf(f.getPath(),pars,dataSource);			
-   	        response.setContentType("application/pdf"); 
-   	        response.setContentLength(bytes2.length); 
-   	        ouputStream.write(bytes2, 0, bytes2.length);     
-   	        
-   	 	ouputStream.close();
-   			
-   		} catch (Exception e) {
-   			e.printStackTrace();
-   			request.setAttribute("msgError", e.getMessage());
-   		   		
-   		} finally{
-   			if (ouputStream != null) {
-   				logger.debug("ouputStream.Close()");
-   				
-   				ouputStream = null;								
-   			}
-   		}
-   		return null;
+			List<Marcacion> rptAsistencia = reporteService.obtenerAsistenciaxEmpleado(inicio, fin, maestro.getNmstLogin() );
+
+			logger.debug(rptAsistencia.size());
+
+			Collection<Marcacion> col  = new ArrayList<Marcacion>();
+
+			for(int i=0;i<rptAsistencia.size();i++){
+				Marcacion bdo = rptAsistencia.get(i);
+				col.add(bdo);            
+			}
+
+			String reportName = "";
+			if (rptAsistencia.size() == 0 ) {
+				logger.debug("hola");
+				reportName = request.getRealPath("/Reportes/rptAsistenciaPorEmpleadoNull.jasper");
+			}else {
+				logger.debug("haa");
+				reportName = request.getRealPath("/Reportes/rptAsistenciaPorEmpleado.jasper");
+			}
+
+			String ruta = request.getRealPath("/images/mi.gif");
+			String ruta1 = request.getRealPath("/images/ofitel.gif");
+
+			JRBeanCollectionDataSource dataSource;
+			Map<String, Object> pars = new HashMap<String, Object>();
+
+
+			pars.put("ruta", ruta);
+			pars.put("ruta1", ruta1);	
+			pars.put("fecIni", inicio);
+			pars.put("fecFin", fin);
+
+			dataSource = new JRBeanCollectionDataSource(col);
+			logger.debug("datasource lleno con lista documento " + col.size());
+			File f = new File(reportName);
+			byte[] bytes2 = JasperRunManager.runReportToPdf(f.getPath(),pars,dataSource);			
+			response.setContentType("application/pdf"); 
+			response.setContentLength(bytes2.length); 
+			ouputStream.write(bytes2, 0, bytes2.length);     
+
+			ouputStream.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msgError", e.getMessage());
+
+		} finally{
+			if (ouputStream != null) {
+				logger.debug("ouputStream.Close()");
+
+				ouputStream = null;								
+			}
+		}
+		return null;
    	}
 
 	

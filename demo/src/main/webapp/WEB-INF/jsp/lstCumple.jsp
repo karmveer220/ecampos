@@ -62,7 +62,7 @@
 		       							<option value="1">Enero</option>
 		       							<option value="2">Febrero</option>
 		       							<option value="3">Marzo</option>
-		       							<option value="4">Abril</option>
+		       							<option value="4" selected="selected">Abril</option>
 		       							<option value="5">Mayo</option>
 		       							<option value="6">Junio</option>
 		       							<option value="7">Julio</option>
@@ -84,11 +84,20 @@
 	        				</tr>
 		        			<tr>
 								<td colspan="3" align="left">    
-						            <display:table name="requestScope.lcumpleaniosMensual" requestURI="lcumpleaniosMensual.htm" class="displaytag" pagesize="25"
-										defaultsort="4" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax">
+						            <display:table name="requestScope.lcumpleaniosMensual" requestURI="cumplemensual.htm" class="displaytag" pagesize="25" defaultsort="5" defaultorder="ascending" id="row" excludedParams="ajax">
 							            <display:column title="Nombre Completo" property="nombreCompleto" sortable="true" headerClass="sortable" />
 							            <display:column title="Unidad Organica" property="siminUnidadorganica1.nunoDescripcion" sortable="true" headerClass="sortable" />
-							            <display:column title="Cargo" property="siminGrado2.ngraNombre" sortable="true" headerClass="sortable" />
+							            <display:column title="Abreviatura" property="siminUnidadorganica1.nunoAbreviatura" sortable="true" headerClass="sortable" />
+						                <display:column title="Cargo/Funcion" sortable="true">
+						                <c:choose>
+								            <c:when test="${row.ctingCodigo==5 or row.ctingCodigo==7}">
+								            	<c:out value="${row.funcionEmp}"/>
+								            </c:when>
+								            <c:otherwise>
+								            	<c:out value="${row.siminGrado2.ngraNombre}"/>
+								            </c:otherwise>
+								            </c:choose>
+							            </display:column>
 							            <display:column title="Dia" sortable="true" headerClass="sortable">
                                            <fmt:formatDate value="${row.dmstFechanacimiento}" pattern="dd"/>
                                    		</display:column>

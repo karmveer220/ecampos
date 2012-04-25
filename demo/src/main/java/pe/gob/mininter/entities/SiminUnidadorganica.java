@@ -79,7 +79,7 @@ public class SiminUnidadorganica implements Serializable {
 	private String nUnoGeneral;
 
 	@Column(name="N_UNO_GENERAL_ABREV")
-	private String nUnoGeneralAbrev;
+	private String nunoGeneralAbrev;
 
 	@Column(name="N_UNO_JERARQUIA_POI")
 	private BigDecimal nUnoJerarquiaPoi;
@@ -252,15 +252,7 @@ public class SiminUnidadorganica implements Serializable {
 
 	public void setNUnoGeneral(String nUnoGeneral) {
 		this.nUnoGeneral = nUnoGeneral;
-	}
-
-	public String getNUnoGeneralAbrev() {
-		return this.nUnoGeneralAbrev;
-	}
-
-	public void setNUnoGeneralAbrev(String nUnoGeneralAbrev) {
-		this.nUnoGeneralAbrev = nUnoGeneralAbrev;
-	}
+	}	
 
 	public BigDecimal getNUnoJerarquiaPoi() {
 		return this.nUnoJerarquiaPoi;
@@ -308,5 +300,13 @@ public class SiminUnidadorganica implements Serializable {
 
 	public void setNunoAbreviatura(String nunoAbreviatura) {
 		this.nunoAbreviatura = nunoAbreviatura;
+	}
+
+	public String getNunoGeneralAbrev() {
+		return nunoGeneralAbrev;
+	}
+
+	public void setNunoGeneralAbrev(String nunoGeneralAbrev) {
+		this.nunoGeneralAbrev = nunoGeneralAbrev;
 	}
 }

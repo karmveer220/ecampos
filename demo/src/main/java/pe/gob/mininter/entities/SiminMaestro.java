@@ -38,6 +38,9 @@ public class SiminMaestro extends User implements Serializable {
 	@Transient
 	private List<Authorities> authoritiesList;
 	
+	@Transient
+	private String funcionEmp;
+	
 	@Id
 	@Column(name="C_PERL_CODIGO")
 	private long cPerlCodigo;
@@ -118,7 +121,7 @@ public class SiminMaestro extends User implements Serializable {
 	private String cSpenCodigo;
 
 	@Column(name="C_TING_CODIGO")
-	private String cTingCodigo;
+	private String ctingCodigo;
 
 	@Column(name="C_TINGC_CODIGO")
 	private String cTingcCodigo;
@@ -291,7 +294,7 @@ public class SiminMaestro extends User implements Serializable {
 	
 	public SiminMaestro(String username, String password, boolean enabled,List<GrantedAuthority> authorities,
 			String usrnombrevh,String usrapepaternovh, String usrapematernovh,
-			Date usrfechanacimientodt,String estado, String nunoDescripcion, String cTingCodigo, String nUnoGeneralAbrev) {
+			Date usrfechanacimientodt,String estado, String nunoDescripcion, String ctingCodigo, String nunoGeneralAbrev) {
 		super(username, password, enabled, true, true, true, authorities);
 		this.nmstLogin = username;
 		//this.nMstClave = password;
@@ -302,13 +305,13 @@ public class SiminMaestro extends User implements Serializable {
 	    this.cSitCodigo = estado;
 	    this.siminUnidadorganica1 = new SiminUnidadorganica();
 	    this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
-	    this.siminUnidadorganica1.setNUnoGeneralAbrev(nUnoGeneralAbrev);
-	    this.cTingCodigo = cTingCodigo;
+	    this.siminUnidadorganica1.setNunoGeneralAbrev(nunoGeneralAbrev);
+	   
 	}
 	
 	
 	public SiminMaestro(Long cPerlCodigo ,String usrnombrevh,String usrapepaternovh, String usrapematernovh, 
-			String nunoDescripcion, Date usrfechanacimientodt, String ngraNombre) {
+			String nunoDescripcion, Date usrfechanacimientodt, String ngraNombre, String funcionEmp, String ctingCodigo, String nunoAbreviatura) {
 		super("m", "e", true, true, true, true, uno());
 		
 		this.nMstNombre=usrnombrevh;
@@ -317,9 +320,13 @@ public class SiminMaestro extends User implements Serializable {
 	    this.cPerlCodigo = cPerlCodigo;
 	    this.siminUnidadorganica1 = new SiminUnidadorganica();
         this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
+        this.siminUnidadorganica1.setNunoAbreviatura(nunoAbreviatura);
         this.siminGrado2 = new SiminGrado();
         this.siminGrado2.setNgraNombre(ngraNombre);
         this.dmstFechanacimiento = usrfechanacimientodt;
+        this.funcionEmp = funcionEmp;
+	    this.ctingCodigo = ctingCodigo;
+	    
 	}
 	
 
@@ -547,14 +554,6 @@ public class SiminMaestro extends User implements Serializable {
 
 	public void setCSpenCodigo(String cSpenCodigo) {
 		this.cSpenCodigo = cSpenCodigo;
-	}
-
-	public String getCTingCodigo() {
-		return this.cTingCodigo;
-	}
-
-	public void setCTingCodigo(String cTingCodigo) {
-		this.cTingCodigo = cTingCodigo;
 	}
 
 	public String getCTingcCodigo() {
@@ -947,6 +946,22 @@ public class SiminMaestro extends User implements Serializable {
 
 	public void setSiminGrado2(SiminGrado siminGrado2) {
 		this.siminGrado2 = siminGrado2;
+	}
+
+	public String getFuncionEmp() {
+		return funcionEmp;
+	}
+
+	public void setFuncionEmp(String funcionEmp) {
+		this.funcionEmp = funcionEmp;
+	}
+
+	public String getCtingCodigo() {
+		return ctingCodigo;
+	}
+
+	public void setCtingCodigo(String ctingCodigo) {
+		this.ctingCodigo = ctingCodigo;
 	}
 
 	@Transient
