@@ -125,9 +125,14 @@ public class UtilesController {
 	@RequestMapping("/cumplemensual.htm")
 	public String lstCumpleMensual(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, Exception {
 		//request.getSession().getAttribute("usuario");
-		String meses = Utiles.nullToBlank(request.getParameter("mes"));
-		request.setAttribute("lcumpleaniosMensual", usuarioService.listarCumpleaniosMes("1", meses));
-		logger.debug(usuarioService.listarCumpleaniosMes("1","").size());
+		
+		String meses = Utiles.nullToBlank(request.getParameter("mes"));		
+		
+		String apeNombres = Utiles.nullToBlank( request.getParameter("nombres") );
+	 	String[] palabras = apeNombres.split(" ");
+	 	
+		request.setAttribute("lcumpleaniosMensual", usuarioService.listarCumpleaniosMes("1", meses, palabras));
+		logger.debug(usuarioService.listarCumpleaniosMes("1","",null).size());
 		return "/lstCumple";
 	}
 	

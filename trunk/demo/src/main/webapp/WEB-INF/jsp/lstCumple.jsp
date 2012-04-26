@@ -57,8 +57,9 @@
 	        				</tr>
 	        				<tr>
 		        				<td>Busqueda por Meses : </td>
-		        				<td>
+		        				<td align="left">
 		        					<select name="mes">
+		        						<option value="-1">Seleccionar</option>
 		       							<option value="1">Enero</option>
 		       							<option value="2">Febrero</option>
 		       							<option value="3">Marzo</option>
@@ -72,6 +73,13 @@
 		       							<option value="11">Noviembre</option>
 		       							<option value="12">Diciembre</option>
 		       						</select>
+		        				</td>
+		        				<td>&nbsp;</td>
+	        				</tr>
+	        				<tr>
+		        				<td>Apellidos o Nombres : </td>
+		        				<td align="left">
+		        					<input type="text" name=nombres maxlength="50" class="texto" size="30" />
 		        				</td>
 		        				<td>                	
 		                   			<div align="left">                      
@@ -98,8 +106,8 @@
 								            </c:otherwise>
 								            </c:choose>
 							            </display:column>
-							            <display:column title="Dia" sortable="true" headerClass="sortable">
-                                           <fmt:formatDate value="${row.dmstFechanacimiento}" pattern="dd"/>
+							            <display:column title="Dia del Mes" sortable="true" headerClass="sortable">
+                                           <fmt:formatDate value="${row.dmstFechanacimiento}" pattern="dd-MM"/>
                                    		</display:column>
 							   		</display:table>
 								</td>

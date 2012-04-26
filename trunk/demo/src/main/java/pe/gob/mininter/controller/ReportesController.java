@@ -19,12 +19,9 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.ldap.userdetails.LdapUserDetailsImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import pe.gob.mininter.entities.BReporteCas;
 import pe.gob.mininter.entities.Marcacion;
@@ -162,14 +159,9 @@ public class ReportesController {
 				col.add(bdo);            
 			}
 
-			String reportName = "";
-			if (rptAsistencia.size() == 0 ) {
-				logger.debug("hola");
-				reportName = request.getRealPath("/Reportes/rptAsistenciaPorEmpleadoNull.jasper");
-			}else {
-				logger.debug("haa");
-				reportName = request.getRealPath("/Reportes/rptAsistenciaPorEmpleado.jasper");
-			}
+			
+			String reportName = request.getRealPath("/Reportes/rptAsistenciaPorEmpleado.jasper");
+		
 
 			String ruta = request.getRealPath("/images/mi.gif");
 			String ruta1 = request.getRealPath("/images/ofitel.gif");
@@ -200,7 +192,6 @@ public class ReportesController {
 		} finally{
 			if (ouputStream != null) {
 				logger.debug("ouputStream.Close()");
-
 				ouputStream = null;								
 			}
 		}
