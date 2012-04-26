@@ -46,16 +46,8 @@ public class LoginController  {
 				usuario.setIpPrivada(thisIp.getHostAddress().toString());
 					
 				request.getSession().setAttribute("usuario", usuario);
-				request.getSession().setAttribute("lstSistemas", usuarioService.listarSistemas(username) );		
-				
-				List<SiminMaestro> lstCumpleaños = usuarioService.listarCumpleaniosMes("","");
-				if (lstCumpleaños.size() == 0) {
-					logger.debug("");
-				}else {
-					request.getSession().setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes("","") );
-				}
-				request.getSession().setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes("","") );
-				
+				request.getSession().setAttribute("lstSistemas", usuarioService.listarSistemas(username) );
+				request.getSession().setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes("","", null) );
 				return "/home";	
 			}else{
 				//si es que no he podido obtener el username muestro pantalla de login

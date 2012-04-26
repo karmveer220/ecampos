@@ -69,18 +69,19 @@
 				    <td>&nbsp;</td>
 		       	 	<td valign="top" bgcolor="#EAEAEA">
 		       	 		<br/>
-		       	 		<table border="0">
-		       	 			<tr>
-		       	 				<td colspan="2" height="100px" width="450px" valign="top">
+		       	 		<c:if test="${empty lcumpleanios}" > No registra cumplea&ntilde;os el d&iacute;a de hoy </c:if>
+		       	 		<table>
+		       	 			<tr valign="top">
+		       	 				<td colspan="2" height="100px" width="450px" >
+		       	 					<table border="0" width="100%">
 		       	 					<c:forEach items="${lcumpleanios}" var="sis">
-		       	 						<table border="0" width="100%">
-		       	 							<tr>
+		       	 							<tr valign="top">
 		       	 								<td><c:out value="${sis.nombreCompleto}"/></td>
 		       	 								<td align="right"><c:out value="${sis.siminUnidadorganica1.nunoAbreviatura}"/></td>
 		       	 							</tr>
-		       	 						</table>
 									 	<br/>
 							    	</c:forEach>
+							    	</table>
 		       	 				</td>
 		       	 			</tr>
 		       	 			<tr>

@@ -38,8 +38,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	@Override
-	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual, String mes) throws NumberFormatException, Exception {
-		return usuarioDao.listarCumpleaniosMes(rptMensual, mes);
+	public List<SiminMaestro> listarCumpleaniosMes(String rptMensual, String mes, String[] palabras) throws NumberFormatException, Exception {
+		return usuarioDao.listarCumpleaniosMes(rptMensual, mes, palabras);
 	}
 
 	@Override

@@ -306,7 +306,7 @@ public class SiminMaestro extends User implements Serializable {
 	    this.siminUnidadorganica1 = new SiminUnidadorganica();
 	    this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
 	    this.siminUnidadorganica1.setNunoGeneralAbrev(nunoGeneralAbrev);
-	   
+	    this.ctingCodigo = ctingCodigo;
 	}
 	
 	
