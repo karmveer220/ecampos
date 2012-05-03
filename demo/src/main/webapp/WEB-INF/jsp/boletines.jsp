@@ -32,6 +32,15 @@
 	                <td class="tituloEncabezado">Oficina de Comunicaci&oacute;n Social / Bolet&iacute;n Informativo</td>
 	                <td>&nbsp;</td>
 	            </tr>
+	             <tr>
+	                <td>&nbsp;</td>
+	                <td align="center">
+	                	<a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-66.pdf" target="baner">
+	                		<strong><img src="images/boletin.png" width="15" height="15" /> BOLETIN  INFORMATIVO N&ordm; 066 - A&ntilde;o IV</strong>
+                		</a>
+					</td>
+	                <td>&nbsp;</td>
+	            </tr>
 	            <tr>
 	                <td>&nbsp;</td>
 	                <td align="center">
@@ -56,14 +65,6 @@
 	                	<a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-63.pdf" target="baner"><strong>
 						<img src="images/boletin.png" width="15" height="15" /> BOLETIN  INFORMATIVO N&ordm; 063 - A&ntilde;o IV</strong></a>
 					</td>
-	                <td>&nbsp;</td>
-	            </tr>
-	            <tr>
-	                <td>&nbsp;</td>
-	                <td align="center"> 
-		                <a href="http://www.mininter.gob.pe/comunicados/boletin.informativo-IV-62.pdf" target="baner"><strong>
-		                <img src="images/boletin.png" width="15" height="15" />BOLETIN  INFORMATIVO N&ordm; 062 - A&ntilde;o IV</strong></a>
-	                </td>
 	                <td>&nbsp;</td>
 	            </tr>
 	            <tr>

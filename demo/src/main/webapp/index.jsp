@@ -1,9 +1,3 @@
-<%-- 
-    Document   : login2
-    Created on : 23/04/2012, 06:11:15 PM
-    Author     : ECAMPOS
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,7 +13,7 @@
         </script>
     </head>
     <body>
-        <form action="http://localhost:8087/intranet/login.htm" method="post">
+        <form action="http://200.48.4.150:8080/intranet/login.htm" method="post">
         <%
         
   String userID = null;

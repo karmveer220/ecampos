@@ -34,6 +34,7 @@ public class LoginController  {
 			
 			String username = request.getParameter("id");
 			
+			
 			if(username != null){
 				username = username.trim();//aqui si puedo hacer trim de forma segura
 				System.out.println("intento de logueo = " +username);
@@ -41,9 +42,9 @@ public class LoginController  {
 					
 				InetAddress thisIp = InetAddress.getLocalHost(); // esto obtiene que IP? esto no obtiene la IP del servidor en donde corre esta aplicacion? 
 				//String  thisIpAddress = thisIp.getHostAddress().toString();
-				System.out.println("IP DE REQUEST " + request.getRemoteAddr() ); //Soplo cuando consultan desde la calle, tal vez IP EXTERNA 
+				System.out.println("IP DE REQUEST " + request.getRemoteHost()); //Soplo cuando consultan desde la calle, tal vez IP EXTERNA 
 				//String  thisIpAddress =  request.getRemoteAddr(); //--> request.getRemoteAddr(); trae la ip de quien ha llamado a esta pagina 
-				usuario.setIpPrivada(thisIp.getHostAddress().toString());
+				usuario.setIpPrivada(request.getRemoteHost());
 					
 				request.getSession().setAttribute("usuario", usuario);
 				request.getSession().setAttribute("lstSistemas", usuarioService.listarSistemas(username) );

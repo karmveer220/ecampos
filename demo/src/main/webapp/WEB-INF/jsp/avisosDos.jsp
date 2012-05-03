@@ -42,7 +42,7 @@
 								
 								<tr>
 									<td colspan="7">
-										<iframe scrolling="yes" frameborder="0" width="700" height="700" src="http://www.mininter.gob.pe/comunicados/LoncherasEscolares.pdf"></iframe>
+										<iframe scrolling="yes" frameborder="0" width="700" height="700" src="images/uniforme.jpg"></iframe>
 									</td>
 								</tr>
 							</table></td>
