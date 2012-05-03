@@ -5,12 +5,25 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Intranet del Ministerio del Interior</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link href="css/estilos.css" rel="stylesheet" type="text/css" />
+<link href="css/cuadros.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="css/calendar-system.css"></link>
+<script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="js/calendar.js"></script>
+<script type="text/javascript" src="js/calendar-es.js"></script>
+<script type="text/javascript" src="js/calendar-setup.js"></script>
+
 <script language="javascript" type="text/javascript">
 	function buscarAsistencia() {
 
-		var FechaReq = document.all("fechaFin").value
-
-		var day = document.all("fechaInicio").value
+		var FechaReq = document.forms[0]("fechaFin").value;
+		var day = document.forms[0]("fechaInicio").value;
 
 		if (compare_dates(day, FechaReq)) {
 			sMensaje = sMensaje
@@ -37,7 +50,7 @@
 		} else {
 			if (xYear == yYear) {
 				if (xMonth > yMonth) {
-					return (true)
+					return (true);
 				} else {
 					if (xMonth == yMonth) {
 						if (xDay > yDay)
@@ -52,25 +65,12 @@
 		}
 	}
 </script>
-<head>
-<title>Intranet del Ministerio del Interior</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/cuadros.css" rel="stylesheet" type="text/css" />
-<link type="text/css" rel="stylesheet" href="css/calendar-system.css"></link>
-<script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
-
-<script type="text/javascript" src="js/calendar.js"></script>
-<script type="text/javascript" src="js/calendar-es.js"></script>
-<script type="text/javascript" src="js/calendar-setup.js"></script>
-
 <script language="javascript" type="text/javascript">
 	function buscarAsistencia() {
 
-		var fechaFin = document.all("fechaFin").value
-
-		var fechaInicio = document.all("fechaInicio").value
+		var fechaFin = document.forms[0]("fechaFin").value;
+		var fechaInicio = document.forms[0]("fechaInicio").value;
+		
 		if (fechaFin != "" && fechaInicio != "") {
 			if (compare_dates(fechaInicio, fechaFin)) {
 				alert(" Fecha Fin no puede ser inferior a fecha de inicio");
