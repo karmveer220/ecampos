@@ -55,8 +55,11 @@ public class ReportesController {
 		
 		SiminMaestro maestro = (SiminMaestro) request.getSession().getAttribute("usuario");
 		
+		char sep = File.separatorChar;
+		ServletOutputStream ouputStream = null;
 		Calendar hoy = new GregorianCalendar();
 		String mes, año = "";
+		String reportName = "";
 		
 		año = Utiles.nullToBlank(request.getParameter("anio"));		
 		mes = Utiles.nullToBlank(request.getParameter("mes"));
@@ -68,12 +71,10 @@ public class ReportesController {
 			año = Utiles.nullToBlank(request.getParameter("anio"));		
 			mes = Utiles.completarCero(Integer.parseInt(request.getParameter("mes")));
 		}
-		char sep = File.separatorChar;
 		
 		try {
+			ouputStream = response.getOutputStream();
 			
-			ServletOutputStream ouputStream = response.getOutputStream();
-			String reportName = "";
 			Collection<BReporteCas> col  = new ArrayList<BReporteCas>();
 			
 			if (maestro.getCtingCodigo().equals("5") || maestro.getCtingCodigo().equals("7")) {
@@ -82,22 +83,16 @@ public class ReportesController {
 	            	BReporteCas bdo = listaGeneral.get(i);
 	            	col.add(bdo);
 	            }
-	        	reportName = request.getRealPath(sep+"Reportes"+sep+"rptCASBoletaEmp.jasper");
-	        	//reportName = request.getRealPath("/Reportes/rptCASBoletaEmp.jasper");
-	        	logger.debug("ruta pintar"+reportName);
-	        	System.out.println("ruta pintar "+reportName);
+	        	reportName = request.getRealPath("Reportes"+sep+"rptCASBoletaEmp.jasper");
 			}else {
 				BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", maestro.getNmstLogin());
             	col.add(bdo);            	
-            	reportName = request.getRealPath(sep+"Reportes"+sep+"rptNOMBoletaEmp.jasper");
-            	logger.debug("ruta "+reportName);
-            	logger.debug("ruta pintar"+reportName);
-	        	System.out.println("ruta pintar "+reportName);
+            	reportName = request.getRealPath("Reportes"+sep+"rptNOMBoletaEmp.jasper");
 			}
 			
 			JRBeanCollectionDataSource dataSource;
 	        Map<String, Object> pars = new HashMap<String, Object>();
-	        String ruta = request.getRealPath(sep+"images"+sep+"documento.jpg");
+	        String ruta = request.getRealPath("images"+sep+"documento.jpg");
             pars.put("ruta", ruta);
    			
    			dataSource = new JRBeanCollectionDataSource(col);
@@ -108,31 +103,29 @@ public class ReportesController {
 	        logger.debug("a"+ bytes2.length);
 	        response.setContentLength(bytes2.length); 
 	        ouputStream.write(bytes2, 0, bytes2.length);  
-			
+	        ouputStream.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msgError", e.getMessage());
 			logger.debug(e.getMessage());
 		}
-		return "/lstBoleta";
+		return null;
 	}
 	
 	@RequestMapping("/rptasistencia.htm")
 	public String rptReporteAsistenciaxEmpleado( HttpServletRequest request, HttpServletResponse response) {
-	   	
+		char sep = File.separatorChar;
 		ServletOutputStream ouputStream = null;
 		try {
 			SiminMaestro maestro = (SiminMaestro) request.getSession().getAttribute("usuario");
 
 			ouputStream = response.getOutputStream();
-
 			Calendar hoy = new GregorianCalendar();
 			Calendar fecha = new GregorianCalendar();
 
 			String inicio ="";
 			String fin = "";
-
 			String dia, mes, año = "";
 
 			inicio =  Utiles.nullToBlank(request.getParameter("fechaInicio"));
@@ -153,31 +146,20 @@ public class ReportesController {
 				fin =   request.getParameter("fechaFin");
 			}
 
-			logger.debug(inicio+" "+fin);
-
 			List<Marcacion> rptAsistencia = reporteService.obtenerAsistenciaxEmpleado(inicio, fin, maestro.getNmstLogin() );
-
-			logger.debug(rptAsistencia.size());
-
 			Collection<Marcacion> col  = new ArrayList<Marcacion>();
 
 			for(int i=0;i<rptAsistencia.size();i++){
 				Marcacion bdo = rptAsistencia.get(i);
 				col.add(bdo);            
-			}
-
-			char sep = File.separatorChar;
+			}			
 			
-			String reportName = request.getRealPath(sep+"Reportes"+sep+"rptAsistenciaPorEmpleado.jasper");
-			logger.debug("ruta "+reportName);
-        	logger.debug("ruta pintar"+reportName);
-
-			String ruta = request.getRealPath(sep+"images"+sep+"mi.gif");
-			String ruta1 = request.getRealPath(sep+"images"+sep+"ofitel.gif");
-
+			String reportName = request.getRealPath("Reportes"+sep+"rptAsistenciaPorEmpleado.jasper");
+			String ruta = request.getRealPath("images"+sep+"mi.gif");
+			String ruta1 = request.getRealPath("images"+sep+"ofitel.gif");
+			
 			JRBeanCollectionDataSource dataSource;
 			Map<String, Object> pars = new HashMap<String, Object>();
-
 
 			pars.put("ruta", ruta);
 			pars.put("ruta1", ruta1);	
@@ -185,8 +167,6 @@ public class ReportesController {
 			pars.put("fecFin", fin);
 			
 			dataSource = new JRBeanCollectionDataSource(col);
-			logger.debug("datasource lleno con lista documento " + col.size());
-			
 			
 			File f = new File(reportName);
 			byte[] bytes2 = JasperRunManager.runReportToPdf(f.getPath(),pars,dataSource);			

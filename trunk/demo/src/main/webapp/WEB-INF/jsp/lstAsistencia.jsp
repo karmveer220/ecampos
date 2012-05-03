@@ -22,21 +22,24 @@
 <script language="javascript" type="text/javascript">
 	function buscarAsistencia() {
 
-		var FechaReq = document.forms[0]("fechaFin").value;
-		var day = document.forms[0]("fechaInicio").value;
+		var fechaFin = document.forms[0].fechaFin.value;
+		var fechaInicio = document.forms[0].fechaInicio.value;
+		
+		if (fechaFin != "" && fechaInicio != "") {
+			if (compare_dates(fechaInicio, fechaFin)) {
+				alert(" Fecha Fin no puede ser inferior a fecha de inicio");
+			} else {
 
-		if (compare_dates(day, FechaReq)) {
-			sMensaje = sMensaje
-					+ '\n'
-					+ ' * Fecha requerida no puede ser inferior a fecha de recogida';
+				document.forms[0].action = "rptasistencia.htm";
+				document.forms[0].target = "baner";
+				document.forms[0].submit();
+			}
 		} else {
 
-			document.forms[0].action = "rptasistencia.htm";
-			document.forms[0].target = "baner";
-			document.forms[0].submit();
+			alert(" Ingrese un rango de fechas");
 		}
 	}
-
+	
 	function compare_dates(fecha, fecha2) {
 		var xDay = fecha.substring(0, 2);
 		var xMonth = fecha.substring(3, 5);
@@ -62,27 +65,6 @@
 				}
 			} else
 				return (false);
-		}
-	}
-</script>
-<script language="javascript" type="text/javascript">
-	function buscarAsistencia() {
-
-		var fechaFin = document.forms[0]("fechaFin").value;
-		var fechaInicio = document.forms[0]("fechaInicio").value;
-		
-		if (fechaFin != "" && fechaInicio != "") {
-			if (compare_dates(fechaInicio, fechaFin)) {
-				alert(" Fecha Fin no puede ser inferior a fecha de inicio");
-			} else {
-
-				document.forms[0].action = "rptasistencia.htm";
-				document.forms[0].target = "baner";
-				document.forms[0].submit();
-			}
-		} else {
-
-			alert(" Ingrese un rango de fechas");
 		}
 	}
 </script>
