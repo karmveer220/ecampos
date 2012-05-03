@@ -33,7 +33,7 @@ public class LoginController  {
 			//no poner trim ya que si no llega el parametro id, devuelve null, y null.trim da nullpointerexception
 			
 			String username = request.getParameter("id");
-			
+			//username = "jvelarde";
 			
 			if(username != null){
 				username = username.trim();//aqui si puedo hacer trim de forma segura
