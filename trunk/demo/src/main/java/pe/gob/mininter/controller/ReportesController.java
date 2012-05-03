@@ -68,6 +68,7 @@ public class ReportesController {
 			año = Utiles.nullToBlank(request.getParameter("anio"));		
 			mes = Utiles.completarCero(Integer.parseInt(request.getParameter("mes")));
 		}
+		char sep = File.separatorChar;
 		
 		try {
 			
@@ -81,16 +82,22 @@ public class ReportesController {
 	            	BReporteCas bdo = listaGeneral.get(i);
 	            	col.add(bdo);
 	            }
-	        	reportName = request.getRealPath("/Reportes/rptCASBoletaEmp.jasper");
+	        	reportName = request.getRealPath(sep+"Reportes"+sep+"rptCASBoletaEmp.jasper");
+	        	//reportName = request.getRealPath("/Reportes/rptCASBoletaEmp.jasper");
+	        	logger.debug("ruta pintar"+reportName);
+	        	System.out.println("ruta pintar "+reportName);
 			}else {
 				BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", maestro.getNmstLogin());
             	col.add(bdo);            	
-            	reportName = request.getRealPath("/Reportes/rptNOMBoletaEmp.jasper");
+            	reportName = request.getRealPath(sep+"Reportes"+sep+"rptNOMBoletaEmp.jasper");
+            	logger.debug("ruta "+reportName);
+            	logger.debug("ruta pintar"+reportName);
+	        	System.out.println("ruta pintar "+reportName);
 			}
 			
 			JRBeanCollectionDataSource dataSource;
 	        Map<String, Object> pars = new HashMap<String, Object>();
-	        String ruta = request.getRealPath("/images/documento.jpg");
+	        String ruta = request.getRealPath(sep+"images"+sep+"documento.jpg");
             pars.put("ruta", ruta);
    			
    			dataSource = new JRBeanCollectionDataSource(col);
@@ -159,12 +166,14 @@ public class ReportesController {
 				col.add(bdo);            
 			}
 
+			char sep = File.separatorChar;
 			
-			String reportName = request.getRealPath("/Reportes/rptAsistenciaPorEmpleado.jasper");
-		
+			String reportName = request.getRealPath(sep+"Reportes"+sep+"rptAsistenciaPorEmpleado.jasper");
+			logger.debug("ruta "+reportName);
+        	logger.debug("ruta pintar"+reportName);
 
-			String ruta = request.getRealPath("/images/mi.gif");
-			String ruta1 = request.getRealPath("/images/ofitel.gif");
+			String ruta = request.getRealPath(sep+"images"+sep+"mi.gif");
+			String ruta1 = request.getRealPath(sep+"images"+sep+"ofitel.gif");
 
 			JRBeanCollectionDataSource dataSource;
 			Map<String, Object> pars = new HashMap<String, Object>();
