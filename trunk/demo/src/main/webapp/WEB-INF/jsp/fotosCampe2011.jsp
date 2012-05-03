@@ -50,10 +50,23 @@
 #gallery ul a:hover {
 	color: #fff;
 }
+
+.irgaleria {
+	background-image: url("images/icon_galeria.jpg");
+	height: 22px;
+	display: block;
+	width: 104px;
+	margin-left: 480px;
+	margin-top: 10px;
+}
 </style>
 </head>
 
 <body>
+	
+	<div>
+		<a href="galeriaFotos.htm" class="irgaleria"></a>
+	</div>
 	
 	<div id="gallery">
 		<ul>

@@ -131,6 +131,10 @@
 									<td>Pedro Ramos</td>
 									<td align="right">#422929</td>
 								</tr>
+								<tr>
+									<td>Freddy Caballero</td>
+									<td align="right">#422910</td>
+								</tr>
 			        		<tr>
 								<td colspan="2" align="center">&nbsp;</td>
 							</tr>
