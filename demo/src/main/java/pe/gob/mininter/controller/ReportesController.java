@@ -49,14 +49,12 @@ public class ReportesController {
 		return "/lstBoleta";
 	}
 	
-	@SuppressWarnings("deprecation")
 	@RequestMapping("/rptcasboleta.htm")
 	public String rptCASBoleta( HttpServletRequest request, HttpServletResponse response){
 		
-		SiminMaestro maestro = (SiminMaestro) request.getSession().getAttribute("usuario");
-		
 		char sep = File.separatorChar;
 		ServletOutputStream ouputStream = null;
+		
 		Calendar hoy = new GregorianCalendar();
 		String mes, año = "";
 		String reportName = "";
@@ -73,12 +71,14 @@ public class ReportesController {
 		}
 		
 		try {
+			SiminMaestro maestro = (SiminMaestro) request.getSession().getAttribute("usuario");
+			
 			ouputStream = response.getOutputStream();
 			
 			Collection<BReporteCas> col  = new ArrayList<BReporteCas>();
 			
 			if (maestro.getCtingCodigo().equals("5") || maestro.getCtingCodigo().equals("7")) {
-				List<BReporteCas> listaGeneral = reporteService.listarCasBoletas(año, mes, "", maestro.getNmstLogin() );
+				List<BReporteCas> listaGeneral = reporteService.listarCasBoletas(año, mes, "", maestro.getNmstLogin());
 	        	for(int i=0;i<listaGeneral.size();i++){
 	            	BReporteCas bdo = listaGeneral.get(i);
 	            	col.add(bdo);
@@ -89,26 +89,27 @@ public class ReportesController {
             	col.add(bdo);            	
             	reportName = request.getRealPath("Reportes"+sep+"rptNOMBoletaEmp.jasper");
 			}
+			String ruta = request.getRealPath("images"+sep+"documento.jpg");			
+			logger.debug("ruta "+reportName);
 			
 			JRBeanCollectionDataSource dataSource;
 	        Map<String, Object> pars = new HashMap<String, Object>();
-	        String ruta = request.getRealPath("images"+sep+"documento.jpg");
+	        
             pars.put("ruta", ruta);
    			
-   			dataSource = new JRBeanCollectionDataSource(col);
-	        logger.debug("datasource lleno con lista documento " + col.size());
-	        File f = new File(reportName);
-            byte[] bytes2 = JasperRunManager.runReportToPdf(f.getPath(),pars,dataSource);			
-	        response.setContentType("application/pdf");
-	        logger.debug("a"+ bytes2.length);
-	        response.setContentLength(bytes2.length); 
-	        ouputStream.write(bytes2, 0, bytes2.length);  
-	        ouputStream.close();
+            dataSource = new JRBeanCollectionDataSource(col);			
+			File f = new File(reportName);
+			byte[] bytes2 = JasperRunManager.runReportToPdf(f.getPath(),pars,dataSource);			
+			response.setContentType("application/pdf"); 
+			response.setContentLength(bytes2.length);
+			ouputStream.write(bytes2, 0, bytes2.length);
+			ouputStream.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msgError", e.getMessage());
-			logger.debug(e.getMessage());
+		} finally{
+			if (ouputStream != null)  ouputStream = null;
 		}
 		return null;
 	}
@@ -157,6 +158,7 @@ public class ReportesController {
 			String reportName = request.getRealPath("Reportes"+sep+"rptAsistenciaPorEmpleado.jasper");
 			String ruta = request.getRealPath("images"+sep+"mi.gif");
 			String ruta1 = request.getRealPath("images"+sep+"ofitel.gif");
+			logger.debug("ruta "+reportName);
 			
 			JRBeanCollectionDataSource dataSource;
 			Map<String, Object> pars = new HashMap<String, Object>();
