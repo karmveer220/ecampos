@@ -13,7 +13,7 @@
         </script>
     </head>
     <body>
-        <form action="http://localhost:8081/intranet/login.htm" method="post">
+        <form action="http://intranet.mininter.gob.pe/login.htm" method="post">
         <%
         
   String userID = null;

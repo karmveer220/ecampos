@@ -71,14 +71,14 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="9" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[DEPENCIA LABORAL:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText-2" x="37" y="130" width="89" height="10"/>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[DATOS DE EMPLEADO:]]></text>
 			</staticText>
@@ -91,7 +91,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<text><![CDATA[DEC. LEGISLATIVO 1057]]></text>
 			</staticText>
@@ -104,7 +104,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dependenciaEmp}]]></textFieldExpression>
 			</textField>
@@ -117,7 +117,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica"/>
+					<font fontName="Arial" size="9" pdfFontName="Helvetica"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombresEmp}]]></textFieldExpression>
 			</textField>
@@ -130,7 +130,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dniEmp}]]></textFieldExpression>
 			</textField>
@@ -143,7 +143,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroCUSP}]]></textFieldExpression>
 			</textField>
@@ -156,7 +156,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{totalDscto}]]></textFieldExpression>
 			</textField>
@@ -169,7 +169,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dsctoEssaludEmp}]]></textFieldExpression>
 			</textField>
@@ -182,7 +182,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dsctoPensionEmp}]]></textFieldExpression>
 			</textField>
@@ -195,7 +195,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{honorariosEmp}]]></textFieldExpression>
 			</textField>
@@ -213,7 +213,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{honorariosEmp}]]></textFieldExpression>
 			</textField>
@@ -226,14 +226,14 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="9" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[CODIGO DIGITAL:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText-16" x="37" y="443" width="753" height="11"/>
 				<textElement markup="none">
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<text><![CDATA[NOTA : Información sobre descuentos por tardanzas y/o faltas consultar en la Oficina de Procesos de Personal - 2373]]></text>
 			</staticText>
@@ -246,14 +246,14 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="9" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[SIST. PENSIONARIO:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="614" y="173" width="142" height="10"/>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecAfiliacionPension}]]></textFieldExpression>
 			</textField>
@@ -266,35 +266,35 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="9" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[FEC. DE INGRESO:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="37" y="14" width="343" height="15"/>
 				<textElement>
-					<font fontName="Anonymous Pro" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RAZÓN SOCIAL: MINISTERIO DEL INTERIOR]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="37" y="32" width="343" height="15"/>
 				<textElement>
-					<font fontName="Anonymous Pro" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NRO RUC : 20131366966]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="37" y="82" width="719" height="15"/>
 				<textElement textAlignment="Center" markup="none">
-					<font fontName="Anonymous Pro" size="12" isBold="true"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["BOLETA DE PAGO DE LOS EMPLEADOS AÑO "+$F{anio}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="37" y="50" width="500" height="15"/>
 				<textElement>
-					<font fontName="Anonymous Pro" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REGIMEN ESPECIAL DE CONTRATACIÓN ADMINISTRATIVA DE SERVICIOS]]></text>
 			</staticText>
@@ -307,7 +307,7 @@
 			<staticText>
 				<reportElement key="staticText-2" x="277" y="173" width="94" height="10"/>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[NRO. DE CUSSP:]]></text>
 			</staticText>
@@ -320,7 +320,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="9" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[INICIO DE CONTRATO:]]></text>
 			</staticText>
@@ -333,14 +333,14 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="9" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[CESE CONTRATO:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement key="staticText-2" x="516" y="173" width="94" height="10"/>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[FEC. AFILIACIÓN:]]></text>
 			</staticText>
@@ -353,7 +353,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="9" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[DOC. DE INDENTIDAD:]]></text>
 			</staticText>
@@ -366,7 +366,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="9" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[NÚMERO DE RUC:]]></text>
 			</staticText>
@@ -379,7 +379,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{rucEmp}]]></textFieldExpression>
 			</textField>
@@ -392,7 +392,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecIngMininter}]]></textFieldExpression>
 			</textField>
@@ -405,7 +405,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{codAutogeneradoEmp}]]></textFieldExpression>
 			</textField>
@@ -418,7 +418,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecContIniEmp}]]></textFieldExpression>
 			</textField>
@@ -431,28 +431,28 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fecBaja}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="37" y="227" width="239" height="10"/>
 				<textElement textAlignment="Center">
-					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[INGRESOS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="277" y="227" width="238" height="10"/>
 				<textElement textAlignment="Center">
-					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DESCUENTOS]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="515" y="227" width="241" height="10"/>
 				<textElement textAlignment="Center">
-					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[APORTES DEL EMPLEADOR]]></text>
 			</staticText>
@@ -465,7 +465,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" isPdfEmbedded="false"/>
+					<font fontName="Arial" size="9" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[FT. FINACIAMIENTO:]]></text>
 			</staticText>
@@ -478,7 +478,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL INGRESOS]]></text>
 			</staticText>
@@ -491,7 +491,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL DESCUENTOS]]></text>
 			</staticText>
@@ -504,7 +504,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL APORTES]]></text>
 			</staticText>
@@ -517,7 +517,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TOTAL NETO]]></text>
 			</staticText>
@@ -530,7 +530,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{honorarioNetoEmp}]]></textFieldExpression>
 			</textField>
@@ -543,7 +543,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<text><![CDATA[ESSALUD 9%]]></text>
 			</staticText>
@@ -556,7 +556,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dsctoEssaludEmp}]]></textFieldExpression>
 			</textField>
@@ -569,14 +569,14 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipoRecurso}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement key="staticText-2" x="277" y="187" width="94" height="10"/>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[REMUN. DE CONTRATO:]]></text>
 			</staticText>
@@ -589,21 +589,21 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sueldoContrato}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement key="staticText-2" x="515" y="187" width="94" height="10"/>
 				<textElement markup="styled">
-					<font fontName="Anonymous Pro" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="9" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[MES DE PAGO:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="614" y="187" width="142" height="10"/>
 				<textElement>
-					<font fontName="Anonymous Pro" size="9"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mes}]]></textFieldExpression>
 			</textField>

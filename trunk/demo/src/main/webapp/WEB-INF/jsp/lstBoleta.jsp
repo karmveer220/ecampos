@@ -26,7 +26,7 @@
 
 
 <body>	  
-	<form action="rptcasboleta.htm">
+	<form action="rptcasboleta.htm" method="post">
 	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
@@ -57,7 +57,7 @@
 		       							<option value="2013">2013</option>
 		       						</select>
 		       					</td>
-		       					<th>Mes</th>
+		       					<th>Meses</th>
 		       					<td>:</td>
 								<td>
 									<select name="mes">
