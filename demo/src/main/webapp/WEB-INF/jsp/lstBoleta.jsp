@@ -85,9 +85,9 @@
 		        				<td colspan="7">&nbsp;</td>
 		        			</tr>
 		        			<tr>
-			        			<td colspan="7" height="200" colspan="5" valign="top">
-					        		<iframe name="baner" scrolling="no" frameborder="0" width="690" height="540" src="" > </iframe>
-					        	</td>
+					        	<td colspan="7" height="200" colspan="5" valign="top">
+									<iframe id="baner" name="baner" scrolling="no" frameborder="0" width="690" height="540" src=""> </iframe>
+								</td>
 				        	</tr>
 		        		</table>	        		
 		           	</td>

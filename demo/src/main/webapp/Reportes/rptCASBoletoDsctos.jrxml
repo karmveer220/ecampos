@@ -33,7 +33,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="Anonymous Pro" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{codigoDscto}]]></textFieldExpression>
 			</textField>
@@ -46,7 +46,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Right">
-					<font fontName="Arial" size="9"/>
+					<font fontName="Anonymous Pro" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombreDscto}]]></textFieldExpression>
 			</textField>
