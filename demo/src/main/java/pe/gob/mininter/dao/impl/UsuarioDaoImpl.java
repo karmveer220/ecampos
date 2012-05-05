@@ -38,7 +38,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 	public User obtenerUsuarioPorUsername(String username) {
 		logger.debug("obtenr usuario  por username en la bd");
 	
-		Query q = getSession().createQuery("select s from SiminMaestro s, SiminUnidadorganica o where s.siminUnidadorganica1.cUnoCodigo = o.cUnoCodigo " +
+		Query q = getSession().createQuery("select s from SiminMaestro s, SiminUnidadorganica o where s.siminUnidadorganica1.cunoCodigo = o.cunoCodigo " +
 				" and  s.nmstLogin = :username ")
 			.setString("username", username);
 		SiminMaestro user = (SiminMaestro) q.uniqueResult();
@@ -172,7 +172,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 
 	@Override
 	public List<SiminDirectorio> listarDirectorioTelf(String dependencia, String telefono, String anexo) throws NumberFormatException,Exception {
-		Query q = getSession().createQuery("select d from SiminDirectorio d, SiminUnidadorganica o where d.siminUnidadorganica.cUnoCodigo = o.cUnoCodigo" +
+		Query q = getSession().createQuery("select d from SiminDirectorio d, SiminUnidadorganica o where d.siminUnidadorganica.cunoCodigo = o.cunoCodigo" +
 					" and upper(d.ndirDescripcion) like upper('"+dependencia+"%')");
 		
 		List<SiminDirectorio> listaDirec = q.list();
@@ -181,9 +181,14 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 
 	@Override
 	public List<SiminUnidadorganica> listarUnidadOrganica() {
-		Query q = getSession().createQuery("select t from SiminUnidadorganica t order by n_uno_descripcion"   );
-		List<SiminUnidadorganica> listaUnidadOrg = q.list();
-		return listaUnidadOrg;
+		SQLQuery q = getSession().createSQLQuery("select distinct(N_UNO_GENERAL_ABREV) from SIMIN_UNIDADORGANICA  order by N_UNO_GENERAL_ABREV asc"   );		
+		List<SiminUnidadorganica> lista = new ArrayList<SiminUnidadorganica>();
+		List<Object> listaUnidadOrg = q.list();
+		for(Object o: listaUnidadOrg){		
+			lista.add(new SiminUnidadorganica(  o+""  ));
+		}		
+		System.out.println("dsfds" + lista.size());
+		return lista;
 	}
 
 }

@@ -16,7 +16,7 @@
 <link href="css/cuadros.css" rel="stylesheet" type="text/css" />
 <link href="css/displaytag.css" rel="stylesheet" type="text/css" />
 <link href="css/ajaxtags.css" rel="stylesheet" type="text/css" />
-<script  src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script  src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery.displaytag-ajax-1.2.js"></script>
 
 <script language="javascript" type="text/javascript">

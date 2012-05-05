@@ -18,7 +18,7 @@ public class SiminUnidadorganica implements Serializable {
 
 	@Id
 	@Column(name="C_UNO_CODIGO")
-	private long cUnoCodigo;
+	private long cunoCodigo;
 
 	@Column(name="C_PROG_CODIGO")
 	private BigDecimal cProgCodigo;
@@ -101,15 +101,16 @@ public class SiminUnidadorganica implements Serializable {
 
     public SiminUnidadorganica() {
     }
-
-	public long getCUnoCodigo() {
-		return this.cUnoCodigo;
-	}
-
-	public void setCUnoCodigo(long cUnoCodigo) {
-		this.cUnoCodigo = cUnoCodigo;
-	}
-
+    
+    public SiminUnidadorganica(Long cunoCodigo,String nunoGeneralAbrev) {
+    	this.cunoCodigo=cunoCodigo;
+    	this.nunoGeneralAbrev=nunoGeneralAbrev;
+    }
+    
+    public SiminUnidadorganica(String nunoGeneralAbrev) {
+    	this.nunoGeneralAbrev=nunoGeneralAbrev;
+    }
+	
 	public BigDecimal getCProgCodigo() {
 		return this.cProgCodigo;
 	}
@@ -309,4 +310,14 @@ public class SiminUnidadorganica implements Serializable {
 	public void setNunoGeneralAbrev(String nunoGeneralAbrev) {
 		this.nunoGeneralAbrev = nunoGeneralAbrev;
 	}
+
+	public Long getCunoCodigo() {
+		return cunoCodigo;
+	}
+
+	public void setCunoCodigo(long cunoCodigo) {
+		this.cunoCodigo = cunoCodigo;
+	}
+
+	
 }
