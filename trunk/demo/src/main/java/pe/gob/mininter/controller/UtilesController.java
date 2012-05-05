@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pe.gob.mininter.entities.SiminUnidadorganica;
 import pe.gob.mininter.service.UsuarioService;
 import pe.gob.mininter.utiles.Utiles;
 
@@ -139,8 +140,12 @@ public class UtilesController {
 	@RequestMapping("/directorioTelf.htm")
 	public String lstDirectorioTelf(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, Exception {
 		request.getSession().getAttribute("usuario");
-		String descripcion = Utiles.nullToBlank(request.getParameter("ndirDescripcion"));
-		
+		logger.debug( request.getParameter("nunoDescripcion") );
+		logger.debug( request.getParameter("nunoGeneralAbrev"));
+		String descripcion = Utiles.nullToBlank(request.getParameter("nunoGeneralAbrev")).equals("-1")? Utiles.nullToBlank(request.getParameter("nunoDescripcion")) : Utiles.nullToBlank(request.getParameter("nunoGeneralAbrev"));
+		logger.debug(descripcion);
+		model.put("oficina",new SiminUnidadorganica());
+		model.put("lstOficinas", usuarioService.listarUnidadOrganica());
 		request.setAttribute("ldirectorioTelf", usuarioService.listarDirectorioTelf(descripcion,"","") );
 		return "/lstDirectorioTelf";
 	}

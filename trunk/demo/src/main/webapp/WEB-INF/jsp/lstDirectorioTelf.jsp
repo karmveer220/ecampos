@@ -29,7 +29,8 @@
 
 
 <body>	  
-	<form action="rptdirectoriotelf.htm">
+	<form:form action="rptdirectoriotelf.htm" modelAttribute="oficina">
+	
 	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
@@ -57,8 +58,15 @@
 							</tr>
 							<tr>
 								<th>Dependencia</th>
-								<td>:</td>
-								<td><input type="text" name=ndirDescripcion maxlength="10" class="texto" size="10" /></td>
+								<td>
+									<form:select path="nunoGeneralAbrev">
+									<form:option value="-1">Seleccionar</form:option>
+										<form:options items="${lstOficinas}" itemLabel="nunoGeneralAbrev" itemValue="nunoGeneralAbrev"/>
+									</form:select>
+								</td>
+								<td>
+									<form:input path="nunoDescripcion" cssClass="text" size="10" maxlength="10"/>
+								</td>
 								<td>
 									<a href="javascript:buscarDirectorioTelf();"><img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar" /></a>
 								</td>
@@ -92,6 +100,6 @@
 	  	</tr>
 	  	
 	</table>
-	</form>
+	</form:form>
 </body>
 </html>
