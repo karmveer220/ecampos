@@ -15,6 +15,7 @@
 
 	<sec:http use-expressions="true">
        	<sec:intercept-url pattern="/login.htm" access="permitAll"/>
+       	<sec:intercept-url pattern="/index.jsp" access="permitAll"/>
        	<sec:intercept-url pattern="/**" access="hasRole('ROLE_USUARIO')"/>
        	
         <sec:form-login login-page="/login.htm" 

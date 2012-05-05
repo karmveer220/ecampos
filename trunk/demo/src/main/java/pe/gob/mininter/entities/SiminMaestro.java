@@ -22,6 +22,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.ldap.userdetails.LdapUserDetailsImpl;
 
 import pe.gob.mininter.utiles.Utiles;
 
@@ -332,6 +333,7 @@ public class SiminMaestro extends User implements Serializable {
 
 	public static SiminMaestro getUsuarioBean() {
 		SiminMaestro nu = (SiminMaestro)(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		//LdapUserDetailsImpl uu = null;
 		if(nu != null) {
 			return nu;
 		}

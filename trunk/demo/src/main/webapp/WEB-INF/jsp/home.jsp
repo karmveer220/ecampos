@@ -60,33 +60,28 @@
 		           	<td>&nbsp;</td>
 		        	<td valign="top" bgcolor="#EAEAEA" align="left">
 		        		<br/>
-		        		
 						<c:forEach items="${lstSistemas}" var="sis">
 							<a href="http://srvprueba:8080/${sis.siminSistema.nsisAbreviatura}/${sis.siminSistema.nsisMetodo}=${usuario.nmstLogin}&var=1" target="_blank"> <c:out value="${sis.siminSistema.nsisDescripcion}"/></a><br/><br/>
-					    </c:forEach>
-					    		
+					    </c:forEach>					    		
 				    </td>
 				    <td>&nbsp;</td>
 		       	 	<td valign="top" bgcolor="#EAEAEA">
 		       	 		<br/>
-		       	 		<c:if test="${empty lcumpleanios}" > No registra cumplea&ntilde;os el d&iacute;a de hoy </c:if>
-		       	 		<table>
+		       	 		<table border="0">
 		       	 			<tr valign="top">
-		       	 				<td colspan="2" height="100px" width="450px" >
-		       	 					<table border="0" width="100%">
+		       	 				<td colspan="2" height="105px" width="450px">
+		       	 					<table border="0"  >
 		       	 					<c:forEach items="${lcumpleanios}" var="sis">
 		       	 							<tr valign="top">
 		       	 								<td><c:out value="${sis.nombreCompleto}"/></td>
 		       	 								<td align="right"><c:out value="${sis.siminUnidadorganica1.nunoAbreviatura}"/></td>
 		       	 							</tr>
-									 	<br/>
 							    	</c:forEach>
 							    	</table>
-		       	 				</td>
+		       	 				</td><c:if test="${empty lcumpleanios}" > No registra cumplea&ntilde;os el d&iacute;a de hoy </c:if>
 		       	 			</tr>
 		       	 			<tr>
-		       	 				<td>&nbsp;</td>
-		       	 				<td align="left">
+		       	 				<td align="left" colspan="2">
 		       	 					<div align="right"><a href="cumplemensual.htm">Ver mas..</a></div>		
 	       	 					</td>
 		       	 			</tr>
