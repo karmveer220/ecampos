@@ -13,7 +13,7 @@
         </script>
     </head>
     <body>
-        <form action="http://localhost:8082/intranet/login.htm" method="post">
+        <form action="http://localhost:8082/intranet/j_spring_security_check" method="post">
         <%
         
   String userID = null;
@@ -53,7 +53,8 @@
                if (p != -1) {
                   userID = userPass.substring(0, p);
                   password = userPass.substring(p+1);
-
+					System.out.println(userID);
+					System.out.println(password);
                   // Validate user ID and password
                   // and set valid true true if valid.
                   // In this example, we simply check
@@ -91,7 +92,8 @@
          response.setContentType("text/html");
        	//out.println("<H3>Hello, " + userID + "</H3>");       
          %>
-         <input name="id" type="hidden" value="<%=userID%>"/>
+         <input name="j_username" type="hidden" value="<%=userID%>"/>
+         <input name="j_password" type="hidden" value="<%=password%>"/>
     	<%
        //out.println("<script>  window.location='http://200.48.4.150:8080/intranet/login.htm?id="+ userID+"';</script>");
        //out.println("<H3>you passe " + password+ "</H3>");

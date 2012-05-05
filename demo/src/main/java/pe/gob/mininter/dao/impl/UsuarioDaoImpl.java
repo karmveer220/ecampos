@@ -118,7 +118,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 					"left join simin_grado g on s.c_gra_codigo = g.c_gra_codigo " +
 					"left join simin_funciones f on f.c_fun_codigo = s.c_fun_codigo " +
 			 		"where s.c_sit_codigo=1 " +parametro+ " and d_mst_fechanacimiento is not null "+
-			 		"and u.c_ue_codigo = 1 " + palabra) ;
+			 		"and u.c_ue_codigo = 1 " + palabra+ " order by d_mst_fechanacimiento") ;
 		}else {
 			query = (SQLQuery) this.getSession().createSQLQuery(" select s.c_perl_codigo, s.n_mst_nombre , s.n_mst_apepaterno , s.n_mst_apematerno, " +
 					"u.n_uno_descripcion, to_char(s.d_mst_fechanacimiento, 'dd/MM/yyyy') as d_mst_fechanacimiento, " +
@@ -143,7 +143,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 								
 			}
 		}else {
-			query.setString("fec", (""+(hoy.get(Calendar.DATE)+"/"+ Utiles.completarCero((hoy.get(Calendar.MONTH)+1)))));
+			query.setString("fec", (""+(Utiles.completarCero(hoy.get(Calendar.DATE))+"/"+ Utiles.completarCero((hoy.get(Calendar.MONTH)+1)))));
 		}
 
 		List<SiminMaestro> lis = new ArrayList<SiminMaestro>();

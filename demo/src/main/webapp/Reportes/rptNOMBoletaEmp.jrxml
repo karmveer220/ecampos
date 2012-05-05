@@ -381,7 +381,7 @@
 				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{listadodsctos1})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rptNOMBoletoHaberes.jasper"]]></subreportExpression>
 			</subreport>
-			<textField isBlankWhenNull="true">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
 				<reportElement key="textField" x="185" y="469" width="65" height="12"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -394,7 +394,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{totalHaberes}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
 				<reportElement key="textField" x="424" y="469" width="65" height="12"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -407,7 +407,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{totalDscto}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
 				<reportElement key="textField" x="185" y="490" width="65" height="12"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -459,6 +459,11 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cargoEmp}]]></textFieldExpression>
 			</textField>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="522" y="221" width="230" height="236"/>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{listadodsctos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rptNOMBoletoReintegro.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</detail>
 	<columnFooter>
