@@ -17,9 +17,14 @@
 <link href="css/displaytag.css" rel="stylesheet" type="text/css" />
 <link href="css/ajaxtags.css" rel="stylesheet" type="text/css" />
 <script  src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.displaytag-ajax-1.2.js"></script>
 
 <script language="javascript" type="text/javascript">
-
+	
+	$( function(){
+	   $("#displayTagDiv").displayTagAjax();
+	})
+	
 	function buscarCumple(){		
 		document.forms[0].action = "cumplemensual.htm";
 		document.forms[0].submit();
@@ -91,7 +96,8 @@
 		        				<td colspan="3">&nbsp;</td>
 	        				</tr>
 		        			<tr>
-								<td colspan="3" align="left">    
+								<td colspan="3" align="left">
+								<div id="displayTagDiv">
 						            <display:table name="requestScope.lcumpleaniosMensual" requestURI="cumplemensual.htm" class="displaytag" pagesize="25" defaultsort="5" defaultorder="ascending" id="row" excludedParams="ajax">
 							            <display:column title="Nombre Completo" property="nombreCompleto" sortable="true" headerClass="sortable" />
 							            <display:column title="Unidad Organica" property="siminUnidadorganica1.nunoDescripcion" sortable="true" headerClass="sortable" />
@@ -110,6 +116,7 @@
                                            <fmt:formatDate value="${row.dmstFechanacimiento}" pattern="dd-MM"/>
                                    		</display:column>
 							   		</display:table>
+							   		</div>
 								</td>
 							</tr>
 		        			<tr>
