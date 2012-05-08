@@ -68,16 +68,7 @@ public class LoginController  {
 	public String inicio( ModelMap model , HttpServletRequest request ) throws UnknownHostException, MalformedURLException{
 		logger.debug("====================================================================");
 		request.getSession().getAttribute("usuario");
-		try {
-			
-			String userdir=System.getProperty("user.dir");  
-			System.out.println("user.dir="+userdir);  
-			String userhome=System.getProperty("user.home");  
-			System.out.println("user.home="+userhome);
-			logger.debug("user.home="+userhome);
-			
-			  
-			
+		try {			
 			
 			LdapUserDetails u= (LdapUserDetailsImpl)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username=u.getUsername();
