@@ -77,7 +77,7 @@ public class ReportesController {
 			
 			Collection<BReporteCas> col  = new ArrayList<BReporteCas>();
 			
-			if (maestro.getCtingCodigo().equals("5") || maestro.getCtingCodigo().equals("7")) {
+			if (maestro.getCtingCodigo().equals("4") || maestro.getCtingCodigo().equals("7")) {
 				List<BReporteCas> listaGeneral = reporteService.listarCasBoletas(año, mes, "", maestro.getNmstLogin());
 	        	for(int i=0;i<listaGeneral.size();i++){
 	            	BReporteCas bdo = listaGeneral.get(i);
@@ -85,7 +85,8 @@ public class ReportesController {
 	            }
 	        	reportName = request.getRealPath("Reportes"+sep+"rptCASBoletaEmp.jasper");
 			}else {
-				BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", maestro.getNmstLogin());
+				//BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", maestro.getNmstLogin());
+				BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", "gcabrejos");
             	col.add(bdo);            	
             	reportName = request.getRealPath("Reportes"+sep+"rptNOMBoletaEmp.jasper");
 			}
