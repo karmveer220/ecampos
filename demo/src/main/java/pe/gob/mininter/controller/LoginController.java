@@ -66,24 +66,25 @@ public class LoginController  {
 	
 	@RequestMapping("/home.htm")
 	public String inicio( ModelMap model , HttpServletRequest request ) throws UnknownHostException, MalformedURLException{
-		logger.debug("primer metodo al que ingresa");
 		logger.debug("====================================================================");
 		request.getSession().getAttribute("usuario");
 		try {
-			//username = username.trim();//aqui si puedo hacer trim de forma segura
-			//System.out.println("intento de logueo = " +username);
+			
+			String userdir=System.getProperty("user.dir");  
+			System.out.println("user.dir="+userdir);  
+			String userhome=System.getProperty("user.home");  
+			System.out.println("user.home="+userhome);
+			logger.debug("user.home="+userhome);
+			
+			  
+			
 			
 			LdapUserDetails u= (LdapUserDetailsImpl)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username=u.getUsername();
 			
-			SiminMaestro usuario = (SiminMaestro) usuarioService.loadUserByUsername(username);
-			InetAddress thisIp = InetAddress.getLocalHost(); // esto obtiene que IP? esto no obtiene la IP del servidor en donde corre esta aplicacion?
-			
-			//String  thisIpAddress = thisIp.getHostAddress().toString();
-			System.out.println("IP DE REQUEST " + request.getRemoteHost()); //Soplo cuando consultan desde la calle, tal vez IP EXTERNA 
-			//String  thisIpAddress =  request.getRemoteAddr(); //--> request.getRemoteAddr(); trae la ip de quien ha llamado a esta pagina 
+			SiminMaestro usuario = (SiminMaestro) usuarioService.loadUserByUsername(username);			 
 			usuario.setIpPrivada(request.getRemoteHost());
-				
+							
 			request.getSession().setAttribute("usuario", usuario);
 			request.getSession().setAttribute("lstSistemas", usuarioService.listarSistemas(username) );
 			request.getSession().setAttribute("lcumpleanios", usuarioService.listarCumpleaniosMes("","", null) );
@@ -92,7 +93,6 @@ public class LoginController  {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return "/home";
 	}	
 	
