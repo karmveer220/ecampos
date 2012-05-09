@@ -36,7 +36,6 @@ public class LoginController  {
 			//no poner trim ya que si no llega el parametro id, devuelve null, y null.trim da nullpointerexception
 			
 			String username = request.getParameter("id");
-			//username = "gvalqui"; 
 					
 			if(username != null){
 				username = username.trim();//aqui si puedo hacer trim de forma segura
@@ -68,12 +67,17 @@ public class LoginController  {
 	public String inicio( ModelMap model , HttpServletRequest request ) throws UnknownHostException, MalformedURLException{
 		logger.debug("====================================================================");
 		request.getSession().getAttribute("usuario");
-		try {			
-			
+
+		try {
+			java.security.Principal principal = request.getUserPrincipal();
+			String remoteUser = principal.getName();
+			logger.debug("pintar "+remoteUser);
+		    remoteUser = request.getRemoteUser();
+		    logger.debug("pintar "+remoteUser);
+			   
 			LdapUserDetails u= (LdapUserDetailsImpl)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username=u.getUsername();
-			
-			SiminMaestro usuario = (SiminMaestro) usuarioService.loadUserByUsername(username);			 
+			SiminMaestro usuario = (SiminMaestro) usuarioService.loadUserByUsername(username);
 			usuario.setIpPrivada(request.getRemoteHost());
 							
 			request.getSession().setAttribute("usuario", usuario);
