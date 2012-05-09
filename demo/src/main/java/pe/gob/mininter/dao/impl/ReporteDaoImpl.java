@@ -554,6 +554,11 @@ public class ReporteDaoImpl extends HibernateDaoSupport implements ReporteDao {
                     planilla.getListadodsctos1().add(new BDsctoHaber(rs.getString("n_hbds_descripcion"), formatter.format(Double.parseDouble(rs.getString("n_plnom_monto")))));
                     sumHaberes += rs.getDouble("n_plnom_monto");
                 }
+                
+                if (rs.getInt("f_hbds_tipo") == 3) {
+                    planilla.getListadodsctos2().add(new BDsctoHaber(rs.getString("n_hbds_descripcion"), formatter.format(Double.parseDouble(rs.getString("n_plnom_monto")))));
+                    sumHaberes += rs.getDouble("n_plnom_monto");
+                }
             }
             planilla.setTotalDscto(sumDsctos);
             planilla.setTotalHaberes(sumHaberes);

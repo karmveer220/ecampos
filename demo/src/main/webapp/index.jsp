@@ -13,7 +13,7 @@
         </script>
     </head>
     <body>
-        <form action="http://intranet.mininter.gob.pe/j_spring_security_check" method="post">
+        <form action="http://localhost:8085/intranet/j_spring_security_check" method="post">
         <%
         
   String userID = null;

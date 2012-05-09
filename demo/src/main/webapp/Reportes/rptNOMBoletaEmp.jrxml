@@ -26,6 +26,7 @@
 	<field name="totalHaberes" class="java.lang.Double"/>
 	<field name="nroPlaza" class="java.lang.String"/>
 	<field name="cargoEmp" class="java.lang.String"/>
+	<field name="listadodsctos2" class="java.util.ArrayList"/>
 	<background>
 		<band height="555" splitType="Stretch">
 			<image>
@@ -461,7 +462,7 @@
 			</textField>
 			<subreport isUsingCache="true">
 				<reportElement key="subreport-1" x="522" y="221" width="230" height="236"/>
-				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{listadodsctos})]]></dataSourceExpression>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{listadodsctos2})]]></dataSourceExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rptNOMBoletoReintegro.jasper"]]></subreportExpression>
 			</subreport>
 		</band>

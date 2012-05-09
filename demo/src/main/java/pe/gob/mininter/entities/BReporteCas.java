@@ -159,6 +159,7 @@ public class BReporteCas implements Serializable, Comparable<BReporteCas> {
 	
 	private List<BDsctoHaber> listadodsctos;
 	private List<BDsctoHaber> listadodsctos1;
+	private List<BDsctoHaber> listadodsctos2;
 	
 	//Impresion de Adendas Personalizadas
 	private String codDirector;
@@ -195,6 +196,7 @@ public class BReporteCas implements Serializable, Comparable<BReporteCas> {
 		listaDscto = new ArrayList<BMonto>();
 		listadodsctos = new ArrayList<BDsctoHaber>();
 		listadodsctos1 = new ArrayList<BDsctoHaber>();
+		listadodsctos2 = new ArrayList<BDsctoHaber>();
 	}
 	
 	public String getFuncion() {
@@ -1251,7 +1253,15 @@ public class BReporteCas implements Serializable, Comparable<BReporteCas> {
         this.nroPlaza = nroPlaza;
     }
 
-    @Override
+    public List<BDsctoHaber> getListadodsctos2() {
+		return listadodsctos2;
+	}
+
+	public void setListadodsctos2(List<BDsctoHaber> listadodsctos2) {
+		this.listadodsctos2 = listadodsctos2;
+	}
+
+	@Override
     public int compareTo(BReporteCas reporteCas) {
         int result = nombresEmp.compareTo(reporteCas.nombresEmp);
         return result == 0 ? nombresEmp.compareTo(((BReporteCas) reporteCas).nombresEmp) : result;
