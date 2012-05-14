@@ -34,7 +34,7 @@
 		<td height="90" colspan="4" align="left" valign="top">
 			<table width="900" height="90" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="360"><img src="images/logomininter.jpg" width="360"height="100" /></td>
+					<td width="360"><img src="images/logomininter1.jpg" width="360"height="100" /></td>
 					<td width="375">&nbsp;</td>
 					<td width="165">
 						<div class="tituintra1">Intranet</div>
