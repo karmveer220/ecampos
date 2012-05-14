@@ -85,8 +85,7 @@ public class ReportesController {
 	            }
 	        	reportName = request.getRealPath("Reportes"+sep+"rptCASBoletaEmp.jasper");
 			}else {
-				//BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", maestro.getNmstLogin());
-				BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", "gcabrejos");
+				BReporteCas bdo = reporteService.listarBoletaNom(año, Integer.parseInt(mes)+"", maestro.getNmstLogin());
             	col.add(bdo);            	
             	reportName = request.getRealPath("Reportes"+sep+"rptNOMBoletaEmp.jasper");
 			}
