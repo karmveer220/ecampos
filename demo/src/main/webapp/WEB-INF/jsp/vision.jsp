@@ -21,109 +21,77 @@
 
 
 <body>
-
-	<table width="900" border="0" cellspacing="0" cellpadding="0"
-		align="center">
-		<form action="" method="post">
+	<form action="" method="post">
+	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
 			<tr>
-				<td height="115" colspan="2" valign="top"><jsp:include
-						page="cabecera.jsp" /></td>
+				<td height="115" colspan="2" valign="top"><jsp:include page="cabecera.jsp" /></td>
 			</tr>
 			<tr>
 				<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
-				<td width="700" valign="top">
-					<table width="700" border="0" cellspacing="0" cellpadding="0">
+				<td width="695" valign="top">
+					<table width="690" border="0" cellpadding="1" cellspacing="1">
 						<tr>
-							<td height="2" colspan="5"><img src="images/blank.jpg"
-								width="2" /></td>
+							<td>&nbsp;</td>
+						</tr>
+					  	<tr>
+							<th><div align="left">VISI&Oacute;N</div></th>
 						</tr>
 						<tr>
-							<td height="150" valign="top"><br />
-								<table width="700" border="0" class="">
-
-									<tr>
-									  <th class="">&nbsp;</th>
-									  <th colspan="9" class="">&nbsp;</th>
-									  <th class="">&nbsp;</th>
-								  </tr>
-									<tr>
-										<th class="">&nbsp;</th>
-										<th colspan="9" class="">
-											<div align="left">VISI&Oacute;N</div>										</th>
-										<th class="">&nbsp;</th>
-									</tr>
-									<tr>
-									  <td>&nbsp;</td>
-									  <td colspan="9">&nbsp;</td>
-									  <td>&nbsp;</td>
-								  </tr>
-									<tr>
-										<td>&nbsp;</td>
-										<td colspan="9"><div align="justify">
-												<p>Ser un Sector proactivo que aplica adecuadas
-													estrategias que garanticen el mantenimiento del Orden
-													Interno, Orden P&uacute;blico y la Seguridad Ciudadana, en
-													el marco de una cultura de paz y respecto a los derechos
-													humanos que coadyuve a mejorar la convivencia
-													pac&iacute;fica.</p>
-											</div></td>
-										<td>&nbsp;</td>
-									</tr>
-
-									<tr>
-									  <th class="">&nbsp;</th>
-									  <th colspan="9" class="">&nbsp;</th>
-									  <th class="">&nbsp;</th>
-								  </tr>
-									<tr>
-										<th class="">&nbsp;</th>
-										<th colspan="9" class="">
-											<div align="left">MISI&Oacute;N</div>										</th>
-										<th class="">&nbsp;</th>
-									</tr>
-									<tr>
-									  <td>&nbsp;</td>
-									  <td colspan="9">&nbsp;</td>
-									  <td>&nbsp;</td>
-								  </tr>
-									<tr>
-										<td>&nbsp;</td>
-										<td colspan="9"><div align="justify">El Ministerio
-												del Interior es un organismo p&uacute;blico que, en
-												armon&iacute;a con las disposiciones constitucionales y la
-												Pol&iacute;tica General del Estado, se encarga de proteger y
-												garantizar el libre ejercicio de los derechos y libertades
-												fundamentales de las personas, mantener y restablecer el
-												orden interno democr&aacute;tico, el orden p&uacute;blico y
-												la seguridad interna del pa&iacute;s; competente para
-												intervenir en todos los asuntos relacionados con el
-												cumplimiento de su finalidad: Gobierno Interior, Seguridad
-												Interna, Funci&oacute;n Policial, Movimiento Migratorio y
-												Naturalizaci&oacute;n, Control de Servicios de Seguridad,
-												Control de Armas, Munici&oacute;n y Explosivos de Uso Civil,
-												entre otras que la ley le asigna, generando una cultura de
-												convivencia pac&iacute;fica y solidaridad que contribuya con
-												el pa&iacute;s para alcanzar el bienestar y el desarrollo
-												humano.</div></td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>&nbsp;</td>
-										<td colspan="9">&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>&nbsp;</td>
-										<td colspan="9">&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td>&nbsp;</td>
-										<td colspan="9">&nbsp;</td>
-										<td>&nbsp;</td>
-									</tr>
-								</table></td>
+							<td height="2"></td>
 						</tr>
+					  	<tr>
+						    <td align="justify"><p style="text-align: justify;">Ser una entidad moderna, eficiente y cohesionada al servicio del ciudadano y del Estado, comprometida con una cultura  de paz y de respeto a los derechos humanos que desarrolla acciones de seguridad y protecci&oacute;n de las personas, de sus bienes y el ambiente.</p></td>
+					  	</tr>
+					  	<tr>
+						    <td align="justify" height="5"></td>
+					  	</tr>					  	
+					  	<tr>
+					   		<th><div align="left">MISI&Oacute;N</div></th>
+					  	</tr>
+					  	<tr>
+					    <td style="text-align: justify;">
+			          		<ul> 
+					           <li>De acuerdo a la Constitución Política, el Sector Interior es un organismo público encargado de:</li>
+                                  <ul> 
+						              <li>Proteger y garantizar el libre  ejercicio de los derechos y libertades fundamentales de las personas.</li>
+						              <li>Mantener y restablecer, cuando sea el  caso, el orden interno democratico, el orden publico y la seguridad interna del pa&iacute;s.</li>
+					      		  </ul>
+					     	   <li>Es competente para intervenir en todos los asuntos relacionados con el cumplimiento de su finalidad: </li>
+						          <ul>
+							          <li>Orden interno</li>
+							          <li>Seguridad Ciudadana</li>
+							          <li>Funci&oacute;n policial</li>
+							          <li>Movimiento migratorio y naturalization</li>
+							          <li>Control de servicios de seguridad, de  armas, municiones y explosivos de use civil</li>                    
+						       	  </ul>
+					      	   <li>Generando una cultura de convivencia pacifica y solidaria que contribuya  para alcanzar el  bienestar y el desarrollo humano en el pa&iacute;s.</li>
+                          </ul>  
+                          </td>
+					  	</tr>
+					  	<tr>
+						    <td align="justify" height="5"></td>
+					  	</tr>					  	
+					  	<tr>
+					   		<th><div align="left">VALORES</div></th>
+					  	</tr>
+					  	<tr>
+							<td height="2"></td>
+						</tr>
+					  	<tr>
+						    <td align="justify"><p style="text-align: justify;">El Ministerio del Interior ha institucionalizado los siguientes valores como parte de su función principal, que marcarán el curso de acción a seguir para alcanzar los objetivos, comprometiendo a todos sus integrantes en la consecución de los mismos:</p></td>
+					  	</tr>
+					  	<tr>
+					    <td>
+					    	<ul> 
+					    		<li>Respeto por la dignidad de la persona</li>
+					    		<li>Compromiso con el desarrollo</li>
+					    		<li>Honestidad</li>
+					    		<li>Solidaridad</li>
+					    		<li>Justicia</li>
+					    		<li>Honradez</li>
+					    	</ul>
+					    </td>
+					  	</tr>
 					</table>
 				</td>
 			</tr>
@@ -131,8 +99,8 @@
 				<td colspan="2" class="pie"><jsp:include page="copyright.jsp" />
 				</td>
 			</tr>
-		</form>
+		
 	</table>
-
+	</form>
 </body>
 </html>

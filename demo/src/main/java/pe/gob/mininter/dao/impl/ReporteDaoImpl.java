@@ -30,9 +30,6 @@ public class ReporteDaoImpl extends HibernateDaoSupport implements ReporteDao {
 	
 	@Override
 	public List<BReporteCas> listarCasBoletas(String periodo, String mes, String dependencia, String username) {
-		
-
-	  //  UtilesService utilesService = new UtilesService();
 		StringBuffer s_sql = new StringBuffer();
 		ResultSet rs = null;
 	    Statement stm = null;
