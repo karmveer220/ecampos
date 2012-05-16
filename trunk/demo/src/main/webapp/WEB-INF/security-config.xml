@@ -11,6 +11,7 @@
 	
 	<sec:http pattern="/css/**" security="none"/>
 	<sec:http pattern="/img/**" security="none"/>
+	<sec:http pattern="/images/**" security="none"/>
 	<sec:http pattern="/js/**" security="none"/>
 
 	<sec:http use-expressions="true">
@@ -21,7 +22,7 @@
         <sec:form-login login-page="/login.htm" 
         				default-target-url="/home.htm" 
         				always-use-default-target="true"
-        				authentication-failure-url="/login.htm"	/>
+        				authentication-failure-url="/login.htm?login_error=1"	/>
         				<sec:remember-me/>
         <sec:logout logout-success-url="/login.htm" />
     </sec:http>

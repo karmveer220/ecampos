@@ -40,10 +40,10 @@
 							<td height="2"></td>
 						</tr>
 					  	<tr>
-						    <td align="justify"><p style="text-align: justify;">Ser una entidad moderna, eficiente y cohesionada al servicio del ciudadano y del Estado, comprometida con una cultura  de paz y de respeto a los derechos humanos que desarrolla acciones de seguridad y protecci&oacute;n de las personas, de sus bienes y el ambiente.</p></td>
+						    <td style="text-align: justify;">Ser una entidad moderna, eficiente y cohesionada al servicio del ciudadano y del Estado, comprometida con una cultura  de paz y de respeto a los derechos humanos que desarrolla acciones de seguridad y protecci&oacute;n de las personas, de sus bienes y el ambiente.</td>
 					  	</tr>
 					  	<tr>
-						    <td align="justify" height="5"></td>
+						    <td align="justify" height="13"></td>
 					  	</tr>					  	
 					  	<tr>
 					   		<th><div align="left">MISI&Oacute;N</div></th>
@@ -54,17 +54,17 @@
 					           <li>De acuerdo a la Constitución Política, el Sector Interior es un organismo público encargado de:</li>
                                   <ul> 
 						              <li>Proteger y garantizar el libre  ejercicio de los derechos y libertades fundamentales de las personas.</li>
-						              <li>Mantener y restablecer, cuando sea el  caso, el orden interno democratico, el orden publico y la seguridad interna del pa&iacute;s.</li>
+						              <li>Mantener y restablecer, cuando sea el  caso, el orden interno democr&aacute;tico, el orden p&uacute;blico y la seguridad interna del pa&iacute;s.</li>
 					      		  </ul>
 					     	   <li>Es competente para intervenir en todos los asuntos relacionados con el cumplimiento de su finalidad: </li>
 						          <ul>
 							          <li>Orden interno</li>
 							          <li>Seguridad Ciudadana</li>
 							          <li>Funci&oacute;n policial</li>
-							          <li>Movimiento migratorio y naturalization</li>
+							          <li>Movimiento migratorio y naturalizaci&oacute;n</li>
 							          <li>Control de servicios de seguridad, de  armas, municiones y explosivos de use civil</li>                    
 						       	  </ul>
-					      	   <li>Generando una cultura de convivencia pacifica y solidaria que contribuya  para alcanzar el  bienestar y el desarrollo humano en el pa&iacute;s.</li>
+					      	   <li>Generando una cultura de convivencia pac&iacute;fica y solidaria que contribuya  para alcanzar el  bienestar y el desarrollo humano en el pa&iacute;s.</li>
                           </ul>  
                           </td>
 					  	</tr>
@@ -78,7 +78,7 @@
 							<td height="2"></td>
 						</tr>
 					  	<tr>
-						    <td align="justify"><p style="text-align: justify;">El Ministerio del Interior ha institucionalizado los siguientes valores como parte de su función principal, que marcarán el curso de acción a seguir para alcanzar los objetivos, comprometiendo a todos sus integrantes en la consecución de los mismos:</p></td>
+						    <td style="text-align: justify;">El Ministerio del Interior ha institucionalizado los siguientes valores como parte de su funci&oacute;n principal, que marcar&aacute;n el curso de acci&oacute;n a seguir para alcanzar los objetivos, comprometiendo a todos sus integrantes en la consecuci&oacute;n de los mismos:</td>
 					  	</tr>
 					  	<tr>
 					    <td>
