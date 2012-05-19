@@ -58,7 +58,7 @@ public class ReporteDaoImpl extends HibernateDaoSupport implements ReporteDao {
           
     	  s_sql.append("from srhl_planilla p ");
     	  s_sql.append("inner join simin_maestro m on p.c_perl_codigo = m.c_perl_codigo ");
-    	  s_sql.append("inner join srhl_contrato co on m.c_perl_codigo = co.c_perl_codigo and co.f_cont_estado = 1 ");
+    	  s_sql.append("inner join srhl_contrato co on m.c_perl_codigo = co.c_perl_codigo ");
     	  s_sql.append("inner join srhl_sueldo s on co.c_cont_codigo = s.c_cont_codigo and s.n_suel_anio = " +periodo+" and s.n_suel_mes = "+mes+" ");
     	  s_sql.append("inner join simin_unidadorganica u on m.c_uno_codigo_oficina = u.c_uno_codigo ");
     	  s_sql.append("inner join srhl_sist_pension sp on sp.c_spen_codigo=p.c_spen_codigo ");
@@ -69,7 +69,7 @@ public class ReporteDaoImpl extends HibernateDaoSupport implements ReporteDao {
     	  	
     	  		.append(" p.n_plan_anio=" +periodo+" ")
     	  		.append(" and p.n_plan_mes ="+mes+" ");
-    	  s_sql.append("and m.n_mst_login = '"+username + "'");
+    	  s_sql.append("and m.n_mst_login = '"+username + "' ");
     	  //s_sql.append("and m.n_mst_login = 'pcaro'");
     	  
     	  /*if(!Utiles.nullToBlank(dependencia).equals("-1")){

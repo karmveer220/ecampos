@@ -12,6 +12,7 @@
 	<context:property-placeholder location="WEB-INF/jdbc.properties" />
 	
 	<import resource="security-config.xml" />
+	 <import resource="Spring-Mail.xml" />
 	 
 	<tx:annotation-driven transaction-manager="txManager"/>
 	
@@ -45,7 +46,10 @@
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-	</bean>    
-		
+	</bean>
+  	
+  	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:org/springframework/security/messages"/>
+	</bean>
 	
 </beans>

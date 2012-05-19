@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+				 
+<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<property name="host" value="correo.mininter.gob.pe" />
+	<property name="port" value="25" />	
+	<property name="username" value="menriquezo" />
+	<property name="password" value="p@ssw0rdmer" />
+ 
+	<property name="javaMailProperties">
+	   <props>
+       	      <prop key="mail.smtp.auth">true</prop>
+       	      <prop key="mail.smtp.starttls.enable">false</prop>
+       	   </props>
+	</property>
+</bean>
+ 
+<bean id="mail" class="pe.gob.mininter.utiles.Mail">
+	<property name="mailSender" ref="mailSender" />
+</bean>
+ 
+</beans>

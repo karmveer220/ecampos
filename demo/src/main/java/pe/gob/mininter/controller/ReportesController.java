@@ -22,11 +22,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 import pe.gob.mininter.entities.BReporteCas;
 import pe.gob.mininter.entities.Marcacion;
 import pe.gob.mininter.entities.SiminMaestro;
 import pe.gob.mininter.service.ReporteService;
+import pe.gob.mininter.utiles.Mail;
 import pe.gob.mininter.utiles.Utiles;
 
 @Controller
@@ -38,14 +42,87 @@ public class ReportesController {
 	@Autowired
 	private ReporteService reporteService;
 	
+	@Autowired
+	Mail mail;
+	
 	@RequestMapping("/asistencia.htm")
 	public String inicio( ModelMap model , HttpServletRequest request ){
 		return "lstAsistencia";
 	}	
 	
+	private String estilo = "<style type='text/css'> " +
+            "body{background-color: #F9F9F9;} " +
+            "table{font-size: 11px; font-family: arial;} " +
+            "table th{font-size: 14px; background-color: #142733; color: #FFFFFF;} " +
+            "table td{ background-color: #F9F9F9;} " +
+            " " +
+            "td.rojo{ background-color: #E60000;    }       " +
+            "td.verde { background-color: #367D37;  }       " +
+            "td.amarillo{ background-color: #FFF334;        color: #000;}" +
+            " " +
+            "table .tform{font-size: 11px; font-family: arial; background-color:#F9F9F9;}  " +
+            ".tform th{font-size: 12px;  color: #993333; text-align:right; background-color: #F9F9F9;} " +
+            ".tform td{ }  " +
+            " " +
+            "</style>";
+	
+	private String pie = "<tr><td  align=\"center\"> <br/>******Este mensaje ha sido enviado desde una cuenta desatendida, por favor no responder a este correo****** </td></tr>";
+
 	@RequestMapping("/boleta.htm")	
 	public String sistema(ModelMap model , HttpServletRequest request ){
 		request.getSession().getAttribute("usuario");
+		
+	//	ApplicationContext context = new ClassPathXmlApplicationContext("pe/gob/mininter/utiles/Spring-Mail.xml");
+	 
+		 StringBuffer mensaje = new StringBuffer();
+         StringBuffer mensajeCabecera = new StringBuffer();
+
+         mensajeCabecera.append(estilo);
+         mensajeCabecera.append("<table border=\"0\" cellpadding=\"3\" cellspacing=\"0\" width=\"700px\" align=\"center\"> ");
+         mensajeCabecera.append("<tr><td>");
+         mensajeCabecera.append("Buenos d&iacute;as, se le informa que las siguientes discrepancias estan por vencer:<br>");
+         mensajeCabecera.append("</td></tr>");
+         mensajeCabecera.append("<tr><td>");
+         mensajeCabecera.append("<table border='0' border='1' cellspacing='1' cellpadding='3' align='center'>");
+         mensajeCabecera.append("<tr>");
+         mensajeCabecera.append("<th>Empresa</th>");
+         mensajeCabecera.append("<th>Detalle</th>");
+         mensajeCabecera.append("<th>Observacion</th>");
+         mensajeCabecera.append("<th>Vencimiento</th>");
+         mensajeCabecera.append("</tr>");
+         mensaje = new StringBuffer();
+         mensaje.append( mensajeCabecera.toString() );
+         
+         
+         mensaje.append("<tr>");
+         mensaje.append("<td>").append(" dis.getCodInspeccion().getEmpGirosTO().getEmpresaTO().getRazonSocial() " ).append("</td>");
+         mensaje.append("<td>").append("Utiles.nullToBlank( dis.getDetalleDiscre() )" ).append("</td>");
+         mensaje.append("<td>").append("Utiles.nullToBlank( dis.getObserv() )").append("</td>");
+         mensaje.append("<td>").append("Utiles.DateToString( dis.getFechaVenc(), \"dd/MM/yyyy\")").append("</td>");
+         mensaje.append("</tr>");
+         
+         
+         mensaje.append("</table>");
+         mensaje.append("</td></tr>");
+         mensaje.append(pie);
+         mensaje.append("</table>");
+         
+          
+	    	//Mail mm = (Mail) context.getBean("mail");
+	        mail.sendMail("menriquezo@mininter.gob.pe",
+	    		   "menriquezo@mininter.gob.pe",
+	    		   "Testing123", 
+	    		   mensaje.toString());
+
+		/*"-----------------------------------------------------------------" +
+	    		   "Testing only \n\n<br> Hello Spring Email Sender \n\n <hr>" +	    		   
+	    		   "<p>El sistema de correo electrónico del Ministerio del Interior está destinado únicamente para fines del negocio, cualquier otro uso contraviene las políticas del Banco." +
+	    		   "Toda la información del negocio contenida en este mensaje es confidencial y de uso exclusivo del Banco de Ministerio del Interior. Su divulgación, copia y/o adulteración están" +
+	    		   "prohibidas y sólo debe ser conocida por la persona a quien se dirige este mensaje. Si Ud. ha recibido este mensaje por error por favor proceda a eliminarlo y notificar" +
+	    		   "al remitente.<>"+	
+	    		   "--------------------------------------------------------"  */
+		
+		
 		return "/lstBoleta";
 	}
 	

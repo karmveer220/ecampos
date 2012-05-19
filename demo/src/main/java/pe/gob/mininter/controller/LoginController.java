@@ -1,9 +1,7 @@
 package pe.gob.mininter.controller;
 
-import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.UnknownHostException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,10 +28,10 @@ public class LoginController  {
 	private UsuarioService  usuarioService;
 	
 	@RequestMapping("/login.htm")
-    public String login(ModelMap model , HttpServletRequest request) throws NumberFormatException, Exception {
+    public String login(ModelMap model , HttpServletRequest request) throws NumberFormatException, Exception {		
 		return "/login";
     }
-	
+
 	@RequestMapping("/home.htm")
 	public String inicio( ModelMap model , HttpServletRequest request ) throws UnknownHostException, MalformedURLException{
 		logger.debug("====================================================================");

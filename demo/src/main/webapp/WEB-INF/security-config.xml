@@ -13,6 +13,7 @@
 	<sec:http pattern="/img/**" security="none"/>
 	<sec:http pattern="/images/**" security="none"/>
 	<sec:http pattern="/js/**" security="none"/>
+	<sec:http pattern="/pdf/**" security="none"/>
 
 	<sec:http use-expressions="true">
        	<sec:intercept-url pattern="/login.htm" access="permitAll"/>
@@ -60,6 +61,5 @@
 	<bean id="ldapAuthoritiesPopulator" class="org.springframework.security.ldap.authentication.UserDetailsServiceLdapAuthoritiesPopulator">
 		<constructor-arg ref="autenticacion"/>
 	</bean>
-	
-
+		
 </beans>

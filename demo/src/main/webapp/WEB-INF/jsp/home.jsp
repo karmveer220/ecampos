@@ -11,6 +11,12 @@
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <link href="css/cuadros.css" rel="stylesheet" type="text/css" />
 <script  src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
+
+<script>
+function sistema( url ){
+	window.open();
+}
+</script>
 </head>
 
 <body>	  
@@ -61,8 +67,12 @@
 		        	<td valign="top" bgcolor="#EAEAEA" align="left">
 		        		<br/>
 						<c:forEach items="${lstSistemas}" var="sis">
-							<a href="http://srvprueba:8080/${sis.siminSistema.nsisAbreviatura}/${sis.siminSistema.nsisMetodo}=${usuario.nmstLogin}&var=1" target="_blank"> <c:out value="${sis.siminSistema.nsisDescripcion}"/></a><br/><br/>
-					    </c:forEach>					    		
+							<a href="#" onclick="window.open('http://srvprueba:8080/${sis.siminSistema.nsisAbreviatura}/${sis.siminSistema.nsisMetodo}=${usuario.nmstLogin}&var=1','popup','width=300,height=400')"> <c:out value="${sis.siminSistema.nsisDescripcion}"/></a><br/><br/>
+					    </c:forEach>
+			    		<security:authorize ifAnyGranted="ROLE_ADMINISTRADOR">
+							<a href="http://sistgeo.mininter.gob.pe:8181" target="_blank">Sistema Georeferencial</a>
+						</security:authorize>
+							    						    		
 				    </td>
 				    <td>&nbsp;</td>
 		       	 	<td valign="top" bgcolor="#EAEAEA">
@@ -77,6 +87,7 @@
 		       	 								<td align="right"><c:out value="${sis.siminUnidadorganica1.nunoAbreviatura}"/></td>
 		       	 							</tr>
 							    	</c:forEach>
+							    	
 							    	</table>
 		       	 				</td><c:if test="${empty lcumpleanios}" > No registra cumplea&ntilde;os el d&iacute;a de hoy </c:if>
 		       	 			</tr>
@@ -158,7 +169,6 @@
 	  	<tr>
 	    	<td colspan="2" class="pie">  <jsp:include page="copyright.jsp"/> </td>
 	  	</tr>
-	</table>
-	</form>
+	</table>	
 </body>
 </html>
