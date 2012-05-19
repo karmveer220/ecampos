@@ -221,6 +221,13 @@
 			<artifactId>displaytag</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.5</version>
+		</dependency>
+				
 		<!-- 
 		<dependency>
 			<groupId>org.ajaxtags</groupId>
@@ -261,6 +268,8 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			
+			
 			
 		</plugins>
 	</build>

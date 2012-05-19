@@ -42,7 +42,7 @@
 								
 								<tr>
 									<td colspan="7">
-										<iframe scrolling="yes" frameborder="0" width="690" height="700" src="images/evento_Oper.jpg"></iframe>
+										<iframe scrolling="yes" frameborder="0" width="690" height="700" src="pdf/fondos.pdf"></iframe>
 									</td>
 								</tr>
 							</table></td>
