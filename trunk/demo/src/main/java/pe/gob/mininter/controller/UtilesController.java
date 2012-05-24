@@ -9,8 +9,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import pe.gob.mininter.dao.ImagenDao;
+import pe.gob.mininter.entities.SiminImagen;
 import pe.gob.mininter.entities.SiminUnidadorganica;
 import pe.gob.mininter.service.UsuarioService;
 import pe.gob.mininter.utiles.Utiles;
@@ -24,9 +25,16 @@ public class UtilesController {
 	@Autowired
 	private UsuarioService  usuarioService;
 	
+	@Autowired
+	ImagenDao imagenDAO;
+	
+	@RequestMapping("/plantilla.htm")
+	 public String plantilla(ModelMap model, HttpServletRequest request) {
+		return "/plantilla";
+	}
+	
 	@RequestMapping("/menuSemanal.htm")
 	 public String menuSemanal() {
-		logger.debug("test");
 		return "/menuSemanal";
 	}
 	
@@ -71,9 +79,22 @@ public class UtilesController {
 	}
 	
 	@RequestMapping("/boletines.htm")
-	public String boletines() {
+	public String boletines(ModelMap model, HttpServletRequest request) {
+		model.put("imagen",new SiminImagen());
+		request.getSession().setAttribute("lboletines", imagenDAO.listarImagenes(5));
 		return "/boletines";
 	}
+	
+	@RequestMapping("/buscarBol.htm")
+	public String buscarBoletin(ModelMap model, HttpServletRequest request) {
+		request.getSession().getAttribute("lboletines");
+		model.put("imagen",new SiminImagen());
+		String idBoletin = Utiles.nullToBlank(request.getParameter("coImgCodigo"));
+		request.setAttribute("beanBoletin", imagenDAO.obtenerImagen(idBoletin) );
+		logger.debug("pinta"+imagenDAO.obtenerImagen(idBoletin));
+		return "/boletines";
+	}
+	
 	@RequestMapping("/marcoLegal.htm")
 	public String marcoLegal() {
 		return "/marcoLegal";
@@ -83,43 +104,60 @@ public class UtilesController {
 	public String campanas() {
 		return "/campanas";
 	}
-	
-	@RequestMapping("/galeria.htm")
-	public String galeria() {
-		return "/galeria";
-	}
-	
-	@RequestMapping("/galeriaFotos.htm")
-	public String galeriaFotos() {
-		return "/galeriaFotos";
-	}
-	@RequestMapping("/fotosCampe2011.htm")
-	public String fotosCampe2011() {
-		return "/fotosCampe2011";
-	}
+			
 	@RequestMapping("/avisosUno.htm")
 	public String avisosUno() {
 		return "/avisosUno";
 	}
+	
 	@RequestMapping("/avisosDos.htm")
 	public String avisosDos() {
 		return "/avisosDos";
 	}
+	
 	@RequestMapping("/avisosTres.htm")
 	public String avisosTres() {
 		return "/avisosTres";
 	}
+	
 	@RequestMapping("/avisosCuatro.htm")
 	public String avisosCuatro() {
 		return "/avisosCuatro";
 	}
 	
+	@RequestMapping("/galeria.htm")
+	public String galeria(ModelMap model, HttpServletRequest request) {	
+		model.put("listInterior", imagenDAO.listarImagenCodigo("2") );
+		model.put("listDigemin", imagenDAO.listarImagenCodigo("3") );
+		model.put("listDiscamec", imagenDAO.listarImagenCodigo("1") );
+		return "/galeria";		
+	}
+	
+	//no vale
+	@RequestMapping("/galeriaFotos.htm")
+	public String galeriaFotos(ModelMap model, HttpServletRequest request) {
+		model.put("listInterior", imagenDAO.listarImagenCodigo("2") );
+		model.put("listDigemin", imagenDAO.listarImagenCodigo("3") );
+		model.put("listDiscamec", imagenDAO.listarImagenCodigo("1") );
+		logger.debug("HOLAAAA"+imagenDAO.listarImagenCodigo("2").getNaImgNombre());
+		return "/galeriaFotos";
+	}
+	
+	@RequestMapping("/fotosCampe2011.htm")
+	public String fotosCampe2011(ModelMap model, HttpServletRequest request) {
+		model.put("limagenesMininter", imagenDAO.listarImagenes(2) );
+		return "/fotosCampe2011";
+	}
+	
 	@RequestMapping("/fotosDigemin.htm")
-	public String fotosDigemin() {
+	public String fotosDigemin(ModelMap model, HttpServletRequest request) {
+		model.put("limagenesDigemin", imagenDAO.listarImagenes(3) );
 		return "/fotosDigemin";
 	}
+	
 	@RequestMapping("/fotosDicscamec.htm")
-	public String fotosDicscamec() {
+	public String fotosDicscamec(ModelMap model, HttpServletRequest request ) {		
+		model.put("limagenes", imagenDAO.listarImagenes(1) );
 		return "/fotosDicscamec";
 	}
 	
@@ -137,10 +175,7 @@ public class UtilesController {
 	@RequestMapping("/directorioTelf.htm")
 	public String lstDirectorioTelf(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, Exception {
 		request.getSession().getAttribute("usuario");
-		logger.debug( request.getParameter("nunoDescripcion") );
-		logger.debug( request.getParameter("nunoGeneralAbrev"));
 		String descripcion = Utiles.nullToBlank(request.getParameter("nunoGeneralAbrev")).equals("-1")? Utiles.nullToBlank(request.getParameter("nunoDescripcion")) : Utiles.nullToBlank(request.getParameter("nunoGeneralAbrev"));
-		logger.debug(descripcion);
 		model.put("oficina",new SiminUnidadorganica());
 		model.put("lstOficinas", usuarioService.listarUnidadOrganica());
 		request.setAttribute("ldirectorioTelf", usuarioService.listarDirectorioTelf(descripcion,"","") );

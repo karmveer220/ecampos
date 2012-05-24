@@ -13,7 +13,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/cuadros.css" rel="stylesheet" type="text/css" />
 <link href="css/displaytag.css" rel="stylesheet" type="text/css" />
 <link href="css/ajaxtags.css" rel="stylesheet" type="text/css" />
 <script  src="js/jquery-1.7.2.min.js" type="text/javascript"></script>

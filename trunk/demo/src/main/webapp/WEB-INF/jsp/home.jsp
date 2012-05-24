@@ -26,7 +26,7 @@ function sistema( url ){
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
 	  	<tr>
-		    <td width="200" valign="top"> <jsp:include page="menu.jsp"/> </td>
+		    <td width="200" valign="top"> <jsp:include page="menuHome.jsp"/> </td>
 		    <td width="700" valign="top" bgcolor="#EAEAEA">
 		    	<table width="600" border="0" cellspacing="0" cellpadding="0" >
 		      	<tr>
@@ -111,7 +111,7 @@ function sistema( url ){
 		        </tr>
 		      	<tr>
 					<td valign="middle" align="center" bgcolor="#EAEAEA"><br/>
-						<a href="menuSemanal.htm"> <img alt="Menú Semanal" src="images/pizarra.png" width="200" height="70" /></a>
+						<a href="menu.htm"> <img alt="Menú Semanal" src="images/pizarra.png" width="200" height="70" /></a>
 					</td>
 					<td>&nbsp;</td>
 					<td height="150" valign="top" width="100%" bgcolor="#EAEAEA">
@@ -141,6 +141,13 @@ function sistema( url ){
 									<td>Freddy Caballero</td>
 									<td align="right">#422910</td>
 								</tr>
+								<security:authorize ifAnyGranted="ROLE_SYSTEM">
+									<tr>
+										<td colspan="2">
+											<a href="inicio.htm"> Agregar</a>
+										</td>
+									</tr>
+								</security:authorize>
 			        		<tr>
 								<td colspan="2" align="center">&nbsp;</td>
 							</tr>
@@ -157,9 +164,7 @@ function sistema( url ){
 					<td>&nbsp;</td>
 			        <td valign="top" bgcolor="#EAEAEA"><br/>
 			        	<div align="center">
-							<a
-								href="campanas.htm"> <img alt="Campañas" src="images/campanas.png" width="160" height="150" />
-							</a>
+							<a href="campanas.htm"> <img alt="Campañas" src="images/campanas.png" width="160" height="150" /></a>
 						</div>
 			        </td>
 		        </tr>

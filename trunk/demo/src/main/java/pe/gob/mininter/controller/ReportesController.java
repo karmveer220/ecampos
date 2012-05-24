@@ -70,7 +70,7 @@ public class ReportesController {
 
 	@RequestMapping("/boleta.htm")	
 	public String sistema(ModelMap model , HttpServletRequest request ){
-		request.getSession().getAttribute("usuario");
+		SiminMaestro usuario =  (SiminMaestro) request.getSession().getAttribute("usuario");
 		
 	//	ApplicationContext context = new ClassPathXmlApplicationContext("pe/gob/mininter/utiles/Spring-Mail.xml");
 	 
@@ -85,7 +85,7 @@ public class ReportesController {
          mensajeCabecera.append("<tr><td>");
          mensajeCabecera.append("<table border='0' border='1' cellspacing='1' cellpadding='3' align='center'>");
          mensajeCabecera.append("<tr>");
-         mensajeCabecera.append("<th>Empresa</th>");
+         mensajeCabecera.append("<th>Oficina</th>");
          mensajeCabecera.append("<th>Detalle</th>");
          mensajeCabecera.append("<th>Observacion</th>");
          mensajeCabecera.append("<th>Vencimiento</th>");
@@ -93,12 +93,13 @@ public class ReportesController {
          mensaje = new StringBuffer();
          mensaje.append( mensajeCabecera.toString() );
          
+         logger.debug("funcion dia"+Utiles.obtenerDia());
          
          mensaje.append("<tr>");
-         mensaje.append("<td>").append(" dis.getCodInspeccion().getEmpGirosTO().getEmpresaTO().getRazonSocial() " ).append("</td>");
-         mensaje.append("<td>").append("Utiles.nullToBlank( dis.getDetalleDiscre() )" ).append("</td>");
+         mensaje.append("<td>").append(""+ usuario.getSiminUnidadorganica1().getNunoDescripcion() ).append("</td>");
+         mensaje.append("<td>").append(""+ usuario.getNombreCompleto() ).append("</td>");
          mensaje.append("<td>").append("Utiles.nullToBlank( dis.getObserv() )").append("</td>");
-         mensaje.append("<td>").append("Utiles.DateToString( dis.getFechaVenc(), \"dd/MM/yyyy\")").append("</td>");
+         mensaje.append("<td>").append(""+Utiles.obtenerDia()).append("</td>");
          mensaje.append("</tr>");
          
          
@@ -109,9 +110,9 @@ public class ReportesController {
          
           
 	    	//Mail mm = (Mail) context.getBean("mail");
-	        mail.sendMail("menriquezo@mininter.gob.pe",
+	        mail.sendMail("soporte@mininter.gob.pe",
 	    		   "menriquezo@mininter.gob.pe",
-	    		   "Testing123", 
+	    		   "Soporte Tecnico", 
 	    		   mensaje.toString());
 
 		/*"-----------------------------------------------------------------" +

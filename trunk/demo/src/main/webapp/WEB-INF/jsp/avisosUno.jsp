@@ -11,12 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/cuadros.css" rel="stylesheet" type="text/css" />
-
 <script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
-
-
-
 </head>
 
 
@@ -31,21 +26,18 @@
 			<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
 			<td width="700" valign="top">
 				<div align="center">
-				<table  border="0" cellspacing="0" cellpadding="0">
-					<tr>
-						<td height="2" colspan="5"><img src="images/blank.jpg"
-							width="2" /></td>
-					</tr>
+				<table  border="0" cellspacing="0" cellpadding="0">					
 					<tr>
 						<td height="150" valign="top" bgcolor="#FFFFFF"><br />
 							<table width="690" border="0" class="">
 								
 								<tr>
-									<td colspan="7">
-										<iframe scrolling="yes" frameborder="0" width="690" height="700" src="images/simWeb.jpg"></iframe>
+									<td>
+										<iframe scrolling="yes" frameborder="0" width="690" height="670" src="images/simWeb.jpg"></iframe>
 									</td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 				</table>
 				</div>

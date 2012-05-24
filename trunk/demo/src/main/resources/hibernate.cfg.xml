@@ -11,10 +11,10 @@
    	<mapping class="pe.gob.mininter.entities.SiminTipousuario"/>
    	<mapping class="pe.gob.mininter.entities.SiminUnidadorganica"/>
    	<mapping class="pe.gob.mininter.entities.SiminUsuariosistema"/>
-   	
+   	<mapping class="pe.gob.mininter.entities.SiminImagen"/>
    	<mapping class="pe.gob.mininter.entities.SiminGrado"/>
    	<mapping class="pe.gob.mininter.entities.SiminFunciones"/>
    	<mapping class="pe.gob.mininter.entities.SiminDirectorio"/>
-   	
+   	<mapping class="pe.gob.mininter.entities.SiminTipoPublicacion"/>
   </session-factory>
 </hibernate-configuration>
