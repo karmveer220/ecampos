@@ -11,12 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/cuadros.css" rel="stylesheet" type="text/css" />
-
 <script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
-
-
-
 </head>
 
 
@@ -41,8 +36,8 @@
 							<table width="690" border="0" class="">
 								
 								<tr>
-									<td colspan="7">
-										<iframe scrolling="yes" frameborder="0" width="690" height="700" src="images/horario1.jpg"></iframe>
+									<td>
+										<iframe scrolling="yes" frameborder="0" width="690" height="670" src="http://www.mininter.gob.pe/comunicados/comunicado.sindicato.jpg"></iframe>
 									</td>
 								</tr>
 							</table></td>

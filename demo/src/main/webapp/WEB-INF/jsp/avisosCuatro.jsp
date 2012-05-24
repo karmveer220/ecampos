@@ -11,8 +11,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/cuadros.css" rel="stylesheet" type="text/css" />
-
 <script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
 
 
@@ -42,7 +40,7 @@
 								
 								<tr>
 									<td colspan="7">
-										<iframe scrolling="yes" frameborder="0" width="690" height="700" src="pdf/fondos.pdf"></iframe>
+										<iframe scrolling="yes" frameborder="0" width="690" height="670" src="pdf/fondos.pdf"></iframe>
 									</td>
 								</tr>
 							</table></td>

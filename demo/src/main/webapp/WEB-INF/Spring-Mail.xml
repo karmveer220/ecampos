@@ -5,8 +5,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 	<property name="host" value="correo.mininter.gob.pe" />
 	<property name="port" value="25" />	
-	<property name="username" value="menriquezo" />
-	<property name="password" value="p@ssw0rdmer" />
+	<property name="username" value="soporte" />
+	<property name="password" value="0f1t3L5t" />
  
 	<property name="javaMailProperties">
 	   <props>

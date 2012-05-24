@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="pe.gob.mininter.entities.SiminImagen"%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -28,17 +29,14 @@
 		        </tr>
 		      	<tr>
 		        	<td height="200" colspan="5" valign="top">
-		        		<iframe scrolling="no" frameborder="0" width="680px" height="700px" src="http://www.mininter.gob.pe/comunicados/menu.pdf" > </iframe>
+		        		<% SiminImagen lista = (SiminImagen)request.getAttribute("lmenu");%>
+		        			<img alt="<%=lista.getNaImgNombre() %>" src="img.htm?id=<%=lista.getCoImgCodigo()%>" width="690px" height="700px" alt=""/>
+		        		<% %>
 		        	</td>
 		        </tr>
 		      	<tr>
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" height="5" /></td>
-		        </tr>
-		      	
-		      	
-		      	<tr>
-			        <td valign="top" colspan="5">&nbsp;</td>
-		      	</tr>
+		        </tr>		      	
 		    	</table>
 	    	</td>
 	  	</tr>

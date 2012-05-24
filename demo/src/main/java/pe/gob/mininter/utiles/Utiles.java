@@ -553,5 +553,13 @@ private static int getDigitAt(String origin, int position) {
 	            return "0"+n;
 	        return ""+n;
 	    }
+	    
+	    public static String obtenerDia() { 
+	        Calendar cal = Calendar.getInstance(); 
+	        cal.getTime(); 
+	        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+	        return sdf.format(cal.getTime())+ "" ;
+	    } 
+
 	  
 }
