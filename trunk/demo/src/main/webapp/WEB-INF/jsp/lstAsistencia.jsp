@@ -139,9 +139,9 @@
 												</script></td>
 											<td>
 												<div align="left">
-													<a href="javascript:buscarAsistencia();"><img
-														width="30" height="30" src="images/buscar.png" border="0"
-														alt="Buscar" /></a>
+													<a href="javascript:buscarAsistencia();">
+														<img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar" />
+													</a>
 												</div>
 											</td>
 										</tr>
@@ -149,9 +149,9 @@
 											<td colspan="7">&nbsp;</td>
 										</tr>
 										<tr>
-											<td colspan="7" height="200" colspan="5" valign="top"><iframe
-													id="baner" name="baner" scrolling="no" frameborder="0"
-													width="690" height="540" src=""> </iframe></td>
+											<td colspan="7" height="200" colspan="5" valign="top">
+												<iframe id="baner" name="baner" scrolling="no" frameborder="0" width="690" height="540" src=""> </iframe>
+											</td>
 										</tr>
 									</table></td>
 							</tr>

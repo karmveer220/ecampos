@@ -22,13 +22,12 @@ public class ImagenDaoImpl extends HibernateDaoSupport implements ImagenDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SiminImagen> listarImagenes(Integer codPublicacion) {
-		return this.getHibernateTemplate().find("from SiminImagen i where rownum < 17 and i.siminTipoPublicacion.coTipPublicacion = "+codPublicacion);
+		return this.getHibernateTemplate().find("from SiminImagen i where rownum < 17 and i.siminTipoPublicacion.coTipPublicacion = "+codPublicacion+" order by naImgNombre desc");
 	}
 
 	@Override
 	public Integer insertaImagen(SiminImagen imagen) {
 		return (Integer) this.getHibernateTemplate().save(imagen);
-		
 	}
 
 	@Override

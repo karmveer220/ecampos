@@ -22,7 +22,7 @@
  *
  * Author: Jevon Gill
  */
-(function($){
+$(function(){
 
     $.fn.displayTagAjax = function() {
         var links = new Array();
@@ -69,7 +69,4 @@
         );        
     }
     
-})(jQuery);
-
-
-
+});

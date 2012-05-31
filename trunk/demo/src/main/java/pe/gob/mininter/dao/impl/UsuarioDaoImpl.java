@@ -47,8 +47,8 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 		logger.debug("ahora"+user.getCtingCodigo());
 
 		
-		Query q2 =  getSession().createQuery("from SiminUsuariosistema u where u.siminMaestro.cPerlCodigo  = :iduser and u.siminSistema.cSisCodigo = :idsis ")
-	        .setInteger("iduser",new Long(user.getCPerlCodigo()).intValue() )
+		Query q2 =  getSession().createQuery("from SiminUsuariosistema u where u.siminMaestro.cperlCodigo  = :iduser and u.siminSistema.cSisCodigo = :idsis ")
+	        .setInteger("iduser",new Long(user.getCperlCodigo()).intValue() )
 	        .setInteger("idsis", Parametros.SISTEMA_INTRANET );
 		
 		List<SiminUsuariosistema> permisos = q2.list();
@@ -60,11 +60,13 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 			logger.debug( "ROLE_" + rol.getSiminTipousuario().getCTusuDetalle()  );
 		}
 		
-		SiminMaestro usuario= new SiminMaestro(user.getNmstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDmstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion(), user.getCtingCodigo(), user.getSiminUnidadorganica1().getNunoGeneralAbrev());
+		SiminMaestro usuario= new SiminMaestro(user.getCperlCodigo(), user.getNmstLogin(), user.getNMstClave(), true, oo,user.getNMstNombre(), user.getNMstApepaterno(),user.getNMstApematerno(),user.getDmstFechanacimiento(), user.getCSitCodigo(), user.getSiminUnidadorganica1().getNunoDescripcion(), user.getCtingCodigo(), user.getSiminUnidadorganica1().getNunoGeneralAbrev(), user.getNmstEmail());
 		//usuario.setNMstNombre(user.getNMstNombre());
 		
 		logger.debug(usuario.toString());
 		logger.debug(usuario.getCtingCodigo());
+		logger.debug("hola "+usuario.getCperlCodigo());
+		logger.debug("hola "+usuario.getNmstEmail());
 		
 		
         return usuario; 

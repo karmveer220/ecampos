@@ -71,57 +71,45 @@ public class ReportesController {
 	@RequestMapping("/boleta.htm")	
 	public String sistema(ModelMap model , HttpServletRequest request ){
 		SiminMaestro usuario =  (SiminMaestro) request.getSession().getAttribute("usuario");
-		
-	//	ApplicationContext context = new ClassPathXmlApplicationContext("pe/gob/mininter/utiles/Spring-Mail.xml");
 	 
-		 StringBuffer mensaje = new StringBuffer();
-         StringBuffer mensajeCabecera = new StringBuffer();
+		StringBuffer mensaje = new StringBuffer();
+		StringBuffer mensajeCabecera = new StringBuffer();
 
-         mensajeCabecera.append(estilo);
-         mensajeCabecera.append("<table border=\"0\" cellpadding=\"3\" cellspacing=\"0\" width=\"700px\" align=\"center\"> ");
-         mensajeCabecera.append("<tr><td>");
-         mensajeCabecera.append("Buenos d&iacute;as, se le informa que las siguientes discrepancias estan por vencer:<br>");
-         mensajeCabecera.append("</td></tr>");
-         mensajeCabecera.append("<tr><td>");
-         mensajeCabecera.append("<table border='0' border='1' cellspacing='1' cellpadding='3' align='center'>");
-         mensajeCabecera.append("<tr>");
-         mensajeCabecera.append("<th>Oficina</th>");
-         mensajeCabecera.append("<th>Detalle</th>");
-         mensajeCabecera.append("<th>Observacion</th>");
-         mensajeCabecera.append("<th>Vencimiento</th>");
-         mensajeCabecera.append("</tr>");
-         mensaje = new StringBuffer();
-         mensaje.append( mensajeCabecera.toString() );
+		mensajeCabecera.append(estilo);
+		mensajeCabecera.append("<table border=\"0\" cellpadding=\"3\" cellspacing=\"0\" width=\"700px\" align=\"center\"> ");
+		mensajeCabecera.append("<tr><td>");
+		mensajeCabecera.append("Buenos d&iacute;as, se le informa que las siguientes discrepancias estan por vencer:<br>");
+		mensajeCabecera.append("</td></tr>");
+		mensajeCabecera.append("<tr><td>");
+		mensajeCabecera.append("<table border='0' border='1' cellspacing='1' cellpadding='3' align='center'>");
+		mensajeCabecera.append("<tr>");
+		mensajeCabecera.append("<th>Oficina</th>");
+		mensajeCabecera.append("<th>Detalle</th>");
+		mensajeCabecera.append("<th>Observacion</th>");
+		mensajeCabecera.append("<th>Vencimiento</th>");
+		mensajeCabecera.append("</tr>");
+		
+		mensaje = new StringBuffer();
+		mensaje.append( mensajeCabecera.toString() );
          
-         logger.debug("funcion dia"+Utiles.obtenerDia());
+		logger.debug("funcion dia"+Utiles.obtenerDia());
+		
+		mensaje.append("<tr>");
+		mensaje.append("<td>").append(""+ usuario.getSiminUnidadorganica1().getNunoDescripcion() ).append("</td>");
+		mensaje.append("<td>").append(""+ usuario.getNombreCompleto() ).append("</td>");
+		mensaje.append("<td>").append("Utiles.nullToBlank( dis.getObserv() )").append("</td>");
+		mensaje.append("<td>").append(""+Utiles.obtenerDia()).append("</td>");
+		mensaje.append("</tr>");
+		
          
-         mensaje.append("<tr>");
-         mensaje.append("<td>").append(""+ usuario.getSiminUnidadorganica1().getNunoDescripcion() ).append("</td>");
-         mensaje.append("<td>").append(""+ usuario.getNombreCompleto() ).append("</td>");
-         mensaje.append("<td>").append("Utiles.nullToBlank( dis.getObserv() )").append("</td>");
-         mensaje.append("<td>").append(""+Utiles.obtenerDia()).append("</td>");
-         mensaje.append("</tr>");
-         
-         
-         mensaje.append("</table>");
-         mensaje.append("</td></tr>");
-         mensaje.append(pie);
-         mensaje.append("</table>");
-         
-          
-	    	//Mail mm = (Mail) context.getBean("mail");
-	        mail.sendMail("soporte@mininter.gob.pe",
-	    		   "menriquezo@mininter.gob.pe",
-	    		   "Soporte Tecnico", 
-	    		   mensaje.toString());
+		mensaje.append("</table>");
+		mensaje.append("</td></tr>");
+		mensaje.append(pie);
+		mensaje.append("</table>");
+	    
+		mail.sendMail("soporte@mininter.gob.pe", "menriquezo@mininter.gob.pe", "Soporte Tecnico", mensaje.toString());
 
-		/*"-----------------------------------------------------------------" +
-	    		   "Testing only \n\n<br> Hello Spring Email Sender \n\n <hr>" +	    		   
-	    		   "<p>El sistema de correo electrónico del Ministerio del Interior está destinado únicamente para fines del negocio, cualquier otro uso contraviene las políticas del Banco." +
-	    		   "Toda la información del negocio contenida en este mensaje es confidencial y de uso exclusivo del Banco de Ministerio del Interior. Su divulgación, copia y/o adulteración están" +
-	    		   "prohibidas y sólo debe ser conocida por la persona a quien se dirige este mensaje. Si Ud. ha recibido este mensaje por error por favor proceda a eliminarlo y notificar" +
-	    		   "al remitente.<>"+	
-	    		   "--------------------------------------------------------"  */
+		
 		
 		
 		return "/lstBoleta";

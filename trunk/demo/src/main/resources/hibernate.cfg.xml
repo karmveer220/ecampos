@@ -4,8 +4,6 @@
 
 <hibernate-configuration>
   <session-factory>
-    
-    
    	<mapping class="pe.gob.mininter.entities.SiminSistema"/>
    	<mapping class="pe.gob.mininter.entities.SiminMaestro"/>
    	<mapping class="pe.gob.mininter.entities.SiminTipousuario"/>
@@ -16,5 +14,6 @@
    	<mapping class="pe.gob.mininter.entities.SiminFunciones"/>
    	<mapping class="pe.gob.mininter.entities.SiminDirectorio"/>
    	<mapping class="pe.gob.mininter.entities.SiminTipoPublicacion"/>
+   	<mapping class="pe.gob.mininter.entities.SiminCorreo"/>
   </session-factory>
 </hibernate-configuration>

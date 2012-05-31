@@ -67,7 +67,7 @@ function sistema( url ){
 		        	<td valign="top" bgcolor="#EAEAEA" align="left">
 		        		<br/>
 						<c:forEach items="${lstSistemas}" var="sis">
-							<a href="#" onclick="window.open('http://srvprueba:8080/${sis.siminSistema.nsisAbreviatura}/${sis.siminSistema.nsisMetodo}=${usuario.nmstLogin}&var=1','popup','width=300,height=400')"> <c:out value="${sis.siminSistema.nsisDescripcion}"/></a><br/><br/>
+							<a href="http://srvprueba:8080/${sis.siminSistema.nsisAbreviatura}/${sis.siminSistema.nsisMetodo}=${usuario.nmstLogin}&var=1" target="_blank"> <c:out value="${sis.siminSistema.nsisDescripcion}"/></a><br/><br/>
 					    </c:forEach>
 			    		<security:authorize ifAnyGranted="ROLE_ADMINISTRADOR">
 							<a href="http://sistgeo.mininter.gob.pe:8181" target="_blank">Sistema Georeferencial</a>
@@ -144,7 +144,8 @@ function sistema( url ){
 								<security:authorize ifAnyGranted="ROLE_SYSTEM">
 									<tr>
 										<td colspan="2">
-											<a href="inicio.htm"> Agregar</a>
+											<a href="inicio.htm">Agregar</a>
+											<a href="correo.htm">Correo</a>
 										</td>
 									</tr>
 								</security:authorize>

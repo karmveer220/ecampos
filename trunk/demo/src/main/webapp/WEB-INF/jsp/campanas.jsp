@@ -43,21 +43,18 @@
 							width="5" height="5" /></td>
 						<td width="150" height="140" valign="top" bgcolor="#EAEAEA">
 							<div align="center">
-
-								<a
-									href="http://www.minsa.gob.pe/portada/especiales/2011/temporadadelluvias/index.html"
-									target="baner"> <img src="images/btn_lluvias2012.png"
-									width="150" height="140" border="1" /></a>
+								<a href="http://www.minsa.gob.pe/portada/especiales/2011/temporadadelluvias/index.html" target="baner">
+									<img src="images/btn_lluvias2012.png" width="150" height="140" border="1" />
+								</a>
 							</div>
 						</td>
 						<td width="5"><img src="images/blank.jpg" width="5"
 							height="5" /></td>
 						<td width="150" align="left" valign="top" bgcolor="#EAEAEA">
 							<div align="center">
-								<a
-									href="http://www.mininter.gob.pe/comunicados/DiadelNinoPeruano.jpg"
-									target="_blank"> <img src="images/campana_nino.jpg"
-									width="150" height="140" border="1" /></a>
+								<a href="http://www.mininter.gob.pe/comunicados/DiadelNinoPeruano.jpg" target="_blank">
+									<img src="images/campana_nino.jpg" width="150" height="140" border="1" />
+								</a>
 							</div>
 						</td>
 						<td width="5" height="5"><img src="images/blank.jpg"
