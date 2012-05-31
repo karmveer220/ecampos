@@ -6,8 +6,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://ajaxtags.sourceforge.net/tags/ajaxtags" prefix="ajax"%>
-<html xmlns="http://www.w3.org/1999/xhtml">
 
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Intranet del Ministerio del Interior</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
@@ -15,14 +15,14 @@
 <link href="css/estilos.css" rel="stylesheet" type="text/css" />
 <link href="css/displaytag.css" rel="stylesheet" type="text/css" />
 <link href="css/ajaxtags.css" rel="stylesheet" type="text/css" />
-<script  src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery.displaytag-ajax-1.2.js"></script>
+<script  src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 
 <script language="javascript" type="text/javascript">
 	
 	$( function(){
 	   $("#displayTagDiv").displayTagAjax();
-	})
+	});
 	
 	function buscarCumple(){		
 		document.forms[0].action = "cumplemensual.htm";
@@ -97,7 +97,7 @@
 		        			<tr>
 								<td colspan="3" align="left">
 								<div id="displayTagDiv">
-						            <display:table name="requestScope.lcumpleaniosMensual" requestURI="cumplemensual.htm" class="displaytag" pagesize="25" defaultsort="5" defaultorder="ascending" id="row" excludedParams="ajax">
+						            <display:table name="requestScope.lcumpleaniosMensual" requestURI="cumplemensual.htm?ajx=1" class="displaytag" pagesize="25" defaultsort="5" defaultorder="ascending" id="row" excludedParams="ajax">
 							            <display:column title="Nombre Completo" property="nombreCompleto" sortable="true" headerClass="sortable" />
 							            <display:column title="Unidad Organica" property="siminUnidadorganica1.nunoDescripcion" sortable="true" headerClass="sortable" />
 							            <display:column title="Abreviatura" property="siminUnidadorganica1.nunoAbreviatura" sortable="true" headerClass="sortable" />

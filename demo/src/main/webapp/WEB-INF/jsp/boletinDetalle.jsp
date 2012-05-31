@@ -41,31 +41,17 @@
 		                <td class="tituloEncabezado" colspan="3" align="center">Oficina de Comunicaci&oacute;n Social / Bolet&iacute;n Informativo</td>
 		            </tr>
 		            <tr>
-		            	<td align="right">Seleccionar el Bolet&iacute;n Informativo</td>
-		                <td align="center">
-	                		<form:select path="coImgCodigo">
-								<form:option value="-1">Seleccionar</form:option>
-								<form:options items="${lboletines}" itemLabel="naImgNombre" itemValue="coImgCodigo"/>
-							</form:select>
-		                </td>
-		                <td>
-							<a href="javascript:buscarBoletines();"><img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar" /></a>								
-		                </td>	                
+		            	<td align="right">&nbsp;</td>
+		                <td align="center">&nbsp;</td>
+		                <td align="right"><a href="javascript:history.go(-1)"><img name="btnAtras" src="images/regresar_icon.jpg" alt="Atras" border="0" /></a>&nbsp;&nbsp;&nbsp;</td>
 	              	</tr>
-	              	<tr>
-	              		<td colspan="3" align="center">
-						<% List<SiminImagen> lista = (List<SiminImagen>)request.getAttribute("liconos");
-							for(SiminImagen img : lista){
-						%>
-							<%=img.getNaImgNombre()%>
-							<a href="buscarBol.htm?coImgCodigo=<%=img.getFaImgEstado()%>" title="Imagenes" >
-								<img alt="<%=img.getNaImgNombre() %>" src="img.htm?id=<%=img.getCoImgCodigo()%>" width="150" height="200" alt=""/>
-							</a>
-						<%
-							}
-						%>
+		            <tr>
+		                 <td align="center" colspan="3">	
+		                	<c:if test="${not empty beanBoletin }">
+								<iframe scrolling="yes" frameborder="0" width="690" height="600" src="pdf.htm?id=${beanBoletin.coImgCodigo}"></iframe>
+		                	</c:if>
 						</td>
-		            </tr>		            		            
+		            </tr>
             	</table>			
         	</td>
 		</tr>

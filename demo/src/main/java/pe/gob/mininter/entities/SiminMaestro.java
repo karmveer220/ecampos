@@ -22,7 +22,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.ldap.userdetails.LdapUserDetailsImpl;
 
 import pe.gob.mininter.utiles.Utiles;
 
@@ -44,7 +43,7 @@ public class SiminMaestro extends User implements Serializable {
 	
 	@Id
 	@Column(name="C_PERL_CODIGO")
-	private long cPerlCodigo;
+	private long cperlCodigo;
 
 	@Column(name="C_AGEN_CODIGO")
 	private BigDecimal cAgenCodigo;
@@ -199,7 +198,7 @@ public class SiminMaestro extends User implements Serializable {
 	private String nMstDomicilio;
 
 	@Column(name="N_MST_EMAIL")
-	private String nMstEmail;
+	private String nmstEmail;
 
 	@Column(name="N_MST_EMAIL_PERSONAL")
 	private String nMstEmailPersonal;
@@ -278,6 +277,9 @@ public class SiminMaestro extends User implements Serializable {
     @ManyToOne
 	@JoinColumn(name="C_GRA_CODIGO", insertable = false, updatable = false)
 	private SiminGrado siminGrado2;
+    
+    @OneToMany(mappedBy="siminMaestro")
+	private List<SiminCorreo> siminCorreos;
 
 	//Valores Propios
 	@Transient
@@ -293,10 +295,11 @@ public class SiminMaestro extends User implements Serializable {
 		this.nMstClave = password;
 	}
 	
-	public SiminMaestro(String username, String password, boolean enabled,List<GrantedAuthority> authorities,
+	public SiminMaestro(Long cperlCodigo, String username, String password, boolean enabled,List<GrantedAuthority> authorities,
 			String usrnombrevh,String usrapepaternovh, String usrapematernovh,
-			Date usrfechanacimientodt,String estado, String nunoDescripcion, String ctingCodigo, String nunoGeneralAbrev) {
+			Date usrfechanacimientodt,String estado, String nunoDescripcion, String ctingCodigo, String nunoGeneralAbrev, String nmstEmail) {
 		super(username, password, enabled, true, true, true, authorities);
+		this.cperlCodigo = cperlCodigo;
 		this.nmstLogin = username;
 		//this.nMstClave = password;
 		this.nMstNombre=usrnombrevh;
@@ -308,17 +311,18 @@ public class SiminMaestro extends User implements Serializable {
 	    this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
 	    this.siminUnidadorganica1.setNunoGeneralAbrev(nunoGeneralAbrev);
 	    this.ctingCodigo = ctingCodigo;
+	    this.nmstEmail = nmstEmail;
 	}
 	
 	
-	public SiminMaestro(Long cPerlCodigo ,String usrnombrevh,String usrapepaternovh, String usrapematernovh, 
+	public SiminMaestro(Long cperlCodigo ,String usrnombrevh,String usrapepaternovh, String usrapematernovh, 
 			String nunoDescripcion, Date usrfechanacimientodt, String ngraNombre, String funcionEmp, String ctingCodigo, String nunoAbreviatura) {
 		super("m", "e", true, true, true, true, uno());
 		
 		this.nMstNombre=usrnombrevh;
 		this.nMstApepaterno= usrapepaternovh;
 		this.nMstApematerno = usrapematernovh;
-	    this.cPerlCodigo = cPerlCodigo;
+	    this.cperlCodigo = cperlCodigo;
 	    this.siminUnidadorganica1 = new SiminUnidadorganica();
         this.siminUnidadorganica1.setNunoDescripcion(nunoDescripcion);
         this.siminUnidadorganica1.setNunoAbreviatura(nunoAbreviatura);
@@ -348,14 +352,14 @@ public class SiminMaestro extends User implements Serializable {
 			List<GrantedAuthority> oo = new ArrayList<GrantedAuthority>(); 
 			oo.add(new GrantedAuthorityImpl("IS_AUTHENTICATED_ANONYMOUSLY") );
 			return oo;
-		}
-		
-	public long getCPerlCodigo() {
-		return this.cPerlCodigo;
 	}
 
-	public void setCPerlCodigo(long cPerlCodigo) {
-		this.cPerlCodigo = cPerlCodigo;
+	public long getCperlCodigo() {
+		return cperlCodigo;
+	}
+
+	public void setCperlCodigo(long cperlCodigo) {
+		this.cperlCodigo = cperlCodigo;
 	}
 
 	public BigDecimal getCAgenCodigo() {
@@ -678,14 +682,6 @@ public class SiminMaestro extends User implements Serializable {
 		this.mMstTelefono = mMstTelefono;
 	}
 
-	public String getNMstAccemail() {
-		return this.nMstAccemail;
-	}
-
-	public void setNMstAccemail(String nMstAccemail) {
-		this.nMstAccemail = nMstAccemail;
-	}
-
 	public String getNMstAccinternet() {
 		return this.nMstAccinternet;
 	}
@@ -732,15 +728,7 @@ public class SiminMaestro extends User implements Serializable {
 
 	public void setNMstDomicilio(String nMstDomicilio) {
 		this.nMstDomicilio = nMstDomicilio;
-	}
-
-	public String getNMstEmail() {
-		return this.nMstEmail;
-	}
-
-	public void setNMstEmail(String nMstEmail) {
-		this.nMstEmail = nMstEmail;
-	}
+	}	
 
 	public String getNMstEmailPersonal() {
 		return this.nMstEmailPersonal;
@@ -964,6 +952,22 @@ public class SiminMaestro extends User implements Serializable {
 
 	public void setCtingCodigo(String ctingCodigo) {
 		this.ctingCodigo = ctingCodigo;
+	}
+	
+	public List<SiminCorreo> getSiminCorreos() {
+		return this.siminCorreos;
+	}
+
+	public void setSiminCorreos(List<SiminCorreo> siminCorreos) {
+		this.siminCorreos = siminCorreos;
+	}
+
+	public String getNmstEmail() {
+		return nmstEmail;
+	}
+
+	public void setNmstEmail(String nmstEmail) {
+		this.nmstEmail = nmstEmail;
 	}
 
 	@Transient

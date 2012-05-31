@@ -323,14 +323,12 @@ public class Utiles {
 	 *             Si el numero esta fuera del rango
 	 * @since 1.0
 	 */
-	public static String convertNumberToLetter(double number,String moneda)
-			throws NumberFormatException {
+	public static String convertNumberToLetter(double number,String moneda) throws NumberFormatException {
 		String converted = new String();
-
-	// Validamos que sea un numero legal
-	double doubleNumber = number;
+		//Validamos que sea un numero legal
+		double doubleNumber = number;
 	
-	if (doubleNumber > 999999999)
+		if (doubleNumber > 999999999)
 		throw new NumberFormatException(
 				"El numero es mayor de 999'999.999, "
 						+ "no es posible convertirlo");
@@ -554,12 +552,34 @@ private static int getDigitAt(String origin, int position) {
 	        return ""+n;
 	    }
 	    
+	    public static String autocompletar(String codigo){
+	    		    
+	    	String cod = "";
+	    	
+	        if(codigo.length() > 0){
+	        	if (6 > codigo.length()){
+	        		for (int i=0; i < (6-codigo.length()); i++){ 
+	        			cod += '0'; 
+	    			}
+	            }
+	        	codigo = cod + codigo;
+	        }
+	        return codigo;
+		}
+	    
 	    public static String obtenerDia() { 
 	        Calendar cal = Calendar.getInstance(); 
 	        cal.getTime(); 
 	        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
 	        return sdf.format(cal.getTime())+ "" ;
-	    } 
+	    }
+	    
+	    public static String obtenerDiaReducido() { 
+	        Calendar cal = Calendar.getInstance(); 
+	        cal.getTime(); 
+	        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
+	        return sdf.format(cal.getTime())+ "" ;
+	    }
 
 	  
 }

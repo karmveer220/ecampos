@@ -10,7 +10,7 @@
 					<jsp:include page="banner.html" />
 				</div>
 				<div>
-					<table style="height: 390px; color: #EAEAEA" >
+					<table style="height: 400px; color: #EAEAEA" >
 						<tr> <td>&nbsp;</td> </tr>
 					</table>
 				</div>

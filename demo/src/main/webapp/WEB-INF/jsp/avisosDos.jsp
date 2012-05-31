@@ -37,7 +37,10 @@
 								
 								<tr>
 									<td>
-										<iframe scrolling="yes" frameborder="0" width="690" height="670" src="http://www.mininter.gob.pe/comunicados/comunicado.sindicato.jpg"></iframe>
+										
+										<c:if test="${not empty beanPublicacion2 }">
+											<iframe scrolling="yes" frameborder="0" width="690" height="670" src="pdf.htm?id=${beanPublicacion2.coImgCodigo}"></iframe>
+					                	</c:if>
 									</td>
 								</tr>
 							</table></td>

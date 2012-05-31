@@ -68,6 +68,11 @@ public class UtilesController {
 		return "/directivas";
 	}	
 	
+	@RequestMapping("/directivasEco.htm")
+	public String directivasEco() {
+		return "/directivasEco";
+	}	
+	
 	@RequestMapping("/organigrama.htm")
 	public String organigrama() {
 		return "/organigrama";
@@ -81,18 +86,18 @@ public class UtilesController {
 	@RequestMapping("/boletines.htm")
 	public String boletines(ModelMap model, HttpServletRequest request) {
 		model.put("imagen",new SiminImagen());
-		request.getSession().setAttribute("lboletines", imagenDAO.listarImagenes(5));
+		request.setAttribute("lboletines", imagenDAO.listarImagenes(5));
+		request.setAttribute("liconos", imagenDAO.listarImagenes(7));
 		return "/boletines";
 	}
 	
 	@RequestMapping("/buscarBol.htm")
 	public String buscarBoletin(ModelMap model, HttpServletRequest request) {
-		request.getSession().getAttribute("lboletines");
 		model.put("imagen",new SiminImagen());
 		String idBoletin = Utiles.nullToBlank(request.getParameter("coImgCodigo"));
-		request.setAttribute("beanBoletin", imagenDAO.obtenerImagen(idBoletin) );
-		logger.debug("pinta"+imagenDAO.obtenerImagen(idBoletin));
-		return "/boletines";
+		SiminImagen im = imagenDAO.obtenerImagen(idBoletin);
+		request.setAttribute("beanBoletin", im);
+		return "/boletinDetalle";
 	}
 	
 	@RequestMapping("/marcoLegal.htm")
@@ -111,18 +116,27 @@ public class UtilesController {
 	}
 	
 	@RequestMapping("/avisosDos.htm")
-	public String avisosDos() {
+	public String avisosDos(ModelMap model, HttpServletRequest request) {
+		SiminImagen publicacion = imagenDAO.listarImagenCodigo("6");
+		request.setAttribute("beanPublicacion2", publicacion);
 		return "/avisosDos";
 	}
 	
 	@RequestMapping("/avisosTres.htm")
-	public String avisosTres() {
+	public String avisosTres(ModelMap model, HttpServletRequest request) {
+		SiminImagen publicacion = imagenDAO.listarImagenCodigo("9");
+		request.setAttribute("beanPublicacion3", publicacion);
 		return "/avisosTres";
 	}
 	
 	@RequestMapping("/avisosCuatro.htm")
 	public String avisosCuatro() {
 		return "/avisosCuatro";
+	}
+	
+	@RequestMapping("/eco.htm")
+	public String ecoeficiencia() {
+		return "/ecoeficiencia";
 	}
 	
 	@RequestMapping("/galeria.htm")

@@ -31,7 +31,7 @@
 					<img alt="<%=listDigemin.getNaImgNombre() %>" src="img.htm?id=<%=listDigemin.getCoImgCodigo()%>" width="225" height="150" border="0"/>
 				</a>
 			</td>
-			<td width="10"><img src="images/blank.jpg" width="10" /></td>
+			<td width="10"><img src="images/blank.jpg" width="10"  /></td>
 			<td width="225" height="150">
 				<a href="fotosDicscamec.htm">
 					<img alt="<%=listDiscamec.getNaImgNombre() %>" src="img.htm?id=<%=listDiscamec.getCoImgCodigo()%>" width="225" height="150" border="0"/>
