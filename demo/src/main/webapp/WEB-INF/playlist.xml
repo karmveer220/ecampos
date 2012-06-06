@@ -1,0 +1,14 @@
+<rss version="2.0" xmlns:jwplayer="http://developer.longtailvideo.com/">
+	<channel>
+		<item>
+			<title>My first video</title>
+			<jwplayer:file>swf/Postura_Correcta1.flv</jwplayer:file>
+			<jwplayer:hd.file>swf/Postura_Correcta1.flv</jwplayer:hd.file>
+		</item>
+		<item>
+			<title>My second video</title>
+			<jwplayer:file>swf/Postura_Correcta2.flv</jwplayer:file>
+		</item>
+	</channel>
+</rss>
+

@@ -1,6 +1,7 @@
 package pe.gob.mininter.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -45,6 +47,9 @@ public class SiminCorreo implements Serializable {
 
 	@Column(name="NA_MAIL_REQUERIMIENTO")
 	private String naMailRequerimiento;
+	
+	@Column(name="NA_MAIL_CONTACTO")
+	private BigDecimal naMailContacto;
 
 	//bi-directional many-to-one association to SiminMaestro
     @ManyToOne
@@ -117,4 +122,13 @@ public class SiminCorreo implements Serializable {
 	public void setSiminMaestro(SiminMaestro siminMaestro) {
 		this.siminMaestro = siminMaestro;
 	}
+	
+	public BigDecimal getNaMailContacto() {
+		return this.naMailContacto;
+	}
+
+	public void setNaMailContacto(BigDecimal naMailContacto) {
+		this.naMailContacto = naMailContacto;
+	}
+
 }
