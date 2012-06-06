@@ -146,6 +146,7 @@ function sistema( url ){
 										<td colspan="2">
 											<a href="inicio.htm">Agregar</a>
 											<a href="correo.htm">Correo</a>
+											<a href="listarCorreo.htm">Correo</a>
 										</td>
 									</tr>
 								</security:authorize>

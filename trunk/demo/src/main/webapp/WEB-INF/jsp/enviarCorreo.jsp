@@ -19,7 +19,7 @@
 
 <script language="javascript" type="text/javascript">
 	$( function(){
-	   $("#displayTagDiv").displayTagAjax();
+		$("#displayTagDiv").displayTagAjax();
 	});
 </script>
  
@@ -95,7 +95,7 @@
 													    <td width="110" align="left">Celular o Anexo</td>
 													    <td>:</td>
 													    <td align="left">
-													    	<input name="nroCelular" id="nroCelular" size="30"/>&nbsp;<span style="color: red">*</span>
+													    	<form:input path="naMailContacto" id="naMailContacto" size="30"/>&nbsp;<span style="color: red">*</span>
 													    </td>
 													  </tr>
 													  <tr>
@@ -166,6 +166,7 @@
 								defaultsort="0" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax">
 								<display:column title="Codigo Atencion" property="coMailGenerado" sortable="true" headerClass="sortable" />
 								<display:column title="Requerimiento" property="naMailRequerimiento" sortable="true" headerClass="sortable" />
+								
 								<display:column title="Fec. Requerimiento" sortable="true" headerClass="sortable">
                                 	<fmt:formatDate value="${row.daMailFecha}" pattern="dd/MM/yyyy hh:mm:ss"/>
                           		</display:column>

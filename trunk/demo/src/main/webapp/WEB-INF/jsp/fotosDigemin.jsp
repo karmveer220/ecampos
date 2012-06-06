@@ -6,16 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Fotos del Interior</title>
+
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery.lightbox-0.5.js"></script>
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+<link rel="stylesheet" type="text/css" href="css/prettyPhoto.css" media="screen" />
+
+<link rel="stylesheet" type="text/css" href="css/estilos.css" />
 <link rel="stylesheet" type="text/css" href="css/style-projects-jquery.css" />
 
 <script type="text/javascript">
-	$(function() {
-		$('#gallery a').lightBox();
-	});
+	$(document).ready(function(){
+	  $("a[rel^='prettyPhoto']").prettyPhoto();
+	});	
 </script>
 
 <style type="text/css">
@@ -37,15 +39,17 @@
 		<a href="galeriaFotos.htm" class="irgaleria"></a>
 	</div>
 	
-	<div id="gallery">
+	<div id="gallery">		
 		<ul>
 			<% List<SiminImagen> lista = (List<SiminImagen>)request.getAttribute("limagenesDigemin");
 				for(SiminImagen img : lista){
 			%>
-			<li>
-				<a href="pdf.htm?id=<%=img.getCoImgCodigo()%>" title="texto 1">
-					<img alt="<%=img.getNaImgNombre() %>" src="pdf.htm?id=<%=img.getCoImgCodigo()%>" width="120" height="100" alt=""/>
-				</a>		
+			<li>		
+				
+				<a href="img.htm?id=<%=img.getCoImgCodigo()%>" rel="prettyPhoto[pp_gal2]" title="<%=img.getNaImgNombre() %>">
+					<img alt="<%=img.getNaImgNombre() %>" src="img.htm?id=<%=img.getCoImgCodigo()%>" width="130" height="110" alt="Red round shape"/>
+				</a>			
+				
 			</li>
 			<%
 				}

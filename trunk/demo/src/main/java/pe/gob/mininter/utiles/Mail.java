@@ -19,13 +19,14 @@ public class Mail{
 		this.mailSender = mailSender;
 	}
 
-	public void sendMail(String from, String to, String subject, String msg) {
+	public void sendMail(String from, String to, String cc, String subject, String msg) {
  try {
 	 
 		MimeMessage message = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message, true);
 		helper.setTo(to);
 		helper.setFrom(from);
+		helper.setCc(cc);
 		helper.setSubject(subject);
 		helper.setText(msg, true);
 		mailSender.send(message);

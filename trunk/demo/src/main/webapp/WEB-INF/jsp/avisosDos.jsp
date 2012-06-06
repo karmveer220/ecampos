@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -14,13 +13,10 @@
 <script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
 </head>
 
-
 <body>
-
 	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">		
 		<tr>
-			<td height="115" colspan="2" valign="top"><jsp:include
-					page="cabecera.jsp" /></td>
+			<td height="115" colspan="2" valign="top"><jsp:include page="cabecera.jsp" /></td>
 		</tr>
 		<tr>
 			<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
@@ -34,16 +30,15 @@
 					<tr>
 						<td height="150" valign="top" bgcolor="#FFFFFF"><br />
 							<table width="690" border="0" class="">
-								
 								<tr>
 									<td>
-										
 										<c:if test="${not empty beanPublicacion2 }">
 											<iframe scrolling="yes" frameborder="0" width="690" height="670" src="pdf.htm?id=${beanPublicacion2.coImgCodigo}"></iframe>
 					                	</c:if>
 									</td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
 				</table>
 				</div>

@@ -111,8 +111,11 @@ public class UtilesController {
 	}
 			
 	@RequestMapping("/avisosUno.htm")
-	public String avisosUno() {
+	public String avisosUno(ModelMap model, HttpServletRequest request) {
+		SiminImagen publicacion = imagenDAO.listarImagenCodigo("8");
+		request.setAttribute("beanPublicacion1", publicacion);
 		return "/avisosUno";
+		
 	}
 	
 	@RequestMapping("/avisosDos.htm")
@@ -162,6 +165,18 @@ public class UtilesController {
 		model.put("limagenesMininter", imagenDAO.listarImagenes(2) );
 		return "/fotosCampe2011";
 	}
+	
+	@RequestMapping("/listarVideo.htm")
+	public String listarVideo(ModelMap model, HttpServletRequest request) {
+		return "/lstVideos";
+	}
+	
+	@RequestMapping("/prevencion.htm")
+	public String listarPrevencion(ModelMap model, HttpServletRequest request) {
+		return "/lstVideosPrevencion";
+	}
+	
+	
 	
 	@RequestMapping("/fotosDigemin.htm")
 	public String fotosDigemin(ModelMap model, HttpServletRequest request) {

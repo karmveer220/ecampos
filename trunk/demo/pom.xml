@@ -251,21 +251,7 @@
 			<artifactId>ajaxtags-resources</artifactId>
 			<version>1.5.7</version>
 		</dependency>
-			
-		<!-- 
-		<dependency>
-			<groupId>org.ajaxtags</groupId>
-			<artifactId>ajaxtags</artifactId>
-			<version>1.5.1</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.ajaxtags</groupId>
-			<artifactId>ajaxtags-resources</artifactId>
-			<version>1.5.1</version>
-		</dependency>
-        -->
-            
+			            
   </dependencies>
   
   <build>

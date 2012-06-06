@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import pe.gob.mininter.dao.UtilesDao;
 import pe.gob.mininter.entities.SiminCorreo;
+import pe.gob.mininter.entities.SiminMaestro;
 import pe.gob.mininter.service.UtilesService;
 
 @Service
@@ -19,12 +20,13 @@ public class UtilesServiceImpl implements UtilesService{
 	public UtilesServiceImpl( ) { }
 
 	@Override
-	public void registrarCorreo(SiminCorreo correo) {
-		utilesDao.registrarCorreo(correo);
+	public void registrarCorreo(SiminCorreo correo, SiminMaestro usuario) {
+		utilesDao.registrarCorreo(correo, usuario);
 	}
 
 	@Override
 	public List<SiminCorreo> listarCorreos(Integer codEmpleado) {
 		return utilesDao.listarCorreos(codEmpleado);
 	}
+	
 }

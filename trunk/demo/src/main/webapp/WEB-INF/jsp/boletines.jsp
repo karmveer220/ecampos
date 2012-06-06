@@ -31,9 +31,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
-			<td width="690" valign="top">
-				<table width="690" border="0" cellpadding="2" cellspacing="2">
+			<td width="200px" valign="top"><jsp:include page="menu.jsp" /></td>
+			<td width="500px" valign="top">
+				<table width="500px" border="0" cellpadding="0" cellspacing="0">
 	           		<tr>
 		                <td colspan="3">&nbsp;</td>
 		            </tr>
@@ -54,16 +54,21 @@
 	              	</tr>
 	              	<tr>
 	              		<td colspan="3" align="center">
+	              		<div id="gallery" align="left">
+	              		<ul>
 						<% List<SiminImagen> lista = (List<SiminImagen>)request.getAttribute("liconos");
 							for(SiminImagen img : lista){
 						%>
-							<%=img.getNaImgNombre()%>
-							<a href="buscarBol.htm?coImgCodigo=<%=img.getFaImgEstado()%>" title="Imagenes" >
+							<li>
+							<a href="buscarBol.htm?coImgCodigo=<%=img.getFaImgEstado()%>" title="<%=img.getNaImgNombre() %>" >
 								<img alt="<%=img.getNaImgNombre() %>" src="img.htm?id=<%=img.getCoImgCodigo()%>" width="150" height="200" alt=""/>
 							</a>
+							</li>
 						<%
 							}
 						%>
+						</ul>
+						</div>
 						</td>
 		            </tr>		            		            
             	</table>			

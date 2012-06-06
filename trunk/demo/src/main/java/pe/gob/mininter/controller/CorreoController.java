@@ -1,5 +1,6 @@
 package pe.gob.mininter.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,9 +41,27 @@ public class CorreoController {
 		model.put("lstCorreos", utilesService.listarCorreos((int) usuario.getCperlCodigo()));
 		return "/enviarCorreo";
 	}
+
+	@RequestMapping(value ="/listarCorreo.htm", method = RequestMethod.GET)
+	public String listarCorreos(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		response.setContentType("text/html;charset=ISO-8859-1");
+		request.setCharacterEncoding("UTF8");
+		model.put("lstTotalCorreos", utilesService.listarCorreos(0));
+		return "/lstCorreo";
+	}
+	
+	@RequestMapping(value ="/editarCorreo.htm", method = RequestMethod.GET)
+	public String editarCorreo(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		response.setContentType("text/html;charset=ISO-8859-1");
+		request.setCharacterEncoding("UTF8");
+		//model.put("lstTotalCorreos", utilesService.listarCorreos(0));
+		return "/lstCorreo";
+	}
+
+	
 	
 	@RequestMapping(value ="/enviarCorreo.htm", method = RequestMethod.POST)
-	 public String enviarCorreo(@Valid SiminCorreo correo, BindingResult result, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+	public String enviarCorreo(@Valid SiminCorreo correo, BindingResult result, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
 		//Variables para insertar en el Correo Electronico
 		SiminMaestro usuario =  (SiminMaestro) request.getSession().getAttribute("usuario");
 		String nroPiso = request.getParameter("naMailPiso");
@@ -54,7 +73,8 @@ public class CorreoController {
 		model.put("correo",new SiminCorreo());
 		correo.setFaMailEstado("1");
 		correo.setDaMailFecha(new Date());
-		utilesService.registrarCorreo(correo);
+		usuario.setNmstEmail(request.getParameter("email"));
+		utilesService.registrarCorreo(correo, usuario);
 		
 		model.put("lstCorreos", utilesService.listarCorreos((int) usuario.getCperlCodigo()));
 		
@@ -97,7 +117,7 @@ public class CorreoController {
 		mensaje.append(pie);
 		mensaje.append("</table>");
 		
-		mail.sendMail("soporte@mininter.gob.pe", "menriquezo@mininter.gob.pe", "Soporte Tecnico", mensaje.toString());
+		mail.sendMail("soporte@mininter.gob.pe", "menriquezo@mininter.gob.pe", "merlyn.enriquez@gmail.com", "Soporte Tecnico", mensaje.toString());
 		
 		return "/enviarCorreo";
 	}

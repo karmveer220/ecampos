@@ -29,11 +29,12 @@
 				<table  border="0" cellspacing="0" cellpadding="0">					
 					<tr>
 						<td height="150" valign="top" bgcolor="#FFFFFF"><br />
-							<table width="690" border="0" class="">
-								
+							<table width="690" border="0" class="">								
 								<tr>
 									<td>
-										<iframe scrolling="yes" frameborder="0" width="690" height="670" src="images/simWeb.jpg"></iframe>
+										<c:if test="${not empty beanPublicacion1 }">
+											<iframe scrolling="yes" frameborder="0" width="690" height="670" src="pdf.htm?id=${beanPublicacion1.coImgCodigo}"></iframe>
+					                	</c:if>
 									</td>
 								</tr>
 							</table>

@@ -107,7 +107,7 @@ public class ReportesController {
 		mensaje.append(pie);
 		mensaje.append("</table>");
 	    
-		mail.sendMail("soporte@mininter.gob.pe", "menriquezo@mininter.gob.pe", "Soporte Tecnico", mensaje.toString());
+		mail.sendMail("soporte@mininter.gob.pe", "menriquezo@mininter.gob.pe", "", "Soporte Tecnico", mensaje.toString());
 
 		
 		
