@@ -1,0 +1,54 @@
+.menu_list {
+	width: 170px; /* Ancho del men� */
+}
+
+.menu_head {
+	padding: 7px 10px;
+	color: #255641; /* Color del texto de las pesta�as principales */
+	cursor: pointer;
+	position: relative;
+	margin: 1px;
+	margin-left: 0;
+	margin-right: 0;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	/* Color de fondo */
+	background-color: #FFFFFF; !
+	important background-image: url(imgs/flecha-abajo.png);
+	background-position: center right;
+	background-repeat: no-repeat;
+	/* Animacion - Transition */
+	-webkit-transition: all ease-in-out 400ms;
+	-moz-transition: all ease-in-out 400ms;
+	transition: all ease-in-out 400ms;
+	border-top-width: medium;
+	border-top-style: groove;
+	border-top-color: #999;
+}
+
+.menu_body {
+	display: none;
+}
+
+.menu_body a {
+	display: block;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	color: #428e70; /* Color de los enlaces */
+	background-color: #fdfdea; /* Color de fondo de los enlaces */
+	padding-top: 4px;
+	padding-left: 10px;
+	padding-bottom: 4px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.menu_body a:hover {
+	display: block;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	background-color: #F8F8BA; /* Color de fondo al pasar el cursor */
+	color: #663;
+	text-decoration: none;
+}

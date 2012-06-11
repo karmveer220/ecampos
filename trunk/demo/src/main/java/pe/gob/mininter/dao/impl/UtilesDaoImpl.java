@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pe.gob.mininter.dao.UtilesDao;
 import pe.gob.mininter.entities.SiminCorreo;
-import pe.gob.mininter.entities.SiminDirectorio;
 import pe.gob.mininter.entities.SiminMaestro;
 import pe.gob.mininter.utiles.Utiles;
 
@@ -50,7 +49,6 @@ public class UtilesDaoImpl extends HibernateDaoSupport implements UtilesDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<SiminCorreo> listarCorreos(Integer codEmpleado) {
-		
 		if (codEmpleado == 0) {
 			Query q = getSession().createQuery("select co from SiminCorreo co, SiminMaestro m where co.siminMaestro.cperlCodigo = m.cperlCodigo order by co.coMailCodigo");
 			List<SiminCorreo> listaCorreos = q.list();
@@ -58,7 +56,13 @@ public class UtilesDaoImpl extends HibernateDaoSupport implements UtilesDao {
 		}else {
 			return this.getHibernateTemplate().find("from SiminCorreo co where co.siminMaestro.cperlCodigo = "+codEmpleado+" order by coMailCodigo");
 		}
-		
 	}
-	
+
+	@Override
+	public void actualizarCorreo(Integer codCorreo, String estadoCorreo) {
+		Query query = getSession().createQuery("update SiminCorreo set faMailEstado = :faMailEstado where coMailCodigo = :coMailCodigo")
+				.setString("faMailEstado", estadoCorreo)
+				.setInteger("coMailCodigo", codCorreo);
+		query.executeUpdate();
+	}
 }

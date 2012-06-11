@@ -1,17 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@page import="pe.gob.mininter.entities.SiminImagen"%>
-<%@page import="java.util.List"%>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<title>Boletines del Ministerio del Interior</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
+<html>
+<head >
+<title>Bolet&iacute;n Informativo del Ministerio del Interior</title>
+<%@ include file="../jsp/taglibs.jsp"%>
 
 <script language="javascript" type="text/javascript">
 	function buscarBoletines(){	

@@ -1,11 +1,18 @@
 package pe.gob.mininter.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+
+import net.sourceforge.ajaxtags.servlets.AjaxActionHelper;
+import net.sourceforge.ajaxtags.servlets.BaseAjaxXmlAction;
+import net.sourceforge.ajaxtags.xml.AjaxXmlBuilder;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +31,13 @@ import pe.gob.mininter.utiles.Utiles;
 
 @Controller
 @Scope("session") 
-public class CorreoController {
+public class CorreoController implements BaseAjaxXmlAction {
 	
 	private static final Logger logger = Logger.getLogger(CorreoController.class);
 	
 	@Autowired
 	private UtilesService  utilesService;
-	
+		
 	@Autowired
 	Mail mail;
 	
@@ -46,16 +53,25 @@ public class CorreoController {
 	public String listarCorreos(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		response.setContentType("text/html;charset=ISO-8859-1");
 		request.setCharacterEncoding("UTF8");
+		logger.debug("listarCorreo");
 		model.put("lstTotalCorreos", utilesService.listarCorreos(0));
 		return "/lstCorreo";
 	}
 	
-	@RequestMapping(value ="/editarCorreo.htm", method = RequestMethod.GET)
+	@RequestMapping("/editarCorreo.htm")
 	public String editarCorreo(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-		response.setContentType("text/html;charset=ISO-8859-1");
-		request.setCharacterEncoding("UTF8");
-		//model.put("lstTotalCorreos", utilesService.listarCorreos(0));
-		return "/lstCorreo";
+		logger.debug("llegaste a ajax");
+		try {
+            String xml = null;
+            xml = AjaxActionHelper.invoke(this, (HttpServletRequest)request, (HttpServletResponse)response);
+            PrintWriter pw = response.getWriter();
+            pw.write(xml);
+            pw.flush();
+        } catch (Exception e) {
+        	logger.debug(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
 	}
 
 	
@@ -145,6 +161,26 @@ public class CorreoController {
 			" del Ministerio del Interior. Su divulgación, copia y/o adulteración están" +
 			"prohibidas y sólo debe ser conocida por la persona a quien se dirige este mensaje." +
 			" Si Ud. ha recibido este mensaje por error por favor proceda a eliminarlo y notificar al remitente.</td></tr>";
+
+	@Override
+	public String getXMLEncoding() {
+		return null;
+	}
+
+	@Override
+	public String getXmlContent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Integer codCorreo = Integer.parseInt(request.getParameter("cod"));
+		String param = request.getParameter("q");
+		logger.debug("codCorreo "+codCorreo);
+    	
+    	if (param == null){
+        	param = request.getParameter("value");
+        	utilesService.actualizarCorreo(codCorreo, param);
+            return request.getParameter("value");
+        }
+    	
+        return new AjaxXmlBuilder().addItemAsCData("Callout Header", "<p>This is a test of the 'callout.view'</p><p>You asked about:<br/><b>" + param + "</b>.</p>").toString();
+	}
 	
 }
 

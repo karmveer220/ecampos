@@ -1,18 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head >
+<title>Menu Semanal del Ministerio del Interior</title>
 <%@page import="pe.gob.mininter.entities.SiminImagen"%>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<title>Intranet del Ministerio del Interior</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/cuadros.css" rel="stylesheet" type="text/css" />
-<script  src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
-
+<%@page import="java.util.List"%>
+<%@ include file="../jsp/taglibs.jsp"%>
 </head>
 
 <body>	  
@@ -25,17 +17,17 @@
 		    <td width="700" valign="top" align="center">
 		    	<table width="680" border="0" cellspacing="0" cellpadding="0">
 		      	<tr>
-		        	<td width="660" height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
+		        	<td width="660" height="2"><img src="images/blank.jpg" width="2" /></td>
 		        </tr>
 		      	<tr>
-		        	<td height="200" colspan="5" valign="top">
+		        	<td height="200" valign="top">
 		        		<% SiminImagen lista = (SiminImagen)request.getAttribute("lmenu");%>
 		        			<img alt="<%=lista.getNaImgNombre() %>" src="img.htm?id=<%=lista.getCoImgCodigo()%>" width="690px" height="700px" alt=""/>
 		        		<% %>
 		        	</td>
 		        </tr>
 		      	<tr>
-		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" height="5" /></td>
+		        	<td height="2"><img src="images/blank.jpg" width="2" height="5" /></td>
 		        </tr>		      	
 		    	</table>
 	    	</td>
