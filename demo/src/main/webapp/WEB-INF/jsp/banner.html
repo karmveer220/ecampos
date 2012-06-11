@@ -1,178 +1,29 @@
 
-<html>
 
-<head>
-
-
-
-<style type="text/css">
-body {
-	margin: 0; padding: 0;
-	font: normal 10px Verdana, Arial, Helvetica, sans-serif;
-}
-*{outline: none;}
-img {border: 0;}
-.container {
-	width: 790px;
-	padding: 0;
-	margin: 0 auto;
-}
-/*.folio_block {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin: -140px 0 0 -395px;
-	width: 180;
-	height: 200;
-}*/
-.folio_block {
-	position: absolute;
-	margin-top:-30px;
-	margin-left:-10px;
-	width: 180;
-	height: 200;
-}
-
-/*--Main Container--*/
-.main_view {
-	float: left;
-	position: relative;
-}
-/*--Window/Masking Styles--*/
-.window {
-	height:200px;
-	width: 180px;
-	overflow: hidden; /*--Hides anything outside of the set width/height--*/
-	position: relative;
-}
-.image_reel {
-	position: absolute;
-	top: 0; left: 0;
-}
-.image_reel img {float: left;}
-
-/*--Paging Styles--*/
-.paging {
-	position: absolute;
-	bottom: -1px;
-	right: -2px;
-	width: 178px;
-	height:47px;
-	z-index: 100; /*--Assures the paging stays on the top layer--*/
-	text-align: center;
-	line-height: 40px;
-	background: url(http://trueescape.webege.com/images/paging_bg2.png) no-repeat;
-	display: none; /*--Hidden by default, will be later shown with jQuery--*/
-}
-.paging a {
-	padding: 5px;
-	text-decoration: none;
-	color: #fff;
-}
-.paging a.active {
-	font-weight: bold; 
-	background: #920000; 
-	border: 1px solid #610000;
-	-moz-border-radius: 3px;
-	-khtml-border-radius: 3px;
-	-webkit-border-radius: 3px;
-}
-.paging a:hover {font-weight: bold;}
-</style>
-
-</head><body>
-<div class="container">
-	
+<div class="container">	
     <div class="folio_block">
-    	
         <div class="main_view">
-            <div class="window">	
-                <div style="width: 722px;" class="image_reel">
-                    <a href="avisosUno.htm"><img src="images/ofitel36.png" alt="" width="180" height="160"></a>
-                    <a href="avisosDos.htm"><img src="images/aerolineas.jpg" alt="" width="180" height="160"></a>
-                    <a href="avisosTres.htm"><img src="images/icon_soft.jpg" alt="" width="180" height="160"></a>
-                    <a href="avisosCuatro.htm"><img src="images/resolucion.jpg" alt="" width="180" height="160"></a>
-                </div>
+          <div class="window">	
+             <div style="width: 722px;" class="image_reel">
+                 <a href="avisosUno.htm"><img src="images/ofitel36.png" alt="" width="180" height="160"></a>
+                 <a href="avisosDos.htm"><img src="images/aerolineas.jpg" alt="" width="180" height="160"></a>
+                 <a href="avisosTres.htm"><img src="images/icon_soft.jpg" alt="" width="180" height="160"></a>
+                 <a href="avisosCuatro.htm"><img src="images/calzado.jpg" alt="" width="180" height="160"></a>
+             </div>
           </div>
-            <div style="display: block;" class="paging">
-                <a class="active" href="#" rel="1">1</a>
-                <a href="#" rel="2">2</a>
-                <a href="#" rel="3">3</a>
-                <a href="#" rel="4">4</a>
-            </div>
+          <div style="display: block;" class="paging">
+          	<a class="active" href="#" rel="1">1</a>&nbsp;&nbsp;
+            <a href="#" rel="2">2</a>&nbsp;&nbsp;
+            <a href="#" rel="3">3</a>&nbsp;&nbsp;
+            <a href="#" rel="4">4</a>
+          </div>
       </div>
-        <p style="color: rgb(255, 255, 255); margin: 10px 0pt; float: 
-left; width: 100%;"><a 
-href="http://www.sohtanaka.com/web-design/automatic-image-slider-w-css-jquery/"
- style="color: rgb(255, 255, 255); padding: 10px 0pt;"></a></p>
+      <p style="color: rgb(255, 255, 255); margin: 10px 0pt; float: left; width: 100%;">
+      	<a href="http://www.sohtanaka.com/web-design/automatic-image-slider-w-css-jquery/" style="color: rgb(255, 255, 255); padding: 10px 0pt;"></a>
+      </p>
     </div>	
 
 </div>
 
 
-<script type="text/javascript" src="../../js/jquery.js"></script>
-<script type="text/javascript">
 
-$(document).ready(function() {
-
-	//Set Default State of each portfolio piece
-	$(".paging").show();
-	$(".paging a:first").addClass("active");
-		
-	//Get size of images, how many there are, then determin the size of the image reel.
-	var imageWidth = $(".window").width();
-	var imageSum = $(".image_reel img").size();
-	var imageReelWidth = imageWidth * imageSum;
-	
-	//Adjust the image reel to its new size
-	$(".image_reel").css({'width' : imageReelWidth});
-	
-	//Paging + Slider Function
-	rotate = function(){	
-		var triggerID = $active.attr("rel") - 1; //Get number of times to slide
-		var image_reelPosition = triggerID * imageWidth; //Determines the distance the image reel needs to slide
-
-		$(".paging a").removeClass('active'); //Remove all active class
-		$active.addClass('active'); //Add active class (the $active is declared in the rotateSwitch function)
-		
-		//Slider Animation
-		$(".image_reel").animate({ 
-			left: -image_reelPosition
-		}, 500 );
-		
-	}; 
-	
-	//Rotation + Timing Event
-	rotateSwitch = function(){		
-		play = setInterval(function(){ //Set timer - this will repeat itself every 3 seconds
-			$active = $('.paging a.active').next();
-			if ( $active.length === 0) { //If paging reaches the end...
-				$active = $('.paging a:first'); //go back to first
-			}
-			rotate(); //Trigger the paging and slider function
-		}, 5000); //Timer speed in milliseconds (3 seconds)
-	};
-	
-	rotateSwitch(); //Run function on launch
-	
-	//On Hover
-	$(".image_reel a").hover(function() {
-		clearInterval(play); //Stop the rotation
-	}, function() {
-		rotateSwitch(); //Resume rotation
-	});	
-	
-	//On Click
-	$(".paging a").click(function() {	
-		$active = $(this); //Activate the clicked paging
-		//Reset Timer
-		clearInterval(play); //Stop the rotation
-		rotate(); //Trigger rotation immediately
-		rotateSwitch(); // Resume rotation
-		return false; //Prevent browser jump to link anchor
-	});	
-	
-});
-</script>
-
-</body></html>

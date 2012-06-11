@@ -133,7 +133,9 @@ public class UtilesController {
 	}
 	
 	@RequestMapping("/avisosCuatro.htm")
-	public String avisosCuatro() {
+	public String avisosCuatro(ModelMap model, HttpServletRequest request) {
+		SiminImagen publicacion = imagenDAO.listarImagenCodigo("10");
+		request.setAttribute("beanPublicacion4", publicacion);
 		return "/avisosCuatro";
 	}
 	

@@ -1,27 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://ajaxtags.sourceforge.net/tags/ajaxtags" prefix="ajax"%>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Intranet del Ministerio del Interior</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/displaytag.css" rel="stylesheet" type="text/css" />
-<link href="css/ajaxtags.css" rel="stylesheet" type="text/css" />
+<html>
+<head >
+<title>Lista de Cumpleaños Mensuales</title>
+<%@ include file="../jsp/taglibs.jsp"%>
 <script type="text/javascript" src="js/jquery.displaytag-ajax-1.2.js"></script>
-<script  src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
 
 <script language="javascript" type="text/javascript">
 	
 	$( function(){
-	   $("#displayTagDiv").displayTagAjax();
+		$("#displayTagDiv").displayTagAjax();
 	});
 	
 	function buscarCumple(){		
@@ -48,7 +35,7 @@
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
 		        </tr>
 		      	<tr>
-		        	<td height="150" valign="top" bgcolor="#FFFFFF">	
+		        	<td height="150" valign="top">	
 		        		<br/>
 		        		<table width="100%" border="0">
 		        			<tr>
@@ -90,14 +77,11 @@
 	                     				<a href="javascript:buscarCumple();"><img width="30" height="30" src="images/buscar.png" border="0" alt="Buscar"/></a>                
 		                   			</div>
                     			</td>
-	        				</tr>
-	        				<tr>
-		        				<td colspan="3">&nbsp;</td>
-	        				</tr>
+	        				</tr>	        				
 		        			<tr>
 								<td colspan="3" align="left">
 								<div id="displayTagDiv">
-						            <display:table name="requestScope.lcumpleaniosMensual" requestURI="cumplemensual.htm?ajx=1" class="displaytag" pagesize="25" defaultsort="5" defaultorder="ascending" id="row" excludedParams="ajax">
+						            <display:table name="requestScope.lcumpleaniosMensual" requestURI="cumplemensual.htm?ajx=1" class="displaytag" pagesize="17" defaultsort="5" defaultorder="ascending" id="row" excludedParams="ajax">
 							            <display:column title="Nombre Completo" property="nombreCompleto" sortable="true" headerClass="sortable" />
 							            <display:column title="Unidad Organica" property="siminUnidadorganica1.nunoDescripcion" sortable="true" headerClass="sortable" />
 							            <display:column title="Abreviatura" property="siminUnidadorganica1.nunoAbreviatura" sortable="true" headerClass="sortable" />
@@ -118,9 +102,6 @@
 							   		</div>
 								</td>
 							</tr>
-		        			<tr>
-		        				<td colspan="3">&nbsp;</td>
-		        			</tr>
 		        		</table>	        		
 		           	</td>
 		        </tr>

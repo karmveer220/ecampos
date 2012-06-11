@@ -1,11 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<title>Plantilla del Ministerio del Interior</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
+<html>
+<head >
+<title>Directivas de Ecoeficiencia</title>
+<%@ include file="../jsp/taglibs.jsp"%>
 </head>
 
 <body>
@@ -23,7 +20,7 @@
 						<td height="2"><img src="images/blank.jpg" width="2" /></td>
 					</tr>
 					<tr>
-						<td height="80">&nbsp;</td>
+						<td height="70">&nbsp;</td>
 					</tr>
 					<tr>
 						<th class="tituloEncabezado">Programa de Ecoeficiencia para el Sector P&uacute;blico</th>
@@ -33,10 +30,7 @@
 					</tr>
 					<tr>
 						<td height="150" valign="top" bgcolor="#FFFFFF">
-							<table width="450" border="0" cellspacing="0" cellpadding="0" align="center">	
-								
-								
-								
+							<table width="450" border="0" cellspacing="0" cellpadding="0" align="center">
 								<tr>
 									<td width="5" valign="top"><img src="images/blank.jpg"
 										width="5" height="5" /></td>

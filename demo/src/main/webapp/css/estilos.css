@@ -13,10 +13,25 @@ h1,h2,h3,h4,h5{line-height:1.6em;margin:0 0 1em}
 p{line-height:1.6em;margin:0 0 1em; text-align:left}
 wbr:after{content:"\00200B"}
 form{margin:0;padding:0}
-div#main-container{min-height:600px;background:#F7F7F7;width:866px;margin:0 auto;padding:5px 0 0}
+div#main-container{
+	min-height:600px;
+	background:#F7F7F7;
+	width:866px;
+	margin:0 auto;
+	padding:5px 0 0
+}
 .clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
 .clearfix{display:inline-block;height: 15px }
-.datuser{display:inline-block;height: 15px;background-color:#666666; font-family:tahoma;font-size: 10px; color:white;text-align: left;  }
+.datuser{
+	display:inline-block;
+	height: 15px;
+	background-color:#666666; 
+	font-family:tahoma;
+	font-size: 10px; 
+	color:white;
+	text-align: left;
+}
+
 .otro{display:inline-block;height:10px;width:866px}
 html[xmlns] .clearfix{display:block}
 * html .clearfix{height:1%}
@@ -24,10 +39,12 @@ html[xmlns] .clearfix{display:block}
 #topnav{float:right;display:inline;width:210px;margin:5px 10px 0 0;}
 #topnav ul{display:inline;font-size:.8em;list-style:none;padding-left:0;margin:0}
 #topnav li{list-style:none;display:inline}
-#topnav li a,#header #topnav li strong{font-size:.8em;display:block;float:left;color:#fff;margin:3px 0 3px 6px;padding:3px 0 6px 3px;font-weight: bold;}
+#topnav li a,#header #topnav li strong{
+	font-size:.8em;display:block;float:left;color:#fff;margin:3px 0 3px 6px;padding:3px 0 6px 3px;font-weight: bold;}
 #topnav li a:hover{text-decoration:underline}
 #logo{margin-left:20px}
-#tabs-container{min-height:29px;_height:29px;border-bottom:1px solid #000;background-color:#408238;color:#FFF;padding-top:10px}
+#tabs-container{
+	min-height:29px;_height:29px;border-bottom:1px solid #000;background-color:#408238;color:#FFF;padding-top:10px}
 #tabs{margin:0 0 0 254px;padding:0}
 .tab{float:left;list-style:none;border:1px solid #ace;background-color:#f4faff;margin:0 4px -1px 0}
 .tab a{display:block;font-size:.95em;min-height:1.1em;font-weight:700;position:relative;border-top:1px solid #fff;padding:7px 11px}
@@ -59,7 +76,10 @@ ul.navlist a{display:block;font-size:.9em;margin:0;padding:3px 0}
 .clear{clear:both}
 .center{text-align:center}
 .clean{margin:0;padding:0}
-.link-img{vertical-align:middle;background-color:transparent;padding-right:4px;margin:-2px 0 0}
+.link-img{
+	vertical-align:middle;background-color:transparent;
+	
+	margin:-2px 0 0}
 .left{margin-top:5px;text-align:right}
 
 .avisos{background-color: fuchsia;margin-top: 35px;margin-left: 0px;}
@@ -118,8 +138,8 @@ ul.navlist a{display:block;font-size:.9em;margin:0;padding:3px 0}
 }
 
 .tFormulario td{
-	padding-top:5px;
-	padding-bottom:5px;
+	padding-top:0px;
+	padding-bottom:0px;
 	text-align:center;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:14px;
@@ -140,7 +160,7 @@ ul.navlist a{display:block;font-size:.9em;margin:0;padding:3px 0}
 }
 
 #gallery {
-	background-color: #FFFFFF;
+	background-color: #F7F7F7;
 	padding: 10px;
 	width: 695px;
 }
@@ -154,13 +174,13 @@ ul.navlist a{display:block;font-size:.9em;margin:0;padding:3px 0}
 }
 
 #gallery ul img {
-	border: 5px solid #FFFFFF;
-	border-width: 5px 5px 20px;
+	border: 0px solid #FFFFFF;
+	border-width: 2px 2px 1px;
 }
 
 #gallery ul a:hover img {
-	border: 5px solid #fff;
-	border-width: 5px 5px 20px;
+	border: 0px solid #FFFFFF;
+	border-width: 2px 2px 1px;
 	color: #fff;
 }
 
@@ -170,10 +190,9 @@ ul.navlist a{display:block;font-size:.9em;margin:0;padding:3px 0}
 
 .irgaleria {
 	background-image: url("images/icon_galeria.jpg");
-	height: 22px;
+	height: 15px;
 	display: block;
 	width: 104px;
 	margin-left: 480px;
-	margin-top: 10px;
+	margin-top: 5px;
 }
-	

@@ -1,36 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://ajaxtags.sourceforge.net/tags/ajaxtags" prefix="ajax"%>
 
 <html>
 <head >
-<title>Soporte T&eacute;cnico del Ministerio del Interior</title>
+<title>Soporte T&eacute;cnico del Ministerio del Interior</title> 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
-<script type="text/javascript" src="js/prototype.js"></script>
-<script type="text/javascript" src="js/scriptaculous/scriptaculous.js"></script>
-<script type="text/javascript" src="js/overlibmws/overlibmws.js"></script>
-<script type="text/javascript" src="js/ajaxtags.js"></script>
-
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/banner.css" rel="stylesheet" type="text/css" />
-<link href="css/menu.css" rel="stylesheet" type="text/css" />
-<link href="css/displaytag.css" rel="stylesheet" type="text/css" />
-<link type="text/css" rel="stylesheet" href="css/ajaxtags.css" ></link>
-
+<%@ include file="../jsp/taglibs.jsp"%>
+					
 </head>
-
 <body>
-	<table width="900" border="0" align="center" bgcolor="#FFFFFF">		
+
+	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF">
 		<tr>
-			<td height="115" colspan="2" valign="top"><jsp:include page="cabecera.jsp" /></td>
-		</tr>
-		<tr>
-			<td width="200" valign="top"><jsp:include page="menu.jsp" /></td>
-			<td width="690" valign="top">
-				<table width="690" border="0" cellspacing="0" cellpadding="0" >
+			<td width="200" valign="top">&nbsp;</td>
+			<td width="698" valign="top">
+				<table border="0" cellspacing="0" cellpadding="0" >
 					<tr>
 						<td height="25"><img src="images/blank.jpg" width="2" /></td>
 					</tr>
@@ -42,7 +25,8 @@
 					</tr>
 					<tr>
 					  	<td align="left" width="690">
-					  		<display:table name="requestScope.lstTotalCorreos" requestURI="listarCorreo.htm" class="displaytag" pagesize="4"
+					  	
+							<display:table name="requestScope.lstTotalCorreos" requestURI="listarCorreo.htm" class="displaytag" pagesize="4"
 								defaultsort="0" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax">
 								<display:column title="Codigo" property="coMailCodigo" sortable="true" headerClass="sortable" />
 								<display:column title="Codigo Atencion" property="coMailGenerado" sortable="true" headerClass="sortable" />
@@ -75,6 +59,7 @@
 								
                            		
 							</display:table>
+							
 						</td>
 			  		</tr>
 			  		<tr>
@@ -82,14 +67,12 @@
 						*Al editar el estado cambiar por 1 si es que esta pendiente y 2 si ya esta atendido
 						</td>
 				  	</tr>
+				  	
 				</table>
+				
 			</td>
 		</tr>
-		<tr>
-			<td colspan="2" class="pie"><jsp:include page="copyright.jsp" />
-			</td>
-		</tr>
+		
 	</table>
-	
 </body>
 </html>

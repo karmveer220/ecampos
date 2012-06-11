@@ -11,4 +11,6 @@ public interface UtilesService {
 	
 	public List<SiminCorreo> listarCorreos(Integer codEmpleado);	
 	
+	public void actualizarCorreo(Integer codCorreo, String estadoCorreo);
+	
 }

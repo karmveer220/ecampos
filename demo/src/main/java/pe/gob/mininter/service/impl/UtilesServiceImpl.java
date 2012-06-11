@@ -28,5 +28,10 @@ public class UtilesServiceImpl implements UtilesService{
 	public List<SiminCorreo> listarCorreos(Integer codEmpleado) {
 		return utilesDao.listarCorreos(codEmpleado);
 	}
+
+	@Override
+	public void actualizarCorreo(Integer codCorreo, String estadoCorreo) {
+		utilesDao.actualizarCorreo(codCorreo, estadoCorreo);
+	}
 	
 }

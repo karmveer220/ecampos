@@ -11,6 +11,7 @@ public interface UtilesDao {
 	public void registrarCorreo(SiminCorreo correo, SiminMaestro usuario);
 
 	public List<SiminCorreo> listarCorreos(Integer codEmpleado);
-	
+
+	public void actualizarCorreo(Integer codCorreo, String estadoCorreo);
 	
 }

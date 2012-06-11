@@ -1,17 +1,12 @@
-<%@ page contentType="text/html; charset=iso-8859-1" language="java" import="java.sql.*" errorPage="" %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@page import="pe.gob.mininter.entities.SiminImagen"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Galer%iacute;a de Imagenes</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/cuadros.css" rel="stylesheet" type="text/css" />
-<script  src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
+<html>
+<head >
+<title>Galeria de Fotos del Ministerio del Interior</title>
+
+<%@page import="pe.gob.mininter.entities.SiminImagen"%>
+<%@page import="java.util.List"%>
 </head>
+
 
 <body>
 	<table width="695" border="0" cellspacing="0" cellpadding="0">	

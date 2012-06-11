@@ -1,27 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<title>Intranet del Ministerio del Interior</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/cuadros.css" rel="stylesheet" type="text/css" />
-<link type="text/css" rel="stylesheet" href="css/calendar-system.css"></link>
-<script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
-
-<script type="text/javascript" src="js/calendar.js"></script>
-<script type="text/javascript" src="js/calendar-es.js"></script>
-<script type="text/javascript" src="js/calendar-setup.js"></script>
-
+<html>
+<head >
+<title>Asistencia Personal del Ministerio del Interior</title>
 <script language="javascript" type="text/javascript">
 	function buscarAsistencia() {
-
 		var fechaFin = document.forms[0].fechaFin.value;
 		var fechaInicio = document.forms[0].fechaInicio.value;
 		
@@ -29,47 +11,17 @@
 			if (compare_dates(fechaInicio, fechaFin)) {
 				alert(" Fecha Fin no puede ser inferior a fecha de inicio");
 			} else {
-
 				document.forms[0].action = "rptasistencia.htm";
 				document.forms[0].target = "baner";
 				document.forms[0].submit();
 			}
 		} else {
-
 			alert(" Ingrese un rango de fechas");
 		}
 	}
-	
-	function compare_dates(fecha, fecha2) {
-		var xDay = fecha.substring(0, 2);
-		var xMonth = fecha.substring(3, 5);
-		var xYear = fecha.substring(6, 10);
-		var yDay = fecha2.substring(0, 2);
-		var yMonth = fecha2.substring(3, 5);
-		var yYear = fecha2.substring(6, 10);
-
-		if (xYear > yYear) {
-			return (true)
-		} else {
-			if (xYear == yYear) {
-				if (xMonth > yMonth) {
-					return (true);
-				} else {
-					if (xMonth == yMonth) {
-						if (xDay > yDay)
-							return (true);
-						else
-							return (false);
-					} else
-						return (false);
-				}
-			} else
-				return (false);
-		}
-	}
 </script>
+<%@ include file="../jsp/taglibs.jsp"%>
 </head>
-
 
 <body>
 	<form action="" method="post">

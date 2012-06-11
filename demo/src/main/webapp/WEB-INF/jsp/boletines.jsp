@@ -1,17 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<html>
+<head >
+<title>Soporte T&eacute;cnico del Ministerio del Interior</title>
 <%@page import="pe.gob.mininter.entities.SiminImagen"%>
 <%@page import="java.util.List"%>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-<title>Boletines del Ministerio del Interior</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
+<%@ include file="../jsp/taglibs.jsp"%>
 
 <script language="javascript" type="text/javascript">
 	function buscarBoletines(){	
@@ -35,7 +28,7 @@
 			<td width="500px" valign="top">
 				<table width="500px" border="0" cellpadding="0" cellspacing="0">
 	           		<tr>
-		                <td colspan="3">&nbsp;</td>
+		                <td colspan="3" height="5"></td>
 		            </tr>
 	            	<tr>
 		                <td class="tituloEncabezado" colspan="3" align="center">Oficina de Comunicaci&oacute;n Social / Bolet&iacute;n Informativo</td>
@@ -53,7 +46,7 @@
 		                </td>	                
 	              	</tr>
 	              	<tr>
-	              		<td colspan="3" align="center">
+	              		<td colspan="3" align="center" bgcolor="white">
 	              		<div id="gallery" align="left">
 	              		<ul>
 						<% List<SiminImagen> lista = (List<SiminImagen>)request.getAttribute("liconos");
@@ -61,7 +54,7 @@
 						%>
 							<li>
 							<a href="buscarBol.htm?coImgCodigo=<%=img.getFaImgEstado()%>" title="<%=img.getNaImgNombre() %>" >
-								<img alt="<%=img.getNaImgNombre() %>" src="img.htm?id=<%=img.getCoImgCodigo()%>" width="150" height="200" alt=""/>
+								<img alt="<%=img.getNaImgNombre() %>" src="img.htm?id=<%=img.getCoImgCodigo()%>" width="150" height="190" alt=""/>
 							</a>
 							</li>
 						<%

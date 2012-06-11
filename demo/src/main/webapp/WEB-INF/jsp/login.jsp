@@ -1,10 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@page import="org.springframework.context.i18n.LocaleContextHolder"%>
 
-<html>    
+<html>
 <head>
     <title>Login</title>    
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />

@@ -1,20 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://displaytag.sf.net" prefix="display" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://ajaxtags.sourceforge.net/tags/ajaxtags" prefix="ajax"%>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Soporte T&eacute;cnico del Ministerio del Interior</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<link href="css/displaytag.css" rel="stylesheet" type="text/css" />
-<script  src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<html>
+<head >
+<title>Bolet&iacute;n Informativo del Ministerio del Interior</title>
+<%@ include file="../jsp/taglibs.jsp"%>
 <script type="text/javascript" src="js/jquery.displaytag-ajax-1.2.js"></script>
 
 <script language="javascript" type="text/javascript">
@@ -27,7 +15,7 @@
 
 <body>
 	<form:form action="enviarCorreo.htm" method="post" modelAttribute="correo">
-	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF">		
+	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">		
 		<tr>
 			<td height="115" colspan="2" valign="top"><jsp:include page="cabecera.jsp" /></td>
 		</tr>
@@ -39,7 +27,7 @@
 						<td height="2"><img src="images/blank.jpg" width="2" /></td>
 					</tr>
 					<tr>
-						<td height="150" valign="top" bgcolor="#FFFFFF" width="700">
+						<td height="150" valign="top" width="700">
 							<div align="center">
 							<table border="0">
 								<tr>
@@ -144,8 +132,7 @@
 										  </tr> 
 										  <tr>
 										  	<td align="left" style="color: red;">
-												*Horario de Atenci&oacute;n 8:30am - 9:00pm<br/>
-												*Solo se atendera a personal que se encuentra dentro del Ministerio del Interior
+												*Horario de Atenci&oacute;n 8:30am - 9:00pm (Solo a personal dentro del Ministerio del Interior)
 											</td>
 										  </tr>
 									   </table>
@@ -160,9 +147,9 @@
 						<td valign="top" align="left">&nbsp;</td>
 					</tr>
 					<tr>
-					  	<td align="left" width="690">
+					  	<td align="left" width="680">
 					  		<div id="displayTagDiv">
-							<display:table name="requestScope.lstCorreos" requestURI="correo.htm?ajx=1" class="displaytag" pagesize="4"
+							<display:table name="requestScope.lstCorreos" requestURI="correo.htm?ajx=1" class="displaytag" pagesize="3"
 								defaultsort="0" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax">
 								<display:column title="Codigo Atencion" property="coMailGenerado" sortable="true" headerClass="sortable" />
 								<display:column title="Requerimiento" property="naMailRequerimiento" sortable="true" headerClass="sortable" />
