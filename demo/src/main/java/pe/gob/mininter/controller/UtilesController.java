@@ -178,8 +178,6 @@ public class UtilesController {
 		return "/lstVideosPrevencion";
 	}
 	
-	
-	
 	@RequestMapping("/fotosDigemin.htm")
 	public String fotosDigemin(ModelMap model, HttpServletRequest request) {
 		model.put("limagenesDigemin", imagenDAO.listarImagenes(3) );

@@ -35,7 +35,7 @@ public class UtilesDaoImpl extends HibernateDaoSupport implements UtilesDao {
 		
 		correo.setCoMailCodigo(cod.longValueExact());
 		String nuevoCodigoGenerado = Utiles.completarCero(Integer.parseInt(codCorreo.toString()));
-		nuevoCodigoGenerado = Utiles.autocompletar(nuevoCodigoGenerado)+""+new GregorianCalendar().get(Calendar.YEAR);
+		nuevoCodigoGenerado = Utiles.autocompletar(nuevoCodigoGenerado)+"-"+new GregorianCalendar().get(Calendar.YEAR);
 		correo.setCoMailGenerado(nuevoCodigoGenerado);
 		
 		getSession().createSQLQuery(" update simin_maestro set n_mst_email = :mail where c_perl_Codigo = :codigo ")
@@ -50,11 +50,11 @@ public class UtilesDaoImpl extends HibernateDaoSupport implements UtilesDao {
 	@Override
 	public List<SiminCorreo> listarCorreos(Integer codEmpleado) {
 		if (codEmpleado == 0) {
-			Query q = getSession().createQuery("select co from SiminCorreo co, SiminMaestro m where co.siminMaestro.cperlCodigo = m.cperlCodigo order by co.coMailCodigo");
+			Query q = getSession().createQuery("select co from SiminCorreo co, SiminMaestro m where co.siminMaestro.cperlCodigo = m.cperlCodigo order by co.coMailCodigo desc");
 			List<SiminCorreo> listaCorreos = q.list();
 			return listaCorreos;
 		}else {
-			return this.getHibernateTemplate().find("from SiminCorreo co where co.siminMaestro.cperlCodigo = "+codEmpleado+" order by coMailCodigo");
+			return this.getHibernateTemplate().find("from SiminCorreo co where co.siminMaestro.cperlCodigo = "+codEmpleado+" order by coMailCodigo desc");
 		}
 	}
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head >
-<title>Soporte T&eacute;cnico del Ministerio del Interior</title>
+<title>Intranet del Ministerio del Interior</title>
 <%@ include file="../jsp/taglibs.jsp"%>
 </head>
 
@@ -126,15 +126,6 @@
 									<td>Freddy Caballero</td>
 									<td align="right">#422910</td>
 								</tr>
-								<security:authorize ifAnyGranted="ROLE_SYSTEM">
-									<tr>
-										<td colspan="2">
-											<a href="inicio.htm">Agregar</a>
-											<a href="correo.htm">Correo</a>
-											<a href="listarCorreo.htm">lista</a>
-										</td>
-									</tr>
-								</security:authorize>
 			        		<tr>
 								<td colspan="2" align="center">&nbsp;</td>
 							</tr>
@@ -144,8 +135,13 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="2" align="center">soporte@mininter.gob.pe</td>
-							</tr>
+								<td colspan="2" align="center"><br/>
+					 				<a href="correo.htm"><strong>Enviar requerimiento al &aacute;rea de Soporte T&eacute;cnico</strong></a>&nbsp;	
+					 				<security:authorize ifAnyGranted="ROLE_OPERADOR,ROLE_SYSTEM">
+					 					<a href="listarCorreo.htm" target="_top">Administrar</a>
+					 				</security:authorize>
+								</td>
+							</tr>							
 		        		</table><br/>
 					</td>
 					<td>&nbsp;</td>

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pe.gob.mininter.dao.ImagenDao;
 import pe.gob.mininter.entities.SiminMaestro;
 import pe.gob.mininter.service.UsuarioService;
 
@@ -27,6 +28,9 @@ public class LoginController  {
 	@Autowired
 	private UsuarioService  usuarioService;
 	
+	@Autowired
+	ImagenDao imagenDAO;
+	
 	@RequestMapping("/login.htm")
     public String login(ModelMap model , HttpServletRequest request) throws NumberFormatException, Exception {		
 		return "/login";
@@ -38,6 +42,12 @@ public class LoginController  {
 		request.getSession().getAttribute("usuario");
 
 		try {
+			
+			request.getSession().setAttribute("listaBanner1", imagenDAO.listarImagenCodigo("11") );
+			request.getSession().setAttribute("listaBanner2", imagenDAO.listarImagenCodigo("12") );
+			request.getSession().setAttribute("listaBanner3", imagenDAO.listarImagenCodigo("13") );
+			request.getSession().setAttribute("listaBanner4", imagenDAO.listarImagenCodigo("14") );
+			
 			java.security.Principal principal = request.getUserPrincipal();
 			String remoteUser = principal.getName();
 			logger.debug("pintar "+remoteUser);

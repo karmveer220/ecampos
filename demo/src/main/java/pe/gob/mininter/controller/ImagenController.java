@@ -38,7 +38,7 @@ public class ImagenController {
 	@Autowired
 	ImagenDao imagenDAO;
 	
-	@RequestMapping("/inicio.htm")
+	@RequestMapping("/adjuntarArchivos.htm")
 	public String jspImagenes( ModelMap model, HttpServletRequest request ){
 		model.put("limagenes", imagenDAO.listarImagenes(0) );
 		return "administrarImg";

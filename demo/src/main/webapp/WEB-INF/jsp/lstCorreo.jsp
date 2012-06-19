@@ -43,8 +43,8 @@
 					<tr>
 					  	<td align="left" width="690">
 					  		<display:table name="requestScope.lstTotalCorreos" requestURI="listarCorreo.htm" class="displaytag" pagesize="4"
-								defaultsort="0" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax">
-								<display:column title="Codigo" property="coMailCodigo" sortable="true" headerClass="sortable" />
+								defaultsort="1" defaultorder="descending" sort="list" export="true" id="row" excludedParams="ajax">
+								<display:column title="Codigo" property="coMailCodigo" sortable="true" headerClass="sortable" media="pdf"/>
 								<display:column title="Codigo Atencion" property="coMailGenerado" sortable="true" headerClass="sortable" />
 								<display:column title="Empleado" property="siminMaestro.nombreCompleto" sortable="true" headerClass="sortable" />
 								<display:column title="Requerimiento" property="naMailRequerimiento" sortable="true" headerClass="sortable" />
@@ -54,20 +54,21 @@
                                 	<fmt:formatDate value="${row.daMailFecha}" pattern="dd/MM/yyyy hh:mm:ss"/>
                           		</display:column>
 								
-								<display:column title="Adenda" media="html" headerClass="definition" sortable="true">
+								<display:column title="Estado" media="html" headerClass="definition" sortable="true">
 									<c:if test='${row.faMailEstado!=null}'>
 										<span id="toedit<c:out value='${row.coMailCodigo}'/>"><c:out value='${row.faMailEstado}'/></span>
 										<script type="text/javascript"> 
-										var $editor_toedit = new Ajax.InPlaceEditor("toedit<c:out value='${row.coMailCodigo}'/>", "editarCorreo.htm&cod=<c:out value='${row.coMailCodigo}'/>", {
-										baseUrl: "editarCorreo.htm&cod=<c:out value='${row.coMailCodigo}'/>",
-					                    target: "toedit<c:out value='${row.coMailCodigo}'/>"
-										});
+										var $editor_toedit = new Ajax.InPlaceEditor(
+												"toedit<c:out value='${row.coMailCodigo}'/>", 
+												"editarCorreo.htm?cod=<c:out value='${row.coMailCodigo}'/>", 
+												{	
+												baseUrl: "editarCorreo.htm?cod=<c:out value='${row.coMailCodigo}'/>",
+					                    		target: "toedit<c:out value='${row.coMailCodigo}'/>"
+												}
+											);
 										</script>
 									</c:if>
-									
 						    	</display:column>
-                          		
-                          		
                            		<display:column title="Estado" class="definition" sortable="true" headerClass="sortable">
 									<c:if test="${row.faMailEstado==1}">Pendiente</c:if>
 									<c:if test="${row.faMailEstado==2}">Atendido</c:if>

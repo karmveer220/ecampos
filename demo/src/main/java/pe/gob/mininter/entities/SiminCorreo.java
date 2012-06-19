@@ -6,16 +6,17 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -45,6 +46,8 @@ public class SiminCorreo implements Serializable {
 	@Column(name="NA_MAIL_PISO")
 	private String naMailPiso;
 
+	@NotEmpty(message = "El requerimiento es obligatorio para ser enviado a Soporte Técnico")
+	@Size(max = 500)
 	@Column(name="NA_MAIL_REQUERIMIENTO")
 	private String naMailRequerimiento;
 	
