@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -197,6 +198,7 @@ public class SiminMaestro extends User implements Serializable {
 	@Column(name="N_MST_DOMICILIO")
 	private String nMstDomicilio;
 
+	@Email 
 	@Column(name="N_MST_EMAIL")
 	private String nmstEmail;
 

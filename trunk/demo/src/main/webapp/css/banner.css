@@ -7,7 +7,7 @@ body {
 
 img {border: 0;}
 .container {
-	width: 200px;
+	width: 180px;
 	padding: 0;
 	margin: 0 auto;
 }
@@ -56,7 +56,7 @@ img {border: 0;}
 	z-index: 100; /*--Assures the paging stays on the top layer--*/
 	text-align: center;
 	line-height: 40px;
-	background: url(http://trueescape.webege.com/images/paging_bg2.png) no-repeat;
+	background: url(../images/paging_bg2.png) no-repeat;
 	display: none; /*--Hidden by default, will be later shown with jQuery--*/
 }
 .paging a {

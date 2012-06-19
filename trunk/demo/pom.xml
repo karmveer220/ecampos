@@ -146,11 +146,11 @@
 			<version>3.6.9.Final</version>
 		</dependency>
 		
-		<dependency> 
-	        <groupId>org.hibernate</groupId> 
-	        <artifactId>hibernate-validator</artifactId> 
-	        <version>4.0.2.GA</version> 
-	    </dependency> 
+	    <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.3.0.Final</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>

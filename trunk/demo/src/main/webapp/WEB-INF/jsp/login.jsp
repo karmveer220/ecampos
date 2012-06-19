@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Login</title>    
+    <title>Intranet del Ministerio del Interior</title>    
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 	<link href="${pageContext.request.contextPath}/css/estilos.css" rel="stylesheet" type="text/css" />

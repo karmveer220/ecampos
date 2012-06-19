@@ -28,20 +28,20 @@
 			<table>
 				<tr valign="top" class="datuser">
 					<td width="260">Bienvenido: </td>
-					<td width="410">Area: </td>
+					<td width="400">Area: </td>
 					<td width="100">IP: </td>
-					<td width="140">Fecha: </td>
+					<td width="150">Fecha: </td>
 				</tr>
 				<tr valign="top" class="datuser">
 					<td width="260"> 
 						<c:out value="${usuario.nombreCompleto}" />
 					</td>
-					<td width="410">
+					<td width="400">
 						<c:out value="${usuario.siminUnidadorganica1.nunoDescripcion}" />
 					</td>
 					<td width="100">
 						<c:out value="${usuario.ipPrivada}" /></td>
-					<td width="140">
+					<td width="150">
 						<script type="text/javascript">
 							document.write(nombres_dias[dia_semana] + ", " + dia_mes + " de " + nombres_meses[mes - 1] + " de " + anio)
 						</script>

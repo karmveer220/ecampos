@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head >
-<title>Bolet&iacute;n Informativo del Ministerio del Interior</title>
+<title>Envio del Correo Electronico del Ministerio del Interior</title>
 <%@ include file="../jsp/taglibs.jsp"%>
 <script type="text/javascript" src="js/jquery.displaytag-ajax-1.2.js"></script>
 
@@ -34,7 +34,7 @@
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<th>Ingreso de Incidencias a Soporte T&eacute;cnico (Sector Interior) </th>
+									<th>Registro de Solicitud de Atenci&oacute;n a Soporte T&eacute;cnico</th>
 								</tr>
 								<tr>
 									<td>
@@ -52,7 +52,7 @@
 										  	<td colspan="3" align="center">
 										  		<table width="400" border="0">
 										  			<tr>
-										  				<td width="110" align="left">Usuario Atenci&oacute;n</td>
+										  				<td width="110" align="left">Usuario</td>
 													    <td width="20">:</td>
 													    <td align="left">
 													    	<input name="" value="${usuario.nombreCompleto}" disabled="disabled" size="30" />
@@ -69,7 +69,7 @@
 													    <td>:</td>
 													    <td align="left">
 													    	<form:select path="naMailPiso" id="naMailPiso">
-													    		<form:option value="-1">--Seleccionar--</form:option>
+													    		<form:option value="">--Seleccionar--</form:option>
 													    		<form:option value="1er. Piso">1er. Piso</form:option>
 													    		<form:option value="2do. Piso">2do. Piso</form:option>
 													    		<form:option value="3er. Piso">3er. Piso</form:option>
@@ -77,6 +77,7 @@
 													    		<form:option value="5to. Piso">5to. Piso</form:option>
 													    		<form:option value="6to. Piso">6to. Piso</form:option>
 													    	</form:select>&nbsp;<span style="color: red">*</span>
+													    	<form:errors path="naMailPiso"/>
 												    	</td>
 													  </tr>
 													  <tr>
@@ -96,7 +97,7 @@
 													  <tr>
 													    <td colspan="2"></td>
 													    <td align="left" height="10">
-													    	<span style="color: red">* Actualizar si no figura el correo institucional</span>
+													    	<span style="color: red">* Actualizar solo si no figura el correo institucional</span>
 													    </td>
 													  </tr>
 										  		</table>
@@ -112,11 +113,12 @@
 										  	<td align="center">
 										  		<table width="400" border="0">
 												  	<tr>
-													    <td colspan="3" align="left" height="20">Describa el Requerimiento</td>
+													    <td colspan="3" align="left" height="20">Describa la solicitud de atenci&oacute;n a Soporte T&eacute;cnico</td>
 													</tr>
 													<tr>
 													    <td colspan="3" align="left">
 											    			<form:textarea path="naMailRequerimiento" id="naMailRequerimiento" rows="5" cols="48"/>&nbsp;<span style="color: red">*</span>
+											    			<form:errors path="naMailRequerimiento"/>
 													    </td>
 												  	</tr>
 										  		</table>
@@ -126,15 +128,8 @@
 										  	<td align="center">
 												<input type="submit" value="Enviar"/>
 											</td>
-										  </tr> 
-										  <tr>
-										  	<td align="center">&nbsp;</td>
-										  </tr> 
-										  <tr>
-										  	<td align="left" style="color: red;">
-												*Horario de Atenci&oacute;n 8:30am - 9:00pm (Solo a personal dentro del Ministerio del Interior)
-											</td>
-										  </tr>
+										  </tr> 									 
+										  
 									   </table>
 									</td>
 								</tr>
@@ -144,13 +139,22 @@
 						</td>
 					</tr>
 					<tr>
+				  		<td align="center" style="color: red;"><br/>
+						*Horario de Atenci&oacute;n 8:30am - 9:00pm (Soporte T&eacute;cnico de la Sede Central del Ministerio del Interior)
+						</td>
+				 	</tr>
+					<tr>
 						<td valign="top" align="left">&nbsp;</td>
+					</tr>
+					<tr>
+						<th valign="top" align="left">Listado de Correos Enviados a Soporte T&eacute;cnico</th>
 					</tr>
 					<tr>
 					  	<td align="left" width="680">
 					  		<div id="displayTagDiv">
 							<display:table name="requestScope.lstCorreos" requestURI="correo.htm?ajx=1" class="displaytag" pagesize="3"
-								defaultsort="0" defaultorder="ascending" sort="list" export="false" id="row" excludedParams="ajax">
+								defaultsort="1" defaultorder="descending" sort="list" export="false" id="row" excludedParams="ajax">
+								<display:column title="Codigo" property="coMailCodigo" sortable="true" headerClass="sortable" />
 								<display:column title="Codigo Atencion" property="coMailGenerado" sortable="true" headerClass="sortable" />
 								<display:column title="Requerimiento" property="naMailRequerimiento" sortable="true" headerClass="sortable" />
 								

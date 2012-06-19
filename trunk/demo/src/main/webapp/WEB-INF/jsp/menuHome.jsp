@@ -7,7 +7,7 @@
 				</div>
 				<h2>Avisos de Interés</h2>
 				<div class="avisos">
-					<jsp:include page="banner.html" />
+					<jsp:include page="banner.jsp" />
 				</div>
 				<div>
 					<table style="height: 330px; color: #EAEAEA" >

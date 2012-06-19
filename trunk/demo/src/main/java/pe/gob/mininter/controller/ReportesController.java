@@ -100,17 +100,13 @@ public class ReportesController {
 		mensaje.append("<td>").append("Utiles.nullToBlank( dis.getObserv() )").append("</td>");
 		mensaje.append("<td>").append(""+Utiles.obtenerDia()).append("</td>");
 		mensaje.append("</tr>");
-		
-         
+		 
 		mensaje.append("</table>");
 		mensaje.append("</td></tr>");
 		mensaje.append(pie);
 		mensaje.append("</table>");
 	    
 		mail.sendMail("soporte@mininter.gob.pe", "menriquezo@mininter.gob.pe", "", "Soporte Tecnico", mensaje.toString());
-
-		
-		
 		
 		return "/lstBoleta";
 	}
