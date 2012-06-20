@@ -136,10 +136,7 @@
 							</tr>
 							<tr>
 								<td colspan="2" align="center"><br/>
-					 				<a href="correo.htm"><strong>Enviar requerimiento al &aacute;rea de Soporte T&eacute;cnico</strong></a>&nbsp;	
-					 				<security:authorize ifAnyGranted="ROLE_OPERADOR,ROLE_SYSTEM">
-					 					<a href="listarCorreo.htm" target="_top">Administrar</a>
-					 				</security:authorize>
+					 				<a href="correo.htm"><strong>Enviar requerimiento al &aacute;rea de Soporte T&eacute;cnico</strong></a>&nbsp;					 				
 								</td>
 							</tr>							
 		        		</table><br/>
