@@ -192,6 +192,9 @@ public class UtilesController {
 	
 	@RequestMapping("/cumplemensual.htm")
 	public String lstCumpleMensual(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NumberFormatException, Exception {
+		response.setContentType("text/html;charset=ISO-8859-1");
+		request.setCharacterEncoding("UTF8");
+		
 		request.getSession().getAttribute("usuario");		
 		String meses = Utiles.nullToBlank(request.getParameter("mes"));
 		String apeNombres = Utiles.nullToBlank( request.getParameter("nombres") );
