@@ -1,5 +1,5 @@
 .menu_list {
-	width: 170px; /* Ancho del men� */
+	width: 180px; /* Ancho del men� */
 }
 
 .menu_head {
@@ -15,7 +15,7 @@
 	font-weight: bold;
 	/* Color de fondo */
 	background-color: #FFFFFF; !
-	important background-image: url(imgs/flecha-abajo.png);
+	important background-image: url(../images/flecha-abajo.png);
 	background-position: center right;
 	background-repeat: no-repeat;
 	/* Animacion - Transition */

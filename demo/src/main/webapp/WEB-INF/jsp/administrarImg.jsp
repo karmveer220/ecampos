@@ -1,27 +1,16 @@
-<%@page import="pe.gob.mininter.entities.SiminImagen"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@page import="java.io.FileInputStream"%>
-<%@page import="java.io.File"%>
-<%@page import="java.util.List"%>
-<%@page import="pe.gob.mininter.entities.SiminImagen"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrar Imagenes</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-<link href="css/estilos.css" rel="stylesheet" type="text/css" />
-<script  src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
-
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.File"%>
+<%@ include file="../jsp/taglibs.jsp"%>
 </head>
+
 <body>
-	
 	<form action="carga.htm" method="post" enctype="multipart/form-data">
-	
 	<table width="900" border="0" cellspacing="0" cellpadding="0" align="center">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
@@ -35,7 +24,7 @@
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
 		        </tr>
 		      	<tr>
-		        	<td height="150" valign="top" bgcolor="#FFFFFF" align="center">	
+		        	<td height="150" valign="top" align="center">	
 		        		<br/>
 		        		<table width="700" border="0" class="">
 		        			<tr>
@@ -46,18 +35,28 @@
 		        			</tr>
 		        			<tr>
 					        	<td height="200" valign="top">
-									<table cellpadding="0" width="100%">
+									<table cellpadding="0" width="700" cellspacing="10">
 										<tr>
-										<a href="inicio2.htm">jQuery File Upload Demo</a>
-											<td colspan="3"> Carga de imagenes </td>
+											<th colspan="3" class="tituloEncabezado">Carga Masiva de Archivos</th>
 										</tr>
 										<tr>
-											<td colspan="3"> 
+											<td>
+												Carga de jQuery Upload
+											</td>
+											<td>:</td>
+											<td align="left"><a href="inicio2.htm">jQuery File Upload Demo</a> </td>
+										</tr>
+										<tr>
+											<td>
+												Carga de Archivos
+											</td>
+											<td>:</td>
+											<td align="left"> 
 												<input type="file" name="imagenes"/>
 											</td>
 										</tr>
 										<tr>
-											<td>
+											<td colspan="3" align="right">
 												<input type="submit" value="Enviar"/>
 											</td>
 										</tr>
@@ -75,8 +74,6 @@
 	    	<td colspan="2" class="pie">  <jsp:include page="copyright.jsp"/> </td>
 	  	</tr>
 	</table>
-	
-	
 	</form>
 </body>
 </html>
