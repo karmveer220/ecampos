@@ -2,8 +2,8 @@
 
 <table >
 	<tr>
-		<td width="200px">
-			<div id="left-content">
+		<td width="180px">
+			<div id="left-content" align="center">
 				<div class="sider" style="color: #FFFFFF">
 					<div class="menu_list" id="secondpane">
 						<p class="menu_head">Informaci&oacute;n Institucional</p>

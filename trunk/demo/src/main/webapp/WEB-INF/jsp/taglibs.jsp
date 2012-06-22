@@ -90,22 +90,22 @@ function compare_dates(fecha, fecha2) {
 				$("#firstpane p.menu_head").click(
 					function() {
 						$(this).css({
-							backgroundImage : "url(imgs/flecha-arriba.png)"
+							backgroundImage : "url(images/flecha-arriba.png)"
 						}).next("div.menu_body").slideToggle(300).siblings(
 								"div.menu_body").slideUp("slow");
 						$(this).siblings().css({
-							backgroundImage : "url(imgs/flecha-abajo.png)"
+							backgroundImage : "url(images/flecha-abajo.png)"
 						});
 					});
 
 				$("#secondpane p.menu_head").mouseover(
 					function() {
 						$(this).css({
-							backgroundImage : "url(imgs/flecha-arriba.png)"
+							backgroundImage : "url(images/flecha-arriba.png)"
 						}).next("div.menu_body").slideDown(500).siblings(
 								"div.menu_body").slideUp("slow");
 						$(this).siblings().css({
-							backgroundImage : "url(imgs/flecha-arriba.png)"
+							backgroundImage : "url(images/flecha-arriba.png)"
 					});
 				});
 	});

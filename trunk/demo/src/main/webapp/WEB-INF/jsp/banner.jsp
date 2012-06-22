@@ -7,10 +7,10 @@
 <% SiminImagen listaBanner4 = (SiminImagen)session.getAttribute("listaBanner4");%>
 
 <div class="container">	
-    <div class="folio_block">
-        <div class="main_view">
+    <div class="folio_block" align="center">
+        <div class="main_view" style="padding: 5;">
           <div class="window">	
-             <div style="width: 722px;" class="image_reel">
+             <div class="image_reel">
                  <a href="avisosUno.htm"><img alt="<%=listaBanner1.getNaImgNombre() %>" src="img.htm?id=<%=listaBanner1.getCoImgCodigo()%>" width="180" height="160"></a>
                  <a href="avisosDos.htm"><img alt="<%=listaBanner2.getNaImgNombre() %>" src="img.htm?id=<%=listaBanner2.getCoImgCodigo()%>" width="180" height="160"></a>
                  <a href="avisosTres.htm"><img alt="<%=listaBanner3.getNaImgNombre() %>" src="img.htm?id=<%=listaBanner3.getCoImgCodigo()%>" width="180" height="160"></a>

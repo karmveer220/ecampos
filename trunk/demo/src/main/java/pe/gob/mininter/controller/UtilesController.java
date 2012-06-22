@@ -149,6 +149,7 @@ public class UtilesController {
 		model.put("listInterior", imagenDAO.listarImagenCodigo("2") );
 		model.put("listDigemin", imagenDAO.listarImagenCodigo("3") );
 		model.put("listDiscamec", imagenDAO.listarImagenCodigo("1") );
+		model.put("listPadre", imagenDAO.listarImagenCodigo("15") );
 		return "/galeria";		
 	}
 	
@@ -158,7 +159,7 @@ public class UtilesController {
 		model.put("listInterior", imagenDAO.listarImagenCodigo("2") );
 		model.put("listDigemin", imagenDAO.listarImagenCodigo("3") );
 		model.put("listDiscamec", imagenDAO.listarImagenCodigo("1") );
-		logger.debug("HOLAAAA"+imagenDAO.listarImagenCodigo("2").getNaImgNombre());
+		model.put("listPadre", imagenDAO.listarImagenCodigo("15") );
 		return "/galeriaFotos";
 	}
 	
@@ -167,6 +168,13 @@ public class UtilesController {
 		model.put("limagenesMininter", imagenDAO.listarImagenes(2) );
 		return "/fotosCampe2011";
 	}
+	
+	@RequestMapping("/fotosPadre.htm")
+	public String fotosPadre(ModelMap model, HttpServletRequest request) {
+		model.put("limagenesPadre", imagenDAO.listarImagenes(15) );
+		return "/fotosPadre";
+	}
+	
 	
 	@RequestMapping("/listarVideo.htm")
 	public String listarVideo(ModelMap model, HttpServletRequest request) {

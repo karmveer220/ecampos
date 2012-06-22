@@ -2,7 +2,7 @@
 
 <table >
 	<tr>
-		<td width="200px">
+		<td width="180px">
 			<div id="left-content">
 				<div class="sider" style="color: #FFFFFF">
 					<div class="menu_list" id="secondpane">

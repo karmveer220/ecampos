@@ -5,30 +5,32 @@
 <%@ include file="../jsp/taglibs.jsp"%>
 </head>
 
-<body>	
+<body>
 	<table width="900" border="0"  cellpadding="0" align="center">
 	  	<tr>
 	    	<td height="115" colspan="2" valign="top"> <jsp:include page="cabecera.jsp"/> </td>
 	 	</tr>
 	  	<tr>
-		    <td width="200" valign="top"> <jsp:include page="menuHome.jsp"/> </td>
+		    <td width="160" valign="top"> <jsp:include page="menuHome.jsp"/> </td>
 		    <td width="700" valign="top" bgcolor="#EAEAEA">
-		    	<table width="600" border="0" cellspacing="0" cellpadding="0" >
+		    	<table width="700" border="0" cellspacing="0" cellpadding="0" >
 		      	<tr>
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" /></td>
 		        </tr>
-		      	<tr align="center">
-		        	<td height="200" colspan="5" valign="top"><img src="images/tres.png" width="700" height="200" /></td>
+		      	<tr>
+		        	<td height="200" colspan="5" valign="top">
+		        		<img src="images/tres.png" width="700" height="200" />
+		        	</td>
 		        </tr>
 		      	<tr>
 		        	<td height="2" colspan="5"><img src="images/blank.jpg" width="2" height="5" /></td>
 		        </tr>
 		      	<tr>
-			        <td width="210"><div><img src="images/boton_util.png" width="230" height="25" /></div></td>			        
+			        <td width="210"><img src="images/boton_util.png" width="230" height="25" /></td>			        
 			        <td>&nbsp;</td>		
-			        <td width="210"> <div> <img src="images/boton_sistemas.png" width="230" height="25" /></div></td>
+			        <td width="210"><img src="images/boton_sistemas.png" width="230" height="25" /></td>
 				    <td>&nbsp;</td>		
-			        <td width="210"><div><img src="images/boton_cumple.png" width="230" height="25" /></div></td>
+			        <td width="210"><img src="images/boton_cumple.png" width="230" height="25" /></td>
 		      	</tr>
 		      	<tr>
 		        	<td height="150" valign="top" bgcolor="#EAEAEA">	
@@ -88,18 +90,18 @@
 			        <td valign="top" colspan="5">&nbsp;</td>
 		      	</tr>
 		      	<tr>
-			        <td valign="top"><div><img src="images/boton_menu.png" width="230" height="25" /></div></td>
+			        <td valign="top"><img src="images/boton_menu.png" width="230" height="25" /></td>
 			        <td>&nbsp;</td>		        
-			        <td valign="top"><div><img src="images/boton_soporte.png" width="230" height="25" /></div></td>
+			        <td valign="top"><img src="images/boton_soporte.png" width="230" height="25" /></td>
 			        <td>&nbsp;</td>		        
-			        <td valign="top"><div><img src="images/boton_campana.png" width="230" height="25" /></div></td>
+			        <td valign="top"><img src="images/boton_campana.png" width="230" height="25" /></td>
 		        </tr>
 		      	<tr>
 					<td valign="middle" align="center" bgcolor="#EAEAEA"><br/>
 						<a href="menu.htm"> <img alt="Menú Semanal" src="images/pizarra.png" width="200" height="70" /></a>
 					</td>
 					<td>&nbsp;</td>
-					<td height="150" valign="top" width="100%" bgcolor="#EAEAEA">
+					<td height="150" valign="top" bgcolor="#EAEAEA">
 			        	<br/>
 			        	<table width="100%">
 			        			<tr>
@@ -154,6 +156,6 @@
 	  	<tr>
 	    	<td colspan="2" class="pie">  <jsp:include page="copyright.jsp"/> </td>
 	  	</tr>
-	</table>	
+	</table>
 </body>
 </html>
