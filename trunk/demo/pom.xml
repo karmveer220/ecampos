@@ -251,7 +251,14 @@
 			<artifactId>ajaxtags-resources</artifactId>
 			<version>1.5.7</version>
 		</dependency>
-			            
+		
+		<dependency>
+			<groupId>quartz</groupId>
+			<artifactId>quartz</artifactId>
+			<version>1.5.2</version>
+		</dependency>
+            
+               
   </dependencies>
   
   <build>
