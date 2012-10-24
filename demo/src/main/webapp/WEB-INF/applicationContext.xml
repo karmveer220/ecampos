@@ -12,7 +12,39 @@
 	<context:property-placeholder location="WEB-INF/jdbc.properties" />
 	
 	<import resource="security-config.xml" />
-	 <import resource="Spring-Mail.xml" />
+	<import resource="Spring-Mail.xml" />
+	
+	<!-- Programar tareas automaticas -->
+	<bean id="procesosJob" class="pe.gob.mininter.utiles.Proceso"/>
+	
+	<bean id="procesoDetail"  class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+		<property name="targetObject" ref="procesosJob" />  
+		<property name="targetMethod" value="ejecutarProceso" />  
+		<property name="concurrent" value="false" />
+	</bean>
+			
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">  
+		<property name="jobDetail" ref="procesoDetail" /> 
+		<!-- Se lanza la tarea todos los dias 
+		Con la propiedad cronExpression indicamos la fecha en la que deberá ejecutar la tarea, 
+		los valores hacen referencia a los siguientes datos (de izquierda a derecha):
+		    * segundos (0 - 59)
+		    * minutos (0 - 59)
+		    * horas (0 - 23)
+		    * día del mes (0 - 31)
+		    * mes (1 - 12)
+		    * día de la semana (MON-SUN)		
+		-->  
+		<property name="cronExpression" value="1 1 * * * ?" />  
+	</bean> 
+	 
+	 <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
+		<property name="triggers">  
+			<ref bean="cronTrigger" />  
+		</property>  
+	</bean>
+
+	<!-- Fin de tarea programada -->
 	 
 	<tx:annotation-driven transaction-manager="txManager"/>
 	
