@@ -21,16 +21,6 @@
 	}
 </script>
 
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>STD - CNL</h1>
-        <p>Creacion rapida de los sellos.</p>
-        <p> 
-        	<a href="nSello.htm" class="btn btn-primary btn-large">Nuevo Sellos&raquo;</a>
-        	<a href="lSellos.htm" class="btn btn-primary btn-large">Ver sellos</a>
-        </p>
-      </div>
-
 	<fieldset>
 		<form class="form-horizontal" action="#" name="frmSello" id="frmSello" method="post">
 		<!-- Form Name -->
