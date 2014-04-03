@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>CNL</title>
+    <title>SELLOS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -66,39 +66,22 @@
                 <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
                     class="icon-bar"></span><span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.htm">STD - CNL</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.htm">SELLOS</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
             
-                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>Inicio</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/index.htm"><span class="glyphicon glyphicon-home"></span>Inicio</a></li>
                 
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                    class="glyphicon glyphicon-list-alt"></span>Documentos <b class="caret"></b></a>
+                    class="glyphicon glyphicon-list-alt"></span>SELLOS <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/pendientes.htm">Pendientes</a></li>
-                        <li><a href="${pageContext.request.contextPath}/recibidos.htm">Recibidos</a></li>
-                        <li><a href="${pageContext.request.contextPath}/enviados.htm">Enviados</a></li>
-                        <li><a href="${pageContext.request.contextPath}/buscar.htm">Buscar Documentos</a></li>
-                        <!-- Para el que tiene rol de Firma -->
-                        <li><a href="${pageContext.request.contextPath}/firma/lista.htm">Firmar Documentos</a></li>
-                        
-                        <li class="divider"></li>
-                  		<li class="nav-header">Otras Opciones</li>
-                  		<li><a href="#">Reporte TD</a></li>
-                  		<li><a href="#">Oficinas CNL</a></li>
-                    </ul>
+                        <li><a href="${pageContext.request.contextPath}/lSellos.htm">Lista de Sellos</a></li>
+                        <li><a href="${pageContext.request.contextPath}/lnotarios.htm">Lista de Notarios</a></li>
+                     </ul>
                 </li>
-                
-                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                    class="glyphicon glyphicon-list-alt"></span>Reportes <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/reportes/reporte1.htm">Por Oficina</a></li>
-                        <li><a href="${pageContext.request.contextPath}/reportes/reporte2.htm">Por Tipo de Documentos</a></li>
-                        <li><a href="${pageContext.request.contextPath}/reportes/reporte3.htm">Com mayor demora</a></li>
-                    </ul>
-                </li>
+              
                 
             </ul>
             <ul class="nav navbar-nav navbar-right">
