@@ -1,5 +1,6 @@
 package pe.org.cnc.controller;
 
+import java.io.FileInputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pe.org.cnc.model.NotarioTO;
+import com.barcode_coder.java_barcode.Barcode;
+import com.barcode_coder.java_barcode.BarcodeDatamatrix;
 
 @Controller
 public class SelloController {
@@ -92,5 +96,35 @@ public class SelloController {
 			e.printStackTrace();
 		}
 	   return null;  
-	 } 
+	 }
+	@RequestMapping(value="/sello", method=RequestMethod.GET)  
+	public String sello(HttpServletRequest request, HttpServletResponse  response,  ModelMap model){
+
+	       // System.out.println("obtengo mensaje y genero datamatrix");
+	        String dm = request.getParameter("msg");
+	        
+	        //Barcode b = BarcodeFactory.createBarcode(BarcodeType.Datamatrix, dm );
+	        Barcode b2 = new BarcodeDatamatrix(dm , false );
+	        b2.export("png",5,20,false,"D:\\image.png");
+	        
+	        try {
+	        	
+	        	FileInputStream fs = new FileInputStream("D:\\image.png");
+	        	byte[] bs = IOUtils.toByteArray(fs);
+	        	
+				response.reset();
+				response.setContentType("image/png");
+				//response.setHeader("content-disposition"," attachment;filename=imagen.png");
+				response.setContentLength( bs.length );
+				response.getOutputStream().write(bs);
+				response.getOutputStream().flush();
+				response.getOutputStream().close();
+			
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	        
+	        return null;
+	}
 }
