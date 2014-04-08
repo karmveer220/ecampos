@@ -29,6 +29,50 @@
 		.panel-body input[type=checkbox]:checked + label { text-decoration: line-through;color: rgb(128, 144, 160); }
 		.list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
 		.list-group { margin-bottom:0px; }
+		
+		/*footer*/
+		#enlaces_footer li{
+			float:left;
+			margin-right:20px;
+			margin-left:15px;
+			height:80px;
+			text-align:center;
+		}
+		
+		#footer{
+			background:url(img/back_menu.jpg);	
+			padding:30px 10px;
+			overflow:hidden;
+			margin-top:15px;
+		}
+		
+		#footer .page{
+			width:950px;
+			margin:0 auto;	
+			overflow:hidden;	
+		}
+		
+		#footer .fleft{
+			background:url(img/logonotarios.png) center left no-repeat;	
+			color:#FFF;
+			padding-left:90px;
+		}
+		
+		#footer .fright{
+			text-align:right;	
+		}
+		#footer .fright a{
+			color:#FFF;	
+		}
+
+		.fleft{
+			float:left;	
+		}
+		
+		.fright{
+			float:right;	
+		}
+
     </style>
    
 
@@ -66,7 +110,7 @@
                 <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
                     class="icon-bar"></span><span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.htm">SELLOS</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/index.htm">COLEGIO DE NOTARIOS DEL CALLAO</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -75,9 +119,8 @@
                 <li class="active"><a href="${pageContext.request.contextPath}/index.htm"><span class="glyphicon glyphicon-home"></span>Inicio</a></li>
                 
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                    class="glyphicon glyphicon-list-alt"></span>SELLOS <b class="caret"></b></a>
+                    class="glyphicon glyphicon-list-alt"></span>NOTARIOS <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="${pageContext.request.contextPath}/lSellos.htm">Lista de Sellos</a></li>
                         <li><a href="${pageContext.request.contextPath}/lnotarios.htm">Lista de Notarios</a></li>
                      </ul>
                 </li>
