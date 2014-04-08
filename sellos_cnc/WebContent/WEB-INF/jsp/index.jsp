@@ -42,8 +42,8 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="btnBuscar"></label>
 			  <div class="col-md-4">
-			    <a href="javascript:buscar();" class="btn btn-default">Buscar</a>
-			    <a href="javascript:limpiar();" class="btn btn-default">Limpiar</a>
+			    <a href="javascript:buscar();" class="btn btn-success">Buscar</a>
+			    <a href="javascript:limpiar();" class="btn btn-success">Limpiar</a>
 			  </div>
 			</div>
 			
