@@ -7,18 +7,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pe.org.cnc.model.Notario;
 import pe.org.cnc.model.NotarioTO;
+import pe.org.cnc.service.NotarioService;
 
 @Controller
 public class NotariosController {
 
 	private static final Logger logger = Logger.getLogger(NotariosController.class );
+	
+	@Autowired
+	private NotarioService notarioService;
 	
 	@RequestMapping(value="/lnotarios.htm", method=RequestMethod.GET)  
 	 public String lista(HttpServletRequest request , ModelMap model ) {
@@ -38,15 +44,17 @@ public class NotariosController {
 	@RequestMapping(value="/nnotario.htm", method=RequestMethod.GET)  
 	 public String preNnotario(HttpServletRequest request , ModelMap model ) {
 	   logger.debug("pre nuevo notario");
-	   model.put("notario", new NotarioTO());
+	   model.put("notario", new Notario());
 	   return "nnotarios";  
 	 }
 
 
 	@RequestMapping(value="/nnotario.htm", method=RequestMethod.POST)  
-	public String nNotario(@Valid NotarioTO notario, BindingResult result, HttpServletRequest request , ModelMap model ) {
+	public String nNotario(@Valid Notario notario, BindingResult result, HttpServletRequest request , ModelMap model ) {
 	   logger.debug("nuevo notario");
-	   model.put("notario", new NotarioTO());
+	   notarioService.registrarNotario(notario);
+	   
+	   model.put("notario", new Notario());
 	   try {
 		
 		   List<NotarioTO> lista = new ArrayList<NotarioTO>();
@@ -70,7 +78,7 @@ public class NotariosController {
 	@RequestMapping(value="/enotario.htm", method=RequestMethod.GET)  
 	public String preeditar(HttpServletRequest request , ModelMap model ) {
 	   logger.debug("pre editar notario");
-	   model.put("notario", new NotarioTO());
+	   model.put("notario", notarioService.obtenerNotario( Integer.parseInt( request.getParameter("codigo"))) );
 	   return "nnotarios";  
 	 }
 

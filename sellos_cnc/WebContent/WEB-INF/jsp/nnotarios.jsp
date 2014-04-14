@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="display" uri="http://displaytag.sf.net"  %>
 <jsp:include page="includes/cabecera.jsp"/>
@@ -26,29 +27,29 @@
 		<c:if test="${not empty mensaje}"><div class="alert alert-success">  <strong><c:out value="${mensaje}"/></strong> </div></c:if>
 		
 		
-		<form class="form-horizontal" action="nNotario.htm" name="frmSello" id="frmSello" method="post">
-			
+		<form:form class="form-horizontal" action="nNotario.htm" name="frmSello" id="frmSello" method="post" modelAttribute="notario">
+			<form:input path="idnotario" />
 
 			<!-- Text input-->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="nombreNotario">Nombre de Notario</label>
 				<div class="col-md-4">
-			        <input type="text" class="form-control input-md" name="nombreNotario" id="nombreNotario" placeholder="nombre del notario"/>
+					<form:input path="nombre" id="nombre" cssClass="form-control input-md"/>
 				</div>
 			</div>
 
 			<!-- Text input-->
 			<div class="form-group">
-				<label class="col-md-4 control-label" for="numeroColegiatura">Número de Colegiatura</label>
+				<label class="col-md-4 control-label" for="numeroColegiatura">Apellidos</label>
 				<div class="col-md-4">
-					<input type="number" name="numeroColegiatura" id="numeroColegiatura" class="form-control input-md"/>
+					<form:input path="apellidos" id="apellidos" cssClass="form-control input-md"/>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="direccion">Direccion de Notar&iacute;a</label>
 				<div class="col-md-4">
-			        <input type="text" class="form-control input-md" name="direccion" id="direccion" placeholder="direccion"/>
+					<form:input path="direccion" id="direccion" cssClass="form-control input-md"/>
 				</div>
 			</div>
 
@@ -61,7 +62,7 @@
 			  </div>
 			</div>
 			
-		</form>
+		</form:form>
 	</fieldset>
 
     <hr>
