@@ -48,6 +48,7 @@ public class NotarioDAOImpl extends HibernateDaoSupport  implements NotarioDAO{
 	public List<Notario> buscarNotario(Notario notario) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Notario.class);
 		logger.debug(" buscar buscarNotario() ");
+		criteria.add( Restrictions.eq("estado", 1) );
 		if(notario !=null){
 			if( !Utiles.nullToBlank( notario.getIdnotario() ).equals("0")){
 				criteria.add( Restrictions.eq("idnotario", notario.getIdnotario() ) );

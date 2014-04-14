@@ -28,7 +28,8 @@
 		
 		
 		<form:form class="form-horizontal" action="nNotario.htm" name="frmSello" id="frmSello" method="post" modelAttribute="notario">
-			<form:input path="idnotario" />
+			<form:hidden path="idnotario" />
+			<form:hidden path="estado" />
 
 			<!-- Text input-->
 			<div class="form-group">
