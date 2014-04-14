@@ -12,4 +12,41 @@
 	<context:annotation-config />
 	<context:component-scan base-package="pe.org.cnc"/>	
   
+  	<context:property-placeholder location="WEB-INF/jdbc.properties" />
+		 
+   <aop:aspectj-autoproxy />
+   <tx:annotation-driven transaction-manager="txManager"/>
+
+   <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+   </bean>
+
+        <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+            <property name="dataSource" ref="dataSource"/>
+            <property name="configLocation">
+                <value>classpath:hibernate.cfg.xml</value>
+                </property>
+                <property  name="configurationClass">
+                        <value>org.hibernate.cfg.AnnotationConfiguration</value>
+                </property>
+            <property name="hibernateProperties">
+              <value>
+                hibernate.bytecode.provider=javassist
+                hibernate.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+                hibernate.show_sql=true
+                hibernate.format_sql=false
+                hibernate.connection.autocommit=false
+                hibernate.connection.release_mode=after_transaction
+              </value>
+            </property>
+        </bean>
+
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                <property name="driverClassName" value="${jdbc.driverClass}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
+        </bean>
+        
+        
 </beans>
