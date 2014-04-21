@@ -1,8 +1,10 @@
 package pe.org.cnc.service.impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import pe.org.cnc.dao.NotarioDAO;
 import pe.org.cnc.model.Notario;
 import pe.org.cnc.service.NotarioService;
@@ -31,6 +33,11 @@ public class NotarioServiceImpl implements NotarioService {
 	@Override
 	public List<Notario> buscarNotario(Notario notario) {
 		return this.notarioDAO.buscarNotario(notario);
+	}
+
+	@Override
+	public Notario validaTexto(String texto) {
+		return notarioDAO.validaTexto(texto);
 	}
 
 }

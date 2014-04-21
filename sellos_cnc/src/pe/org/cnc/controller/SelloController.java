@@ -11,12 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import pe.org.cnc.model.Notario;
 import pe.org.cnc.model.NotarioTO;
+import pe.org.cnc.service.NotarioService;
+
 import com.barcode_coder.java_barcode.Barcode;
 import com.barcode_coder.java_barcode.BarcodeDatamatrix;
 
@@ -25,6 +29,9 @@ public class SelloController {
 
 
 	private static final Logger logger = Logger.getLogger(SelloController.class );
+	
+	@Autowired
+	private NotarioService notarioService;
 	
 	@RequestMapping(value="/lSellos.htm", method=RequestMethod.GET)  
 	 public String lista(HttpServletRequest request , ModelMap model ) {
@@ -75,7 +82,13 @@ public class SelloController {
 	   PrintWriter out = null;
 	   try {
 		   out = response.getWriter();
-		   out.println("el contenido corresponde a la notaria XXXXXXX " + request.getParameter("texto") );
+		    Notario not = notarioService.validaTexto( request.getParameter("texto") );
+		    if( not != null){
+		    	out.println("el contenido corresponde a " + not.getNombrenotaria() );
+		    }else{
+		    	out.println("El texto ingresado no corresponde a ningun Notario " ); 	
+		    }
+		   
 		   
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,7 +98,8 @@ public class SelloController {
 	
 	@RequestMapping(value="/verSello", method=RequestMethod.GET)  
 	 public String versello(HttpServletRequest request, HttpServletResponse  response,  ModelMap model ) {  
-	   logger.debug("traer el ultimo sello del notario" +  request.getParameter("codigo") );
+	   logger.debug("traer el texto y genera el sello del notario" +  request.getParameter("codigo") );
+	   
 	   PrintWriter out = null;
 	   try {
 		   response.setContentType("text/html;charset=ISO-8859-1");
@@ -97,11 +111,14 @@ public class SelloController {
 		}
 	   return null;  
 	 }
+	
 	@RequestMapping(value="/sello", method=RequestMethod.GET)  
 	public String sello(HttpServletRequest request, HttpServletResponse  response,  ModelMap model){
 
-	       // System.out.println("obtengo mensaje y genero datamatrix");
-	        String dm = request.getParameter("msg");
+		   logger.debug("traer el texto y genera el sello DATAMATRIX  del notario" +  request.getParameter("codigo") );
+			 
+		   Notario notario = notarioService.obtenerNotario( Integer.parseInt( request.getParameter("codigo") ));
+	        String dm = notario.getTextosello();
 	        
 	        //Barcode b = BarcodeFactory.createBarcode(BarcodeType.Datamatrix, dm );
 	        Barcode b2 = new BarcodeDatamatrix(dm , false );

@@ -1,9 +1,10 @@
-package pe.org.cnc.dao;
+package pe.org.cnc.service;
 
 import pe.org.cnc.model.Parametros;
 
-public interface ParametroDAO {
+public interface ParametroService {
 
 	Parametros obtenerParametro( Integer id );
+
 	
 }

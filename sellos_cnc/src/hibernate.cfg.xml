@@ -7,6 +7,7 @@
   
     <mapping class="pe.org.cnc.model.Authority"/>
     <mapping class="pe.org.cnc.model.Notario"/>
+    <mapping class="pe.org.cnc.model.Parametros"/>
     <mapping class="pe.org.cnc.model.Usuario"/>
     
   </session-factory>

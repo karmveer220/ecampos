@@ -22,6 +22,7 @@ CREATE TABLE notarios (
   apellidos VARCHAR(250)  NULL,
   direccion VARCHAR(250)  NULL,
   telefonos VARCHAR(250)  NULL,
+  colegiatura VARCHAR(50)  NULL,
   nombrenotaria VARCHAR(250)  NULL,
   textosello VARCHAR(250)  NULL,
   estado INTEGER NULL,
@@ -47,4 +48,7 @@ CREATE TABLE parametros (
 ENGINE=INNODB;
 
 INSERT INTO `cnc_sellos`.`parametros` (`idParametro`, `nombre`, `valor`)
-VALUES (1, 'URL_WEB', 'www.localhost/sistema');
+VALUES (1, 'URL_WEB', 'http://192.168.1.38:8082/sellos_cnc/ver.htm?cod=');
+
+insert into `cnc_sellos`.`usuario` (idUsuario, username, clave, estado, nombres, apellidos)
+	values (1, 'ecampos', '123456', 1, 'Elvis', 'Campos')

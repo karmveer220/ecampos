@@ -43,13 +43,14 @@
    		<div id="displayTagDiv">
 	    	<display:table  name="requestScope.lNotarios" requestURI="lnotarios.htm" class="displaytag" pagesize="10"
 	            defaultsort="1" defaultorder="descending" sort="list" export="false" id="row" excludedParams="ajax" >
-	            <display:column title="Notario" property="nombre" sortable="true" headerClass="sortable" />
+	            <display:column title="Notario" property="nombrenotaria" sortable="true" headerClass="sortable" />
+	            <display:column title="Direccion" property="direccion" sortable="true" headerClass="sortable" />
 	            <display:column title="Colegiatura" property="colegiatura" sortable="true" headerClass="sortable" />
 	            <display:column title="" style="width:120px;">
 	            	<div class="pull-right action-buttons">
-	            		<a href="verSello.htm?codigo=${row.codigo}"  target="_blank"><span class="glyphicon glyphicon-picture"></span></a>
-	            		<a href="enotario.htm?codigo=${row.codigo}"><span class="glyphicon glyphicon-pencil"></span></a>
-	            		<a href="javascript:eliminar(${row.codigo});" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
+	            		<a href="sello.htm?codigo=${row.idnotario}"  target="_blank"><span class="glyphicon glyphicon-picture"></span></a>
+	            		<a href="enotario.htm?codigo=${row.idnotario}"><span class="glyphicon glyphicon-pencil"></span></a>
+	            		<a href="javascript:eliminar(${row.idnotario});" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
 	            	</div>
 				</display:column>
 	   		</display:table>
