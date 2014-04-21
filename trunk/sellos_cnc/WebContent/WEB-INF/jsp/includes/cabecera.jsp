@@ -130,7 +130,7 @@
             <ul class="nav navbar-nav navbar-right">
                  
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                    class="glyphicon glyphicon-user"></span>ecampos <b class="caret"></b></a>
+                    class="glyphicon glyphicon-user"></span>${usrLogin.username} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="${pageContext.request.contextPath}"><span class="glyphicon glyphicon-off"></span>Salir</a></li>
                     </ul>

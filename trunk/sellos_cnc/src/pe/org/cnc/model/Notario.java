@@ -25,6 +25,8 @@ public class Notario implements Serializable {
 
 	private String direccion;
 
+	private String colegiatura;
+	
 	private int estado;
 
 	@Temporal(TemporalType.DATE)
@@ -111,6 +113,14 @@ public class Notario implements Serializable {
 
 	public void setTextosello(String textosello) {
 		this.textosello = textosello;
+	}
+
+	public String getColegiatura() {
+		return colegiatura;
+	}
+
+	public void setColegiatura(String colegiatura) {
+		this.colegiatura = colegiatura;
 	}
 
 }

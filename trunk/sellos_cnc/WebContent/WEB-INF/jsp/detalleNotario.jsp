@@ -5,83 +5,60 @@
 
 <script>
 
-	function limpiar(){
-		$('#txtSello').val("");
-	}
-	
-	function grabar(){
-	    document.forms[0].action = "nnotario.htm";
-	    document.forms[0].submit();
-	}
 	
 	function cancel(){ 
-	   window.location='lnotarios.htm';
+	   window.close();
 	}
 	
 </script>
 
 	<fieldset>
-		<legend>Registro de Notarios</legend>
+		<legend>Detalle de Notario</legend>
 		
 		<c:if test="${not empty msgError}"><div class="alert alert-danger"> <strong><c:out value="${msgError}"/></strong> </div></c:if>
 		<c:if test="${not empty mensaje}"><div class="alert alert-success">  <strong><c:out value="${mensaje}"/></strong> </div></c:if>
 		
 		
-		<form:form class="form-horizontal" action="nNotario.htm" name="frmSello" id="frmSello" method="post" modelAttribute="notario">
-			<form:hidden path="idnotario" />
-			<form:hidden path="estado" />
-
+		<form:form class="form-horizontal" action="ver.htm" name="frmSello" id="frmSello" method="post" modelAttribute="notario">
+			
 			<!-- Text input-->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="nombreNotario">Notar&iacute;a</label>
-				<div class="col-md-4">
-					<form:input path="nombrenotaria" id="nombrenotaria" cssClass="form-control input-md"/>
-				</div>
+				<div class="col-md-4">${notario.nombrenotaria}</div>
 			</div>
 			
 			<!-- Text input-->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="nombreNotario">Nombres</label>
-				<div class="col-md-4">
-					<form:input path="nombre" id="nombre" cssClass="form-control input-md"/>
-				</div>
+				<div class="col-md-4">${notario.nombre}</div>
 			</div>
 
 			<!-- Text input-->
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="numeroColegiatura">Apellidos</label>
-				<div class="col-md-4">
-					<form:input path="apellidos" id="apellidos" cssClass="form-control input-md"/>
-				</div>
+				<div class="col-md-4">${notario.apellidos}</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="numeroColegiatura">Colegiatura</label>
-				<div class="col-md-4">
-					<form:input path="colegiatura" id="colegiatura" cssClass="form-control input-md"/>
-				</div>
+				<div class="col-md-4">${notario.colegiatura}</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="direccion">Direccion de Notar&iacute;a</label>
-				<div class="col-md-4">
-					<form:input path="direccion" id="direccion" cssClass="form-control input-md"/>
-				</div>
+				<div class="col-md-4">${notario.direccion}</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="direccion">Telefonos</label>
-				<div class="col-md-4">
-					<form:input path="telefonos" id="telefonos" cssClass="form-control input-md"/>
-				</div>
+				<div class="col-md-4">${notario.telefonos}</div>
 			</div>
 
 			<!-- Button -->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="btnBuscar"></label>
 			  <div class="col-md-4">
-			    <button id="btnGrabar" name="btnGrabar" class="btn btn-success" onclick="javascript:grabar();">Grabar</button>
-				<a id="btnCancel" class="btn btn-success" onclick="javascript:cancel();">Cancelar</a>
+			   		<a id="btnCancel" class="btn btn-success" onclick="javascript:cancel();">Cerrar</a>
 			  </div>
 			</div>
 			
