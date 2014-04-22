@@ -39,6 +39,7 @@ public class LoginController {
 			model.put("msgError", e.getMessage() );
 			return "login";  
 	   }
+	   
 	 }  
 	
 	@RequestMapping("/index.htm")  

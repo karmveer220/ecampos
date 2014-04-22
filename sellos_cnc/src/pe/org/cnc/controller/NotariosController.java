@@ -51,6 +51,8 @@ public class NotariosController {
 	   logger.debug("nuevo notario");
 	  
 	   try {		   
+		   //graba notario para obtener id
+		   notarioService.registrarNotario(notario);
 		   
 		   //Generar texto para codigo de barras
 		   StringBuilder texto = new StringBuilder();
@@ -59,7 +61,7 @@ public class NotariosController {
 		   
 		   notario.setTextosello( texto.toString() );
 		   notario.setFechasello( new Date() );
-		   
+		   //actualizo notario con datoa de texto sello
 		   notarioService.registrarNotario(notario);		   
 		   model.put("notario", new Notario());
 		   request.setAttribute("lNotarios", notarioService.buscarNotario( null ));		   
