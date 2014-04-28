@@ -43,7 +43,8 @@
    		<div id="displayTagDiv">
 	    	<display:table  name="requestScope.lNotarios" requestURI="lnotarios.htm" class="displaytag" pagesize="10"
 	            defaultsort="1" defaultorder="descending" sort="list" export="false" id="row" excludedParams="ajax" >
-	            <display:column title="Notario" property="nombrenotaria" sortable="true" headerClass="sortable" />
+	            <display:column title="Nombres" property="nombre" sortable="true" headerClass="sortable" />
+	            <display:column title="Apellidos" property="apellidos" sortable="true" headerClass="sortable" />
 	            <display:column title="Direccion" property="direccion" sortable="true" headerClass="sortable" />
 	            <display:column title="Colegiatura" property="colegiatura" sortable="true" headerClass="sortable" />
 	            <display:column title="" style="width:120px;">

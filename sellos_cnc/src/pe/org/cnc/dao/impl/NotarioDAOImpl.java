@@ -64,7 +64,7 @@ public class NotarioDAOImpl extends HibernateDaoSupport  implements NotarioDAO{
 	@Override
 	public Notario validaTexto(String texto) {
 		try {
-			return (Notario) this.getHibernateTemplate().find("from Notario u where textosello like ? ", texto).get(0);
+			return (Notario) this.getHibernateTemplate().find("from Notario u where textoencriptado like ? ", texto).get(0);
 		} catch (Exception e) {
 			logger.error( e.getMessage() );
 			return null;
