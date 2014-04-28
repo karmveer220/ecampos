@@ -40,6 +40,10 @@ public class Notario implements Serializable {
 
 	private String textosello;
 
+	private String ruc;
+	
+	private String textoencriptado;
+	
 	public Notario() {
 	}
 
@@ -121,6 +125,22 @@ public class Notario implements Serializable {
 
 	public void setColegiatura(String colegiatura) {
 		this.colegiatura = colegiatura;
+	}
+
+	public String getRuc() {
+		return ruc;
+	}
+
+	public void setRuc(String ruc) {
+		this.ruc = ruc;
+	}
+
+	public String getTextoencriptado() {
+		return textoencriptado;
+	}
+
+	public void setTextoencriptado(String textoencriptado) {
+		this.textoencriptado = textoencriptado;
 	}
 
 }

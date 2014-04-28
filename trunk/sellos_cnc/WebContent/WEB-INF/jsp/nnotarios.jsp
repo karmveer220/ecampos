@@ -63,6 +63,13 @@
 			</div>
 			
 			<div class="form-group">
+				<label class="col-md-4 control-label" for="ruc">Nro. R.U.C.</label>
+				<div class="col-md-4">
+					<form:input path="ruc" id="ruc" cssClass="form-control input-md"/>
+				</div>
+			</div>
+				
+			<div class="form-group">
 				<label class="col-md-4 control-label" for="direccion">Direccion de Notar&iacute;a</label>
 				<div class="col-md-4">
 					<form:input path="direccion" id="direccion" cssClass="form-control input-md"/>
@@ -70,12 +77,20 @@
 			</div>
 			
 			<div class="form-group">
-				<label class="col-md-4 control-label" for="direccion">Telefonos</label>
+				<label class="col-md-4 control-label" for="telefonos">Telefonos</label>
 				<div class="col-md-4">
 					<form:input path="telefonos" id="telefonos" cssClass="form-control input-md"/>
 				</div>
 			</div>
 
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="textosello">Texto para Sello</label>
+				<div class="col-md-4">
+					<form:input path="textosello" id="textosello" cssClass="form-control input-md"/>
+				</div>
+			</div>
+			
 			<!-- Button -->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="btnBuscar"></label>
