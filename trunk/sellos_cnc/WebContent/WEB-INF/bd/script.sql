@@ -49,11 +49,24 @@ CREATE TABLE parametros (
 )
 ENGINE=INNODB;
 
+CREATE TABLE permisos (
+  idPermiso INTEGER NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(50) NULL,
+  estado INTEGER NULL,
+  PRIMARY KEY(idPermiso)
+)
+ENGINE=INNODB;
+
+INSERT INTO `cnc_sellos`.`permisos`(`idPermiso`,`nombre`,`estado`) VALUES 
+(1,'ROLE_USER',1),
+(2,'ROLE_ADMIN',1),
+(3,'ROLE_SELLO',1);
+
 INSERT INTO `cnc_sellos`.`parametros` (`idParametro`, `nombre`, `valor`)
 VALUES (1, 'URL_WEB', 'http://192.168.1.38:8082/sellos_cnc/ver.htm?cod=');
 
 insert into `cnc_sellos`.`usuario` (idUsuario, username, clave, estado, nombres, apellidos)
-	values (1, 'ecampos', '123456', 1, 'Elvis', 'Campos');
+values (1, 'ecampos', '123456', 1, 'Elvis', 'Campos');
 	
 insert into `cnc_sellos`.`notarios` (idnotario, nombre, apellidos, direccion, telefonos, colegiatura, ruc, textosello, estado, fechasello ) values(1,'Francisco Javier ','Villavicencio Cardenas','Av. Primero de Mayo Nº 156','4641480/ 4521331 /4521251','26','10256979841','FranciscoJavierVillavicencio26',1,'2014-04-20');
 insert into `cnc_sellos`.`notarios` (idnotario, nombre, apellidos, direccion, telefonos, colegiatura, ruc, textosello, estado, fechasello ) values(2,'Walter Ricardo','Diaz Cardenas','Av Elmer Faucett Nº 1818','4523535/4526276','29','10081902742','WalterRicardoDiaz29',1,'2014-04-20');
