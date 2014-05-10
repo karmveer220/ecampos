@@ -14,6 +14,8 @@
   
   	<context:property-placeholder location="WEB-INF/jdbc.properties" />
 		 
+	<import resource="applicationContext-security.xml" /> 
+		 	
    <aop:aspectj-autoproxy />
    <tx:annotation-driven transaction-manager="txManager"/>
 
