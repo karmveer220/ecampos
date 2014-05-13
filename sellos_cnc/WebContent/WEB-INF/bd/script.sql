@@ -12,6 +12,7 @@ CREATE TABLE usuario (
   estado INTEGER NULL,
   nombres VARCHAR(250) NULL,
   apellidos VARCHAR(250) NULL,
+  email varchar(250),
   PRIMARY KEY(idUsuario)
 )
 ENGINE=INNODB;
