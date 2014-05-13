@@ -91,7 +91,7 @@ public class LoginController {
 	        String msg = "Su nueva clave es: " + u.getClave();
 	        logger.debug( msg );
 	        usuarioService.registrarUsuario( u );
-	        mailService.sendMail("informatica@notarios.org.pe", mail, null, "Restablecimiento de clave", msg);
+	       // mailService.sendMail("informatica@notarios.org.pe", mail, null, "Restablecimiento de clave", msg);
 	        model.put("mail",  mail );
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,7 +104,7 @@ public class LoginController {
 	@RequestMapping(value="admin/prenuevoUsr.htm")
 	public String preNuevoUsr(HttpServletRequest request, ModelMap model){
 		try {
-			logger.debug("admin/pre nuevo usuario");l
+			logger.debug("admin/pre nuevo usuario");
 			model.put("usuario", new Usuario() );
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -128,7 +128,7 @@ public class LoginController {
 			if( !Utiles.nullToBlank(usuario.getClaveNueva()).equals("") ){
 				msg +=  " Se ha asignado la clave: " + usuario.getClaveNueva();
 				StringBuilder mensaje = new StringBuilder();
-				mensaje.append(" Buenos dias " + usuario.getNombreCompleto());
+			//	mensaje.append(" Buenos dias " + usuario.getNombreCompleto());
 				mensaje.append("<p>");
 				mensaje.append(" Se le ha asignado el usuario: " + usuario.getUsername() + ", <br>");
 				mensaje.append(" se le ha asignado la clave: " + usuario.getClaveNueva()+ ". <br>");
@@ -186,7 +186,7 @@ public class LoginController {
 			logger.debug("log_admin/eliminarUsr");			
 			usuarioService.eliminarUsuario( Integer.parseInt( request.getParameter("cod") ));
 			model.put("lusuarios", usuarioService.listarUsuarios() );
-			model.put("lentidad", entidadService.listarEntidades( new Entidad() ));
+			//model.put("lentidad", entidadService.listarEntidades( new Entidad() ));
 			model.put("usuario", new Usuario());
 		} catch (Exception e) {
 			model.put("msgError", e.getMessage());
@@ -245,7 +245,7 @@ public class LoginController {
 	@RequestMapping(value="admin/cpassadm.htm",method=RequestMethod.POST )
 	public String cpassadm(@Valid Usuario usuario,BindingResult result,HttpServletRequest request, ModelMap model){
 		try {
-			String usr = usuario.getIdusuario()+"";
+			String usr = "";//usuario.getIdusuario()+"";
 			logger.debug("admin/cpassadm idUsr="  + usr);
 			String nueva = request.getParameter("nueva");
 			logger.debug( nueva );

@@ -144,4 +144,44 @@ public class SelloController {
 	        
 	        return null;
 	}
+
+
+	@RequestMapping(value="/sello2", method=RequestMethod.GET)  
+	public String sello2(HttpServletRequest request, HttpServletResponse  response,  ModelMap model){
+
+		   logger.debug("traer el texto y genera el sello DATAMATRIX  del notario" +  request.getParameter("codigo") );
+			 
+		   Notario notario = notarioService.obtenerNotario( Integer.parseInt( request.getParameter("codigo") ));
+	        String dm = notario.getTextosello();
+	        
+	        //Barcode b = BarcodeFactory.createBarcode(BarcodeType.Datamatrix, dm );
+	        Barcode b2 = new BarcodeDatamatrix(dm , false );
+	        b2.export("png",5,20,false,"D:\\image.png");
+	        
+	        try {
+	        	
+	        	response.setContentType("image/png");
+				response.setHeader("Content-Disposition", "attachment; filename=\""+ notario.getApellidos() +"s\"");
+				
+				
+	        	FileInputStream fs = new FileInputStream("D:\\image.png");
+	        	byte[] bs = IOUtils.toByteArray(fs);
+	        	
+				response.reset();
+				response.setContentType("image/png");
+				//response.setHeader("content-disposition"," attachment;filename=imagen.png");
+				response.setContentLength( bs.length );
+				response.getOutputStream().write(bs);
+				response.getOutputStream().flush();
+				response.getOutputStream().close();
+			
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	        
+	        return null;
+	}
+
+	
 }

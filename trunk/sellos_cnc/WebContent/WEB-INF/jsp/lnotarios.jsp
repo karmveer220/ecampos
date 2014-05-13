@@ -41,14 +41,17 @@
 	 <div id="tablaDinamica">
 	   <div id="resultado">
    		<div id="displayTagDiv">
-	    	<display:table  name="requestScope.lNotarios" requestURI="lnotarios.htm" class="displaytag" pagesize="10"
+	    	<display:table  name="requestScope.lNotarios" requestURI="lnotarios.htm" class="displaytag" 
 	            defaultsort="1" defaultorder="descending" sort="list" export="false" id="row" excludedParams="ajax" >
 	            <display:column title="Nombres" property="nombre" sortable="true" headerClass="sortable" />
 	            <display:column title="Apellidos" property="apellidos" sortable="true" headerClass="sortable" />
 	            <display:column title="Direccion" property="direccion" sortable="true" headerClass="sortable" />
 	            <display:column title="Colegiatura" property="colegiatura" sortable="true" headerClass="sortable" />
+	            <display:column title="texto" property="textosello" sortable="true" headerClass="sortable" />
+	            <display:column title="encriptado" property="textoencriptado" sortable="true" headerClass="sortable" />
 	            <display:column title="" style="width:120px;">
 	            	<div class="pull-right action-buttons">
+	            		<a href="sello2.htm?codigo=${row.idnotario}" ><span class="glyphicon glyphicon-save"></span></a>
 	            		<a href="sello.htm?codigo=${row.idnotario}"  target="_blank"><span class="glyphicon glyphicon-picture"></span></a>
 	            		<a href="enotario.htm?codigo=${row.idnotario}"><span class="glyphicon glyphicon-pencil"></span></a>
 	            		<a href="javascript:eliminar(${row.idnotario});" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
