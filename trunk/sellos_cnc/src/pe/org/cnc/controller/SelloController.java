@@ -146,6 +146,13 @@ public class SelloController {
 	}
 
 
+	/**
+	 * Desacargar directo
+	 * @param request
+	 * @param response
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/sello2", method=RequestMethod.GET)  
 	public String sello2(HttpServletRequest request, HttpServletResponse  response,  ModelMap model){
 
@@ -156,20 +163,17 @@ public class SelloController {
 	        
 	        //Barcode b = BarcodeFactory.createBarcode(BarcodeType.Datamatrix, dm );
 	        Barcode b2 = new BarcodeDatamatrix(dm , false );
-	        b2.export("png",5,20,false,"D:\\image.png");
+	        b2.export("png",5,10,false,"D:\\image.png");
 	        
 	        try {
-	        	
-	        	response.setContentType("image/png");
-				response.setHeader("Content-Disposition", "attachment; filename=\""+ notario.getApellidos() +"s\"");
-				
 				
 	        	FileInputStream fs = new FileInputStream("D:\\image.png");
 	        	byte[] bs = IOUtils.toByteArray(fs);
 	        	
 				response.reset();
 				response.setContentType("image/png");
-				//response.setHeader("content-disposition"," attachment;filename=imagen.png");
+				response.setHeader("Content-Disposition", "attachment; filename=\"sello_"+ notario.getApellidos() +"\"");
+				
 				response.setContentLength( bs.length );
 				response.getOutputStream().write(bs);
 				response.getOutputStream().flush();
