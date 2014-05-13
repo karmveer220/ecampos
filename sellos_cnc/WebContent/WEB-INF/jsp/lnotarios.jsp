@@ -47,8 +47,7 @@
 	            <display:column title="Apellidos" property="apellidos" sortable="true" headerClass="sortable" />
 	            <display:column title="Direccion" property="direccion" sortable="true" headerClass="sortable" />
 	            <display:column title="Colegiatura" property="colegiatura" sortable="true" headerClass="sortable" />
-	            <display:column title="texto" property="textosello" sortable="true" headerClass="sortable" />
-	            <display:column title="encriptado" property="textoencriptado" sortable="true" headerClass="sortable" />
+	            <display:column title="Texto para Sello" property="textosello" sortable="true" headerClass="sortable" />
 	            <display:column title="" style="width:120px;">
 	            	<div class="pull-right action-buttons">
 	            		<a href="sello2.htm?codigo=${row.idnotario}" ><span class="glyphicon glyphicon-save"></span></a>

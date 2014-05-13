@@ -55,11 +55,10 @@ public class NotariosController {
 		   notarioService.registrarNotario(notario);
 		   
 		   //Generar texto para codigo de barras
-		   StringBuilder texto = new StringBuilder();
+		  /* StringBuilder texto = new StringBuilder();
 		   texto.append( parametroService.obtenerParametro( Parametros.PARAM_URL ).getValor() );
-		   texto.append( notario.getIdnotario() );
-		   
-		   notario.setTextosello( texto.toString() );
+		   texto.append( notario.getIdnotario() );		   
+		   notario.setTextosello( texto.toString() );*/
 		   notario.setFechasello( new Date() );
 		   //actualizo notario con datoa de texto sello
 		   notarioService.registrarNotario(notario);		   
